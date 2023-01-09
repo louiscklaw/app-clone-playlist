@@ -386,7 +386,7 @@ export default () => {
         </AppBar>
       </Box>
 
-      <Box sx={{ width: "100vw" }}>
+      <Box sx={{ width: "100vw", display: "none" }}>
         <Box
           sx={{
             width: "100vw",
@@ -475,7 +475,7 @@ export default () => {
           </Stack>
         </Box>
 
-        <Grid container spacing={{ xs: 2, md: 0 }}>
+        <Grid container spacing={{ xs: 2, md: 0 }} sx={{ display: "none" }}>
           <Grid item xs={12} md={3}>
             <Stack
               direction="column"
@@ -566,13 +566,12 @@ export default () => {
         </Grid>
 
         <Grid container sx={{ minHeight: "10vh" }}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} lg={6}>
             <Stack
               direction="column"
               spacing={3}
               sx={{
-                marginLeft,
-                marginRight,
+                marginRight: "0.5rem",
                 padding,
                 backgroundColor: lightGrey,
                 borderRadius,
@@ -589,18 +588,17 @@ export default () => {
               </Typography>
 
               <Stack direction="row" spacing={2} sx={{ marginTop: "2rem" }}>
-                <HelloworldSvg />
-                <HelloworldSvg />
+                <img src="/img/award.jpeg" height={100} />
+                <img src="/img/japanquality.jpeg" height={100} />
               </Stack>
             </Stack>
           </Grid>
 
-          <Grid item xs={6} sx={{ display: { xs: "none", md: "block" } }}>
+          <Grid item xs={6} sx={{ display: { xs: "none", lg: "block" } }}>
             <Stack
               spacing={3}
               sx={{
-                marginLeft,
-                marginRight,
+                marginLeft: "0.5rem",
                 height: "100%",
                 padding,
                 borderRadius,
