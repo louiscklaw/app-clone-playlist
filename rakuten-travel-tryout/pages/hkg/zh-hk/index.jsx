@@ -475,8 +475,8 @@ export default () => {
           </Stack>
         </Box>
 
-        <Grid container sx={{}}>
-          <Grid item xs={3}>
+        <Grid container spacing={{ xs: 2, md: 0 }}>
+          <Grid item xs={12} md={3}>
             <Stack
               direction="column"
               justifyContent="center"
@@ -498,7 +498,8 @@ export default () => {
               </Typography>
             </Stack>
           </Grid>
-          <Grid item xs={3}>
+
+          <Grid item xs={12} md={3}>
             <Stack
               direction="column"
               justifyContent="center"
@@ -519,7 +520,8 @@ export default () => {
               </Typography>
             </Stack>
           </Grid>
-          <Grid item xs={3}>
+
+          <Grid item xs={12} md={3}>
             <Stack
               direction="column"
               justifyContent="center"
@@ -540,7 +542,7 @@ export default () => {
               </Typography>
             </Stack>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <Stack
               direction="column"
               justifyContent="center"
@@ -564,7 +566,7 @@ export default () => {
         </Grid>
 
         <Grid container sx={{ minHeight: "10vh" }}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Stack
               direction="column"
               spacing={3}
@@ -592,7 +594,8 @@ export default () => {
               </Stack>
             </Stack>
           </Grid>
-          <Grid item xs={6}>
+
+          <Grid item xs={6} sx={{ display: { xs: "none", md: "block" } }}>
             <Stack
               spacing={3}
               sx={{
