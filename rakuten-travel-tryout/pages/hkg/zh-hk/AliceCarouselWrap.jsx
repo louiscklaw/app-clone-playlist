@@ -17,18 +17,19 @@ import {
   Box,
 } from "@mui/material";
 
-export default ({ items }) => {
+export default ({ items, responsive }) => {
   return (
     <>
-      {" "}
       <AliceCarousel
         mouseTracking
         items={items}
-        responsive={{
-          0: { items: 1 },
-          568: { items: 2 },
-          1024: { items: 4, itemsFit: "cover" },
-        }}
+        responsive={
+          responsive || {
+            0: { items: 1 },
+            568: { items: 2 },
+            1024: { items: 4, itemsFit: "cover" },
+          }
+        }
         disableDotsControls={true}
         renderPrevButton={({ isDisabled }) => {
           console.log({ isDisabled, log: "prev button" });
@@ -37,9 +38,10 @@ export default ({ items }) => {
             <IconButton
               color="primary"
               sx={{
-                backgroundColor: "white",
                 boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.33)",
                 "&:hover": { backgroundColor: "#FFF" },
+                position: "relative",
+                top: "-10px",
               }}
             >
               <ChevronLeftIcon />
@@ -53,7 +55,7 @@ export default ({ items }) => {
             <IconButton
               color="primary"
               sx={{
-                backgroundColor: "white",
+                backgroundColor: "tomato",
                 boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.33)",
                 "&:hover": { backgroundColor: "#FFF" },
               }}

@@ -147,7 +147,7 @@ export default () => {
           </Toolbar>
         </AppBar>
       </Box>
-      <Box style={{ width: "100vw" }}>
+      <Box style={{ width: "100vw", display: "none" }}>
         <Box
           sx={{
             width: "100vw",
@@ -413,6 +413,7 @@ export default () => {
             padding: "2rem",
             backgroundColor: "rgba(0,0,0,0.1)",
             borderRadius: "1rem",
+            display: "none",
           }}
         >
           <Stack direction="row" justifyContent="center" alignItems="center">
@@ -437,7 +438,7 @@ export default () => {
           </Stack>
         </Box>
 
-        <Grid container>
+        <Grid container sx={{ display: "none" }}>
           <Grid item xs={3}>
             <Stack
               direction="column"
@@ -525,7 +526,7 @@ export default () => {
           </Grid>
         </Grid>
 
-        <Grid container sx={{ minHeight: "10vh" }}>
+        <Grid container sx={{ minHeight: "10vh", display: "none" }}>
           <Grid item xs={6}>
             <Stack
               direction="column"
@@ -640,11 +641,12 @@ export default () => {
         <Box>
           <Stack sx={{ padding }} spacing={2}>
             <Box>
-              <Typography variant="h5">以地區搜尋</Typography>
+              <Typography variant="h5" fontWeight="bold">
+                以地區搜尋
+              </Typography>
             </Box>
             <Box>
-              <AliceCarousel
-                mouseTracking
+              <AliceCarouselWrap
                 items={travelLocation}
                 responsive={{
                   0: { items: 1 },
