@@ -50,6 +50,8 @@ export default () => {
   const borderRadius = "1rem";
   const padding = "2rem";
   const margin = "2rem";
+  const marginLeft = "2rem";
+  const marginRight = "2rem";
 
   const handleDragStart = (e) => e.preventDefault();
 
@@ -521,10 +523,19 @@ export default () => {
           </Grid>
         </Grid>
 
-        <Grid container>
+        <Grid container sx={{ minHeight: "10vh" }}>
           <Grid item xs={6}>
-            <Box
-              sx={{ margin, padding, backgroundColor: lightGrey, borderRadius }}
+            <Stack
+              direction="column"
+              spacing={3}
+              sx={{
+                marginLeft,
+                marginRight,
+                padding,
+                backgroundColor: lightGrey,
+                borderRadius,
+                height: "100%",
+              }}
             >
               <Typography variant={"subtitle1"} fontWeight="bold">
                 Rakuten Travel 品質認證
@@ -539,27 +550,31 @@ export default () => {
                 <HelloworldSvg />
                 <HelloworldSvg />
               </Stack>
-            </Box>
+            </Stack>
           </Grid>
           <Grid item xs={6}>
             <Stack
               spacing={3}
               sx={{
-                margin,
+                marginLeft,
+                marginRight,
+                height: "100%",
                 padding,
                 borderRadius,
                 border: `1px solid ${lightGrey}`,
               }}
             >
-              <Box>
-                <Typography variant={"subtitle1"}>不要錯過任何優惠</Typography>
-                <Typography variant={"body1"}>
+              <Stack direction="column" spacing={1}>
+                <Typography variant={"subtitle1"} fontWeight="bold">
+                  不要錯過任何優惠
+                </Typography>
+                <Typography variant={"body2"}>
                   如欲訂閱特別優惠資訊，請輸入您的電郵地址，我們會及時通知您。
                 </Typography>
-              </Box>
+              </Stack>
 
               <TextField
-                defaultValue="輸入目的地或住宿設施名稱"
+                defaultValue="anyone@anyemail.com"
                 id="outlined-start-adornment"
                 sx={{}}
                 InputProps={{
@@ -573,9 +588,13 @@ export default () => {
                 fullWidth
               />
 
-              <Button aria-describedby={"simple-popover"} variant="contained">
-                Open Popover
-              </Button>
+              <Grid container>
+                <Grid item xs={4}>
+                  <Button variant="contained" size="large">
+                    訂閱
+                  </Button>
+                </Grid>
+              </Grid>
             </Stack>
           </Grid>
         </Grid>
