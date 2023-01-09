@@ -7,6 +7,9 @@ import createEmotionCache from "../utility/createEmotionCache";
 import lightTheme from "../styles/theme/lightTheme";
 import "../styles/globals.css";
 
+import "react-alice-carousel/lib/alice-carousel.css";
+import "./alice_carousel_customize.css";
+
 const clientSideEmotionCache = createEmotionCache();
 
 const MyApp = (props) => {

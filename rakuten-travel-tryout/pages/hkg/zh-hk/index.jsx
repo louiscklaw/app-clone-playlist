@@ -34,7 +34,6 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MapIcon from "@mui/icons-material/Map";
 
 import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
 
 // import RakutenWebp from '/assets/Rakuten.webp'
 import promotionsAndDiscounts from "pages/api/promotionsAndDiscounts";
@@ -43,6 +42,7 @@ import travelLocation from "pages/api/travelLocation";
 import GooglePlayButton from "./GooglePlayButton";
 import CompanyLogo from "./CompanyLogo";
 import HelloworldSvg from "./HelloworldSvg";
+import AliceCarouselWrap from "./AliceCarouselWrap";
 
 export default () => {
   const lightGrey = "rgba(0,0,0,0.1)";
@@ -52,6 +52,8 @@ export default () => {
   const margin = "2rem";
   const marginLeft = "2rem";
   const marginRight = "2rem";
+  const backgroundColor = "gold";
+  const spacing = 2;
 
   const handleDragStart = (e) => e.preventDefault();
 
@@ -415,7 +417,7 @@ export default () => {
         >
           <Stack direction="row" justifyContent="center" alignItems="center">
             <Stack
-              direction={{ xs: "column", xl: "row" }}
+              direction={{ xs: "column", md: "row" }}
               spacing={2}
               justifyContent="center"
               alignItems="center"
@@ -574,7 +576,7 @@ export default () => {
               </Stack>
 
               <TextField
-                defaultValue="anyone@anyemail.com"
+                placeholder="anyone@anyemail.com / 電郵地址"
                 id="outlined-start-adornment"
                 sx={{}}
                 InputProps={{
@@ -584,7 +586,6 @@ export default () => {
                     </InputAdornment>
                   ),
                 }}
-                size="small"
                 fullWidth
               />
 
@@ -599,92 +600,113 @@ export default () => {
           </Grid>
         </Grid>
 
-        {/* body */}
-      </Stack>
-      電郵地址
-      <div>
-        <div>
-          <h2>優惠與折扣</h2>
-        </div>
-
+        {/* 優惠與折扣 */}
         <Box>
-          <AliceCarousel
-            mouseTracking
-            items={promotionsAndDiscounts}
-            responsive={{
-              0: { items: 1 },
-              1024: { items: 4, itemsFit: "contain" },
-            }}
-          />
+          <Stack
+            sx={{ paddingLeft: padding, paddingRight: padding }}
+            spacing={spacing}
+          >
+            <Box>
+              <Typography variant="h5" fontWeight="bold">
+                優惠與折扣
+              </Typography>
+            </Box>
+            <Box>
+              <AliceCarouselWrap items={promotionsAndDiscounts} />
+            </Box>
+          </Stack>
         </Box>
-      </div>
-      <div>
-        <div>
-          <h2>旅遊指南</h2>
-        </div>
+        {/* 優惠與折扣 */}
 
+        {/* 旅遊指南 */}
         <Box>
-          <AliceCarousel
-            mouseTracking
-            items={travelGuide}
-            responsive={{
-              0: { items: 1 },
-              1024: { items: 4, itemsFit: "contain" },
-            }}
-          />
-        </Box>
-      </div>
-      <div>
-        <div>
-          <h2>以地區搜尋</h2>
-        </div>
+          <Stack sx={{ padding }} spacing={2}>
+            <Box>
+              <Typography variant="h5">旅遊指南</Typography>
+            </Box>
 
-        <Box>
-          <AliceCarousel
-            mouseTracking
-            items={travelLocation}
-            responsive={{
-              0: { items: 1 },
-              1024: { items: 6, itemsFit: "contain" },
-            }}
-          />
+            <Box>
+              <AliceCarousel
+                mouseTracking
+                items={travelGuide}
+                responsive={{
+                  0: { items: 1 },
+                  1024: { items: 4, itemsFit: "contain" },
+                }}
+              />
+            </Box>
+          </Stack>
         </Box>
-      </div>
-      <Box>
-        <Stack direction="row" spacing={2}>
-          <Box>
-            <Typography variant="subtitle2">私隱政策</Typography>
-          </Box>
-          <Box>
-            <Typography variant="subtitle2">條款與條件</Typography>
-          </Box>
-          <Box>
-            <Typography variant="subtitle2">聯絡我們</Typography>
-          </Box>
-          <Box>
-            <Typography variant="subtitle2">關於我們</Typography>
-          </Box>
-          <Box>
-            <Typography variant="subtitle2">Cookie政策</Typography>
-          </Box>
-          <Box>
-            <Typography variant="subtitle2">不要出售我的個人資料</Typography>
-          </Box>
+        {/* 旅遊指南 */}
+
+        {/* 以地區搜尋 */}
+        <Box>
+          <Stack sx={{ padding }} spacing={2}>
+            <Box>
+              <Typography variant="h5">以地區搜尋</Typography>
+            </Box>
+            <Box>
+              <AliceCarousel
+                mouseTracking
+                items={travelLocation}
+                responsive={{
+                  0: { items: 1 },
+                  1024: { items: 6, itemsFit: "contain" },
+                }}
+              />
+            </Box>
+          </Stack>
+        </Box>
+        {/* 以地區搜尋 */}
+
+        {/* bottom link */}
+        <Box>
+          <Stack direction="row" spacing={2}>
+            <Box>
+              <Typography variant="subtitle2">私隱政策</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">條款與條件</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">聯絡我們</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">關於我們</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">Cookie政策</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">不要出售我的個人資料</Typography>
+            </Box>
+          </Stack>
+        </Box>
+        {/* bottom link */}
+
+        {/* license */}
+        <Box>
+          <Typography variant="body2">
+            © 樂天集團股份有限公司 香港旅行代理商牌照號碼 354595，由 Rakuten
+            Travel Singapore Pte. Ltd. 持有
+          </Typography>
+        </Box>
+        {/* license */}
+
+        {/* download app */}
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={2}
+        >
+          <Typography variant="subtitle2">下載 App</Typography>
+          <p>App Store</p>
+          <p>Google Play</p>
         </Stack>
-      </Box>
-      <Typography variant="body2">
-        © 樂天集團股份有限公司 香港旅行代理商牌照號碼 354595，由 Rakuten Travel
-        Singapore Pte. Ltd. 持有
-      </Typography>
-      <Stack
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="center"
-        spacing={2}
-      >
-        <Typography variant="subtitle2">下載 App</Typography>
-        <p>App Store</p>
-        <p>Google Play</p>
+        {/* download app */}
+
+        {/* body */}
       </Stack>
     </>
   );
