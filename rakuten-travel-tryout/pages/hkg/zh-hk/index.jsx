@@ -63,6 +63,7 @@ import RoomSelectPopover from "./RoomSelectPopover";
 import LangSelectPopover from "./LangSelectPopover";
 import MapSelectPopover from "./MapSelectPopover";
 import CurrSelectPopover from "./CurrSelectPopover";
+import SearchForm from "./SearchForm";
 
 export default () => {
   const lightGrey = "rgba(32,32,32,0.1)";
@@ -77,12 +78,8 @@ export default () => {
   const backgroundColor = "gold";
   const spacing = 2;
 
-  const [value, setValue] = React.useState(null);
-
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -408,116 +405,7 @@ export default () => {
                 left: "10vw",
               }}
             >
-              <Stack sx={{ padding: { xs: "3rem" } }} spacing={1}>
-                <Typography variant="h5">預訂日本優質酒店及旅館</Typography>
-                <Stack sx={{ paddingTop: { xs: "1rem" } }} spacing={2}>
-                  <TextField
-                    variant="standard"
-                    placeholder="輸入目的地或住宿設施名稱"
-                    id="outlined-start-adornment"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <AccountCircle />
-                        </InputAdornment>
-                      ),
-                      disableUnderline: true,
-                    }}
-                    // size="small"
-                    fullWidth
-                    sx={{
-                      borderRadius: 0,
-                      backgroundColor: "white",
-                      padding: "0.5rem",
-                      borderRadius: "5px",
-                    }}
-                  />
-
-                  <LocalizationProvider dateAdapter={AdapterMoment}>
-                    <Stack direction="row" spacing={3}>
-                      <DatePicker
-                        value={value}
-                        onChange={(newValue) => {
-                          setValue(newValue);
-                        }}
-                        renderInput={(params) => {
-                          params.InputProps.disableUnderline = true;
-                          return (
-                            <TextField
-                              variant="standard"
-                              {...params}
-                              sx={{
-                                borderRadius: 0,
-                                backgroundColor: "white",
-                                padding: "0.5rem",
-                                borderRadius: "5px",
-                              }}
-                            />
-                          );
-                        }}
-                      />
-
-                      <DatePicker
-                        value={value}
-                        onChange={(newValue) => {
-                          setValue(newValue);
-                        }}
-                        renderInput={(params) => {
-                          params.InputProps.disableUnderline = true;
-
-                          return (
-                            <TextField
-                              variant="standard"
-                              {...params}
-                              sx={{
-                                borderRadius: 0,
-                                backgroundColor: "white",
-                                padding: "0.5rem",
-                                borderRadius: "5px",
-                              }}
-                            />
-                          );
-                        }}
-                      />
-                    </Stack>
-                  </LocalizationProvider>
-
-                  <TextField
-                    // id="outlined-start-adornment"
-                    variant="standard"
-                    placeholder="每間１人，１間房"
-                    // aria-describedby={"simple-popover"}
-                    onClick={handleClick}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <AccountCircle />
-                        </InputAdornment>
-                      ),
-                      disableUnderline: true,
-                    }}
-                    size="small"
-                    fullWidth
-                    sx={{
-                      borderRadius: 0,
-                      backgroundColor: "white",
-                      padding: "0.5rem",
-                      borderRadius: "5px",
-                    }}
-                  />
-
-                  <Box>
-                    <Button
-                      variant="contained"
-                      size="large"
-                      onClick={handleClick}
-                      sx={{ backgroundColor: "green" }}
-                    >
-                      搜尋
-                    </Button>
-                  </Box>
-                </Stack>
-              </Stack>
+              <SearchForm />
             </Box>
           </Box>
         </Box>
