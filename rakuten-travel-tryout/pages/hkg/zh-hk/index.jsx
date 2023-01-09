@@ -50,6 +50,7 @@ import CurrSelectPopover from "./CurrSelectPopover";
 
 export default () => {
   const lightGrey = "rgba(0,0,0,0.1)";
+  const deepGrey = "rgba(0,0,0,0.75)";
   const gold = "gold";
   const borderRadius = "1rem";
   const padding = "2rem";
@@ -636,55 +637,86 @@ export default () => {
           </Stack>
         </Box>
         {/* 以地區搜尋 */}
+      </Stack>
 
+      <Box sx={{ borderTop: "1px solid grey" }}></Box>
+
+      <Stack
+        sx={{
+          marginLeft: "10vw",
+          marginRight: "10vw",
+
+          paddingTop: "1rem",
+          paddingLeft: "5vw",
+          paddingRight: "5vw",
+        }}
+        direction="column"
+        spacing={2}
+      >
         {/* bottom link */}
-        <Box>
-          <Stack direction="row" spacing={2}>
-            <Box>
-              <Typography variant="caption">私隱政策</Typography>
-            </Box>
-            <Box>
-              <Typography variant="caption">條款與條件</Typography>
-            </Box>
-            <Box>
-              <Typography variant="caption">聯絡我們</Typography>
-            </Box>
-            <Box>
-              <Typography variant="caption">關於我們</Typography>
-            </Box>
-            <Box>
-              <Typography variant="caption">Cookie政策</Typography>
-            </Box>
-            <Box>
-              <Typography variant="caption">不要出售我的個人資料</Typography>
-            </Box>
-          </Stack>
-        </Box>
-        {/* bottom link */}
+        <Stack direction="row" spacing={2}>
+          <Box>
+            <Typography variant="body2">私隱政策</Typography>
+          </Box>
+          <Box>
+            <Typography variant="body2">條款與條件</Typography>
+          </Box>
+          <Box>
+            <Typography variant="body2">聯絡我們</Typography>
+          </Box>
+          <Box>
+            <Typography variant="body2">關於我們</Typography>
+          </Box>
+          <Box>
+            <Typography variant="body2">Cookie政策</Typography>
+          </Box>
+          <Box>
+            <Typography variant="body2">不要出售我的個人資料</Typography>
+          </Box>
+        </Stack>
 
         {/* license */}
-        <Typography variant="caption">
+        <Typography variant="caption" sx={{ color: deepGrey }}>
           © 樂天集團股份有限公司 香港旅行代理商牌照號碼 354595，由 Rakuten
           Travel Singapore Pte. Ltd. 持有
         </Typography>
         {/* license */}
 
-        {/* download app */}
-
-        <Stack direction="row">
-          <Typography variant="caption">下載 App</Typography>
-          <Typography variant="caption" sx={{ paddingLeft: padding }}>
-            App Store
-          </Typography>
-          <Typography variant="caption" sx={{ paddingLeft: padding }}>
-            Google Play
-          </Typography>
-        </Stack>
-        {/* download app */}
-
-        {/* body */}
-        <Box sx={{ padding }}></Box>
+        {/* bottom link */}
       </Stack>
+
+      <Box sx={{ backgroundColor: lightGrey, marginTop: "1rem" }}>
+        <Stack
+          sx={{
+            marginLeft: "10vw",
+            marginRight: "10vw",
+
+            paddingLeft: "5vw",
+            paddingRight: "5vw",
+
+            height: "3rem",
+          }}
+          direction="column"
+          spacing={2}
+          justifyContent="center"
+        >
+          {/* download app */}
+          <Stack direction="row">
+            <Typography variant="body2" fontWeight="bold">
+              下載 App
+            </Typography>
+            <Typography variant="caption" sx={{ paddingLeft: padding }}>
+              App Store
+            </Typography>
+            <Typography variant="caption" sx={{ paddingLeft: padding }}>
+              Google Play
+            </Typography>
+          </Stack>
+          {/* download app */}
+        </Stack>
+      </Box>
+      {/* body */}
+      <Box sx={{ padding, backgroundColor: lightGrey }}></Box>
     </>
   );
 };
