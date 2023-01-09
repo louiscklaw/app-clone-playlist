@@ -17,7 +17,7 @@ import {
   Box,
 } from "@mui/material";
 
-export default ({ items, responsive }) => {
+export default ({ items, responsive, height }) => {
   return (
     <>
       <AliceCarousel
@@ -38,10 +38,9 @@ export default ({ items, responsive }) => {
             <IconButton
               color="primary"
               sx={{
+                backgroundColor: "white",
                 boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.33)",
                 "&:hover": { backgroundColor: "#FFF" },
-                position: "relative",
-                top: "-10px",
               }}
             >
               <ChevronLeftIcon />
@@ -55,9 +54,11 @@ export default ({ items, responsive }) => {
             <IconButton
               color="primary"
               sx={{
-                backgroundColor: "tomato",
+                backgroundColor: "white",
                 boxShadow: "0px 0px 20px 0px rgba(0,0,0,0.33)",
                 "&:hover": { backgroundColor: "#FFF" },
+                position: "relative",
+                top: `-${height - 30}px`,
               }}
             >
               <ChevronRightIcon />

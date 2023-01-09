@@ -613,7 +613,10 @@ export default () => {
               </Typography>
             </Box>
             <Box>
-              <AliceCarouselWrap items={promotionsAndDiscounts} />
+              <AliceCarouselWrap
+                height={150}
+                items={promotionsAndDiscounts({ height: 150 })}
+              />
             </Box>
           </Stack>
         </Box>
@@ -631,7 +634,10 @@ export default () => {
               </Typography>
             </Box>
             <Box>
-              <AliceCarouselWrap items={travelGuide} />
+              <AliceCarouselWrap
+                height={150}
+                items={travelGuide({ height: 150 })}
+              />
             </Box>
           </Stack>
         </Box>
@@ -647,7 +653,8 @@ export default () => {
             </Box>
             <Box>
               <AliceCarouselWrap
-                items={travelLocation}
+                height={150}
+                items={travelLocation({ height: 150 })}
                 responsive={{
                   0: { items: 1 },
                   1024: { items: 6, itemsFit: "contain" },
