@@ -12,6 +12,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import PublicIcon from "@mui/icons-material/Public";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import LanguageIcon from "@mui/icons-material/Language";
+import LoginIcon from "@mui/icons-material/Login";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import MarkunreadIcon from "@mui/icons-material/Markunread";
 
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -29,11 +35,21 @@ import {
   ButtonGroup,
   Modal,
   Popover,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Divider,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MapIcon from "@mui/icons-material/Map";
-
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import CloseIcon from "@mui/icons-material/Close";
 import AliceCarousel from "react-alice-carousel";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 
 // import RakutenWebp from '/assets/Rakuten.webp'
 import promotionsAndDiscounts from "pages/api/promotionsAndDiscounts";
@@ -49,8 +65,9 @@ import MapSelectPopover from "./MapSelectPopover";
 import CurrSelectPopover from "./CurrSelectPopover";
 
 export default () => {
-  const lightGrey = "rgba(0,0,0,0.1)";
-  const deepGrey = "rgba(0,0,0,0.75)";
+  const lightGrey = "rgba(32,32,32,0.1)";
+  const deepGrey = "rgba(32,32,32,0.8)";
+  const midGrey = "rgba(32,32,32,0.75)";
   const gold = "gold";
   const borderRadius = "1rem";
   const padding = "2rem";
@@ -105,9 +122,115 @@ export default () => {
   const open_curr_popover = Boolean(currAnchorEl);
   // const curr_id = open_curr_popover ? "simple-popover" : undefined;
 
+  const list_item = [
+    { icon: <ConfirmationNumberIcon />, text: "優惠券" },
+    { icon: <NotificationsIcon />, text: "通知" },
+    { icon: <BookmarkIcon />, text: "書籤" },
+    { icon: <NewspaperIcon />, text: "訂單" },
+    { icon: <MarkunreadIcon />, text: "電子報訂閱" },
+  ];
+
+  const list = (anchor) => (
+    <Box
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+      sx={{ width: "100%", color: midGrey }}
+    >
+      <List>
+        <ListItem disablePadding sx={{ paddingTop: "1rem" }}>
+          <ListItemButton>
+            <Stack direction="row" spacing={4} sx={{ width: "100%" }}>
+              <LanguageIcon />
+              <Stack
+                direction="row"
+                sx={{ width: "100%" }}
+                justifyContent="space-between"
+              >
+                <Typography variant={"body1"}>語言</Typography>
+                <Typography variant={"body1"}>繁體中文（香港）</Typography>
+              </Stack>
+            </Stack>
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding sx={{ paddingTop: "1rem" }}>
+          <ListItemButton>
+            <Stack direction="row" spacing={4} sx={{ width: "100%" }}>
+              <MapIcon />
+              <Stack
+                direction="row"
+                sx={{ width: "100%" }}
+                justifyContent="space-between"
+              >
+                <Typography variant={"body1"}>地區</Typography>
+                <Typography variant={"body1"}>HKG</Typography>
+              </Stack>
+            </Stack>
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding sx={{ paddingTop: "1rem" }}>
+          <ListItemButton>
+            <Stack direction="row" spacing={4} sx={{ width: "100%" }}>
+              <CurrencyExchangeIcon />
+              <Stack
+                direction="row"
+                sx={{ width: "100%" }}
+                justifyContent="space-between"
+              >
+                <Typography variant={"body1"}>貨幣</Typography>
+                <Typography variant={"body1"}>HKD</Typography>
+              </Stack>
+            </Stack>
+          </ListItemButton>
+        </ListItem>
+
+        {list_item.map(({ icon, text }) => (
+          <ListItem disablePadding sx={{ paddingTop: "1rem" }}>
+            <ListItemButton>
+              <Stack direction="row" spacing={4}>
+                {icon}
+                <Typography variant={"body1"}>{text}</Typography>
+              </Stack>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <Stack direction="row" spacing={4}>
+              <LoginIcon />
+              <ListItemText>登入</ListItemText>
+            </Stack>
+          </ListItemButton>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
   // lang-select-popover
   React.useEffect(() => {
-    document.querySelector("#curr_change")?.click();
+    document.querySelector("#right_menu")?.click();
   }, []);
 
   return (
@@ -139,6 +262,32 @@ export default () => {
         setAnchorEl={setMapAnchorEl}
         handleClose={handleCurrClose}
       />
+
+      <Drawer
+        anchor={"right"}
+        open={state["right"]}
+        onClose={toggleDrawer("right", false)}
+      >
+        <Box
+          sx={{
+            // backgroundColor: { xs: "gold", md: "tomato" },
+            width: { xs: "100%", md: "33vw" },
+            minWidth: { xs: "100vw", md: "400px" },
+          }}
+        >
+          <Stack direction="column" spacing={3}>
+            <Stack direction="row" sx={{ height: "3rem" }}>
+              <IconButton>
+                <CloseIcon
+                  sx={{ fontSize: "2rem" }}
+                  onClick={toggleDrawer("right", false)}
+                />
+              </IconButton>
+            </Stack>
+            {list("right")}
+          </Stack>
+        </Box>
+      </Drawer>
 
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
@@ -215,11 +364,13 @@ export default () => {
                 </Stack>
               </Button>
               <IconButton
+                id="right_menu"
                 size="large"
                 edge="start"
                 color="inherit"
                 aria-label="menu"
                 sx={{ mr: 2 }}
+                onClick={toggleDrawer("right", true)}
               >
                 <MenuIcon />
               </IconButton>
