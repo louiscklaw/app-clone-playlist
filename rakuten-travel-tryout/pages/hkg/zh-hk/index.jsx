@@ -64,6 +64,7 @@ import LangSelectPopover from "./LangSelectPopover";
 import MapSelectPopover from "./MapSelectPopover";
 import CurrSelectPopover from "./CurrSelectPopover";
 import SearchForm from "./SearchForm";
+import SquareCompanyLogo from "./SquareCompanyLogo";
 
 export default () => {
   const lightGrey = "rgba(32,32,32,0.1)";
@@ -456,8 +457,11 @@ export default () => {
               justifyContent="center"
               alignItems="center"
             >
+              <SquareCompanyLogo
+                sx={{ display: { xs: "none", lg: "block" } }}
+              />
               <Typography variant="h6">下載 Rakuten Travel App</Typography>
-              <CompanyLogo sx={{ display: { xs: "none", lg: "block" } }} />
+
               <Stack
                 direction="row"
                 spacing={2}
