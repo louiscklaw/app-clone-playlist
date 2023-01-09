@@ -406,15 +406,9 @@ export default () => {
                 position: "relative",
                 top: "calc(  15vh )",
                 left: "10vw",
-                // left: "5rem",
               }}
             >
-              <Stack
-                sx={{
-                  padding: { xs: "3rem" },
-                }}
-                spacing={1}
-              >
+              <Stack sx={{ padding: { xs: "3rem" } }} spacing={1}>
                 <Typography variant="h5">預訂日本優質酒店及旅館</Typography>
                 <Stack sx={{ paddingTop: { xs: "1rem" } }} spacing={2}>
                   <TextField
