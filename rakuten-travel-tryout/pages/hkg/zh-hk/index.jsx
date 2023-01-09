@@ -69,6 +69,8 @@ export default () => {
   const lightGrey = "rgba(32,32,32,0.1)";
   const deepGrey = "rgba(32,32,32,0.8)";
   const midGrey = "rgba(32,32,32,0.75)";
+  const midGreyTrans = "rgba(0,0,0,0.25)";
+  const deepGreen = "#27ae60";
   const gold = "gold";
   const borderRadius = "1rem";
   const padding = "2rem";
@@ -291,7 +293,8 @@ export default () => {
           position="static"
           sx={{
             position: "fixed",
-            backgroundColor: "rgba(0,0,0,0.25)",
+            backgroundColor: deepGreen,
+            height: "10px",
           }}
         >
           <Toolbar>
@@ -382,18 +385,24 @@ export default () => {
         </AppBar>
       </Box>
 
-      <Box style={{ width: "100vw" }}>
+      <Box sx={{ width: "100vw" }}>
         <Box
           sx={{
             width: "100vw",
-            height: "75vh",
+            height: { xs: "55vh", md: "75vh" },
             backgroundImage: `url("${"https://images.unsplash.com/photo-1606918801925-e2c914c4b503"}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         >
-          <Box style={{ color: "white", width: "30em" }}>
+          <Box
+            sx={{
+              color: "white",
+              width: "30em",
+              display: { xs: "none", sm: "block" },
+            }}
+          >
             <Box
               sx={{
                 background: "rgba( 16, 16, 16, 0.3 )",
@@ -408,6 +417,16 @@ export default () => {
               <SearchForm />
             </Box>
           </Box>
+
+          <Stack
+            justifyContent="center"
+            alignItems="center"
+            sx={{ height: { xs: "100%", sm: 0 } }}
+          >
+            <Box sx={{ display: { xs: "block", sm: "none" } }}>
+              <SearchForm />
+            </Box>
+          </Stack>
         </Box>
       </Box>
       <Stack

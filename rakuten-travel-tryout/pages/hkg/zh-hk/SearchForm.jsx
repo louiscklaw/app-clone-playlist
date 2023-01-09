@@ -23,6 +23,8 @@ import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
+import color from "./color";
+
 import {
   Grid,
   Input,
@@ -162,7 +164,7 @@ export default () => {
               variant="contained"
               size="large"
               onClick={handleClick}
-              sx={{ backgroundColor: "green" }}
+              sx={{ backgroundColor: color.deepGreen }}
             >
               搜尋
             </Button>
