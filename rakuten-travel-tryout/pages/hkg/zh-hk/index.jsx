@@ -147,7 +147,7 @@ export default () => {
           </Toolbar>
         </AppBar>
       </Box>
-      <Box style={{ width: "100vw", display: "none" }}>
+      <Box style={{ width: "100vw" }}>
         <Box
           sx={{
             width: "100vw",
@@ -413,7 +413,6 @@ export default () => {
             padding: "2rem",
             backgroundColor: "rgba(0,0,0,0.1)",
             borderRadius: "1rem",
-            display: "none",
           }}
         >
           <Stack direction="row" justifyContent="center" alignItems="center">
@@ -438,7 +437,7 @@ export default () => {
           </Stack>
         </Box>
 
-        <Grid container sx={{ display: "none" }}>
+        <Grid container sx={{}}>
           <Grid item xs={3}>
             <Stack
               direction="column"
@@ -526,7 +525,7 @@ export default () => {
           </Grid>
         </Grid>
 
-        <Grid container sx={{ minHeight: "10vh", display: "none" }}>
+        <Grid container sx={{ minHeight: "10vh" }}>
           <Grid item xs={6}>
             <Stack
               direction="column"
@@ -669,50 +668,49 @@ export default () => {
         <Box>
           <Stack direction="row" spacing={2}>
             <Box>
-              <Typography variant="subtitle2">私隱政策</Typography>
+              <Typography variant="caption">私隱政策</Typography>
             </Box>
             <Box>
-              <Typography variant="subtitle2">條款與條件</Typography>
+              <Typography variant="caption">條款與條件</Typography>
             </Box>
             <Box>
-              <Typography variant="subtitle2">聯絡我們</Typography>
+              <Typography variant="caption">聯絡我們</Typography>
             </Box>
             <Box>
-              <Typography variant="subtitle2">關於我們</Typography>
+              <Typography variant="caption">關於我們</Typography>
             </Box>
             <Box>
-              <Typography variant="subtitle2">Cookie政策</Typography>
+              <Typography variant="caption">Cookie政策</Typography>
             </Box>
             <Box>
-              <Typography variant="subtitle2">不要出售我的個人資料</Typography>
+              <Typography variant="caption">不要出售我的個人資料</Typography>
             </Box>
           </Stack>
         </Box>
         {/* bottom link */}
 
         {/* license */}
-        <Box>
-          <Typography variant="body2">
-            © 樂天集團股份有限公司 香港旅行代理商牌照號碼 354595，由 Rakuten
-            Travel Singapore Pte. Ltd. 持有
-          </Typography>
-        </Box>
+        <Typography variant="caption">
+          © 樂天集團股份有限公司 香港旅行代理商牌照號碼 354595，由 Rakuten
+          Travel Singapore Pte. Ltd. 持有
+        </Typography>
         {/* license */}
 
         {/* download app */}
-        <Stack
-          direction="row"
-          justifyContent="flex-start"
-          alignItems="center"
-          spacing={2}
-        >
-          <Typography variant="subtitle2">下載 App</Typography>
-          <p>App Store</p>
-          <p>Google Play</p>
+
+        <Stack direction="row">
+          <Typography variant="caption">下載 App</Typography>
+          <Typography variant="caption" sx={{ paddingLeft: padding }}>
+            App Store
+          </Typography>
+          <Typography variant="caption" sx={{ paddingLeft: padding }}>
+            Google Play
+          </Typography>
         </Stack>
         {/* download app */}
 
         {/* body */}
+        <Box sx={{ padding }}></Box>
       </Stack>
     </>
   );
