@@ -309,60 +309,66 @@ export default () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Button
-                id="lang_change"
-                color="inherit"
-                onClick={handleLangClick}
-              >
-                <Stack
-                  direction="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={1}
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                <Button
+                  id="lang_change"
+                  color="inherit"
+                  onClick={handleLangClick}
                 >
-                  <PublicIcon fontSize="small" />
-                  <Stack direction="row">
-                    <Typography variant="subtitle2">
-                      繁體中文（香港）
-                    </Typography>
-                    <ArrowDropDownIcon fontSize="small" />
+                  <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <PublicIcon fontSize="small" />
+                    <Stack direction="row">
+                      <Typography variant="subtitle2">
+                        繁體中文（香港）
+                      </Typography>
+                      <ArrowDropDownIcon fontSize="small" />
+                    </Stack>
                   </Stack>
-                </Stack>
-              </Button>
+                </Button>
 
-              <Button id="map_change" color="inherit" onClick={handleMapClick}>
-                <Stack
-                  direction="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={1}
+                <Button
+                  id="map_change"
+                  color="inherit"
+                  onClick={handleMapClick}
                 >
-                  <MapIcon fontSize="small" />
-                  <Stack direction="row">
-                    <Typography variant="subtitle2">HKG</Typography>
-                    <ArrowDropDownIcon fontSize="small" />
+                  <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <MapIcon fontSize="small" />
+                    <Stack direction="row">
+                      <Typography variant="subtitle2">HKG</Typography>
+                      <ArrowDropDownIcon fontSize="small" />
+                    </Stack>
                   </Stack>
-                </Stack>
-              </Button>
+                </Button>
 
-              <Button
-                id="curr_change"
-                color="inherit"
-                onClick={handleCurrClick}
-              >
-                <Stack
-                  direction="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={1}
+                <Button
+                  id="curr_change"
+                  color="inherit"
+                  onClick={handleCurrClick}
                 >
-                  <CurrencyExchangeIcon fontSize="small" />
-                  <Stack direction="row">
-                    <Typography variant="subtitle2">HKD</Typography>
-                    <ArrowDropDownIcon fontSize="small" />
+                  <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <CurrencyExchangeIcon fontSize="small" />
+                    <Stack direction="row">
+                      <Typography variant="subtitle2">HKD</Typography>
+                      <ArrowDropDownIcon fontSize="small" />
+                    </Stack>
                   </Stack>
-                </Stack>
-              </Button>
+                </Button>
+              </Box>
               <IconButton
                 id="right_menu"
                 size="large"
