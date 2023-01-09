@@ -522,17 +522,10 @@ export default () => {
         </Grid>
 
         <Grid container>
-          <Grid
-            item
-            xs={6}
-            sx={{
-              margin,
-              padding,
-              backgroundColor: lightGrey,
-              borderRadius,
-            }}
-          >
-            <Box>
+          <Grid item xs={6}>
+            <Box
+              sx={{ margin, padding, backgroundColor: lightGrey, borderRadius }}
+            >
               <Typography variant={"subtitle1"} fontWeight="bold">
                 Rakuten Travel 品質認證
               </Typography>
@@ -549,12 +542,41 @@ export default () => {
             </Box>
           </Grid>
           <Grid item xs={6}>
-            <Box>
-              <Typography variant={"subtitle1"}>不要錯過任何優惠</Typography>
-              <Typography variant={"body1"}>
-                如欲訂閱特別優惠資訊，請輸入您的電郵地址，我們會及時通知您。
-              </Typography>
-            </Box>
+            <Stack
+              spacing={3}
+              sx={{
+                margin,
+                padding,
+                borderRadius,
+                border: `1px solid ${lightGrey}`,
+              }}
+            >
+              <Box>
+                <Typography variant={"subtitle1"}>不要錯過任何優惠</Typography>
+                <Typography variant={"body1"}>
+                  如欲訂閱特別優惠資訊，請輸入您的電郵地址，我們會及時通知您。
+                </Typography>
+              </Box>
+
+              <TextField
+                defaultValue="輸入目的地或住宿設施名稱"
+                id="outlined-start-adornment"
+                sx={{}}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircle />
+                    </InputAdornment>
+                  ),
+                }}
+                size="small"
+                fullWidth
+              />
+
+              <Button aria-describedby={"simple-popover"} variant="contained">
+                Open Popover
+              </Button>
+            </Stack>
           </Grid>
         </Grid>
 
