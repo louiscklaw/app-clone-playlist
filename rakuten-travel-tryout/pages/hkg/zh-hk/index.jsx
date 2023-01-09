@@ -43,6 +43,10 @@ import GooglePlayButton from "./GooglePlayButton";
 import CompanyLogo from "./CompanyLogo";
 import HelloworldSvg from "./HelloworldSvg";
 import AliceCarouselWrap from "./AliceCarouselWrap";
+import RoomSelectPopover from "./RoomSelectPopover";
+import LangSelectPopover from "./LangSelectPopover";
+import MapSelectPopover from "./MapSelectPopover";
+import CurrSelectPopover from "./CurrSelectPopover";
 
 export default () => {
   const lightGrey = "rgba(0,0,0,0.1)";
@@ -55,31 +59,92 @@ export default () => {
   const backgroundColor = "gold";
   const spacing = 2;
 
-  const handleDragStart = (e) => e.preventDefault();
-
   const [value, setValue] = React.useState(null);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  // const id = open ? "simple-popover" : undefined;
+
+  // lang-select-popover
+  const [langAnchorEl, setLangAnchorEl] = React.useState(null);
+  const handleLangClick = (event) => {
+    setLangAnchorEl(event.currentTarget);
+  };
+  const handleLangClose = () => {
+    setLangAnchorEl(null);
+  };
+  const open_lang_popover = Boolean(langAnchorEl);
+  // const lang_id = open_lang_popover ? "simple-popover" : undefined;
+
+  // map-select-popover
+  const [mapAnchorEl, setMapAnchorEl] = React.useState(null);
+  const handleMapClick = (event) => {
+    setMapAnchorEl(event.currentTarget);
+  };
+  const handleMapClose = () => {
+    setMapAnchorEl(null);
+  };
+  const open_map_popover = Boolean(mapAnchorEl);
+  // const map_id = open_map_popover ? "simple-popover" : undefined;
+
+  // curr-select-popover
+  const [currAnchorEl, setCurrAnchorEl] = React.useState(null);
+  const handleCurrClick = (event) => {
+    setCurrAnchorEl(event.currentTarget);
+  };
+  const handleCurrClose = () => {
+    setCurrAnchorEl(null);
+  };
+  const open_curr_popover = Boolean(currAnchorEl);
+  // const curr_id = open_curr_popover ? "simple-popover" : undefined;
+
+  // lang-select-popover
+  React.useEffect(() => {
+    document.querySelector("#curr_change")?.click();
+  }, []);
 
   return (
     <>
+      <RoomSelectPopover
+        open={open}
+        anchorEl={anchorEl}
+        setAnchorEl={setAnchorEl}
+        handleClose={handleClose}
+      />
+
+      <LangSelectPopover
+        open={open_lang_popover}
+        anchorEl={langAnchorEl}
+        setAnchorEl={setLangAnchorEl}
+        handleClose={handleLangClose}
+      />
+
+      <MapSelectPopover
+        open={open_map_popover}
+        anchorEl={mapAnchorEl}
+        setAnchorEl={setMapAnchorEl}
+        handleClose={handleMapClose}
+      />
+
+      <CurrSelectPopover
+        open={open_curr_popover}
+        anchorEl={currAnchorEl}
+        setAnchorEl={setMapAnchorEl}
+        handleClose={handleCurrClose}
+      />
+
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           position="static"
           sx={{
             position: "fixed",
-            backgroundColor: "gold",
+            backgroundColor: "rgba(0,0,0,0.25)",
           }}
         >
           <Toolbar>
@@ -94,7 +159,11 @@ export default () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Button color="inherit">
+              <Button
+                id="lang_change"
+                color="inherit"
+                onClick={handleLangClick}
+              >
                 <Stack
                   direction="row"
                   justifyContent="center"
@@ -111,7 +180,7 @@ export default () => {
                 </Stack>
               </Button>
 
-              <Button color="inherit">
+              <Button id="map_change" color="inherit" onClick={handleMapClick}>
                 <Stack
                   direction="row"
                   justifyContent="center"
@@ -126,7 +195,11 @@ export default () => {
                 </Stack>
               </Button>
 
-              <Button color="inherit">
+              <Button
+                id="curr_change"
+                color="inherit"
+                onClick={handleCurrClick}
+              >
                 <Stack
                   direction="row"
                   justifyContent="center"
@@ -153,6 +226,7 @@ export default () => {
           </Toolbar>
         </AppBar>
       </Box>
+
       <Box style={{ width: "100vw" }}>
         <Box
           sx={{
@@ -186,224 +260,109 @@ export default () => {
                 <Typography variant="h5">預訂日本優質酒店及旅館</Typography>
                 <Stack sx={{ paddingTop: { xs: "1rem" } }} spacing={2}>
                   <TextField
-                    defaultValue="輸入目的地或住宿設施名稱"
+                    variant="standard"
+                    placeholder="輸入目的地或住宿設施名稱"
                     id="outlined-start-adornment"
-                    sx={{}}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
                           <AccountCircle />
                         </InputAdornment>
                       ),
+                      disableUnderline: true,
                     }}
-                    size="small"
+                    // size="small"
                     fullWidth
+                    sx={{
+                      borderRadius: 0,
+                      backgroundColor: "white",
+                      padding: "0.5rem",
+                      borderRadius: "5px",
+                    }}
                   />
 
                   <LocalizationProvider dateAdapter={AdapterMoment}>
                     <Stack direction="row" spacing={3}>
                       <DatePicker
-                        label="Basic example"
                         value={value}
                         onChange={(newValue) => {
                           setValue(newValue);
                         }}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => {
+                          params.InputProps.disableUnderline = true;
+                          return (
+                            <TextField
+                              variant="standard"
+                              {...params}
+                              sx={{
+                                borderRadius: 0,
+                                backgroundColor: "white",
+                                padding: "0.5rem",
+                                borderRadius: "5px",
+                              }}
+                            />
+                          );
+                        }}
                       />
 
                       <DatePicker
-                        label="Basic example"
                         value={value}
                         onChange={(newValue) => {
                           setValue(newValue);
                         }}
-                        renderInput={(params) => <TextField {...params} />}
+                        renderInput={(params) => {
+                          params.InputProps.disableUnderline = true;
+
+                          return (
+                            <TextField
+                              variant="standard"
+                              {...params}
+                              sx={{
+                                borderRadius: 0,
+                                backgroundColor: "white",
+                                padding: "0.5rem",
+                                borderRadius: "5px",
+                              }}
+                            />
+                          );
+                        }}
                       />
                     </Stack>
                   </LocalizationProvider>
 
                   <TextField
-                    defaultValue="每間１人，１間房"
-                    aria-describedby={"simple-popover"}
+                    // id="outlined-start-adornment"
+                    variant="standard"
+                    placeholder="每間１人，１間房"
+                    // aria-describedby={"simple-popover"}
                     onClick={handleClick}
-                    id="outlined-start-adornment"
-                    sx={{ cursor: "help" }}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
                           <AccountCircle />
                         </InputAdornment>
                       ),
+                      disableUnderline: true,
                     }}
                     size="small"
                     fullWidth
+                    sx={{
+                      borderRadius: 0,
+                      backgroundColor: "white",
+                      padding: "0.5rem",
+                      borderRadius: "5px",
+                    }}
                   />
 
                   <Box>
                     <Button
-                      aria-describedby={"simple-popover"}
                       variant="contained"
+                      size="large"
                       onClick={handleClick}
+                      sx={{ backgroundColor: "green" }}
                     >
-                      Open Popover
+                      搜尋
                     </Button>
-                    <Popover
-                      id={"simple-popover"}
-                      open={open}
-                      anchorEl={anchorEl}
-                      onClose={handleClose}
-                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                    >
-                      <Box sx={{ padding: "1rem" }}>
-                        <Box>
-                          <Typography
-                            id="modal-modal-title"
-                            variant="h6"
-                            component="h2"
-                          >
-                            客房與住客
-                          </Typography>
-                        </Box>
-
-                        <Box>
-                          <Box sx={{ paddingTop: "1rem" }}>
-                            <Box
-                              sx={{ paddingTop: "1rem", paddingBottom: "1rem" }}
-                            >
-                              <Typography
-                                variant="subtitle1"
-                                sx={{ fontWeight: "bold" }}
-                              >
-                                客房數
-                              </Typography>
-                            </Box>
-                            <Grid
-                              container
-                              justifyContent="center"
-                              alignItems="center"
-                            >
-                              <Grid item xs={6}>
-                                <Typography
-                                  variant="subtitle1"
-                                  component="body1"
-                                >
-                                  客房
-                                </Typography>
-                              </Grid>
-                              <Grid
-                                item
-                                xs={6}
-                                container
-                                justifyContent="flex-end"
-                              >
-                                <ButtonGroup
-                                  variant="contained"
-                                  aria-label="outlined primary button group"
-                                  size="small"
-                                >
-                                  <Button>0-2</Button>
-                                  <Button>3-5</Button>
-                                  <Button>> 6</Button>
-                                </ButtonGroup>
-                              </Grid>
-                            </Grid>
-                            <Box sx={{ paddingTop: "1rem" }}>
-                              <Alert severity="info">
-                                請選擇日期以更改房間數。
-                              </Alert>
-                            </Box>
-                          </Box>
-
-                          <Box sx={{ paddingTop: "1rem" }}>
-                            <Box
-                              sx={{ paddingTop: "1rem", paddingBottom: "1rem" }}
-                            >
-                              <Typography
-                                variant="subtitle1"
-                                sx={{ fontWeight: "bold" }}
-                              >
-                                每間房住客人數
-                              </Typography>
-                            </Box>
-                            <Grid container spacing={1}>
-                              <Grid item xs={12} container spacing={1}>
-                                <Grid item xs={6}>
-                                  <Typography
-                                    variant="subtitle1"
-                                    component="body1"
-                                  >
-                                    成人
-                                  </Typography>
-                                </Grid>
-                                <Grid
-                                  item
-                                  xs={6}
-                                  container
-                                  justifyContent="flex-end"
-                                >
-                                  <ButtonGroup
-                                    variant="contained"
-                                    aria-label="outlined primary button group"
-                                    size="small"
-                                  >
-                                    <Button>0-2</Button>
-                                    <Button>3-5</Button>
-                                    <Button>> 6</Button>
-                                  </ButtonGroup>
-                                </Grid>
-                              </Grid>
-
-                              <Grid item xs={12} container spacing={1}>
-                                <Grid item xs={6}>
-                                  <Typography
-                                    variant="subtitle1"
-                                    component="body1"
-                                  >
-                                    小童
-                                  </Typography>
-                                </Grid>
-                                <Grid
-                                  item
-                                  xs={6}
-                                  container
-                                  justifyContent="flex-end"
-                                >
-                                  <ButtonGroup
-                                    variant="contained"
-                                    aria-label="outlined primary button group"
-                                    size="small"
-                                  >
-                                    <Button>0-2</Button>
-                                    <Button>3-5</Button>
-                                    <Button>> 6</Button>
-                                  </ButtonGroup>
-                                </Grid>
-                              </Grid>
-                            </Grid>
-                            <Box sx={{ paddingTop: "1rem" }}>
-                              <Alert severity="info">
-                                請選擇日期以更改孩童人數。
-                              </Alert>
-                            </Box>
-                          </Box>
-                        </Box>
-                        <Box sx={{ paddingTop: "2rem" }}>
-                          <Button
-                            variant="contained"
-                            fullWidth
-                            size="large"
-                            onClick={(e) => setOpen(false)}
-                          >
-                            <Typography
-                              variant="subtitle2"
-                              sx={{ fontWeight: "bold" }}
-                            >
-                              完成
-                            </Typography>
-                          </Button>
-                        </Box>
-                      </Box>
-                    </Popover>
                   </Box>
                 </Stack>
               </Stack>
