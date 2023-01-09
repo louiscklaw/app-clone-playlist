@@ -386,10 +386,19 @@ export default () => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ marginLeft: "15vw", marginRight: "15vw" }}>
+      <Stack
+        sx={{
+          marginLeft: "10vw",
+          marginRight: "10vw",
+          paddingLeft: "3vw",
+          paddingRight: "3vw",
+          marginTop: "5rem",
+        }}
+        direction="column"
+        spacing={5}
+      >
         <Box
           sx={{
-            margin: "2rem",
             padding: "2rem",
             backgroundColor: "rgba(0,0,0,0.1)",
             borderRadius: "1rem",
@@ -417,81 +426,96 @@ export default () => {
           </Stack>
         </Box>
 
-        <Grid container spacing={2}>
+        <Grid container>
           <Grid item xs={3}>
             <Stack
               direction="column"
               justifyContent="center"
               alignItems="center"
+              spacing={2}
+              sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
             >
               <img
                 src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
                 width="50"
                 height="auto"
               />
-              <Typography variant="subtitle1">可信賴品牌</Typography>
+              <Typography variant="subtitle1" fontWeight="bold">
+                可信賴品牌
+              </Typography>
               <Typography variant="body2">
                 Rakuten Group 旗下﹑日本其中一間行內領先的網上旅行社。備受全球
                 16 億會員信賴
               </Typography>
             </Stack>
           </Grid>
-
           <Grid item xs={3}>
             <Stack
               direction="column"
               justifyContent="center"
               alignItems="center"
+              spacing={2}
+              sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
             >
               <img
                 src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
                 width="50"
                 height="auto"
               />
-              <Typography variant="subtitle1">各式各樣的選項</Typography>
+              <Typography variant="subtitle1" fontWeight="bold">
+                各式各樣的選項
+              </Typography>
               <Typography variant="body2">
                 在上千間的酒店及旅館體驗 omotenashi－日式貼心款待
               </Typography>
             </Stack>
           </Grid>
-
           <Grid item xs={3}>
             <Stack
               direction="column"
               justifyContent="center"
               alignItems="center"
+              spacing={2}
+              sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
             >
               <img
                 src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
                 width="50"
                 height="auto"
               />
-              <Typography variant="subtitle1">特別優惠</Typography>
+              <Typography variant="subtitle1" fontWeight="bold">
+                特別優惠
+              </Typography>
               <Typography variant="body2">
                 尋找只在 Rakuten Travel 上提供的專屬折扣及獨有住宿計劃
               </Typography>
             </Stack>
           </Grid>
-
           <Grid item xs={3}>
             <Stack
               direction="column"
               justifyContent="center"
               alignItems="center"
+              spacing={2}
+              sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
             >
               <img
                 src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
                 width="50"
                 height="auto"
               />
-              <Typography variant="subtitle1">會籍福利</Typography>
+              <Typography variant="subtitle1" fontWeight="bold">
+                會籍福利
+              </Typography>
               <Typography variant="body2">
                 尊享身為 Rakuten 會員的特別優待。會籍免費
               </Typography>
             </Stack>
           </Grid>
         </Grid>
-      </Box>
+
+        {/* body */}
+      </Stack>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Box>
