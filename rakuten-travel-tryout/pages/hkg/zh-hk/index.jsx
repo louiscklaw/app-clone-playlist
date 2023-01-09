@@ -620,20 +620,17 @@ export default () => {
 
         {/* 旅遊指南 */}
         <Box>
-          <Stack sx={{ padding }} spacing={2}>
+          <Stack
+            sx={{ paddingLeft: padding, paddingRight: padding }}
+            spacing={spacing}
+          >
             <Box>
-              <Typography variant="h5">旅遊指南</Typography>
+              <Typography variant="h5" fontWeight="bold">
+                旅遊指南
+              </Typography>
             </Box>
-
             <Box>
-              <AliceCarousel
-                mouseTracking
-                items={travelGuide}
-                responsive={{
-                  0: { items: 1 },
-                  1024: { items: 4, itemsFit: "contain" },
-                }}
-              />
+              <AliceCarouselWrap items={travelGuide} />
             </Box>
           </Stack>
         </Box>
