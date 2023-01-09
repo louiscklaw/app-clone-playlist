@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 
 import AppBar from "@mui/material/AppBar";
 import Stack from "@mui/material/Stack";
@@ -6,7 +7,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
+
 import MenuIcon from "@mui/icons-material/Menu";
+import PublicIcon from "@mui/icons-material/Public";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -26,6 +31,7 @@ import {
   Popover,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import MapIcon from "@mui/icons-material/Map";
 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -58,19 +64,73 @@ export default () => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
+            <Box>
+              <Image src="/img/HelloWorld.svg" height={30} width={240} />
+            </Box>
+
             <Box sx={{ flexGrow: 1 }}></Box>
-            <Button color="inherit">繁體中文（香港）</Button>
-            <Button color="inherit">HKG</Button>
-            <Button color="inherit">HKD</Button>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
+            <Stack
+              direction="row"
+              spacing={1}
+              justifyContent="center"
+              alignItems="center"
             >
-              <MenuIcon />
-            </IconButton>
+              <Button color="inherit">
+                <Stack
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={1}
+                >
+                  <PublicIcon fontSize="small" />
+                  <Stack direction="row">
+                    <Typography variant="subtitle2">
+                      繁體中文（香港）
+                    </Typography>
+                    <ArrowDropDownIcon fontSize="small" />
+                  </Stack>
+                </Stack>
+              </Button>
+
+              <Button color="inherit">
+                <Stack
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={1}
+                >
+                  <MapIcon fontSize="small" />
+                  <Stack direction="row">
+                    <Typography variant="subtitle2">HKG</Typography>
+                    <ArrowDropDownIcon fontSize="small" />
+                  </Stack>
+                </Stack>
+              </Button>
+
+              <Button color="inherit">
+                <Stack
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={1}
+                >
+                  <CurrencyExchangeIcon fontSize="small" />
+                  <Stack direction="row">
+                    <Typography variant="subtitle2">HKD</Typography>
+                    <ArrowDropDownIcon fontSize="small" />
+                  </Stack>
+                </Stack>
+              </Button>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Stack>
           </Toolbar>
         </AppBar>
       </Box>
