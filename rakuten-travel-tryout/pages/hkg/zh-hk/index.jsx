@@ -71,7 +71,7 @@ export default () => {
   const midGrey = "rgba(32,32,32,0.75)";
   const midGreyTrans = "rgba(0,0,0,0.25)";
   const deepGreen = "#27ae60";
-  const gold = "gold";
+
   const borderRadius = "1rem";
   const padding = "2rem";
   const margin = "2rem";
@@ -431,11 +431,13 @@ export default () => {
       </Box>
       <Stack
         sx={{
-          marginLeft: "10vw",
-          marginRight: "10vw",
-          paddingLeft: "3vw",
-          paddingRight: "3vw",
-          marginTop: "5rem",
+          marginLeft: { xs: "2vw", md: "10vw" },
+          marginRight: { xs: "2vw", md: "10vw" },
+
+          paddingLeft: { xs: "1vw", md: "3vw" },
+          paddingRight: { xs: "1vw", md: "3vw" },
+
+          marginTop: { xs: "2rem", md: "5rem" },
         }}
         direction="column"
         spacing={5}
