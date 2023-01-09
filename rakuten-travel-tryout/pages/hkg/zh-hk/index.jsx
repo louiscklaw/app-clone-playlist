@@ -75,10 +75,16 @@ export default () => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar
+          position="static"
+          sx={{
+            position: "fixed",
+            backgroundColor: "gold",
+          }}
+        >
           <Toolbar>
             <Box>
-              <Image src="/img/HelloWorld.svg" height={30} width={240} />
+              <Image src="/img/HelloWorld.svg" height={50} width={240} />
             </Box>
 
             <Box sx={{ flexGrow: 1 }}></Box>
@@ -151,14 +157,14 @@ export default () => {
         <Box
           sx={{
             width: "100vw",
-            height: "66vh",
+            height: "75vh",
             backgroundImage: `url("${"https://images.unsplash.com/photo-1606918801925-e2c914c4b503"}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         >
-          <Box style={{ color: "white", width: "50%" }}>
+          <Box style={{ color: "white", width: "30em" }}>
             <Box
               sx={{
                 background: "rgba( 16, 16, 16, 0.3 )",
@@ -166,8 +172,9 @@ export default () => {
                 backdropFilter: "blur( 4px )",
                 borderRadius: "1rem",
                 position: "relative",
-                top: "5rem",
-                left: "5rem",
+                top: "calc(  15vh )",
+                left: "10vw",
+                // left: "5rem",
               }}
             >
               <Stack
