@@ -1,0 +1,16 @@
+.alice-carousel__prev-btn {
+  text-align: left !important; 
+  position: relative;
+  top: -200px;
+  left: -30px;
+  height: 0;
+}
+
+.alice-carousel__next-btn {
+  text-align: right !important; 
+  position: relative;
+  top: -200px;
+  right: -30px;
+  height: 0;
+}
+
