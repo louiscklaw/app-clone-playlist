@@ -13,7 +13,7 @@ module.exports = {
         hostname: 'upload.wikimedia.org',
         port: '',
         pathname: '/**',
-      },
+      },     
     ],
   },
 }

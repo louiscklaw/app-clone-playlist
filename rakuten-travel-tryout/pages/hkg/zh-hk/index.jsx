@@ -230,7 +230,7 @@ export default () => {
 
   // lang-select-popover
   React.useEffect(() => {
-    document.querySelector("#right_menu")?.click();
+    // document.querySelector("#right_menu")?.click();
   }, []);
 
   return (
@@ -299,7 +299,7 @@ export default () => {
         >
           <Toolbar>
             <Box>
-              <Image src="/img/HelloWorld.svg" height={50} width={240} />
+              <CompanyLogo />
             </Box>
 
             <Box sx={{ flexGrow: 1 }}></Box>
