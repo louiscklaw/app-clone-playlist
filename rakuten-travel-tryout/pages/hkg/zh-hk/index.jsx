@@ -42,8 +42,15 @@ import travelGuide from "pages/api/travelGuide";
 import travelLocation from "pages/api/travelLocation";
 import GooglePlayButton from "./GooglePlayButton";
 import CompanyLogo from "./CompanyLogo";
+import HelloworldSvg from "./HelloworldSvg";
 
 export default () => {
+  const lightGrey = "rgba(0,0,0,0.1)";
+  const gold = "gold";
+  const borderRadius = "1rem";
+  const padding = "2rem";
+  const margin = "2rem";
+
   const handleDragStart = (e) => e.preventDefault();
 
   const [value, setValue] = React.useState(null);
@@ -150,7 +157,7 @@ export default () => {
           <Box style={{ color: "white", width: "50%" }}>
             <Box
               sx={{
-                backgroundColor: "rgba(255,255,255,0.3)",
+                backgroundColor: lightGrey,
                 borderRadius: "1rem",
                 position: "relative",
                 top: "5rem",
@@ -514,29 +521,45 @@ export default () => {
           </Grid>
         </Grid>
 
+        <Grid container>
+          <Grid
+            item
+            xs={6}
+            sx={{
+              margin,
+              padding,
+              backgroundColor: lightGrey,
+              borderRadius,
+            }}
+          >
+            <Box>
+              <Typography variant={"subtitle1"} fontWeight="bold">
+                Rakuten Travel 品質認證
+              </Typography>
+
+              <Typography variant={"body2"}>
+                此等標誌會被給予由 Rakuten Travel
+                與及我們的顧客所揀選的優質酒店及旅館。它們會確保您有一個高質難忘的住宿。
+              </Typography>
+
+              <Stack direction="row" spacing={2} sx={{ marginTop: "2rem" }}>
+                <HelloworldSvg />
+                <HelloworldSvg />
+              </Stack>
+            </Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Box>
+              <Typography variant={"subtitle1"}>不要錯過任何優惠</Typography>
+              <Typography variant={"body1"}>
+                如欲訂閱特別優惠資訊，請輸入您的電郵地址，我們會及時通知您。
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+
         {/* body */}
       </Stack>
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <Box>
-            <Typography variant={"subtitle1"}>
-              Rakuten Travel 品質認證
-            </Typography>
-            <Typography variant={"body1"}>
-              此等標誌會被給予由 Rakuten Travel
-              與及我們的顧客所揀選的優質酒店及旅館。它們會確保您有一個高質難忘的住宿。
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={6}>
-          <Box>
-            <Typography variant={"subtitle1"}>不要錯過任何優惠</Typography>
-            <Typography variant={"body1"}>
-              如欲訂閱特別優惠資訊，請輸入您的電郵地址，我們會及時通知您。
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
       電郵地址
       <div>
         <div>
