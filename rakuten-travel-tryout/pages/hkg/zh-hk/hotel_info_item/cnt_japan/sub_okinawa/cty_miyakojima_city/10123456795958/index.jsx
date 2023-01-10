@@ -7,6 +7,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LanguageIcon from "@mui/icons-material/Language";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 import LoginIcon from "@mui/icons-material/Login";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -95,6 +96,57 @@ import BottomLink from "components/BottomLink";
 
 import color from "pages/hkg/zh-hk/color";
 import BottomBreadcrumbs from "components/BottomBreadcrumbs";
+
+const hotel_info = [
+  {
+    name: "地址",
+    value: "日本, 906-0203, 935-8 Ueno Miyaguni, Miyakojima-shi, Okinawa",
+  },
+  { name: "入住時間", value: "14:00 - 19:00 " },
+  { name: "退房時間", value: "10:00 " },
+  { name: "客房總數", value: "12 " },
+  { name: "電話號碼", value: "+81 980 74 7500 " },
+  { name: "傳真號碼", value: "+81 980 74 7501" },
+];
+
+const covin_action = [
+  {
+    img_src: "/img/staff.svg",
+    title: "員工",
+    description:
+      "服務客人時保持適當距離 員工洗手、漱口、戴口罩 定期實施體溫檢測",
+  },
+
+  {
+    img_src: "http://img",
+    title: "消毒",
+    description: "公共區域定期消毒 消毒客房 即棄式拖鞋 ",
+  },
+
+  {
+    img_src: "http://img",
+    title: "通風",
+    description: "公共區域定期換氣 客房在使用前後換氣 ",
+  },
+
+  {
+    img_src: "http://img",
+    title: "登記入住／退房",
+    description: "房間內辦理入住 房間內辦理退房 ",
+  },
+
+  {
+    img_src: "http://img",
+    title: "客房",
+    description: "提供消毒液 提供口罩 定期消毒家具 ",
+  },
+
+  {
+    img_src: "http://img",
+    title: "緊急應對的準備",
+    description: "已備妥新冠肺炎緊急對應手冊 員工已接受新冠肺炎緊急對應訓練",
+  },
+];
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -226,37 +278,57 @@ export default () => {
           帶溫水私人游泳池和廚房。可眺望宮古蔚藍大海的別墅式度假別墅
         </Box>
 
-        <Box sx={{ width: "100%" }}>
-          住宿設施資訊 度假村酒店 這棟別墅是別墅風格的夏威夷公寓出租。 所有 12
-          棟別墅均設有溫水游泳池，私密性強。
-          廚房、家具、家電一應俱全，可長期入住。
-          在您逗留期間，這將是一個只屬於您的私人空間，所以請隨意使用。 隱藏部分
-          地址 日本, 906-0203, 935-8 Ueno Miyaguni, Miyakojima-shi, Okinawa
-          入住時間 14:00 - 19:00 退房時間 10:00 客房總數 12 電話號碼 +81 980 74
-          7500 傳真號碼 +81 980 74 7501
-        </Box>
+        <Stack sx={{ width: "100%" }} spacing={3}>
+          <Typography variant="h5" fontWeight={"bold"} sx={{}}>
+            住宿設施資訊
+          </Typography>
+          <Divider />
+          <Stack direction="row">
+            <Box sx={{ width: "50%" }}>
+              <Stack direction="column" spacing={1}>
+                <Typography variant="body2">度假村酒店</Typography>
+                <Typography variant="body2">
+                  這棟別墅是別墅風格的夏威夷公寓出租。 所有 12
+                  棟別墅均設有溫水游泳池，私密性強。
+                  廚房、家具、家電一應俱全，可長期入住。
+                  在您逗留期間，這將是一個只屬於您的私人空間，所以請隨意使用。
+                </Typography>
+                <div>
+                  {hotel_info.map(({ name, value }) => (
+                    <Stack
+                      direction="row"
+                      sx={{ paddingBottom: "0.5rem" }}
+                      spacing={1}
+                    >
+                      <DoneIcon />
+                      <Typography variant="body1" sx={{ width: "150px" }}>
+                        {name}
+                      </Typography>
+                      <Typography variant="body1" sx={{ flexGrow: 6 }}>
+                        {value}
+                      </Typography>
+                    </Stack>
+                  ))}
+                </div>
+              </Stack>
+            </Box>
 
-        <Box sx={{ width: "100%" }}>
-          新冠肺炎因應措施 員工 服務客人時保持適當距離 員工洗手、漱口、戴口罩
-          定期實施體溫檢測 消毒 公共區域定期消毒 消毒客房 即棄式拖鞋 通風
-          公共區域定期換氣 客房在使用前後換氣 登記入住／退房 房間內辦理入住
-          房間內辦理退房 客房 提供消毒液 提供口罩 定期消毒家具 緊急應對的準備
-          已備妥新冠肺炎緊急對應手冊 員工已接受新冠肺炎緊急對應訓練
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          獎項 Rakuten Travel Gold Award 2021 Rakuten Travel Gold Award 2020
-        </Box>
-
-        <Box sx={{ width: "100%" }}>特色和設施 住宿設施類型 度假村酒店</Box>
-
-        <Box sx={{ width: "100%" }}>住宿設施設備 停車場</Box>
-
-        <Box sx={{ width: "100%" }}>
-          可用付款方式 Visa 卡 萬事達卡 JCB 卡 可使用現金付款
-        </Box>
-
-        <Box sx={{ width: "100%" }}>支援語言 日文 英文</Box>
+            <Box sx={{ flexGrow: 1 }}>
+              <div
+                style={{
+                  backgroundImage:
+                    'url("https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg")',
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "1rem",
+                }}
+              ></div>
+            </Box>
+          </Stack>
+        </Stack>
 
         <Box
           sx={{
@@ -268,12 +340,57 @@ export default () => {
         >
           <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
             <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-              支援語言
+              新冠肺炎因應措施
+            </Typography>
+            <Grid container>
+              {covin_action.map(({ img_src, title, description }) => (
+                <Grid
+                  item
+                  xs={6}
+                  sm={4}
+                  md={3}
+                  sx={{ minHeight: "7rem", paddingRight: "2rem" }}
+                >
+                  <Stack direction="row" spacing={1}>
+                    <DoneIcon />
+                    <Box>
+                      <Typography
+                        variant="title2"
+                        fontWeight={"bold"}
+                        fontSize={"1rem"}
+                      >
+                        {title}
+                      </Typography>
+                      <Typography variant="body2" fontSize={"0.8rem"}>
+                        {description}
+                      </Typography>
+                    </Box>
+                  </Stack>
+                </Grid>
+              ))}
+            </Grid>
+          </Stack>
+        </Box>
+
+        <Box
+          sx={{
+            width: "100%",
+            paddingBottom: "1rem",
+            paddingTop: "1rem",
+            borderBottom: `3px solid ${color.lightGrey}`,
+          }}
+        >
+          <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+            <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+              獎項
             </Typography>
             <Stack direction="row" justifyContent="flex-start" spacing={5}>
-              {["日文", "英文"].map((l) => (
-                <Stack direction="row" justifyContent="center">
-                  <LanguageIcon />
+              {[
+                "Rakuten Travel Gold Award 2021",
+                "Rakuten Travel Gold Award 2020",
+              ].map((l) => (
+                <Stack direction="row" justifyContent="center" spacing={1}>
+                  <CreditCardIcon />
                   <Typography variant="body2">{l}</Typography>
                 </Stack>
               ))}
@@ -281,39 +398,138 @@ export default () => {
           </Stack>
         </Box>
 
-        <Box
-          sx={{
-            width: "100%",
-            paddingBottom: "1rem",
-            paddingTop: "1rem",
-            borderBottom: `3px solid ${color.lightGrey}`,
-          }}
-        >
-          <Stack direction="column" spacing={2}>
-            <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-              住宿須知
-            </Typography>
-            <Typography variant="body2">
-              如果入住時間超過預定時間，請務必與我們聯繫。
-            </Typography>
-          </Stack>
-        </Box>
+        <Stack spacing={2}>
+          <Typography variant="h5" fontSize={"1.5rem"}>
+            特色和設施
+          </Typography>
 
-        <Box
-          sx={{
-            width: "100%",
-            paddingBottom: "1rem",
-            paddingTop: "1rem",
-            borderBottom: `3px solid ${color.lightGrey}`,
-          }}
-        >
-          <Stack direction="column" spacing={2}>
-            <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-              推薦景點
-            </Typography>
-            <Typography variant="body2">距離上野德國文化村 826m</Typography>
-          </Stack>
-        </Box>
+          <Box
+            sx={{
+              width: "100%",
+              paddingBottom: "1rem",
+              paddingTop: "1rem",
+              borderBottom: `3px solid ${color.lightGrey}`,
+            }}
+          >
+            <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+                住宿設施類型
+              </Typography>
+              <Stack direction="row" justifyContent="flex-start" spacing={5}>
+                {["度假村酒店"].map((l) => (
+                  <Stack direction="row" justifyContent="center" spacing={1}>
+                    <CreditCardIcon />
+                    <Typography variant="body2">{l}</Typography>
+                  </Stack>
+                ))}
+              </Stack>
+            </Stack>
+          </Box>
+
+          <Box
+            sx={{
+              width: "100%",
+              paddingBottom: "1rem",
+              paddingTop: "1rem",
+              borderBottom: `3px solid ${color.lightGrey}`,
+            }}
+          >
+            <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+                住宿設施設備
+              </Typography>
+              <Stack direction="row" justifyContent="flex-start" spacing={5}>
+                {["停車場"].map((l) => (
+                  <Stack direction="row" justifyContent="center" spacing={1}>
+                    <CreditCardIcon />
+                    <Typography variant="body2">{l}</Typography>
+                  </Stack>
+                ))}
+              </Stack>
+            </Stack>
+          </Box>
+
+          <Box
+            sx={{
+              width: "100%",
+              paddingBottom: "1rem",
+              paddingTop: "1rem",
+              borderBottom: `3px solid ${color.lightGrey}`,
+            }}
+          >
+            <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+                可用付款方式
+              </Typography>
+              <Stack direction="row" justifyContent="flex-start" spacing={5}>
+                {["Visa 卡", "萬事達卡", "JCB 卡", "可使用現金付款"].map(
+                  (l) => (
+                    <Stack direction="row" justifyContent="center" spacing={1}>
+                      <CreditCardIcon />
+                      <Typography variant="body2">{l}</Typography>
+                    </Stack>
+                  )
+                )}
+              </Stack>
+            </Stack>
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              paddingBottom: "1rem",
+              paddingTop: "1rem",
+              borderBottom: `3px solid ${color.lightGrey}`,
+            }}
+          >
+            <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+                支援語言
+              </Typography>
+              <Stack direction="row" justifyContent="flex-start" spacing={5}>
+                {["日文", "英文"].map((l) => (
+                  <Stack direction="row" justifyContent="center" spacing={1}>
+                    <LanguageIcon />
+                    <Typography variant="body2">{l}</Typography>
+                  </Stack>
+                ))}
+              </Stack>
+            </Stack>
+          </Box>
+
+          <Box
+            sx={{
+              width: "100%",
+              paddingBottom: "1rem",
+              paddingTop: "1rem",
+              borderBottom: `3px solid ${color.lightGrey}`,
+            }}
+          >
+            <Stack direction="column" spacing={2}>
+              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+                住宿須知
+              </Typography>
+              <Typography variant="body2">
+                如果入住時間超過預定時間，請務必與我們聯繫。
+              </Typography>
+            </Stack>
+          </Box>
+
+          <Box
+            sx={{
+              width: "100%",
+              paddingBottom: "1rem",
+              paddingTop: "1rem",
+              borderBottom: `3px solid ${color.lightGrey}`,
+            }}
+          >
+            <Stack direction="column" spacing={2}>
+              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+                推薦景點
+              </Typography>
+              <Typography variant="body2">距離上野德國文化村 826m</Typography>
+            </Stack>
+          </Box>
+        </Stack>
       </Box>
       <BottomBreadcrumbs />
       <BottomLink />
