@@ -6,6 +6,8 @@ const midGreyTrans = "rgba(0,0,0,0.25)";
 const white = "rgba(255,255,255,1)";
 const white50 = "rgba(255,255,255,0.5)";
 const white25 = "rgba(255,255,255,0.25)";
+const dimmed = "rgba(16,16,16,0.1)";
+const textBlack = "rgba(16,16,16,0.8)";
 
 export default {
   normalgreen,
@@ -16,4 +18,6 @@ export default {
   white,
   white50,
   white25,
+  dimmed,
+  textBlack,
 };
