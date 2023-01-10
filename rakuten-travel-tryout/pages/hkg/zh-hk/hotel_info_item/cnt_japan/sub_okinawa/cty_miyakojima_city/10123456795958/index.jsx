@@ -272,10 +272,48 @@ export default () => {
           </Stack>
         </Box>
 
-        <Box sx={{ width: "100%" }}>
-          特點 建議和功能 發布日：23/6/2022 客廳/飯廳（2房型） 浴室（兩房型）
-          客廳餐廳（一房型） 點亮（1床型）小號
-          帶溫水私人游泳池和廚房。可眺望宮古蔚藍大海的別墅式度假別墅
+        <Box
+          sx={{
+            width: "100%",
+            paddingBottom: "1rem",
+            paddingTop: "1rem",
+            borderBottom: `3px solid ${color.lightGrey}`,
+          }}
+        >
+          <Typography variant="h6" fontWeight="bold">
+            特點
+          </Typography>
+          <Divider sx={{ paddingTop: "1rem" }} />
+          <Stack
+            direction="column"
+            spacing={2}
+            sx={{ width: "100%", paddingTop: "1rem" }}
+          >
+            <Grid container>
+              <Grid
+                item
+                xs={6}
+                sm={4}
+                md={3}
+                sx={{ minHeight: "7rem", paddingRight: "2rem" }}
+              >
+                <Box
+                  sx={{
+                    backgroundColor: color.lightGrey,
+                    height: 250,
+                    width: 250,
+                    borderRadius: "1rem",
+                    padding: "1rem",
+                  }}
+                >
+                  <Typography variant="body1" fontWeight="bold">
+                    建議和功能
+                  </Typography>
+                  <Typography variant="body1">發布日：23/6/2022</Typography>
+                </Box>
+              </Grid>
+            </Grid>
+          </Stack>
         </Box>
 
         <Stack sx={{ width: "100%" }} spacing={3}>
