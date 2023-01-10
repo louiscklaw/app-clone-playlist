@@ -19,10 +19,12 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
 
+import Link from "next/link";
+
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
+import SearchIcon from "@mui/icons-material/Search";
 import {
   Grid,
   Input,
@@ -43,6 +45,8 @@ import {
   ListItemText,
   Divider,
 } from "@mui/material";
+
+import { useRouter } from "next/router";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MapIcon from "@mui/icons-material/Map";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
@@ -66,6 +70,22 @@ import CurrSelectPopover from "./CurrSelectPopover";
 import SearchForm from "./SearchForm";
 import SquareCompanyLogo from "./SquareCompanyLogo";
 import color from "./color";
+
+const RakutenGroupLink = React.forwardRef(({ onClick, href }, ref) => {
+  return (
+    <a href={href} onClick={onClick} ref={ref}>
+      <Typography
+        variant="body2"
+        sx={{
+          color: color.textDeepGrey,
+          fontSize: { xs: "0.8rem", sm: "unset" },
+        }}
+      >
+        © Rakuten Group, Inc.
+      </Typography>
+    </a>
+  );
+});
 
 export default () => {
   let [scrolled, setScrolled] = React.useState(false);
@@ -120,6 +140,8 @@ export default () => {
   const open_curr_popover = Boolean(currAnchorEl);
   // const curr_id = open_curr_popover ? "simple-popover" : undefined;
 
+  const router = useRouter();
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -135,9 +157,17 @@ export default () => {
           }}
         >
           <Toolbar>
-            <Box sx={{ marginLeft: "10vw", paddingLeft: "3vw" }}>
+            <Stack
+              sx={{
+                marginLeft: { xs: "unset", sm: "10vw" },
+                paddingLeft: { xs: "unset", sm: "3vw" },
+                width: { xs: "100%", sm: "unset" },
+              }}
+              justifyContent="center"
+              alignItems="center"
+            >
               <CompanyLogo color={color.normalgreen} />
-            </Box>
+            </Stack>
             <Box sx={{ flexGrow: 1 }}></Box>
             <Stack
               direction="row"
@@ -146,7 +176,12 @@ export default () => {
               alignItems="center"
               sx={{}}
             >
-              <Box sx={{ color: color.textBlack }}>
+              <Box
+                sx={{
+                  color: color.textBlack,
+                  display: { xs: "none", md: "block" },
+                }}
+              >
                 <Button
                   id="curr_change"
                   color="inherit"
@@ -237,35 +272,19 @@ export default () => {
                   </Stack>
                 </Button>
 
-                <Button
-                  id="curr_change"
-                  color="inherit"
-                  onClick={handleCurrClick}
-                >
-                  <Stack
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
-                    spacing={1}
-                  >
-                    <CurrencyExchangeIcon
-                      fontSize="small"
-                      sx={{ color: color.textBlack }}
-                    />
-                    <Stack direction="row">
-                      <Typography
-                        variant="subtitle2"
-                        sx={{ color: color.textBlack }}
-                      >
-                        輪入關鍵字開始搜尋
-                      </Typography>
-                      <ArrowDropDownIcon
-                        fontSize="small"
-                        sx={{ color: color.textBlack }}
-                      />
-                    </Stack>
-                  </Stack>
-                </Button>
+                <TextField
+                  placeholder="輪入關鍵字開始搜尋"
+                  id="outlined-start-adornment"
+                  sx={{}}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  size="small"
+                />
               </Box>
             </Stack>
           </Toolbar>
@@ -289,7 +308,6 @@ export default () => {
           sx={{
             width: { xs: "95%", md: "50%" },
             maxWidth: "600px",
-            display: "none",
           }}
         >
           <Stack direction="column" justifyContent="center" alignItems="center">
@@ -432,15 +450,10 @@ export default () => {
             </Typography>
           </Stack>
           <Box sx={{ flexGrow: 1 }}></Box>
-          <Typography
-            variant="body2"
-            sx={{
-              color: color.textDeepGrey,
-              fontSize: { xs: "0.8rem", sm: "unset" },
-            }}
-          >
-            © Rakuten Group, Inc.
-          </Typography>
+
+          <Link href="/hkg/zh-hk" passHref legacyBehavior>
+            <RakutenGroupLink />
+          </Link>
         </Stack>
       </Stack>
     </>
