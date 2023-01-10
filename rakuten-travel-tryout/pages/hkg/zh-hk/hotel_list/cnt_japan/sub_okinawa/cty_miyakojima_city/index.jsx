@@ -69,13 +69,13 @@ import Menu from "@mui/material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 // import RakutenWebp from '/assets/Rakuten.webp'
-import promotionsAndDiscounts from "pages/api/promotionsAndDiscounts";
+import hotelPhotos from "pages/api/hotelPhotos";
 import travelGuide from "pages/api/travelGuide";
 import travelLocation from "pages/api/travelLocation";
 import GooglePlayButton from "pages/hkg/zh-hk/GooglePlayButton";
 import CompanyLogo from "pages/hkg/zh-hk/CompanyLogo";
 import HelloworldSvg from "pages/hkg/zh-hk/HelloworldSvg";
-import AliceCarouselWrap from "pages/hkg/zh-hk/AliceCarouselWrap";
+import AliceCarouselWrap from "./AliceCarouselWrap";
 import RoomSelectPopover from "pages/hkg/zh-hk/RoomSelectPopover";
 import LangSelectPopover from "pages/hkg/zh-hk/LangSelectPopover";
 import MapSelectPopover from "pages/hkg/zh-hk/MapSelectPopover";
@@ -198,11 +198,15 @@ function HotelPost() {
   return (
     <>
       <Card sx={{ padding: "1rem" }}>
-        <Grid container>
-          <Grid item xs={5}>
-            <img src="https://trvis.r10s.com/d/strg/ctrl/26/a1ee75551cc8f56e1489078d18f56e44a4d73679.47.1.26.2.jpg?resize=300:*" />
-          </Grid>
-          <Grid item xs={4}>
+        <Stack direction="row" spacing={1}>
+          <Box sx={{ width: 300, height: 300 }}>
+            {/* <img src="https://trvis.r10s.com/d/strg/ctrl/26/a1ee75551cc8f56e1489078d18f56e44a4d73679.47.1.26.2.jpg?resize=300:*" /> */}
+            <AliceCarouselWrap
+              height={250}
+              items={hotelPhotos({ height: 250 })}
+            />
+          </Box>
+          <Box>
             <Rating name="read-only" value={4} readOnly />
             <Typography variant="body1" fontWeight="bold">
               宮古島東急酒店與度假村
@@ -234,8 +238,8 @@ function HotelPost() {
                 </Typography>
               </Stack>
             </Stack>
-          </Grid>
-          <Grid item xs={3}>
+          </Box>
+          <Box>
             4.6
             <CircularProgressWithLabel value={4.6} />
             <Typography variant="h6">非常好</Typography>
@@ -255,8 +259,8 @@ function HotelPost() {
             >
               查看客房和住宿計劃
             </Button>
-          </Grid>
-        </Grid>
+          </Box>
+        </Stack>
       </Card>
     </>
   );
