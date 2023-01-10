@@ -262,7 +262,21 @@ export default () => {
           住宿須知 如果入住時間超過預定時間，請務必與我們聯繫。
         </Box>
 
-        <Box sx={{ width: "100%" }}>推薦景點 距離上野德國文化村 826m</Box>
+        <Box
+          sx={{
+            width: "100%",
+            paddingBottom: "1rem",
+            paddingTop: "1rem",
+            borderBottom: `3px solid ${color.lightGrey}`,
+          }}
+        >
+          <Stack direction="column" spacing={2}>
+            <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+              推薦景點
+            </Typography>
+            <Typography variant="body2">距離上野德國文化村 826m</Typography>
+          </Stack>
+        </Box>
       </Box>
       <BottomBreadcrumbs />
       <BottomLink />
