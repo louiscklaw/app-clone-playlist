@@ -198,68 +198,77 @@ function HotelPost() {
   return (
     <>
       <Card sx={{ padding: "1rem" }}>
-        <Stack direction="row" spacing={1}>
-          <Box sx={{ width: 300, height: 300 }}>
-            {/* <img src="https://trvis.r10s.com/d/strg/ctrl/26/a1ee75551cc8f56e1489078d18f56e44a4d73679.47.1.26.2.jpg?resize=300:*" /> */}
-            <AliceCarouselWrap
-              height={250}
-              items={hotelPhotos({ height: 250 })}
-            />
-          </Box>
-          <Box>
-            <Rating name="read-only" value={4} readOnly />
-            <Typography variant="body1" fontWeight="bold">
-              宮古島東急酒店與度假村
-            </Typography>
-            <Chip
-              label="新冠肺炎相關措施"
-              variant="outlined"
-              color="success"
-              size="small"
-            />
+        <Stack direction="column">
+          <Stack direction="row" spacing={5}>
+            <Box
+              sx={{
+                width: 300,
+                minWidth: 300,
+              }}
+            >
+              <AliceCarouselWrap
+                height={250}
+                items={hotelPhotos({ height: 250 })}
+              />
+            </Box>
+            <Box sx={{ flexGrow: 3 }}>
+              <Typography variant="body1" fontWeight="bold">
+                宮古島東急酒店與度假村
+              </Typography>
 
-            <Stack sx={{ color: color.textBlack }} spacing={1}>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <DoneIcon sx={{ fontSize: "1rem" }} />
-                <Typography variant="body2">一人旅行 </Typography>
+              <Stack sx={{ color: color.textBlack }} spacing={1}>
+                <Stack direction="row" spacing={0.5} alignItems="center">
+                  <DoneIcon sx={{ fontSize: "1rem" }} />
+                  <Typography variant="body2">一人旅行 </Typography>
+                </Stack>
+                <Stack direction="row" spacing={0.5} alignItems="center">
+                  <DoneIcon sx={{ fontSize: "1rem" }} />
+                  <Typography variant="body2">免費停車場 </Typography>
+                </Stack>
+                <Stack direction="row" spacing={0.5} alignItems="center">
+                  <DoneIcon sx={{ fontSize: "1rem" }} />
+                  <Typography variant="body2">適合家族 </Typography>
+                </Stack>
+                <Stack direction="row" spacing={0.5} alignItems="center">
+                  <FmdGoodIcon sx={{ fontSize: "1rem" }} />
+                  <Typography variant="body2">
+                    由宮古機場駕車約 16 分鐘可達
+                  </Typography>
+                </Stack>
               </Stack>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <DoneIcon sx={{ fontSize: "1rem" }} />
-                <Typography variant="body2">免費停車場 </Typography>
+            </Box>
+            <Stack sx={{ flexGrow: 2, textAlign: "right" }} spacing={2}>
+              <Stack direction="row" spacing={1} alignItems="center">
+                <div style={{ flexGrow: 1 }}></div>
+                <div sx={{ textAlign: "right" }}>
+                  <Typography variant="h6" fontSize={"1rem"} fontWeight="bold">
+                    非常好
+                  </Typography>
+                  <Typography variant="body2" fontSize={"0.8rem"}>
+                    45 則評價
+                  </Typography>
+                </div>
+                <CircularProgressWithLabel value={4.6} />
               </Stack>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <DoneIcon sx={{ fontSize: "1rem" }} />
-                <Typography variant="body2">適合家族 </Typography>
-              </Stack>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <FmdGoodIcon sx={{ fontSize: "1rem" }} />
-                <Typography variant="body2">
-                  由宮古機場駕車約 16 分鐘可達
-                </Typography>
-              </Stack>
+              <Typography variant="body1" fontWeight="bold">
+                $1,369.77~
+              </Typography>
+              <Typography variant="body2" sx={{ color: color.textDeepGrey }}>
+                每間房
+              </Typography>
+              <Typography variant="body2" sx={{ color: color.textDeepGrey }}>
+                2 位住客 1 晚
+              </Typography>
             </Stack>
-          </Box>
-          <Box>
-            4.6
-            <CircularProgressWithLabel value={4.6} />
-            <Typography variant="h6">非常好</Typography>
-            <Typography variant="body2">45 則評價</Typography>
-            <Typography variant="body1" fontWeight="bold">
-              $1,369.77~
-            </Typography>
-            <Typography variant="body2" sx={{ color: color.textDeepGrey }}>
-              每間房
-            </Typography>
-            <Typography variant="body2" sx={{ color: color.textDeepGrey }}>
-              2 位住客 1 晚
-            </Typography>
+          </Stack>
+          <Stack direction="row" justifyContent="flex-end">
             <Button
               variant="contained"
               sx={{ backgroundColor: color.accentGreen }}
             >
               查看客房和住宿計劃
             </Button>
-          </Box>
+          </Stack>
         </Stack>
       </Card>
     </>
@@ -966,7 +975,10 @@ export default () => {
               <Stack
                 direction="column"
                 spacing={3}
-                sx={{ paddingTop: "1rem", paddingBottom: "1rem" }}
+                sx={{
+                  paddingTop: "1rem",
+                  paddingBottom: "1rem",
+                }}
               >
                 <HotelPost />
                 <HotelPost />
