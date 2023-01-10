@@ -659,7 +659,7 @@ export default () => {
                     );
                   })}
                 </FormGroup>
-              </Box>{" "}
+              </Box>
               <Box>
                 <Typography variant="body2" fontWeight="bold">
                   餐飲
@@ -696,7 +696,7 @@ export default () => {
                     );
                   })}
                 </FormGroup>
-              </Box>{" "}
+              </Box>
               <Box>
                 <Typography variant="body2" fontWeight="bold">
                   住宿設施設備
