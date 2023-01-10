@@ -82,6 +82,7 @@ import MapSelectPopover from "pages/hkg/zh-hk/MapSelectPopover";
 import CurrSelectPopover from "pages/hkg/zh-hk/CurrSelectPopover";
 import SearchForm from "pages/hkg/zh-hk/SearchForm";
 import SquareCompanyLogo from "pages/hkg/zh-hk/SquareCompanyLogo";
+
 import color from "pages/hkg/zh-hk/color";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
@@ -189,10 +190,6 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     borderRadius: 20 / 2,
   },
 }));
-
-function HotelPost1() {
-  return <Box></Box>;
-}
 
 function HotelPost() {
   return (
@@ -1076,7 +1073,7 @@ export default () => {
       </Box>
       {/* bottom link app */}
 
-      {/* download app */}
+      {/* BottomDownloadApp */}
       <Box sx={{ width: "100vw", backgroundColor: color.lightGrey }}>
         <Box
           sx={{
@@ -1101,7 +1098,7 @@ export default () => {
           </Stack>
         </Box>
       </Box>
-      {/* download app */}
+      {/* BottomDownloadApp */}
     </>
   );
 };
