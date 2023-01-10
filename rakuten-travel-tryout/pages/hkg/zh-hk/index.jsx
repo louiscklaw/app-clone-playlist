@@ -18,10 +18,11 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
-
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Link from "next/link";
 
 import {
   Grid,
@@ -66,6 +67,14 @@ import CurrSelectPopover from "./CurrSelectPopover";
 import SearchForm from "./SearchForm";
 import SquareCompanyLogo from "./SquareCompanyLogo";
 import color from "./color";
+
+const AskLink = React.forwardRef(({ onClick, href }, ref) => {
+  return (
+    <a href={href} onClick={onClick} ref={ref}>
+      <Typography sx={{}}>意見</Typography>
+    </a>
+  );
+});
 
 export default () => {
   const lightGrey = "rgba(32,32,32,0.1)";
@@ -210,6 +219,17 @@ export default () => {
             <Stack direction="row" spacing={4}>
               <LoginIcon />
               <ListItemText>登入</ListItemText>
+            </Stack>
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton>
+            <Stack direction="row" spacing={4}>
+              <QuestionMarkIcon />
+              <Link href="/hkg/zh-hk/ask" passHref legacyBehavior>
+                <AskLink />
+              </Link>
             </Stack>
           </ListItemButton>
         </ListItem>

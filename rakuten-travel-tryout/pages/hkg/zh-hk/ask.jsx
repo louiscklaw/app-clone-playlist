@@ -440,7 +440,7 @@ export default () => {
               variant="body1"
               sx={{ fontSize: { xs: "0.8rem", sm: "unset" } }}
             >
-              關於我們{" "}
+              關於我們
             </Typography>
             <Typography
               variant="body1"
