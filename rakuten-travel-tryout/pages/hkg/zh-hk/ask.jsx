@@ -122,11 +122,10 @@ export default () => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, transition: "height 4s" }}>
+      <Box sx={{ flexGrow: 1 }}>
         <AppBar
           position="static"
           sx={{
-            position: "fixed",
             backgroundColor: color.white,
             height: scrolled ? 60 : 60,
             zIndex: 999,
@@ -272,7 +271,178 @@ export default () => {
           </Toolbar>
         </AppBar>
       </Box>
-      ask
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          flexGrow: 1,
+          marginTop: "3rem",
+          marginLeft: { xs: 0, md: "3rem" },
+          marginRight: { xs: 0, md: "3rem" },
+          marginBottom: { xs: 0, md: "3rem" },
+        }}
+      >
+        <Stack
+          direction="column"
+          spacing={4}
+          sx={{
+            width: { xs: "95%", md: "50%" },
+            maxWidth: "600px",
+            display: "none",
+          }}
+        >
+          <Stack direction="column" justifyContent="center" alignItems="center">
+            <Typography variant="h4" sx={{ fontWeight: 300 }}>
+              查詢／意見回饋​
+            </Typography>
+          </Stack>
+
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 300 }}>
+              填寫以下必填項目以提交您的查詢／意見。
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: 300 }}>
+              請注意：我們或需1至2個工作天才能回覆。
+            </Typography>
+          </Box>
+
+          <Stack direction="column" spacing={2}>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 300 }}>
+                * 姓（英文字母）
+              </Typography>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 300 }}>
+                * 名（英文字母）
+              </Typography>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 300 }}>
+                * 電子郵件地址
+              </Typography>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 300 }}>
+                * 電子郵件地址（請再輸入以作確定）
+              </Typography>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 300 }}>
+                訂單號碼
+              </Typography>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 300 }}>
+                * 查詢／意見詳情
+              </Typography>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                size="small"
+                fullWidth
+              />
+            </Box>
+
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: color.accentGreen,
+                color: color.white,
+              }}
+              size="large"
+            >
+              送出
+            </Button>
+          </Stack>
+          <Box>
+            <Typography variant="body1" sx={{ color: color.textDeepGrey }}>
+              回到客戶服務中心首頁
+            </Typography>
+          </Box>
+        </Stack>
+      </Stack>
+      <Stack
+        sx={{
+          width: "100vw",
+          backgroundColor: color.lightGrey,
+
+          paddingTop: "3rem",
+          paddingBottom: "7rem",
+        }}
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 3, sm: 5 }}
+          sx={{ width: "80%" }}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Stack direction="row" spacing={5}>
+            <Typography
+              variant="body1"
+              sx={{ fontSize: { xs: "0.8rem", sm: "unset" } }}
+            >
+              私隱政策
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{ fontSize: { xs: "0.8rem", sm: "unset" } }}
+            >
+              關於我們{" "}
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{ fontSize: { xs: "0.8rem", sm: "unset" } }}
+            >
+              Cookie 政策
+            </Typography>
+          </Stack>
+          <Box sx={{ flexGrow: 1 }}></Box>
+          <Typography
+            variant="body2"
+            sx={{
+              color: color.textDeepGrey,
+              fontSize: { xs: "0.8rem", sm: "unset" },
+            }}
+          >
+            © Rakuten Group, Inc.
+          </Typography>
+        </Stack>
+      </Stack>
     </>
   );
 };
