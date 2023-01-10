@@ -258,8 +258,45 @@ export default () => {
 
         <Box sx={{ width: "100%" }}>支援語言 日文 英文</Box>
 
-        <Box sx={{ width: "100%" }}>
-          住宿須知 如果入住時間超過預定時間，請務必與我們聯繫。
+        <Box
+          sx={{
+            width: "100%",
+            paddingBottom: "1rem",
+            paddingTop: "1rem",
+            borderBottom: `3px solid ${color.lightGrey}`,
+          }}
+        >
+          <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
+            <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+              支援語言
+            </Typography>
+            <Stack direction="row" justifyContent="flex-start" spacing={5}>
+              {["日文", "英文"].map((l) => (
+                <Stack direction="row" justifyContent="center">
+                  <LanguageIcon />
+                  <Typography variant="body2">{l}</Typography>
+                </Stack>
+              ))}
+            </Stack>
+          </Stack>
+        </Box>
+
+        <Box
+          sx={{
+            width: "100%",
+            paddingBottom: "1rem",
+            paddingTop: "1rem",
+            borderBottom: `3px solid ${color.lightGrey}`,
+          }}
+        >
+          <Stack direction="column" spacing={2}>
+            <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
+              住宿須知
+            </Typography>
+            <Typography variant="body2">
+              如果入住時間超過預定時間，請務必與我們聯繫。
+            </Typography>
+          </Stack>
         </Box>
 
         <Box
