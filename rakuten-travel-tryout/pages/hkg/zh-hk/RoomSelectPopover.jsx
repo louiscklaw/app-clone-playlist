@@ -116,7 +116,7 @@ export default ({ open, anchorEl, setAnchorEl, handleClose }) => {
               variant="contained"
               fullWidth
               size="large"
-              onClick={(e) => setOpen(false)}
+              onClick={(e) => setAnchorEl(null)}
             >
               <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
                 完成

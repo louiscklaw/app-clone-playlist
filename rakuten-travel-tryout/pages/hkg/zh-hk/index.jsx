@@ -65,19 +65,25 @@ import MapSelectPopover from "./MapSelectPopover";
 import CurrSelectPopover from "./CurrSelectPopover";
 import SearchForm from "./SearchForm";
 import SquareCompanyLogo from "./SquareCompanyLogo";
+import color from "./color";
 
 export default () => {
   const lightGrey = "rgba(32,32,32,0.1)";
   const deepGrey = "rgba(32,32,32,0.8)";
   const midGrey = "rgba(32,32,32,0.75)";
   const midGreyTrans = "rgba(0,0,0,0.25)";
-  const deepGreen = "#27ae60";
+  const normalgreen = "#27ae60";
 
   const borderRadius = "1rem";
-  const padding = "2rem";
+
   const margin = "2rem";
   const marginLeft = "2rem";
   const marginRight = "2rem";
+
+  const padding = "2rem";
+  const paddingLeft = "2rem";
+  const paddingRight = "2rem";
+
   const backgroundColor = "gold";
   const spacing = 2;
 
@@ -229,19 +235,23 @@ export default () => {
   };
 
   // lang-select-popover
+  let [app_bar_height, setAppBarHeight] = React.useState(0);
+  let [scrolled, setScrolled] = React.useState(false);
+
   React.useEffect(() => {
     // document.querySelector("#right_menu")?.click();
+    document.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        console.log({ "window.scrollY": window.scrollY });
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    });
   }, []);
 
   return (
     <>
-      <RoomSelectPopover
-        open={open}
-        anchorEl={anchorEl}
-        setAnchorEl={setAnchorEl}
-        handleClose={handleClose}
-      />
-
       <LangSelectPopover
         open={open_lang_popover}
         anchorEl={langAnchorEl}
@@ -289,26 +299,28 @@ export default () => {
         </Box>
       </Drawer>
 
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, transition: "height 4s" }}>
         <AppBar
           position="static"
           sx={{
             position: "fixed",
-            backgroundColor: deepGreen,
-            height: "10px",
+            backgroundColor: normalgreen,
+            height: scrolled ? 60 : 0,
+            zIndex: 999,
+            transition: "0.6s",
           }}
         >
           <Toolbar>
-            <Box>
-              <CompanyLogo />
+            <Box sx={{ marginLeft: "10vw", paddingLeft: "3vw" }}>
+              <CompanyLogo color={scrolled ? color.white : color.normalgreen} />
             </Box>
-
             <Box sx={{ flexGrow: 1 }}></Box>
             <Stack
               direction="row"
               spacing={1}
               justifyContent="center"
               alignItems="center"
+              sx={{}}
             >
               <Box sx={{ display: { xs: "none", md: "block" } }}>
                 <Button
@@ -386,7 +398,7 @@ export default () => {
         </AppBar>
       </Box>
 
-      <Box sx={{ width: "100vw", display: "none" }}>
+      <Box sx={{ flexGrow: 1 }}>
         <Box
           sx={{
             width: "100vw",
@@ -409,6 +421,7 @@ export default () => {
                 background: "rgba( 16, 16, 16, 0.3 )",
                 boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
                 backdropFilter: "blur( 4px )",
+                border: `1px solid ${color.white25}`,
                 borderRadius: "1rem",
                 position: "relative",
                 top: "calc(  15vh )",
@@ -430,281 +443,280 @@ export default () => {
           </Stack>
         </Box>
       </Box>
-      <Stack
-        sx={{
-          marginLeft: { xs: "2vw", md: "10vw" },
-          marginRight: { xs: "2vw", md: "10vw" },
 
-          paddingLeft: { xs: "1vw", md: "3vw" },
-          paddingRight: { xs: "1vw", md: "3vw" },
-
-          marginTop: { xs: "2rem", md: "5rem" },
-        }}
-        direction="column"
-        spacing={5}
-      >
-        <Box
+      <Box sx={{ flexGrow: 1 }}>
+        <Stack
           sx={{
-            padding: "2rem",
-            backgroundColor: "rgba(0,0,0,0.1)",
-            borderRadius: "1rem",
-          }}
-        >
-          <Stack direction="row" justifyContent="center" alignItems="center">
-            <Stack
-              direction={{ xs: "column", md: "row" }}
-              spacing={2}
-              justifyContent="center"
-              alignItems="center"
-            >
-              <SquareCompanyLogo
-                sx={{ display: { xs: "none", lg: "block" } }}
-              />
-              <Typography variant="h6">下載 Rakuten Travel App</Typography>
+            marginLeft: { xs: "2vw", md: "10vw" },
+            marginRight: { xs: "2vw", md: "10vw" },
 
+            paddingLeft: { xs: "1vw", md: "3vw" },
+            paddingRight: { xs: "1vw", md: "3vw" },
+
+            marginTop: { xs: "2rem", md: "5rem" },
+          }}
+          direction="column"
+          spacing={5}
+        >
+          <Box
+            sx={{
+              padding: "2rem",
+              backgroundColor: "rgba(0,0,0,0.1)",
+              borderRadius: "1rem",
+            }}
+          >
+            <Stack direction="row" justifyContent="center" alignItems="center">
               <Stack
-                direction="row"
+                direction={{ xs: "column", md: "row" }}
                 spacing={2}
                 justifyContent="center"
                 alignItems="center"
               >
-                <GooglePlayButton />
-                <GooglePlayButton />
+                <SquareCompanyLogo
+                  sx={{ display: { xs: "none", lg: "block" } }}
+                />
+                <Typography variant="h6">下載 Rakuten Travel App</Typography>
+
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <GooglePlayButton />
+                  <GooglePlayButton />
+                </Stack>
               </Stack>
             </Stack>
-          </Stack>
-        </Box>
+          </Box>
 
-        <Grid container spacing={{ xs: 2, md: 0 }} sx={{ display: "none" }}>
-          <Grid item xs={12} md={3}>
-            <Stack
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-              spacing={2}
-              sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
-            >
-              <img
-                src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
-                width="50"
-                height="auto"
-              />
-              <Typography variant="subtitle1" fontWeight="bold">
-                可信賴品牌
-              </Typography>
-              <Typography variant="body2">
-                Rakuten Group 旗下﹑日本其中一間行內領先的網上旅行社。備受全球
-                16 億會員信賴
-              </Typography>
-            </Stack>
-          </Grid>
-
-          <Grid item xs={12} md={3}>
-            <Stack
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-              spacing={2}
-              sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
-            >
-              <img
-                src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
-                width="50"
-                height="auto"
-              />
-              <Typography variant="subtitle1" fontWeight="bold">
-                各式各樣的選項
-              </Typography>
-              <Typography variant="body2">
-                在上千間的酒店及旅館體驗 omotenashi－日式貼心款待
-              </Typography>
-            </Stack>
-          </Grid>
-
-          <Grid item xs={12} md={3}>
-            <Stack
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-              spacing={2}
-              sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
-            >
-              <img
-                src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
-                width="50"
-                height="auto"
-              />
-              <Typography variant="subtitle1" fontWeight="bold">
-                特別優惠
-              </Typography>
-              <Typography variant="body2">
-                尋找只在 Rakuten Travel 上提供的專屬折扣及獨有住宿計劃
-              </Typography>
-            </Stack>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Stack
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-              spacing={2}
-              sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
-            >
-              <img
-                src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
-                width="50"
-                height="auto"
-              />
-              <Typography variant="subtitle1" fontWeight="bold">
-                會籍福利
-              </Typography>
-              <Typography variant="body2">
-                尊享身為 Rakuten 會員的特別優待。會籍免費
-              </Typography>
-            </Stack>
-          </Grid>
-        </Grid>
-
-        <Grid container sx={{ minHeight: "10vh" }}>
-          <Grid item xs={12} lg={6}>
-            <Stack
-              direction="column"
-              spacing={3}
-              sx={{
-                marginRight: "0.5rem",
-                padding,
-                backgroundColor: lightGrey,
-                borderRadius,
-                height: "100%",
-              }}
-            >
-              <Typography variant={"subtitle1"} fontWeight="bold">
-                Rakuten Travel 品質認證
-              </Typography>
-
-              <Typography variant={"body2"}>
-                此等標誌會被給予由 Rakuten Travel
-                與及我們的顧客所揀選的優質酒店及旅館。它們會確保您有一個高質難忘的住宿。
-              </Typography>
-
-              <Stack direction="row" spacing={2} sx={{ marginTop: "2rem" }}>
-                <img src="/img/award.jpeg" height={100} />
-                <img src="/img/japanquality.jpeg" height={100} />
+          <Grid container spacing={{ xs: 2, md: 0 }} sx={{}}>
+            <Grid item xs={12} md={3}>
+              <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+                sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
+              >
+                <img
+                  src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
+                  width="50"
+                  height="auto"
+                />
+                <Typography variant="subtitle1" fontWeight="bold">
+                  可信賴品牌
+                </Typography>
+                <Typography variant="body2">
+                  Rakuten Group 旗下﹑日本其中一間行內領先的網上旅行社。備受全球
+                  16 億會員信賴
+                </Typography>
               </Stack>
-            </Stack>
+            </Grid>
+
+            <Grid item xs={12} md={3}>
+              <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+                sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
+              >
+                <img
+                  src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
+                  width="50"
+                  height="auto"
+                />
+                <Typography variant="subtitle1" fontWeight="bold">
+                  各式各樣的選項
+                </Typography>
+                <Typography variant="body2">
+                  在上千間的酒店及旅館體驗 omotenashi－日式貼心款待
+                </Typography>
+              </Stack>
+            </Grid>
+
+            <Grid item xs={12} md={3}>
+              <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+                sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
+              >
+                <img
+                  src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
+                  width="50"
+                  height="auto"
+                />
+                <Typography variant="subtitle1" fontWeight="bold">
+                  特別優惠
+                </Typography>
+                <Typography variant="body2">
+                  尋找只在 Rakuten Travel 上提供的專屬折扣及獨有住宿計劃
+                </Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+                sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}
+              >
+                <img
+                  src="https://trvimg.r10s.jp/toptype/bnr/valueproposition/icon01.png"
+                  width="50"
+                  height="auto"
+                />
+                <Typography variant="subtitle1" fontWeight="bold">
+                  會籍福利
+                </Typography>
+                <Typography variant="body2">
+                  尊享身為 Rakuten 會員的特別優待。會籍免費
+                </Typography>
+              </Stack>
+            </Grid>
           </Grid>
 
-          <Grid item xs={6} sx={{ display: { xs: "none", lg: "block" } }}>
-            <Stack
-              spacing={3}
-              sx={{
-                marginLeft: "0.5rem",
-                height: "100%",
-                padding,
-                borderRadius,
-                border: `1px solid ${lightGrey}`,
-              }}
-            >
-              <Stack direction="column" spacing={1}>
+          <Grid container sx={{ minHeight: "10vh" }}>
+            <Grid item xs={12} lg={6}>
+              <Stack
+                direction="column"
+                spacing={3}
+                sx={{
+                  marginRight: "0.5rem",
+                  padding,
+                  backgroundColor: lightGrey,
+                  borderRadius,
+                  height: "100%",
+                }}
+              >
                 <Typography variant={"subtitle1"} fontWeight="bold">
-                  不要錯過任何優惠
+                  Rakuten Travel 品質認證
                 </Typography>
+
                 <Typography variant={"body2"}>
-                  如欲訂閱特別優惠資訊，請輸入您的電郵地址，我們會及時通知您。
+                  此等標誌會被給予由 Rakuten Travel
+                  與及我們的顧客所揀選的優質酒店及旅館。它們會確保您有一個高質難忘的住宿。
                 </Typography>
+
+                <Stack direction="row" spacing={2} sx={{ marginTop: "2rem" }}>
+                  <img src="/img/award.jpeg" height={100} />
+                  <img src="/img/japanquality.jpeg" height={100} />
+                </Stack>
               </Stack>
+            </Grid>
 
-              <TextField
-                placeholder="anyone@anyemail.com / 電郵地址"
-                id="outlined-start-adornment"
-                sx={{}}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle />
-                    </InputAdornment>
-                  ),
+            <Grid item xs={6} sx={{ display: { xs: "none", lg: "block" } }}>
+              <Stack
+                spacing={3}
+                sx={{
+                  marginLeft: "0.5rem",
+                  height: "100%",
+                  padding,
+                  borderRadius,
+                  border: `1px solid ${lightGrey}`,
                 }}
-                fullWidth
-              />
+              >
+                <Stack direction="column" spacing={1}>
+                  <Typography variant={"subtitle1"} fontWeight="bold">
+                    不要錯過任何優惠
+                  </Typography>
+                  <Typography variant={"body2"}>
+                    如欲訂閱特別優惠資訊，請輸入您的電郵地址，我們會及時通知您。
+                  </Typography>
+                </Stack>
 
-              <Grid container>
-                <Grid item xs={4}>
-                  <Button variant="contained" size="large">
-                    訂閱
-                  </Button>
+                <TextField
+                  placeholder="anyone@anyemail.com / 電郵地址"
+                  id="outlined-start-adornment"
+                  sx={{}}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AccountCircle />
+                      </InputAdornment>
+                    ),
+                  }}
+                  fullWidth
+                />
+
+                <Grid container>
+                  <Grid item xs={4}>
+                    <Button variant="contained" size="large">
+                      訂閱
+                    </Button>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Stack>
+              </Stack>
+            </Grid>
           </Grid>
-        </Grid>
 
-        {/* 優惠與折扣 */}
-        <Box>
-          <Stack
-            sx={{ paddingLeft: padding, paddingRight: padding }}
-            spacing={spacing}
-          >
-            <Box>
-              <Typography variant="h5" fontWeight="bold">
-                優惠與折扣
-              </Typography>
-            </Box>
-            <Box>
-              <AliceCarouselWrap
-                height={150}
-                items={promotionsAndDiscounts({ height: 150 })}
-              />
-            </Box>
-          </Stack>
-        </Box>
-        {/* 優惠與折扣 */}
+          {/* 優惠與折扣 */}
+          <Box>
+            <Stack sx={{}} spacing={spacing}>
+              <Box>
+                <Typography variant="h5" fontWeight="bold">
+                  優惠與折扣
+                </Typography>
+              </Box>
+              <Box>
+                <AliceCarouselWrap
+                  height={150}
+                  items={promotionsAndDiscounts({ height: 150 })}
+                />
+              </Box>
+            </Stack>
+          </Box>
+          {/* 優惠與折扣 */}
 
-        {/* 旅遊指南 */}
-        <Box>
-          <Stack
-            sx={{ paddingLeft: padding, paddingRight: padding }}
-            spacing={spacing}
-          >
-            <Box>
-              <Typography variant="h5" fontWeight="bold">
-                旅遊指南
-              </Typography>
-            </Box>
-            <Box>
-              <AliceCarouselWrap
-                height={150}
-                items={travelGuide({ height: 150 })}
-              />
-            </Box>
-          </Stack>
-        </Box>
-        {/* 旅遊指南 */}
+          {/* 旅遊指南 */}
+          <Box>
+            <Stack sx={{}} spacing={spacing}>
+              <Box>
+                <Typography variant="h5" fontWeight="bold">
+                  旅遊指南
+                </Typography>
+              </Box>
+              <Box>
+                <AliceCarouselWrap
+                  height={150}
+                  items={travelGuide({ height: 150 })}
+                />
+              </Box>
+            </Stack>
+          </Box>
+          {/* 旅遊指南 */}
 
-        {/* 以地區搜尋 */}
-        <Box>
-          <Stack sx={{ padding }} spacing={2}>
-            <Box>
-              <Typography variant="h5" fontWeight="bold">
-                以地區搜尋
-              </Typography>
-            </Box>
-            <Box>
-              <AliceCarouselWrap
-                height={150}
-                items={travelLocation({ height: 150 })}
-                responsive={{
-                  0: { items: 1 },
-                  1024: { items: 6, itemsFit: "contain" },
-                }}
-              />
-            </Box>
-          </Stack>
-        </Box>
-        {/* 以地區搜尋 */}
-      </Stack>
+          {/* 以地區搜尋 */}
+          <Box>
+            <Stack sx={{}} spacing={2}>
+              <Box>
+                <Typography variant="h5" fontWeight="bold">
+                  以地區搜尋
+                </Typography>
+              </Box>
+              <Box>
+                <AliceCarouselWrap
+                  height={150}
+                  items={travelLocation({ height: 150 })}
+                  responsive={{
+                    0: { items: 1 },
+                    1024: { items: 6, itemsFit: "contain" },
+                  }}
+                />
+              </Box>
+            </Stack>
+          </Box>
+          {/* 以地區搜尋 */}
+        </Stack>
+      </Box>
 
-      <Box sx={{ borderTop: "1px solid grey" }}></Box>
+      <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ borderTop: `1px solid ${midGrey}` }}></Box>
+      </Box>
 
       <Stack
         sx={{

@@ -1,13 +1,14 @@
-## About
+```bash
+npx nodemon -e "js,jsx" --exec "npm run format"
+```
 
-This is a Next.js + MUI v5 starter which help you to start your project a lot easier and faster.
+```bash
+npm run docker_rebuild
+npm run into_docker
 
-## How to use
+# inside docker
 
-1. download files
-2. (optional) rename the folder if you want
-3. run `npm i` or `yarn`
+./entry.sh
+```
 
-## Tutorial
-
-You can also check this [link](https://dev.to/hajhosein/nextjs-mui-v5-tutorial-2k35) for explanation.
+http://localhost:3000/hkg/zh-hk

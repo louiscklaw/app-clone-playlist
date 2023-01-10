@@ -19,6 +19,8 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
 
+import RoomSelectPopover from "./RoomSelectPopover";
+
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -55,12 +57,27 @@ import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 
 export default () => {
   const [value, setValue] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
   return (
     <>
+      <RoomSelectPopover
+        open={open}
+        anchorEl={anchorEl}
+        setAnchorEl={setAnchorEl}
+        handleClose={handleClose}
+      />
+
       <Stack sx={{ padding: { xs: "3rem" } }} spacing={1}>
         <Typography variant="h5">預訂日本優質酒店及旅館</Typography>
         <Stack sx={{ paddingTop: { xs: "1rem" } }} spacing={2}>
@@ -79,7 +96,6 @@ export default () => {
             // size="small"
             fullWidth
             sx={{
-              borderRadius: 0,
               backgroundColor: "white",
               padding: "0.5rem",
               borderRadius: "5px",
@@ -100,7 +116,6 @@ export default () => {
                       variant="standard"
                       {...params}
                       sx={{
-                        borderRadius: 0,
                         backgroundColor: "white",
                         padding: "0.5rem",
                         borderRadius: "5px",
@@ -164,7 +179,7 @@ export default () => {
               variant="contained"
               size="large"
               onClick={handleClick}
-              sx={{ backgroundColor: color.deepGreen }}
+              sx={{ backgroundColor: color.normalgreen }}
             >
               搜尋
             </Button>
