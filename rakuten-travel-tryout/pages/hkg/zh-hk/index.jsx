@@ -304,15 +304,16 @@ export default () => {
           position="static"
           sx={{
             position: "fixed",
-            backgroundColor: normalgreen,
-            height: scrolled ? 60 : 0,
+            backgroundColor: scrolled ? color.normalgreen : color.dimmed,
+            height: scrolled ? 60 : 60,
             zIndex: 999,
             transition: "0.6s",
+            boxShadow: "unset",
           }}
         >
           <Toolbar>
             <Box sx={{ marginLeft: "10vw", paddingLeft: "3vw" }}>
-              <CompanyLogo color={scrolled ? color.white : color.normalgreen} />
+              <CompanyLogo color={scrolled ? color.white : color.white} />
             </Box>
             <Box sx={{ flexGrow: 1 }}></Box>
             <Stack
