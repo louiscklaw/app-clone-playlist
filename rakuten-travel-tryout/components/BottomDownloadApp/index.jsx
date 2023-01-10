@@ -27,7 +27,8 @@ import {
   MenuItem,
   CircularProgress,
   Chip,
-  Card,Box,
+  Card,
+  Box,
 } from "@mui/material";
 
 import Stack from "@mui/material/Stack";
@@ -70,34 +71,35 @@ import CompanyLogo from "pages/hkg/zh-hk/CompanyLogo";
 
 import color from "pages/hkg/zh-hk/color";
 
-export default () =>{
-  return(
+export default () => {
+  return (
     <>
-    {/* BottomDownloadApp */}
-    <Box sx={{ width: "100vw", backgroundColor: color.lightGrey }}>
-      <Box
-        sx={{
-          paddingLeft: { xs: "5vw", xl: "15vw" },
-          paddingRight: { xs: "5vw", xl: "15vw" },
-        }}
-      >
-        <Stack
-          direction="row"
-          spacing={5}
-          sx={{ paddingTop: "3rem", paddingBottom: "3rem" }}
+      {/* BottomDownloadApp */}
+      <Box sx={{ width: "100vw", backgroundColor: color.lightGrey }}>
+        <Box
+          sx={{
+            paddingLeft: { xs: "5vw", xl: "15vw" },
+            paddingRight: { xs: "5vw", xl: "15vw" },
+          }}
         >
-          <Typography variant="body2" fontWeight="bold">
-            下載 App
-          </Typography>
-          <Typography variant="caption" sx={{}}>
-            App Store
-          </Typography>
-          <Typography variant="caption" sx={{}}>
-            Google Play
-          </Typography>
-        </Stack>
+          <Stack
+            direction="row"
+            spacing={5}
+            sx={{ paddingTop: "3rem", paddingBottom: "3rem" }}
+          >
+            <Typography variant="body2" fontWeight="bold">
+              下載 App
+            </Typography>
+            <Typography variant="caption" sx={{}}>
+              App Store
+            </Typography>
+            <Typography variant="caption" sx={{}}>
+              Google Play
+            </Typography>
+          </Stack>
+        </Box>
       </Box>
-    </Box>
-    {/* BottomDownloadApp */}</>
-  )
-}
+      {/* BottomDownloadApp */}
+    </>
+  );
+};

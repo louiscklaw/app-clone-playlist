@@ -10,7 +10,7 @@
     "docker_rebuild": "docker compose up -d --build",
     "docker_rebuild_logs": "docker compose up -d --build && docker compose logs -f",
     "into_docker": "docker compose exec -it next /bin/bash",
-    "format": "prettier --write \"./pages/**/*.{js,jsx}\""
+    "format": "prettier --write \"./{pages,components,api}/**/*.{js,jsx}\""
   },
   "dependencies": {
     "@date-io/dayjs": "^2.16.0",

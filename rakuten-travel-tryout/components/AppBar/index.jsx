@@ -71,7 +71,7 @@ import CompanyLogo from "pages/hkg/zh-hk/CompanyLogo";
 
 import color from "pages/hkg/zh-hk/color";
 
-export default () =>{
+export default () => {
   let [scrolled, setScrolled] = React.useState(false);
 
   // lang-select-popover
@@ -107,7 +107,6 @@ export default () =>{
   const open_curr_popover = Boolean(currAnchorEl);
   // const curr_id = open_curr_popover ? "simple-popover" : undefined;
 
-
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -125,121 +124,124 @@ export default () =>{
     setState({ ...state, [anchor]: open });
   };
 
-
-  return(<>      <AppBar
-    position="static"
-    sx={{
-      backgroundColor: scrolled ? color.normalgreen : color.white,
-      height: scrolled ? 60 : 60,
-      zIndex: 999,
-      transition: "0.6s",
-      boxShadow: "unset",
-      paddingLeft: { xs: "3vw", xl: "10vw" },
-      paddingRight: { xs: "3vw", xl: "10vw" },
-    }}
-  >
-    <Toolbar sx={{}}>
-      <Box sx={{}}>
-        <CompanyLogo
-          color={scrolled ? color.accentGreen : color.accentGreen}
-        />
-      </Box>
-      <Box sx={{ flexGrow: 1 }}></Box>
-      <Stack
-        direction="row"
-        spacing={1}
-        justifyContent="center"
-        alignItems="center"
-        sx={{}}
+  return (
+    <>
+      {" "}
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: scrolled ? color.normalgreen : color.white,
+          height: scrolled ? 60 : 60,
+          zIndex: 999,
+          transition: "0.6s",
+          boxShadow: "unset",
+          paddingLeft: { xs: "3vw", xl: "10vw" },
+          paddingRight: { xs: "3vw", xl: "10vw" },
+        }}
       >
-        <Box sx={{ display: { xs: "none", md: "block" } }}>
-          <Button
-            id="lang_change"
-            color="inherit"
-            onClick={handleLangClick}
+        <Toolbar sx={{}}>
+          <Box sx={{}}>
+            <CompanyLogo
+              color={scrolled ? color.accentGreen : color.accentGreen}
+            />
+          </Box>
+          <Box sx={{ flexGrow: 1 }}></Box>
+          <Stack
+            direction="row"
+            spacing={1}
+            justifyContent="center"
+            alignItems="center"
+            sx={{}}
           >
-            <Stack
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-              spacing={1}
-            >
-              <PublicIcon
-                fontSize="small"
-                sx={{ color: color.textBlack }}
-              />
-              <Stack direction="row">
-                <Typography
-                  variant="subtitle2"
-                  sx={{ color: color.textBlack }}
+            <Box sx={{ display: { xs: "none", md: "block" } }}>
+              <Button
+                id="lang_change"
+                color="inherit"
+                onClick={handleLangClick}
+              >
+                <Stack
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={1}
                 >
-                  繁體中文（香港）
-                </Typography>
-                <ArrowDropDownIcon fontSize="small" />
-              </Stack>
-            </Stack>
-          </Button>
+                  <PublicIcon
+                    fontSize="small"
+                    sx={{ color: color.textBlack }}
+                  />
+                  <Stack direction="row">
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ color: color.textBlack }}
+                    >
+                      繁體中文（香港）
+                    </Typography>
+                    <ArrowDropDownIcon fontSize="small" />
+                  </Stack>
+                </Stack>
+              </Button>
 
-          <Button id="map_change" color="inherit" onClick={handleMapClick}>
-            <Stack
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-              spacing={1}
-            >
-              <MapIcon fontSize="small" sx={{ color: color.textBlack }} />
-              <Stack direction="row">
-                <Typography
-                  variant="subtitle2"
-                  sx={{ color: color.textBlack }}
+              <Button id="map_change" color="inherit" onClick={handleMapClick}>
+                <Stack
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={1}
                 >
-                  HKG
-                </Typography>
-                <ArrowDropDownIcon fontSize="small" />
-              </Stack>
-            </Stack>
-          </Button>
+                  <MapIcon fontSize="small" sx={{ color: color.textBlack }} />
+                  <Stack direction="row">
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ color: color.textBlack }}
+                    >
+                      HKG
+                    </Typography>
+                    <ArrowDropDownIcon fontSize="small" />
+                  </Stack>
+                </Stack>
+              </Button>
 
-          <Button
-            id="curr_change"
-            color="inherit"
-            onClick={handleCurrClick}
-          >
-            <Stack
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-              spacing={1}
-            >
-              <CurrencyExchangeIcon
-                fontSize="small"
-                sx={{ color: color.textBlack }}
-              />
-              <Stack direction="row">
-                <Typography
-                  variant="subtitle2"
-                  sx={{ color: color.textBlack }}
+              <Button
+                id="curr_change"
+                color="inherit"
+                onClick={handleCurrClick}
+              >
+                <Stack
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={1}
                 >
-                  HKD
-                </Typography>
-                <ArrowDropDownIcon fontSize="small" />
-              </Stack>
-            </Stack>
-          </Button>
-        </Box>
-        <IconButton
-          id="right_menu"
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          sx={{ mr: 2 }}
-          onClick={toggleDrawer("right", true)}
-        >
-          <MenuIcon sx={{ color: color.textBlack }} />
-        </IconButton>
-      </Stack>
-    </Toolbar>
-  </AppBar>
-</>)
-}
+                  <CurrencyExchangeIcon
+                    fontSize="small"
+                    sx={{ color: color.textBlack }}
+                  />
+                  <Stack direction="row">
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ color: color.textBlack }}
+                    >
+                      HKD
+                    </Typography>
+                    <ArrowDropDownIcon fontSize="small" />
+                  </Stack>
+                </Stack>
+              </Button>
+            </Box>
+            <IconButton
+              id="right_menu"
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={toggleDrawer("right", true)}
+            >
+              <MenuIcon sx={{ color: color.textBlack }} />
+            </IconButton>
+          </Stack>
+        </Toolbar>
+      </AppBar>
+    </>
+  );
+};

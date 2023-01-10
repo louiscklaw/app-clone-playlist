@@ -2,6 +2,7 @@ import * as React from "react";
 import Image from "next/image";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
+import Link from "next/link";
 
 import {
   Grid,
@@ -50,7 +51,7 @@ import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import Link from "next/link";
+
 import SearchIcon from "@mui/icons-material/Search";
 import DoneIcon from "@mui/icons-material/Done";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
@@ -72,59 +73,43 @@ import CompanyLogo from "pages/hkg/zh-hk/CompanyLogo";
 import color from "pages/hkg/zh-hk/color";
 
 export default () => {
+  const handleClick = () => {
+    console.log("components/BottomBreadcrumbs/index.jsx");
+  };
+
   return (
     <>
-      {/* bottom link app */}
       <Box
         sx={{
           width: "100vw",
           backgroundColor: color.white,
-          borderTop: `1px solid ${color.lightGrey}`,
+          marginTop: "1rem",
+          marginBottom: "1rem",
         }}
       >
         <Box
           sx={{
-            paddingLeft: { xs: "5vw", xl: "15vw" },
-            paddingRight: { xs: "5vw", xl: "15vw" },
+            paddingLeft: { xs: "3vw", xl: "10vw" },
+            paddingRight: { xs: "3vw", xl: "10vw" },
           }}
         >
-          <Stack
-            sx={{ marginTop: "1rem", marginBottom: "1rem" }}
-            direction="column"
-            spacing={2}
-          >
-            {/* bottom link */}
-            <Stack direction="row" spacing={2}>
-              <Box>
-                <Typography variant="body2">私隱政策</Typography>
-              </Box>
-              <Box>
-                <Typography variant="body2">條款與條件</Typography>
-              </Box>
-              <Box>
-                <Typography variant="body2">聯絡我們</Typography>
-              </Box>
-              <Box>
-                <Typography variant="body2">關於我們</Typography>
-              </Box>
-              <Box>
-                <Typography variant="body2">Cookie政策</Typography>
-              </Box>
-              <Box>
-                <Typography variant="body2">不要出售我的個人資料</Typography>
-              </Box>
-            </Stack>
-
-            {/* license */}
-            <Typography variant="caption" sx={{ color: color.deepGrey }}>
-              © 樂天集團股份有限公司 香港旅行代理商牌照號碼 354595，由 Rakuten
-              Travel Singapore Pte. Ltd. 持有
-            </Typography>
-            {/* license */}
-          </Stack>
+          <div role="presentation" onClick={handleClick}>
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link underline="hover" color="inherit" href="/">
+                主頁
+              </Link>
+              <Link
+                underline="hover"
+                href="/material-ui/getting-started/installation/"
+              >
+                日本
+              </Link>
+              <Typography color="text.primary">沖繩縣</Typography>
+              <Typography color="text.primary">宮古島市</Typography>
+            </Breadcrumbs>
+          </div>
         </Box>
       </Box>
-      {/* bottom link app */}
     </>
   );
 };
