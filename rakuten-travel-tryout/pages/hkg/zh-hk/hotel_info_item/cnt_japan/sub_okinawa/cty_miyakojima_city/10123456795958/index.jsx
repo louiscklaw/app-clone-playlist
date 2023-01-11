@@ -102,6 +102,9 @@ import BottomBreadcrumbs from "components/BottomBreadcrumbs";
 import covin_action from "pages/api/covin_action";
 import hotel_info from "pages/api/hotel_info";
 import ClearIcon from "@mui/icons-material/Clear";
+import RoomInfo from "./RoomInfo";
+import room_plans from "pages/api/room_plans";
+
 function FilterButtonSearch() {
   return (
     <>
@@ -249,6 +252,14 @@ function a11yProps(index) {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
   };
+}
+
+function RoomPlan({ plan }) {
+  return (
+    <>
+      <Typography>{plan.name}</Typography>
+    </>
+  );
 }
 
 export default () => {
@@ -674,6 +685,16 @@ export default () => {
                   <div class="send-to-right" />
                   <FilterButtonClear />
                   <FilterButtonSearch />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div style={{ width: "50%" }}>
+                <RoomInfo />
+              </div>
+              <div style={{ width: "50%" }}>
+                <div>
+                  <RoomPlan plan={room_plans[0]} />
                 </div>
               </div>
             </div>
