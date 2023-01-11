@@ -15,6 +15,12 @@ const textGrey = "rgba(128,128,128,0.3)";
 const textMidGrey = "rgba(128,128,128,0.6)";
 const textDeepGrey = "rgba(128,128,128,0.8)";
 
+const textlightGreen = "rgba(46, 204, 113,1.0)";
+const textDeepGreen = "rgba(39, 174, 96,1.0)";
+
+const textColor1 = "rgba(26, 188, 156,1.0)";
+const textColor6 = "rgba(22, 160, 133,1.0)";
+
 export default {
   normalgreen,
   accentGreen,
@@ -30,4 +36,8 @@ export default {
   textGrey,
   textMidGrey,
   textDeepGrey,
+  textDeepGreen,
+  textlightGreen,
+  textColor1,
+  textColor6,
 };

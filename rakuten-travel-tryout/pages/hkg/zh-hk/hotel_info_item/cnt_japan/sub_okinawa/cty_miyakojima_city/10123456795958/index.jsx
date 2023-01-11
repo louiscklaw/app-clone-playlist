@@ -22,6 +22,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import DoneIcon from "@mui/icons-material/Done";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import ShareIcon from "@mui/icons-material/Share";
+
 import {
   Grid,
   Slider,
@@ -142,25 +144,219 @@ export default () => {
           paddingRight: { xs: "3vw", xl: "10vw" },
         }}
       >
-        <Box>
-          宮古島上野費利斯別墅套房酒店 度假村酒店 Rakuten Travel Gold Award 2021
-          設有私人溫水游泳池和廚房的別墅度假村
-          <Box>share button</Box>
-        </Box>
+        <Stack direction="column" spacing={2}>
+          <Stack direction="row">
+            <Box sx={{ flexGrow: 1 }}>
+              <Stack direction="column" spacing={2}>
+                <Typography variant="h6" fontWeight="bold">
+                  宮古島上野費利斯別墅套房酒店
+                </Typography>
+                <Stack direction="row" alignItems="center">
+                  <Chip label="度假村酒店" />
+                  <Typography variant="subtitle2" fontSize="bold">
+                    Rakuten Travel Gold Award 2021
+                  </Typography>
+                </Stack>
+                <Typography
+                  variant="subtitle2"
+                  fontWeight="bold"
+                  sx={{ color: color.textColor6 }}
+                >
+                  設有私人溫水游泳池和廚房的別墅度假村
+                </Typography>
+              </Stack>
+            </Box>
+            <IconButton>
+              <ShareIcon />
+            </IconButton>
+          </Stack>
 
-        <Stack direction="row">
-          <Box sx={{ flexGrow: 6 }}>Photos</Box>
-          <Box sx={{ flexGrow: 4 }}>
-            5 Exceptional 來自認證住客的 24 則評價 查看更多詳細資訊
-            這棟別墅是別墅風格的夏威夷公寓出租。 所有 12
-            棟別墅均設有溫水游泳池，私密性強。
-            廚房、家具、家電一應俱全，可長期入住。
-            在您逗留期間，這將是一個只屬於您的私人空間，所以請隨意使用。
-            查看更多詳細資訊 住宿設施設備 度假村酒店 停車場 查看更多詳細資訊 map
-            日本, 906-0203, 935-8 Ueno Miyaguni, Miyakojima-shi, Okinawa
-            由宮古機場駕車約 15 分鐘可達
-          </Box>
+          <Stack direction="row" spacing={3}>
+            <Box
+              sx={{
+                backgroundColor: "tomato",
+                width: "55%",
+                borderRadius: "1rem",
+              }}
+            >
+              <Stack direction="column" spacing={1}>
+                <Box
+                  sx={{
+                    backgroundColor: "gold",
+                    height: "300px",
+                    borderRadius: "1rem 1rem 0 0 ",
+                  }}
+                ></Box>
+                <Stack direction="row" spacing={1}>
+                  <Box
+                    sx={{
+                      backgroundColor: "green",
+                      height: "50px",
+                      width: "20%",
+                    }}
+                  >
+                    1
+                  </Box>{" "}
+                  <Box
+                    sx={{
+                      backgroundColor: "green",
+                      height: "50px",
+                      width: "20%",
+                    }}
+                  >
+                    2
+                  </Box>
+                  <Box
+                    sx={{
+                      backgroundColor: "green",
+                      height: "50px",
+                      width: "20%",
+                    }}
+                  >
+                    3
+                  </Box>
+                  <Box
+                    sx={{
+                      backgroundColor: "green",
+                      height: "50px",
+                      width: "20%",
+                    }}
+                  >
+                    4
+                  </Box>
+                  <Box
+                    sx={{
+                      backgroundColor: "green",
+                      height: "50px",
+                      width: "20%",
+                    }}
+                  >
+                    more
+                  </Box>
+                </Stack>
+              </Stack>
+            </Box>
+            <Box
+              sx={{
+                border: `3px solid ${color.lightGrey}`,
+                borderRadius: "1rem",
+                padding: "1.1rem",
+                width: "45%",
+              }}
+            >
+              <Stack direction="column">
+                <div>
+                  <Typography variant="subtitle1" fontWeight="bold">
+                    5 Exceptional
+                  </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ color: color.textDeepGrey }}
+                  >
+                    來自認證住客的 24 則評價
+                  </Typography>
+                </div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <div style={{ flexGrow: 1 }}></div>
+                  <Button>查看更多詳細資訊</Button>
+                </div>
+              </Stack>
+              <Stack direction="column">
+                <div>
+                  <Typography variant="body2" fontSize="0.8rem">
+                    這棟別墅是別墅風格的夏威夷公寓出租。 所有 12
+                    棟別墅均設有溫水游泳池，私密性強。
+                    廚房、家具、家電一應俱全，可長期入住。
+                    在您逗留期間，這將是一個只屬於您的私人空間，所以請隨意使用。
+                  </Typography>
+                </div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <div style={{ flexGrow: 1 }}></div>
+                  <Button>查看更多詳細資訊</Button>
+                </div>
+              </Stack>
+              <Divider sx={{ marginTop: "1rem" }} />
+              <Stack direction="column">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.5rem",
+                    marginTop: "1rem",
+                  }}
+                >
+                  <div>
+                    <Typography variant="subtitle1" fontWeight="bold">
+                      住宿設施設備
+                    </Typography>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: "1rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "0.3rem",
+                        alignItems: "baseline",
+                      }}
+                    >
+                      <DoneIcon style={{ fontSize: "1rem" }} />
+                      <Typography variant="body1">度假村酒店</Typography>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "0.3rem",
+                        alignItems: "baseline",
+                      }}
+                    >
+                      <DoneIcon style={{ fontSize: "1rem" }} />
+                      <Typography variant="body1">停車場</Typography>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <div style={{ flexGrow: 1 }}></div>
+                  <Button>查看更多詳細資訊</Button>
+                </div>
+              </Stack>
+              <Divider sx={{ marginTop: "1rem" }} />
+              <Stack direction="row" sx={{ marginTop: "1rem" }}>
+                <Box
+                  sx={{
+                    backgroundColor: "cyan",
+                    width: "200px",
+                    height: "150px",
+                    borderRadius: "1rem",
+                  }}
+                ></Box>
+                <Box>
+                  <Typography
+                    variant="subtitle1"
+                    fontWeight="bold"
+                    sx={{ color: color.textDeepGreen }}
+                  >
+                    日本, 906-0203, 935-8 Ueno Miyaguni, Miyakojima-shi, Okinawa
+                  </Typography>
+                  <ul>
+                    <li>
+                      <Typography variant="body2">
+                        由宮古機場駕車約 15 分鐘可達
+                      </Typography>
+                    </li>
+                  </ul>
+                </Box>
+              </Stack>
+            </Box>
+          </Stack>
         </Stack>
+
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
