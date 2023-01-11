@@ -121,7 +121,7 @@ function OptionPlane({ title, options }) {
   return (
     <>
       <div class="option-plane">
-        <Typography variant="body2" fontWeight="bold">
+        <Typography variant="body1" fontWeight="bold">
           {title}
         </Typography>
 
@@ -150,7 +150,7 @@ function OptionPriceRange({ title }) {
   return (
     <>
       <div class="option-plane">
-        <Typography variant="body2" fontWeight="bold">
+        <Typography variant="body1" fontWeight="bold">
           {title}
         </Typography>
 
@@ -178,7 +178,7 @@ function FilterOptions() {
     <>
       <Grid container>
         <Grid item xs={3}>
-          <OptionPriceRange title={"餐飲"} />
+          <OptionPriceRange title={"總額"} />
         </Grid>
         <Grid item xs={3}>
           <OptionPlane title={"餐飲"} options={["早餐", "不含餐"]} />
@@ -656,23 +656,25 @@ export default () => {
                 </Button>
               </ButtonGroup>
             </Box>
-            <Button variant="outlined" color="primary">
-              <div class="row-center" style={{ padding: "0.1rem" }}>
-                <SettingsInputCompositeIcon sx={{ fontSize: "1rem" }} />
-                <Typography variant="body1" fontWeight="bold">
-                  篩選條件
-                </Typography>
+            <div style={{ marginTop: "1rem" }}>
+              <Button variant="outlined" color="primary">
+                <div class="row-center" style={{ padding: "0.1rem" }}>
+                  <SettingsInputCompositeIcon sx={{ fontSize: "1rem" }} />
+                  <Typography variant="body1" fontWeight="bold">
+                    篩選條件
+                  </Typography>
+                </div>
+              </Button>
+              <div style={{ marginTop: "1rem" }}>
+                <FilterOptions />
               </div>
-            </Button>
-            <div>
-              <FilterOptions />
-            </div>
-            <div>
-              <div></div>
-              <div class="row">
-                <div class="send-to-right" />
-                <FilterButtonClear />
-                <FilterButtonSearch />
+              <div style={{ marginTop: "1rem" }}>
+                <div></div>
+                <div class="row">
+                  <div class="send-to-right" />
+                  <FilterButtonClear />
+                  <FilterButtonSearch />
+                </div>
               </div>
             </div>
             <Box sx={{ width: "100%" }}>
