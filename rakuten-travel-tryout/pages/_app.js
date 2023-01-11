@@ -9,6 +9,7 @@ import "../styles/globals.css";
 
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./alice_carousel_customize.css";
+import "./test.css";
 
 const clientSideEmotionCache = createEmotionCache();
 

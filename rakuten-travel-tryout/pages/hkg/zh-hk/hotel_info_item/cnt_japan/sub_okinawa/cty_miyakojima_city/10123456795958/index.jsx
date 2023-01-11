@@ -26,7 +26,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import CircularProgressWithLabel from "components/CircularProgressWithLabel";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import hotel_intro from "pages/api/hotel_intro";
-
+import SettingsInputCompositeIcon from "@mui/icons-material/SettingsInputComposite";
 import {
   Grid,
   Slider,
@@ -73,7 +73,6 @@ import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import EditIcon from "@mui/icons-material/Edit";
 import Menu from "@mui/material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
 // import RakutenWebp from '/assets/Rakuten.webp'
 import hotelPhotos from "pages/api/hotelPhotos";
 import travelGuide from "pages/api/travelGuide";
@@ -102,6 +101,128 @@ import color from "pages/hkg/zh-hk/color";
 import BottomBreadcrumbs from "components/BottomBreadcrumbs";
 import covin_action from "pages/api/covin_action";
 import hotel_info from "pages/api/hotel_info";
+import ClearIcon from "@mui/icons-material/Clear";
+function FilterButtonSearch() {
+  return (
+    <>
+      <Button variant="contained" color="primary" size="large" disableElevation>
+        <div class="row-center" style={{ padding: "0.1rem" }}>
+          <SearchIcon sx={{ fontSize: "1rem" }} />
+          <Typography variant="body1" fontWeight="bold">
+            搜尋 (2)
+          </Typography>
+        </div>
+      </Button>
+    </>
+  );
+}
+
+function OptionPlane({ title, options }) {
+  return (
+    <>
+      <div class="option-plane">
+        <Typography variant="body2" fontWeight="bold">
+          {title}
+        </Typography>
+
+        <div>
+          {options?.map((o) => (
+            <div>
+              <FormControlLabel control={<Checkbox />} label={o} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+function OptionPriceRange({ title }) {
+  function valuetext(value) {
+    return `${value}°C`;
+  }
+  const [value, setValue] = React.useState([20, 37]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <>
+      <div class="option-plane">
+        <Typography variant="body2" fontWeight="bold">
+          {title}
+        </Typography>
+
+        <div class="row" style={{ marginTop: "1rem" }}>
+          <Typography variant="body2">每間房價</Typography>
+          <Typography variant="body2" fontWeight="bold">
+            {JSON.stringify(value)}
+          </Typography>
+        </div>
+
+        <Slider
+          getAriaLabel={() => "Temperature range"}
+          value={value}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          getAriaValueText={valuetext}
+        />
+      </div>
+    </>
+  );
+}
+
+function FilterOptions() {
+  return (
+    <>
+      <Grid container>
+        <Grid item xs={3}>
+          <OptionPriceRange title={"餐飲"} />
+        </Grid>
+        <Grid item xs={3}>
+          <OptionPlane title={"餐飲"} options={["早餐", "不含餐"]} />
+        </Grid>
+        <Grid item xs={3}>
+          <OptionPlane
+            title={"客房類型"}
+            options={["雙人床房", "雙床房", "套房"]}
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <OptionPlane title={"客房景觀"} options={["海景"]} />
+        </Grid>
+        <Grid item xs={3}>
+          <OptionPlane title={"吸煙選項"} options={["禁煙"]} />
+        </Grid>
+        <Grid item xs={3}>
+          <OptionPlane title={"睡床類型"} options={["特大雙人床"]} />
+        </Grid>
+        <Grid item xs={3}>
+          <OptionPlane
+            title={"住宿計劃優惠"}
+            options={["俱樂部樓層／俱樂部休息室"]}
+          />
+        </Grid>
+      </Grid>
+    </>
+  );
+}
+
+function FilterButtonClear() {
+  return (
+    <>
+      <Button variant="outlined" color="primary" size="large" disableElevation>
+        <div class="row-center" style={{ padding: "0.1rem" }}>
+          <ClearIcon sx={{ fontSize: "1rem" }} />
+          <Typography variant="body1" fontWeight="bold">
+            清除
+          </Typography>
+        </div>
+      </Button>
+    </>
+  );
+}
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -425,109 +546,71 @@ export default () => {
               <ButtonGroup
                 aria-label="outlined primary button group"
                 disableElevation
+                fullWidth
               >
                 <Button
                   variant="contained"
-                  color="primary"
-                  sx={{ width: "300px" }}
+                  color="secondary"
+                  sx={{
+                    borderRadius: "1rem",
+                    borderRight: "0.3rem solid white !important",
+                  }}
                 >
-                  <SearchIcon />
+                  <CalendarMonthIcon
+                    sx={{ fontSize: "2rem", color: color.textColor6 }}
+                  />
+                  <div
+                    style={{
+                      paddingLeft: "0.3rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <Typography variant="subtitle2">入住:</Typography>
+                    <Typography
+                      variant="h6"
+                      fontWeight="bold"
+                      sx={{ fontSize: "1.2rem", color: color.textColor6 }}
+                    >
+                      11/1/2023
+                    </Typography>
+                  </div>
                 </Button>
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ width: "300px" }}
-                >
-                  <SearchIcon />
-                </Button>
-                <Button sx={{ width: "300px" }}>
-                  <SearchIcon />
-                </Button>
-                <Button sx={{ width: "300px" }}>
-                  <SearchIcon />
-                </Button>
-              </ButtonGroup>
-            </Box>
-            <Box sx={{ width: "100%" }}>
-              <ButtonGroup aria-label="outlined primary button group" fullWidth>
-                <Button
                   sx={{
-                    backgroundColor: color.lightGrey,
-                    color: color.textBlack,
-                    border: `5px solid ${color.white}`,
+                    borderLeft: "0.3rem solid white",
+                    borderRight: "0.3rem solid white !important",
                   }}
                 >
+                  <CalendarMonthIcon
+                    sx={{ fontSize: "2rem", color: color.textColor6 }}
+                  />
                   <div
                     style={{
                       display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      gap: "0.5rem",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
                     }}
                   >
-                    <CalendarMonthIcon
-                      sx={{ fontSize: "2rem", color: color.textColor6 }}
-                    />
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                      }}
+                    <Typography variant="subtitle2">入住:</Typography>
+                    <Typography
+                      variant="h6"
+                      fontWeight="bold"
+                      sx={{ fontSize: "1.2rem", color: color.textColor6 }}
                     >
-                      <Typography variant="subtitle2">入住:</Typography>
-                      <Typography
-                        variant="h6"
-                        fontWeight="bold"
-                        sx={{ fontSize: "1.2rem", color: color.textColor6 }}
-                      >
-                        11/1/2023
-                      </Typography>
-                    </div>
+                      11/1/2023
+                    </Typography>
                   </div>
                 </Button>
                 <Button
+                  variant="contained"
+                  color="secondary"
                   sx={{
-                    backgroundColor: color.lightGrey,
-                    color: color.textBlack,
-                    border: `5px solid ${color.white}`,
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    <CalendarMonthIcon
-                      sx={{ fontSize: "2rem", color: color.textColor6 }}
-                    />
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                      }}
-                    >
-                      <Typography variant="subtitle2">退房:</Typography>
-                      <Typography
-                        variant="h6"
-                        fontWeight="bold"
-                        sx={{ fontSize: "1.2rem", color: color.textColor6 }}
-                      >
-                        8/2/2023
-                      </Typography>
-                    </div>
-                  </div>
-                </Button>
-                <Button
-                  sx={{
-                    backgroundColor: color.lightGrey,
-                    color: color.textBlack,
-                    borderRadius: "1rem",
-                    border: `5px solid ${color.white}`,
+                    borderLeft: "0.3rem solid white",
+                    borderRight: "0.3rem solid white !important",
                   }}
                 >
                   <div
@@ -560,18 +643,38 @@ export default () => {
                   </div>
                 </Button>
                 <Button
+                  variant="contained"
+                  color="primary"
                   sx={{
-                    backgroundColor: color.textColor6,
-                    color: color.white,
+                    width: "20%",
+                    minWidth: "600px",
                     borderRadius: "1rem",
-                    border: `5px solid ${color.white}`,
-                    width: "300px",
+                    borderLeft: "0.3rem solid white",
                   }}
                 >
                   <SearchIcon />
                 </Button>
               </ButtonGroup>
             </Box>
+            <Button variant="outlined" color="primary">
+              <div class="row-center" style={{ padding: "0.1rem" }}>
+                <SettingsInputCompositeIcon sx={{ fontSize: "1rem" }} />
+                <Typography variant="body1" fontWeight="bold">
+                  篩選條件
+                </Typography>
+              </div>
+            </Button>
+            <div>
+              <FilterOptions />
+            </div>
+            <div>
+              <div></div>
+              <div class="row">
+                <div class="send-to-right" />
+                <FilterButtonClear />
+                <FilterButtonSearch />
+              </div>
+            </div>
             <Box sx={{ width: "100%" }}>
               <Stack direction="row">
                 <Box sx={{ flexGrow: 4 }}>

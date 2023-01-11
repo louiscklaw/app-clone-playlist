@@ -27,15 +27,15 @@ const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: color.accentGreen,
+      main: color.textColor6,
       // light: ColorLuminance(color.accentGreen,  0.2),
       // dark: ColorLuminance(color.accentGreen,  -0.5),
       contrastText: color.textWhite,
     },
     secondary: {
       main: color.lightGrey,
-      // light: ColorLuminance(color.textColor6,  0.2),
-      dark: color.accentGreen,
+      dark: color.lightLightGrey,
+      // dark: color.accentGreen,
       contrastText: color.textBlack,
     },
 
