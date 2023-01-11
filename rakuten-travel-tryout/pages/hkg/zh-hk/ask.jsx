@@ -405,9 +405,13 @@ export default () => {
             </Button>
           </Stack>
           <Box>
-            <Typography variant="body1" sx={{ color: color.textDeepGrey }}>
-              回到客戶服務中心首頁
-            </Typography>
+            <Link href="/hkg/zh-hk" passHref legacyBehavior>
+              <Button sx={{ color: color.accentGreen }}>
+                <Typography variant="body1" sx={{ color: color.textDeepGrey }}>
+                  回到客戶服務中心首頁
+                </Typography>
+              </Button>
+            </Link>
           </Box>
         </Stack>
       </Stack>
