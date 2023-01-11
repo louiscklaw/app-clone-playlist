@@ -97,18 +97,7 @@ import BottomLink from "components/BottomLink";
 import color from "pages/hkg/zh-hk/color";
 import BottomBreadcrumbs from "components/BottomBreadcrumbs";
 import covin_action from "pages/api/covin_action";
-
-const hotel_info = [
-  {
-    name: "地址",
-    value: "日本, 906-0203, 935-8 Ueno Miyaguni, Miyakojima-shi, Okinawa",
-  },
-  { name: "入住時間", value: "14:00 - 19:00 " },
-  { name: "退房時間", value: "10:00 " },
-  { name: "客房總數", value: "12 " },
-  { name: "電話號碼", value: "+81 980 74 7500 " },
-  { name: "傳真號碼", value: "+81 980 74 7501" },
-];
+import hotel_info from "pages/api/hotel_info";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
