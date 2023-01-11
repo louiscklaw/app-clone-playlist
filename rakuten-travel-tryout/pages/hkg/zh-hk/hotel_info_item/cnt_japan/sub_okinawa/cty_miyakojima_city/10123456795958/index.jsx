@@ -24,6 +24,8 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShareIcon from "@mui/icons-material/Share";
 import CircularProgressWithLabel from "components/CircularProgressWithLabel";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import hotel_intro from "pages/api/hotel_intro";
 
 import {
   Grid,
@@ -85,7 +87,7 @@ import MapSelectPopover from "pages/hkg/zh-hk/MapSelectPopover";
 import CurrSelectPopover from "pages/hkg/zh-hk/CurrSelectPopover";
 import SearchForm from "pages/hkg/zh-hk/SearchForm";
 import SquareCompanyLogo from "pages/hkg/zh-hk/SquareCompanyLogo";
-
+import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -144,7 +146,7 @@ export default () => {
           paddingRight: { xs: "3vw", xl: "10vw" },
         }}
       >
-        <Stack direction="column" spacing={2}>
+        <Stack direction="column" spacing={2} sx={{ display: "none" }}>
           <Stack direction="row">
             <Box sx={{ flexGrow: 1 }}>
               <Stack direction="column" spacing={2}>
@@ -172,35 +174,34 @@ export default () => {
           </Stack>
 
           <Stack direction="row" spacing={3}>
-            <Box
-              sx={{
-                backgroundColor: "tomato",
-                width: "55%",
-                borderRadius: "1rem",
-              }}
-            >
-              <Stack direction="column" spacing={1}>
+            <Box sx={{ width: "55%", borderRadius: "1rem" }}>
+              <Stack direction="column" spacing={0.5} sx={{ height: "100%" }}>
                 <Box
                   sx={{
-                    backgroundColor: "gold",
-                    height: "300px",
+                    // backgroundColor: "gold",
+                    backgroundImage: `url('https://trvis.r10s.com/d/strg/ctrl/26/437b86622a9af43c03f2628882661486821b7879.47.9.26.3.jpg')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                     borderRadius: "1rem 1rem 0 0 ",
+                    flexGrow: 1,
                   }}
                 ></Box>
-                <Stack direction="row" spacing={1}>
+                <Stack direction="row" spacing={0.5} sx={{ height: "100px" }}>
                   <Box
                     sx={{
-                      backgroundColor: "green",
-                      height: "50px",
+                      // backgroundColor: "green",
+                      backgroundImage: `url('https://trvis.r10s.com/d/strg/ctrl/26/91d046af12015df16c75e62ab5eebe05154f4a0b.47.1.26.2.jpg')`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: "100px",
                       width: "20%",
+                      borderRadius: "0 0 0 1rem",
                     }}
-                  >
-                    1
-                  </Box>{" "}
+                  ></Box>
                   <Box
                     sx={{
                       backgroundColor: "green",
-                      height: "50px",
+                      height: "100px",
                       width: "20%",
                     }}
                   >
@@ -209,7 +210,7 @@ export default () => {
                   <Box
                     sx={{
                       backgroundColor: "green",
-                      height: "50px",
+                      height: "100px",
                       width: "20%",
                     }}
                   >
@@ -218,7 +219,7 @@ export default () => {
                   <Box
                     sx={{
                       backgroundColor: "green",
-                      height: "50px",
+                      height: "100px",
                       width: "20%",
                     }}
                   >
@@ -226,12 +227,38 @@ export default () => {
                   </Box>
                   <Box
                     sx={{
-                      backgroundColor: "green",
-                      height: "50px",
+                      backgroundImage: `url('https://trvis.r10s.com/d/strg/ctrl/26/91d046af12015df16c75e62ab5eebe05154f4a0b.47.1.26.2.jpg')`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: "100px",
                       width: "20%",
+                      borderRadius: "0 0 1rem 0",
                     }}
                   >
-                    more
+                    <div
+                      style={{
+                        backgroundColor: color.black50,
+                        height: "100%",
+                        width: "100%",
+
+                        borderRadius: "0 0 1rem 0",
+
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <InsertPhotoIcon
+                        sx={{ color: color.white, fontSize: "1rem" }}
+                      />
+                      <Typography
+                        variant="caption"
+                        sx={{ color: color.white, fontSize: "0.8rem" }}
+                      >
+                        瀏覽所有照片
+                      </Typography>
+                    </div>
                   </Box>
                 </Stack>
               </Stack>
@@ -343,17 +370,24 @@ export default () => {
                   <Button>查看更多詳細資訊</Button>
                 </div>
               </Stack>
+
               <Divider sx={{ marginTop: "1rem" }} />
-              <Stack direction="row" sx={{ marginTop: "1rem" }}>
-                <Box
-                  sx={{
-                    backgroundColor: "cyan",
-                    width: "200px",
-                    height: "150px",
+
+              <Stack direction="row" spacing={3} sx={{ marginTop: "1rem" }}>
+                <div
+                  style={{
+                    backgroundImage: `url('https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg')`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+
+                    width: "50%",
+                    minWidth: "150px",
+                    height: "200px",
                     borderRadius: "1rem",
                   }}
-                ></Box>
-                <Box>
+                ></div>
+
+                <Box sx={{ padding: "1rem" }}>
                   <Typography
                     variant="subtitle1"
                     fontWeight="bold"
@@ -386,54 +420,221 @@ export default () => {
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            客房
+            客房內容
+            <Box sx={{ width: "100%" }}>
+              <ButtonGroup aria-label="outlined primary button group" fullWidth>
+                <Button
+                  sx={{
+                    backgroundColor: color.textColor6,
+                    color: color.white,
+                    borderRadius: "1rem",
+                    border: `5px solid ${color.white}`,
+                    width: "300px",
+                  }}
+                >
+                  <SearchIcon />
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: color.textColor6,
+                    color: color.white,
+                    borderRadius: "1rem",
+                    border: `5px solid ${color.white}`,
+                    width: "300px",
+                  }}
+                >
+                  <SearchIcon />
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: color.textColor6,
+                    color: color.white,
+                    borderRadius: "1rem",
+                    border: `5px solid ${color.white}`,
+                    width: "300px",
+                  }}
+                >
+                  <SearchIcon />
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: color.textColor6,
+                    color: color.white,
+                    borderRadius: "1rem",
+                    border: `5px solid ${color.white}`,
+                    width: "300px",
+                  }}
+                >
+                  <SearchIcon />
+                </Button>
+              </ButtonGroup>
+            </Box>
+            <Box sx={{ width: "100%" }}>
+              <ButtonGroup aria-label="outlined primary button group" fullWidth>
+                <Button
+                  sx={{
+                    backgroundColor: color.lightGrey,
+                    color: color.textBlack,
+                    border: `5px solid ${color.white}`,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <CalendarMonthIcon
+                      sx={{ fontSize: "2rem", color: color.textColor6 }}
+                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <Typography variant="subtitle2">入住:</Typography>
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        sx={{ fontSize: "1.2rem", color: color.textColor6 }}
+                      >
+                        11/1/2023
+                      </Typography>
+                    </div>
+                  </div>
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: color.lightGrey,
+                    color: color.textBlack,
+                    border: `5px solid ${color.white}`,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <CalendarMonthIcon
+                      sx={{ fontSize: "2rem", color: color.textColor6 }}
+                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <Typography variant="subtitle2">退房:</Typography>
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        sx={{ fontSize: "1.2rem", color: color.textColor6 }}
+                      >
+                        8/2/2023
+                      </Typography>
+                    </div>
+                  </div>
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: color.lightGrey,
+                    color: color.textBlack,
+                    borderRadius: "1rem",
+                    border: `5px solid ${color.white}`,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <CalendarMonthIcon
+                      sx={{ fontSize: "2rem", color: color.textColor6 }}
+                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <Typography variant="subtitle2">住客：</Typography>
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        sx={{ fontSize: "1.2rem", color: color.textColor6 }}
+                      >
+                        每間 2 人 • 1 間房
+                      </Typography>
+                    </div>
+                  </div>
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: color.textColor6,
+                    color: color.white,
+                    borderRadius: "1rem",
+                    border: `5px solid ${color.white}`,
+                    width: "300px",
+                  }}
+                >
+                  <SearchIcon />
+                </Button>
+              </ButtonGroup>
+            </Box>
+            <Box sx={{ width: "100%" }}>
+              <Stack direction="row">
+                <Box sx={{ flexGrow: 4 }}>
+                  房間不含餐計劃 [不含餐] 外觀照片 帶燈（1間臥室） 8
+                  該計劃僅適用於房費。 請注意，不提供餐點。 查看住宿計劃詳細資訊
+                </Box>
+                <Box sx={{ flexGrow: 6 }}>
+                  card list 2房型（帶日式房間）帶泳池 [日式西式客房] [禁煙]
+                  [海景] 日式寢具 x 3 單人床 x 4 129m² 1–7 位住客 禁煙 $2,964.87
+                  包稅與其他費用 1 間房 2 位住客 1 晚 選擇日期 Semi
+                  Western-Style Room 池畔露台（燈火通明） 查看客房詳細資訊
+                </Box>
+              </Stack>
+            </Box>
+            <Box sx={{ width: "100%" }}>
+              <Stack direction="row">
+                <Box sx={{ flexGrow: 4 }}>
+                  評分和評價 5 Exceptional 來自認證住客的 24 則評價 地點 4.8
+                  設施與設備 4.9 服務與工作人員 5 舒適與整潔度 5 沐浴 4.8 餐飲
+                  4.7
+                </Box>
+                <Box sx={{ flexGrow: 6 }}>
+                  card list 排序 最近期 評價分數 所有評分 Anonymous | Japan 日本
+                  |年齡：50-59 歲 | 親子共遊 5 發布日：3/1/2023
+                  今回年末年始で4連泊したのですが、
+                  調理用具、洗濯機、乾燥機など全て揃っており、無いものがなかったくらい充実してました。子供のおもちゃの乾電池もあるかどうか聞いてみたら持ってきて下さいました！すごい！
+                  年末ということで、宮古ソーキソバやシャンパン、メロン(最高級に美味)も用意してくだり、年始ということで鏡餅やお花をお部屋に飾ってくれたりと、最高でした。
+                  ちなみに冷蔵庫のピールやドリンクは無料で追加もできます。個人的にはシークワサーのバヤリースが沖縄限定で美味しかったので追加しました。
+                  置いているアメニティや、洗顔、化粧品なども、良いものを使っており、高級宿の感じを受けます。
+                  温水プールもあるヴィラでしたが、こちらは年末年始の時期なのに、日中は入れましたし子供が喜んでました。
+                  ただ、夏なら夜まで入れたのになーと少し時期的に残念。
+                  宿泊代は高級ですが、その価値に見合ったサービスではないでしょうか。
+                  大変有意義な休日旅行となりました。 ありがとうございました。
+                  また今度は夏休みにリピートしたいです。 回報 有幫助 翻譯
+                  顯示更多 1 2 3 24 項中的 1 - 10 項評價
+                </Box>
+              </Stack>
+            </Box>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            住宿計劃
+            住宿計劃內容
           </TabPanel>
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          入住: 11/1/2023 退房: 8/2/2023 住客： 每間 2 人 • 1 間房
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          <Stack direction="row">
-            <Box sx={{ flexGrow: 4 }}>
-              房間不含餐計劃 [不含餐] 外觀照片 帶燈（1間臥室） 8
-              該計劃僅適用於房費。 請注意，不提供餐點。 查看住宿計劃詳細資訊
-            </Box>
-            <Box sx={{ flexGrow: 6 }}>
-              card list 2房型（帶日式房間）帶泳池 [日式西式客房] [禁煙] [海景]
-              日式寢具 x 3 單人床 x 4 129m² 1–7 位住客 禁煙 $2,964.87
-              包稅與其他費用 1 間房 2 位住客 1 晚 選擇日期 Semi Western-Style
-              Room 池畔露台（燈火通明） 查看客房詳細資訊
-            </Box>
-          </Stack>
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          <Stack direction="row">
-            <Box sx={{ flexGrow: 4 }}>
-              評分和評價 5 Exceptional 來自認證住客的 24 則評價 地點 4.8
-              設施與設備 4.9 服務與工作人員 5 舒適與整潔度 5 沐浴 4.8 餐飲 4.7
-            </Box>
-            <Box sx={{ flexGrow: 6 }}>
-              card list 排序 最近期 評價分數 所有評分 Anonymous | Japan 日本
-              |年齡：50-59 歲 | 親子共遊 5 發布日：3/1/2023
-              今回年末年始で4連泊したのですが、
-              調理用具、洗濯機、乾燥機など全て揃っており、無いものがなかったくらい充実してました。子供のおもちゃの乾電池もあるかどうか聞いてみたら持ってきて下さいました！すごい！
-              年末ということで、宮古ソーキソバやシャンパン、メロン(最高級に美味)も用意してくだり、年始ということで鏡餅やお花をお部屋に飾ってくれたりと、最高でした。
-              ちなみに冷蔵庫のピールやドリンクは無料で追加もできます。個人的にはシークワサーのバヤリースが沖縄限定で美味しかったので追加しました。
-              置いているアメニティや、洗顔、化粧品なども、良いものを使っており、高級宿の感じを受けます。
-              温水プールもあるヴィラでしたが、こちらは年末年始の時期なのに、日中は入れましたし子供が喜んでました。
-              ただ、夏なら夜まで入れたのになーと少し時期的に残念。
-              宿泊代は高級ですが、その価値に見合ったサービスではないでしょうか。
-              大変有意義な休日旅行となりました。 ありがとうございました。
-              また今度は夏休みにリピートしたいです。 回報 有幫助 翻譯 顯示更多 1
-              2 3 24 項中的 1 - 10 項評價
-            </Box>
-          </Stack>
         </Box>
 
         <Box

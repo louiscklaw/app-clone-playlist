@@ -20,7 +20,7 @@ http://localhost:3000/hkg/zh-hk
 http://localhost:3000/hkg/zh-hk/ask
 
 # hotel introduction
-https://travel.rakuten.com/hkg/zh-hk/hotel_info_item/cnt_japan/sub_okinawa/cty_onna_village/10123456796048/
+https://travel.rakuten.com/hkg/zh-hk/hotel_info_item/cnt_japan/sub_okinawa/cty_miyakojima_city/10123456795958
 http://localhost:3000/hkg/zh-hk/hotel_info_item/cnt_japan/sub_okinawa/cty_miyakojima_city/10123456795958
 
 ```
