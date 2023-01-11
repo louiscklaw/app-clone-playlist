@@ -23,6 +23,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShareIcon from "@mui/icons-material/Share";
+import CircularProgressWithLabel from "components/CircularProgressWithLabel";
 
 import {
   Grid,
@@ -90,7 +91,6 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 // import AliceCarouselWrap from "./AliceCarouselWrap";
-// import CircularProgressWithLabel from "./CircularProgressWithLabel";
 
 import AppBar from "components/AppBar";
 import BottomDownloadApp from "components/BottomDownloadApp";
@@ -245,23 +245,40 @@ export default () => {
               }}
             >
               <Stack direction="column">
-                <div>
-                  <Typography variant="subtitle1" fontWeight="bold">
-                    5 Exceptional
-                  </Typography>
-                  <Typography
-                    variant="subtitle2"
-                    sx={{ color: color.textDeepGrey }}
-                  >
-                    來自認證住客的 24 則評價
-                  </Typography>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: "1rem",
+                  }}
+                >
+                  <CircularProgressWithLabel
+                    size="5rem"
+                    value={5}
+                    thickness={5}
+                    sx={{ color: color.accentGreen }}
+                    text_sx={{ fontSize: "2rem" }}
+                  />
+                  <div>
+                    <Typography variant="subtitle1" fontWeight="bold">
+                      5 Exceptional
+                    </Typography>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ color: color.textDeepGrey }}
+                    >
+                      來自認證住客的 24 則評價
+                    </Typography>
+                  </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <div style={{ flexGrow: 1 }}></div>
                   <Button>查看更多詳細資訊</Button>
                 </div>
               </Stack>
-              <Stack direction="column">
+              <Divider sx={{ marginTop: "1rem" }} />
+              <Stack direction="column" sx={{ marginTop: "1rem" }}>
                 <div>
                   <Typography variant="body2" fontSize="0.8rem">
                     這棟別墅是別墅風格的夏威夷公寓出租。 所有 12
