@@ -8,7 +8,7 @@ npm run into_docker
 
 # inside docker
 
-./entry.sh
+./dev.sh          # if you're running in production./entry.sh
 ```
 
 http://localhost:3000/hkg/zh-hk

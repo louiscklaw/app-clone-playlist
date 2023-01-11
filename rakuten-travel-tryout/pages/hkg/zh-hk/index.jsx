@@ -72,9 +72,14 @@ import color from "./color";
 
 const AskLink = React.forwardRef(({ onClick, href }, ref) => {
   return (
-    <a href={href} onClick={onClick} ref={ref}>
-      <Typography sx={{}}>意見</Typography>
-    </a>
+    <>
+      <a href={href} onClick={onClick} ref={ref}>
+        <Stack direction="row" spacing={4}>
+          <QuestionMarkIcon />
+          <Typography sx={{}}>意見</Typography>
+        </Stack>
+      </a>
+    </>
   );
 });
 
@@ -226,14 +231,11 @@ export default () => {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
-            <Stack direction="row" spacing={4}>
-              <QuestionMarkIcon />
-              <Link href="/hkg/zh-hk/ask" passHref legacyBehavior>
-                <AskLink />
-              </Link>
-            </Stack>
-          </ListItemButton>
+          <Link href="/hkg/zh-hk/ask" passHref legacyBehavior>
+            <ListItemButton>
+              <AskLink />
+            </ListItemButton>
+          </Link>
         </ListItem>
       </List>
     </Box>
