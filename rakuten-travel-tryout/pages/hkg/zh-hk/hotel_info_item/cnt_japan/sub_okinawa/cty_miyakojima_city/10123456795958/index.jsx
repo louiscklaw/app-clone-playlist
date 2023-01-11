@@ -422,49 +422,28 @@ export default () => {
           <TabPanel value={value} index={0}>
             客房內容
             <Box sx={{ width: "100%" }}>
-              <ButtonGroup aria-label="outlined primary button group" fullWidth>
+              <ButtonGroup
+                aria-label="outlined primary button group"
+                disableElevation
+              >
                 <Button
-                  sx={{
-                    backgroundColor: color.textColor6,
-                    color: color.white,
-                    borderRadius: "1rem",
-                    border: `5px solid ${color.white}`,
-                    width: "300px",
-                  }}
+                  variant="contained"
+                  color="primary"
+                  sx={{ width: "300px" }}
                 >
                   <SearchIcon />
                 </Button>
                 <Button
-                  sx={{
-                    backgroundColor: color.textColor6,
-                    color: color.white,
-                    borderRadius: "1rem",
-                    border: `5px solid ${color.white}`,
-                    width: "300px",
-                  }}
+                  variant="contained"
+                  color="secondary"
+                  sx={{ width: "300px" }}
                 >
                   <SearchIcon />
                 </Button>
-                <Button
-                  sx={{
-                    backgroundColor: color.textColor6,
-                    color: color.white,
-                    borderRadius: "1rem",
-                    border: `5px solid ${color.white}`,
-                    width: "300px",
-                  }}
-                >
+                <Button sx={{ width: "300px" }}>
                   <SearchIcon />
                 </Button>
-                <Button
-                  sx={{
-                    backgroundColor: color.textColor6,
-                    color: color.white,
-                    borderRadius: "1rem",
-                    border: `5px solid ${color.white}`,
-                    width: "300px",
-                  }}
-                >
+                <Button sx={{ width: "300px" }}>
                   <SearchIcon />
                 </Button>
               </ButtonGroup>

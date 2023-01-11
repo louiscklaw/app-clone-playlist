@@ -13,6 +13,7 @@ const black25 = "rgba(32,32,32,0.25)";
 
 const dimmed = "rgba(16,16,16,0.1)";
 
+const textWhite = "rgba(248,248,248,0.8)";
 const textBlack = "rgba(16,16,16,0.8)";
 const textGrey = "rgba(128,128,128,0.3)";
 const textMidGrey = "rgba(128,128,128,0.6)";
@@ -25,24 +26,25 @@ const textColor1 = "rgba(26, 188, 156,1.0)";
 const textColor6 = "rgba(22, 160, 133,1.0)";
 
 export default {
-  normalgreen,
   accentGreen,
-  lightGrey,
+  black25,
+  black50,
   deepGrey,
+  dimmed,
+  lightGrey,
   midGrey,
   midGreyTrans,
-  white,
-  white50,
-  white25,
-  dimmed,
+  normalgreen,
   textBlack,
-  textGrey,
-  textMidGrey,
-  textDeepGrey,
-  textDeepGreen,
-  textlightGreen,
   textColor1,
   textColor6,
-  black50,
-  black25,
+  textDeepGreen,
+  textDeepGrey,
+  textGrey,
+  textlightGreen,
+  textMidGrey,
+  textWhite,
+  white,
+  white25,
+  white50,
 };
