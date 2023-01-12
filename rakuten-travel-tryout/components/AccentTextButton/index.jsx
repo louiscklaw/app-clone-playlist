@@ -1,6 +1,6 @@
 import { Button, Typography } from "@mui/material";
 
-export default ({ text, onClick }) => {
+export default ({ text, onClick, button_sx }) => {
   return (
     <>
       <Button
@@ -9,6 +9,7 @@ export default ({ text, onClick }) => {
         disableRipple
         onClick={onClick}
         size="large"
+        sx={button_sx}
       >
         <Typography variant="body1" fontWeight="bold">
           {text}

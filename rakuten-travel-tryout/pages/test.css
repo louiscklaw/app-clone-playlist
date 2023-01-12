@@ -1,7 +1,10 @@
+.gold {
+  background-color:gold}
+
 .row {
-  display:flex;
+  display: flex;
   flex-direction: row;
-  gap:1rem;
+  gap: 1rem;
 }
 
 .send-to-right {
@@ -14,9 +17,9 @@
   align-items: center;
   gap: 0.3rem;
 }
-.option-plane{
+.option-plane {
   min-height: 10rem;
-  margin-bottom:3rem;
+  margin-bottom: 3rem;
 
   padding: 1rem;
 }

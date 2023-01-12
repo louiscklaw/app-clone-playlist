@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Stack, Typography } from "@mui/material";
+import { Grid, IconButton, Stack, Typography } from "@mui/material";
 import room_plans from "pages/api/room_plans";
 import { DeleteOutlined } from "@mui/icons-material";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -46,7 +46,7 @@ export default function RoomPlanDialog() {
         </Typography>
       </Button>
       <Dialog
-        open={true}
+        open={open}
         onClose={handleClose}
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
@@ -67,10 +67,15 @@ export default function RoomPlanDialog() {
             >
               住宿計劃詳細資訊
             </Typography>
-            <ClearIcon />
+            <IconButton onClick={handleClose}>
+              <ClearIcon />
+            </IconButton>
           </Stack>
         </DialogTitle>
-        <DialogContent dividers={scroll === "paper"}>
+        <DialogContent
+          dividers={scroll === "paper"}
+          style={{ paddingBottom: "5rem" }}
+        >
           <DialogContentText
             id="scroll-dialog-description"
             ref={descriptionElementRef}
@@ -81,7 +86,6 @@ export default function RoomPlanDialog() {
                 style={{
                   width: "45%",
                   minWidth: "300px",
-                  backgroundColor: "gold",
                 }}
               >
                 <Box
@@ -94,35 +98,56 @@ export default function RoomPlanDialog() {
                 ></Box>
               </Box>
               <Box style={{ flexGrow: 1 }}>
-                <Stack direction="row">
-                  <Box style={{ width: "70%" }}>
-                    <Typography
-                      variant="subtitle1"
-                      fontWeight="bold"
-                      color={color.textBlack}
-                    >
-                      {room_plans[0].name}
-                    </Typography>
-                  </Box>
-                  <Box style={{ flexGrow: 1, textAlign: "right" }}>
-                    <Typography
-                      variant="h6"
-                      fontWeight="bold"
-                      color={color.textBlack}
-                    >
-                      {room_plans[0].price.currency}
-                      {room_plans[0].price.value}
-                    </Typography>
-                    <Typography variant="body2" color={color.textDeepGrey}>
-                      {room_plans[0].price.description}
-                    </Typography>
-                    <AccentTextButton
-                      text={"選擇日期"}
-                      onClick={(e) => alert("helloworld")}
-                    />
-                  </Box>
+                <Stack
+                  direction="column"
+                  style={{ height: "100%", minHeight: "300px" }}
+                  justifyContent="space-between"
+                >
+                  <Stack direction="row">
+                    <Box style={{ width: "70%" }}>
+                      <Typography
+                        variant="subtitle1"
+                        fontWeight="bold"
+                        color={color.textBlack}
+                      >
+                        {room_plans[0].name}
+                      </Typography>
+                    </Box>
+                    <Box style={{ flexGrow: 1, textAlign: "right" }}>
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        color={color.textBlack}
+                      >
+                        {room_plans[0].price.currency}
+                        {room_plans[0].price.value}
+                      </Typography>
+                      <Typography variant="body2" color={color.textDeepGrey}>
+                        {room_plans[0].price.description}
+                      </Typography>
+                      <AccentTextButton
+                        text={"選擇日期"}
+                        onClick={(e) => alert("helloworld")}
+                        button_sx={{ marginTop: "1rem", marginBottom: "1rem" }}
+                      />
+                    </Box>
+                  </Stack>
+
+                  <Grid container>
+                    {room_plans[0].points.map((p) => (
+                      <Grid item xs={6}>
+                        <div class="row" style={{ gap: "0.3rem" }}>
+                          <Typography variant="body2" color={color.textBlack}>
+                            {p?.icon}
+                          </Typography>
+                          <Typography variant="body2" color={color.textBlack}>
+                            {p?.text}
+                          </Typography>
+                        </div>
+                      </Grid>
+                    ))}
+                  </Grid>
                 </Stack>
-                {/* <pre>{JSON.stringify(room_plans[0], null, 2)}</pre> */}
               </Box>
             </Stack>
           </DialogContentText>
