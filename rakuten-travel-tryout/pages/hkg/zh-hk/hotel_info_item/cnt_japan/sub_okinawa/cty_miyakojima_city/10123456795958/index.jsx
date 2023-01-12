@@ -257,7 +257,23 @@ function a11yProps(index) {
 function RoomPlan({ plan }) {
   return (
     <>
-      <Typography>{plan.name}</Typography>
+      <div class="row">
+        <div style={{ width: "65%" }}>
+          <Typography
+            variant="body1"
+            fontWeight="bold"
+            color={color.accentGreen}
+          >
+            {plan.name}
+          </Typography>
+
+          <Typography>{plan.description}</Typography>
+          <Typography>{JSON.stringify(plan.photos, null, 2)}</Typography>
+        </div>
+        <div style={{ flexGrow: 1 }}>
+          <Typography>{JSON.stringify(plan.price)}</Typography>
+        </div>
+      </div>
     </>
   );
 }

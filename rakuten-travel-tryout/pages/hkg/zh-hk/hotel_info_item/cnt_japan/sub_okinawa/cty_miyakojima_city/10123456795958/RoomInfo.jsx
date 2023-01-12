@@ -102,7 +102,7 @@ import BottomBreadcrumbs from "components/BottomBreadcrumbs";
 import covin_action from "pages/api/covin_action";
 import hotel_info from "pages/api/hotel_info";
 import ClearIcon from "@mui/icons-material/Clear";
-import RoomDetailDialog from "./RoomPlanDialog";
+import RoomDetailDialog from "./RoomDetailDialog";
 
 export default () => {
   const specials = [
