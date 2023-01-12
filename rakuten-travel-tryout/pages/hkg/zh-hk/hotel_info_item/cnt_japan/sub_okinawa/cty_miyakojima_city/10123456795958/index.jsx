@@ -108,6 +108,8 @@ import RoomPlanDialog from "./RoomPlanDialog";
 import PriceLabel from "components/PriceLabel";
 import MarksAndComments from "components/MarksAndComments";
 import TopPlate from "components/HotelInfoItem/TopPlate";
+import MidPlate from "components/HotelInfoItem/MidPlate";
+import FacilitiesPlate from "components/HotelInfoItem/FacilitiesPlate";
 
 function FilterButtonSearch() {
   return (
@@ -319,126 +321,12 @@ export default () => {
           paddingRight: { xs: "3vw", xl: "10vw" },
         }}
       >
-        <Stack direction="column" spacing={2}>
-          <Stack direction="row">
-            <Box sx={{ flexGrow: 1 }}>
-              <Stack direction="column" spacing={2}>
-                <Typography variant="h6" fontWeight="bold">
-                  宮古島上野費利斯別墅套房酒店
-                </Typography>
-                <Stack direction="row" alignItems="center">
-                  <Chip label="度假村酒店" />
-                  <Typography variant="subtitle2" fontSize="bold">
-                    Rakuten Travel Gold Award 2021
-                  </Typography>
-                </Stack>
-                <Typography
-                  variant="subtitle2"
-                  fontWeight="bold"
-                  sx={{ color: color.textColor6 }}
-                >
-                  設有私人溫水游泳池和廚房的別墅度假村
-                </Typography>
-              </Stack>
-            </Box>
-            <IconButton>
-              <ShareIcon />
-            </IconButton>
-          </Stack>
-
-          <Stack direction="row" spacing={3}>
-            <Box sx={{ width: "55%", borderRadius: "1rem" }}>
-              <Stack direction="column" spacing={0.5} sx={{ height: "100%" }}>
-                <Box
-                  sx={{
-                    // backgroundColor: "gold",
-                    backgroundImage: `url('https://trvis.r10s.com/d/strg/ctrl/26/437b86622a9af43c03f2628882661486821b7879.47.9.26.3.jpg')`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    borderRadius: "1rem 1rem 0 0 ",
-                    flexGrow: 1,
-                  }}
-                ></Box>
-                <Stack direction="row" spacing={0.5} sx={{ height: "100px" }}>
-                  <Box
-                    sx={{
-                      // backgroundColor: "green",
-                      backgroundImage: `url('https://trvis.r10s.com/d/strg/ctrl/26/91d046af12015df16c75e62ab5eebe05154f4a0b.47.1.26.2.jpg')`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      height: "100px",
-                      width: "20%",
-                      borderRadius: "0 0 0 1rem",
-                    }}
-                  ></Box>
-                  <Box
-                    sx={{
-                      backgroundColor: "green",
-                      height: "100px",
-                      width: "20%",
-                    }}
-                  >
-                    2
-                  </Box>
-                  <Box
-                    sx={{
-                      backgroundColor: "green",
-                      height: "100px",
-                      width: "20%",
-                    }}
-                  >
-                    3
-                  </Box>
-                  <Box
-                    sx={{
-                      backgroundColor: "green",
-                      height: "100px",
-                      width: "20%",
-                    }}
-                  >
-                    4
-                  </Box>
-                  <Box
-                    sx={{
-                      backgroundImage: `url('https://trvis.r10s.com/d/strg/ctrl/26/91d046af12015df16c75e62ab5eebe05154f4a0b.47.1.26.2.jpg')`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      height: "100px",
-                      width: "20%",
-                      borderRadius: "0 0 1rem 0",
-                    }}
-                  >
-                    <div
-                      style={{
-                        backgroundColor: color.black50,
-                        height: "100%",
-                        width: "100%",
-
-                        borderRadius: "0 0 1rem 0",
-
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <InsertPhotoIcon
-                        sx={{ color: color.white, fontSize: "1rem" }}
-                      />
-                      <Typography
-                        variant="caption"
-                        sx={{ color: color.white, fontSize: "0.8rem" }}
-                      >
-                        瀏覽所有照片
-                      </Typography>
-                    </div>
-                  </Box>
-                </Stack>
-              </Stack>
-            </Box>
-          </Stack>
+        <div class="column">
           <TopPlate />
-        </Stack>
+          <MidPlate />
+
+          <FacilitiesPlate />
+        </div>
 
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -796,139 +684,6 @@ export default () => {
             </Stack>
           </Stack>
         </Box>
-
-        <Stack spacing={2}>
-          <Typography variant="h5" fontSize={"1.5rem"}>
-            特色和設施
-          </Typography>
-
-          <Box
-            sx={{
-              width: "100%",
-              paddingBottom: "1rem",
-              paddingTop: "1rem",
-              borderBottom: `3px solid ${color.lightGrey}`,
-            }}
-          >
-            <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
-              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-                住宿設施類型
-              </Typography>
-              <Stack direction="row" justifyContent="flex-start" spacing={5}>
-                {["度假村酒店"].map((l) => (
-                  <Stack direction="row" justifyContent="center" spacing={1}>
-                    <CreditCardIcon />
-                    <Typography variant="body2">{l}</Typography>
-                  </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </Box>
-
-          <Box
-            sx={{
-              width: "100%",
-              paddingBottom: "1rem",
-              paddingTop: "1rem",
-              borderBottom: `3px solid ${color.lightGrey}`,
-            }}
-          >
-            <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
-              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-                住宿設施設備
-              </Typography>
-              <Stack direction="row" justifyContent="flex-start" spacing={5}>
-                {["停車場"].map((l) => (
-                  <Stack direction="row" justifyContent="center" spacing={1}>
-                    <CreditCardIcon />
-                    <Typography variant="body2">{l}</Typography>
-                  </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </Box>
-
-          <Box
-            sx={{
-              width: "100%",
-              paddingBottom: "1rem",
-              paddingTop: "1rem",
-              borderBottom: `3px solid ${color.lightGrey}`,
-            }}
-          >
-            <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
-              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-                可用付款方式
-              </Typography>
-              <Stack direction="row" justifyContent="flex-start" spacing={5}>
-                {["Visa 卡", "萬事達卡", "JCB 卡", "可使用現金付款"].map(
-                  (l) => (
-                    <Stack direction="row" justifyContent="center" spacing={1}>
-                      <CreditCardIcon />
-                      <Typography variant="body2">{l}</Typography>
-                    </Stack>
-                  )
-                )}
-              </Stack>
-            </Stack>
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              paddingBottom: "1rem",
-              paddingTop: "1rem",
-              borderBottom: `3px solid ${color.lightGrey}`,
-            }}
-          >
-            <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
-              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-                支援語言
-              </Typography>
-              <Stack direction="row" justifyContent="flex-start" spacing={5}>
-                {["日文", "英文"].map((l) => (
-                  <Stack direction="row" justifyContent="center" spacing={1}>
-                    <LanguageIcon />
-                    <Typography variant="body2">{l}</Typography>
-                  </Stack>
-                ))}
-              </Stack>
-            </Stack>
-          </Box>
-
-          <Box
-            sx={{
-              width: "100%",
-              paddingBottom: "1rem",
-              paddingTop: "1rem",
-              borderBottom: `3px solid ${color.lightGrey}`,
-            }}
-          >
-            <Stack direction="column" spacing={2}>
-              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-                住宿須知
-              </Typography>
-              <Typography variant="body2">
-                如果入住時間超過預定時間，請務必與我們聯繫。
-              </Typography>
-            </Stack>
-          </Box>
-
-          <Box
-            sx={{
-              width: "100%",
-              paddingBottom: "1rem",
-              paddingTop: "1rem",
-              borderBottom: `3px solid ${color.lightGrey}`,
-            }}
-          >
-            <Stack direction="column" spacing={2}>
-              <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>
-                推薦景點
-              </Typography>
-              <Typography variant="body2">距離上野德國文化村 826m</Typography>
-            </Stack>
-          </Box>
-        </Stack>
       </Box>
       <BottomBreadcrumbs />
       <BottomLink />
