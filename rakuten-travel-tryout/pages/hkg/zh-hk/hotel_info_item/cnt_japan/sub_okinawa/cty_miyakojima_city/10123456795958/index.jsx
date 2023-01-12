@@ -106,6 +106,8 @@ import RoomInfo from "./RoomInfo";
 import room_plans from "pages/api/room_plans";
 import RoomPlanDialog from "./RoomPlanDialog";
 import PriceLabel from "components/PriceLabel";
+import MarksAndComments from "components/MarksAndComments";
+import TopPlate from "components/HotelInfoItem/TopPlate";
 
 function FilterButtonSearch() {
   return (
@@ -317,7 +319,7 @@ export default () => {
           paddingRight: { xs: "3vw", xl: "10vw" },
         }}
       >
-        <Stack direction="column" spacing={2} sx={{ display: "none" }}>
+        <Stack direction="column" spacing={2}>
           <Stack direction="row">
             <Box sx={{ flexGrow: 1 }}>
               <Stack direction="column" spacing={2}>
@@ -434,149 +436,8 @@ export default () => {
                 </Stack>
               </Stack>
             </Box>
-            <Box
-              sx={{
-                border: `3px solid ${color.lightGrey}`,
-                borderRadius: "1rem",
-                padding: "1.1rem",
-                width: "45%",
-              }}
-            >
-              <Stack direction="column">
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "1rem",
-                  }}
-                >
-                  <CircularProgressWithLabel
-                    size="5rem"
-                    value={5}
-                    thickness={5}
-                    sx={{ color: color.accentGreen }}
-                    text_sx={{ fontSize: "2rem" }}
-                  />
-                  <div>
-                    <Typography variant="subtitle1" fontWeight="bold">
-                      5 Exceptional
-                    </Typography>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{ color: color.textDeepGrey }}
-                    >
-                      來自認證住客的 24 則評價
-                    </Typography>
-                  </div>
-                </div>
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <div style={{ flexGrow: 1 }}></div>
-                  <Button>查看更多詳細資訊</Button>
-                </div>
-              </Stack>
-              <Divider sx={{ marginTop: "1rem" }} />
-              <Stack direction="column" sx={{ marginTop: "1rem" }}>
-                <div>
-                  <Typography variant="body2" fontSize="0.8rem">
-                    這棟別墅是別墅風格的夏威夷公寓出租。 所有 12
-                    棟別墅均設有溫水游泳池，私密性強。
-                    廚房、家具、家電一應俱全，可長期入住。
-                    在您逗留期間，這將是一個只屬於您的私人空間，所以請隨意使用。
-                  </Typography>
-                </div>
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <div style={{ flexGrow: 1 }}></div>
-                  <Button>查看更多詳細資訊</Button>
-                </div>
-              </Stack>
-              <Divider sx={{ marginTop: "1rem" }} />
-              <Stack direction="column">
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                    marginTop: "1rem",
-                  }}
-                >
-                  <div>
-                    <Typography variant="subtitle1" fontWeight="bold">
-                      住宿設施設備
-                    </Typography>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      gap: "1rem",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "0.3rem",
-                        alignItems: "baseline",
-                      }}
-                    >
-                      <DoneIcon style={{ fontSize: "1rem" }} />
-                      <Typography variant="body1">度假村酒店</Typography>
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "0.3rem",
-                        alignItems: "baseline",
-                      }}
-                    >
-                      <DoneIcon style={{ fontSize: "1rem" }} />
-                      <Typography variant="body1">停車場</Typography>
-                    </div>
-                  </div>
-                </div>
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <div style={{ flexGrow: 1 }}></div>
-                  <Button>查看更多詳細資訊</Button>
-                </div>
-              </Stack>
-
-              <Divider sx={{ marginTop: "1rem" }} />
-
-              <Stack direction="row" spacing={3} sx={{ marginTop: "1rem" }}>
-                <div
-                  style={{
-                    backgroundImage: `url('https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg')`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-
-                    width: "50%",
-                    minWidth: "150px",
-                    height: "200px",
-                    borderRadius: "1rem",
-                  }}
-                ></div>
-
-                <Box sx={{ padding: "1rem" }}>
-                  <Typography
-                    variant="subtitle1"
-                    fontWeight="bold"
-                    sx={{ color: color.textDeepGreen }}
-                  >
-                    日本, 906-0203, 935-8 Ueno Miyaguni, Miyakojima-shi, Okinawa
-                  </Typography>
-                  <ul>
-                    <li>
-                      <Typography variant="body2">
-                        由宮古機場駕車約 15 分鐘可達
-                      </Typography>
-                    </li>
-                  </ul>
-                </Box>
-              </Stack>
-            </Box>
           </Stack>
+          <TopPlate />
         </Stack>
 
         <Box sx={{ width: "100%" }}>
@@ -592,7 +453,11 @@ export default () => {
           </Box>
           <TabPanel value={value} index={0}>
             客房內容
-            <Box sx={{ width: "100%" }}>
+            <Box
+              sx={{
+                width: "100%",
+              }}
+            >
               <ButtonGroup
                 aria-label="outlined primary button group"
                 disableElevation
@@ -737,20 +602,7 @@ export default () => {
                 </div>
               </div>
             </div>
-            <Box sx={{ width: "100%" }}>
-              <Stack direction="row">
-                <Box sx={{ flexGrow: 4 }}>
-                  房間不含餐計劃 [不含餐] 外觀照片 帶燈（1間臥室） 8
-                  該計劃僅適用於房費。 請注意，不提供餐點。 查看住宿計劃詳細資訊
-                </Box>
-                <Box sx={{ flexGrow: 6 }}>
-                  card list 2房型（帶日式房間）帶泳池 [日式西式客房] [禁煙]
-                  [海景] 日式寢具 x 3 單人床 x 4 129m² 1–7 位住客 禁煙 $2,964.87
-                  包稅與其他費用 1 間房 2 位住客 1 晚 選擇日期 Semi
-                  Western-Style Room 池畔露台（燈火通明） 查看客房詳細資訊
-                </Box>
-              </Stack>
-            </Box>
+            <MarksAndComments sx={{ backgroundColor: "gold" }} />
             <Box sx={{ width: "100%" }}>
               <Stack direction="row">
                 <Box sx={{ flexGrow: 4 }}>
