@@ -104,6 +104,7 @@ import hotel_info from "pages/api/hotel_info";
 import ClearIcon from "@mui/icons-material/Clear";
 import RoomInfo from "./RoomInfo";
 import room_plans from "pages/api/room_plans";
+import RoomPlanDialog from "./RoomPlanDialog";
 
 function FilterButtonSearch() {
   return (
@@ -274,6 +275,7 @@ function RoomPlan({ plan }) {
           <Typography>{JSON.stringify(plan.price)}</Typography>
         </div>
       </div>
+      <RoomPlanDialog />
     </>
   );
 }

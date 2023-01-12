@@ -7,7 +7,7 @@ const room_plans = [
       value: "3581.62",
       currency: "$",
       description: `
-      包稅與其他費用
+包稅與其他費用
 1 間房 2 位住客 1 晚
 `.trim(),
     },
