@@ -245,7 +245,7 @@ function a11yProps(index) {
   };
 }
 
-export default () => {
+export default (props) => {
   const [value, setValue] = React.useState([20, 37]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -253,100 +253,65 @@ export default () => {
 
   return (
     <>
-      <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
-            <Tab label="客房" {...a11yProps(0)} />
-            <Tab label="住宿計劃" {...a11yProps(1)} />
-          </Tabs>
-        </Box>
-        <TabPanel value={value} index={0}>
-          客房內容
-          <Box
-            sx={{
-              width: "100%",
-            }}
-          >
-            <ButtonGroup
-              aria-label="outlined primary button group"
-              disableElevation
-              fullWidth
+      <div {...props}>
+        <Box sx={{ width: "100%" }}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
             >
-              <Button
-                variant="contained"
-                color="secondary"
-                sx={{
-                  borderRadius: "1rem",
-                  borderRight: "0.3rem solid white !important",
-                }}
+              <Tab label="客房" {...a11yProps(0)} />
+              <Tab label="住宿計劃" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+            客房內容
+            <Box
+              sx={{
+                width: "100%",
+              }}
+            >
+              <ButtonGroup
+                aria-label="outlined primary button group"
+                disableElevation
+                fullWidth
               >
-                <CalendarMonthIcon
-                  sx={{ fontSize: "2rem", color: color.textColor6 }}
-                />
-                <div
-                  style={{
-                    paddingLeft: "0.3rem",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{
+                    borderRadius: "1rem",
+                    borderRight: "0.3rem solid white !important",
                   }}
                 >
-                  <Typography variant="subtitle2">入住:</Typography>
-                  <Typography
-                    variant="h6"
-                    fontWeight="bold"
-                    sx={{ fontSize: "1.2rem", color: color.textColor6 }}
+                  <CalendarMonthIcon
+                    sx={{ fontSize: "2rem", color: color.textColor6 }}
+                  />
+                  <div
+                    style={{
+                      paddingLeft: "0.3rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
                   >
-                    11/1/2023
-                  </Typography>
-                </div>
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                sx={{
-                  borderLeft: "0.3rem solid white",
-                  borderRight: "0.3rem solid white !important",
-                }}
-              >
-                <CalendarMonthIcon
-                  sx={{ fontSize: "2rem", color: color.textColor6 }}
-                />
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <Typography variant="subtitle2">入住:</Typography>
-                  <Typography
-                    variant="h6"
-                    fontWeight="bold"
-                    sx={{ fontSize: "1.2rem", color: color.textColor6 }}
-                  >
-                    11/1/2023
-                  </Typography>
-                </div>
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                sx={{
-                  borderLeft: "0.3rem solid white",
-                  borderRight: "0.3rem solid white !important",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "0.5rem",
+                    <Typography variant="subtitle2">入住:</Typography>
+                    <Typography
+                      variant="h6"
+                      fontWeight="bold"
+                      sx={{ fontSize: "1.2rem", color: color.textColor6 }}
+                    >
+                      11/1/2023
+                    </Typography>
+                  </div>
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{
+                    borderLeft: "0.3rem solid white",
+                    borderRight: "0.3rem solid white !important",
                   }}
                 >
                   <CalendarMonthIcon
@@ -359,90 +324,128 @@ export default () => {
                       alignItems: "flex-start",
                     }}
                   >
-                    <Typography variant="subtitle2">住客：</Typography>
+                    <Typography variant="subtitle2">入住:</Typography>
                     <Typography
                       variant="h6"
                       fontWeight="bold"
                       sx={{ fontSize: "1.2rem", color: color.textColor6 }}
                     >
-                      每間 2 人 • 1 間房
+                      11/1/2023
                     </Typography>
                   </div>
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{
+                    borderLeft: "0.3rem solid white",
+                    borderRight: "0.3rem solid white !important",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <CalendarMonthIcon
+                      sx={{ fontSize: "2rem", color: color.textColor6 }}
+                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <Typography variant="subtitle2">住客：</Typography>
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        sx={{ fontSize: "1.2rem", color: color.textColor6 }}
+                      >
+                        每間 2 人 • 1 間房
+                      </Typography>
+                    </div>
+                  </div>
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    width: "20%",
+                    minWidth: "600px",
+                    borderRadius: "1rem",
+                    borderLeft: "0.3rem solid white",
+                  }}
+                >
+                  <SearchIcon />
+                </Button>
+              </ButtonGroup>
+            </Box>
+            <div style={{ marginTop: "1rem" }}>
+              <Button variant="outlined" color="primary">
+                <div class="row-center" style={{ padding: "0.1rem" }}>
+                  <SettingsInputCompositeIcon sx={{ fontSize: "1rem" }} />
+                  <Typography variant="body1" fontWeight="bold">
+                    篩選條件
+                  </Typography>
                 </div>
               </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  width: "20%",
-                  minWidth: "600px",
-                  borderRadius: "1rem",
-                  borderLeft: "0.3rem solid white",
-                }}
-              >
-                <SearchIcon />
-              </Button>
-            </ButtonGroup>
-          </Box>
-          <div style={{ marginTop: "1rem" }}>
-            <Button variant="outlined" color="primary">
-              <div class="row-center" style={{ padding: "0.1rem" }}>
-                <SettingsInputCompositeIcon sx={{ fontSize: "1rem" }} />
-                <Typography variant="body1" fontWeight="bold">
-                  篩選條件
-                </Typography>
+              <div style={{ marginTop: "1rem" }}>
+                <FilterOptions />
               </div>
-            </Button>
-            <div style={{ marginTop: "1rem" }}>
-              <FilterOptions />
-            </div>
-            <div style={{ marginTop: "1rem" }}>
-              <div></div>
-              <div class="row">
-                <div class="send-to-right" />
-                <FilterButtonClear />
-                <FilterButtonSearch />
+              <div style={{ marginTop: "1rem" }}>
+                <div></div>
+                <div class="row">
+                  <div class="send-to-right" />
+                  <FilterButtonClear />
+                  <FilterButtonSearch />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div style={{ width: "50%" }}>
-              <RoomInfo />
-            </div>
-            <div style={{ width: "50%" }}>
-              <div>
-                <RoomPlan plan={room_plans[0]} />
+            <div class="row">
+              <div style={{ width: "50%" }}>
+                <RoomInfo />
+              </div>
+              <div style={{ width: "50%" }}>
+                <div>
+                  <RoomPlan plan={room_plans[0]} />
+                </div>
               </div>
             </div>
-          </div>
-          <Box sx={{ width: "100%" }}>
-            <Stack direction="row">
-              <Box sx={{ flexGrow: 4 }}>
-                評分和評價 5 Exceptional 來自認證住客的 24 則評價 地點 4.8
-                設施與設備 4.9 服務與工作人員 5 舒適與整潔度 5 沐浴 4.8 餐飲 4.7
-              </Box>
-              <Box sx={{ flexGrow: 6 }}>
-                card list 排序 最近期 評價分數 所有評分 Anonymous | Japan 日本
-                |年齡：50-59 歲 | 親子共遊 5 發布日：3/1/2023
-                今回年末年始で4連泊したのですが、
-                調理用具、洗濯機、乾燥機など全て揃っており、無いものがなかったくらい充実してました。子供のおもちゃの乾電池もあるかどうか聞いてみたら持ってきて下さいました！すごい！
-                年末ということで、宮古ソーキソバやシャンパン、メロン(最高級に美味)も用意してくだり、年始ということで鏡餅やお花をお部屋に飾ってくれたりと、最高でした。
-                ちなみに冷蔵庫のピールやドリンクは無料で追加もできます。個人的にはシークワサーのバヤリースが沖縄限定で美味しかったので追加しました。
-                置いているアメニティや、洗顔、化粧品なども、良いものを使っており、高級宿の感じを受けます。
-                温水プールもあるヴィラでしたが、こちらは年末年始の時期なのに、日中は入れましたし子供が喜んでました。
-                ただ、夏なら夜まで入れたのになーと少し時期的に残念。
-                宿泊代は高級ですが、その価値に見合ったサービスではないでしょうか。
-                大変有意義な休日旅行となりました。 ありがとうございました。
-                また今度は夏休みにリピートしたいです。 回報 有幫助 翻譯 顯示更多
-                1 2 3 24 項中的 1 - 10 項評價
-              </Box>
-            </Stack>
-          </Box>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          住宿計劃內容
-        </TabPanel>
-      </Box>
+            <Box sx={{ width: "100%" }}>
+              <Stack direction="row">
+                <Box sx={{ flexGrow: 4 }}>
+                  評分和評價 5 Exceptional 來自認證住客的 24 則評價 地點 4.8
+                  設施與設備 4.9 服務與工作人員 5 舒適與整潔度 5 沐浴 4.8 餐飲
+                  4.7
+                </Box>
+                <Box sx={{ flexGrow: 6 }}>
+                  card list 排序 最近期 評價分數 所有評分 Anonymous | Japan 日本
+                  |年齡：50-59 歲 | 親子共遊 5 發布日：3/1/2023
+                  今回年末年始で4連泊したのですが、
+                  調理用具、洗濯機、乾燥機など全て揃っており、無いものがなかったくらい充実してました。子供のおもちゃの乾電池もあるかどうか聞いてみたら持ってきて下さいました！すごい！
+                  年末ということで、宮古ソーキソバやシャンパン、メロン(最高級に美味)も用意してくだり、年始ということで鏡餅やお花をお部屋に飾ってくれたりと、最高でした。
+                  ちなみに冷蔵庫のピールやドリンクは無料で追加もできます。個人的にはシークワサーのバヤリースが沖縄限定で美味しかったので追加しました。
+                  置いているアメニティや、洗顔、化粧品なども、良いものを使っており、高級宿の感じを受けます。
+                  温水プールもあるヴィラでしたが、こちらは年末年始の時期なのに、日中は入れましたし子供が喜んでました。
+                  ただ、夏なら夜まで入れたのになーと少し時期的に残念。
+                  宿泊代は高級ですが、その価値に見合ったサービスではないでしょうか。
+                  大変有意義な休日旅行となりました。 ありがとうございました。
+                  また今度は夏休みにリピートしたいです。 回報 有幫助 翻譯
+                  顯示更多 1 2 3 24 項中的 1 - 10 項評價
+                </Box>
+              </Stack>
+            </Box>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            住宿計劃內容
+          </TabPanel>
+        </Box>
+      </div>
     </>
   );
 };
