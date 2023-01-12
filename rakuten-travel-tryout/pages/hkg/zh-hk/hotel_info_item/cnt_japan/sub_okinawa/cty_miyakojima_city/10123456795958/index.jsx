@@ -105,6 +105,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import RoomInfo from "./RoomInfo";
 import room_plans from "pages/api/room_plans";
 import RoomPlanDialog from "./RoomPlanDialog";
+import PriceLabel from "components/PriceLabel";
 
 function FilterButtonSearch() {
   return (
@@ -269,12 +270,32 @@ function RoomPlan({ plan }) {
           </Typography>
 
           <Typography>{plan.description}</Typography>
-          <Typography>{JSON.stringify(plan.photos, null, 2)}</Typography>
+          <Stack direction="row" spacing={2}>
+            {plan.points.map((p) => (
+              <>
+                <Typography variant="body2" color={color.textDeepGrey}>
+                  {p.icon}
+                  {p.text}
+                </Typography>
+              </>
+            ))}
+          </Stack>
+
+          {/* <Typography>{JSON.stringify(plan.photos, null, 2)}</Typography> */}
         </div>
+
         <div style={{ flexGrow: 1 }}>
-          <Typography>{JSON.stringify(plan.price)}</Typography>
+          <Stack direction="row" alignItems="center">
+            <PriceLabel
+              currency={plan.price.currency}
+              value={plan.price.value}
+              description={plan.price.description}
+            />
+          </Stack>
+          <Typography>{plan.price.description}</Typography>
         </div>
       </div>
+      <div style={{ width: 150, height: 150, backgroundColor: "cyan" }}></div>
       <RoomPlanDialog />
     </>
   );
