@@ -20,7 +20,10 @@ dotenv_1.default.config();
 const prisma = new client_1.PrismaClient();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
+// routes
+const index_1 = __importDefault(require("./routes/index"));
 app.use((0, cors_1.default)());
+(0, index_1.default)(app);
 app.get('/', (req, res) => {
     res.send('Express + TypeScript Server');
 });

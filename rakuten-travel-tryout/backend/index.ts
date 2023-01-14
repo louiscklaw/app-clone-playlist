@@ -9,7 +9,12 @@ const prisma = new PrismaClient();
 const app: Express = express();
 const port = process.env.PORT;
 
+// routes
+import helloworld from './routes/index';
+
 app.use(cors());
+
+helloworld(app);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
