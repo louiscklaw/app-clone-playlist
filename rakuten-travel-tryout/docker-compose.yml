@@ -2,15 +2,27 @@
 version: '3.8'
 
 services:
-  next:
-    build: .
+  backend:
+    build: $PWD/backend
     ports:
-      - '3000:3000'
+      - 3001:3001
+      - 5555:5555
+    user: 1000:1000
+    working_dir: /app
+    volumes:
+      - $PWD/backend:/app
+      - be_node_modules:/app/node_modules
+    command: sleep infinity
+
+  frontend:
+    build: $PWD/frontend
+    ports:
+      - 3000:3000
     restart: unless-stopped
     working_dir: /app
     volumes:
-      - $PWD:/app
-      - node_modules:/app/node_modules
+      - $PWD/frontend:/app
+      - fe_node_modules:/app/node_modules
     command: sleep infinity
 
     labels:
@@ -23,10 +35,12 @@ services:
       - 'traefik.http.routers.portfolio.entrypoints=websecure'
       - 'traefik.http.routers.portfolio.tls.certresolver=myresolver'
       - 'traefik.http.services.portfolio.loadbalancer.server.port=3000'
+
 # networks:
 #   default:
 #     external:
 #       name: traefik-proxy-network
 
 volumes:
-  node_modules:
+  fe_node_modules:
+  be_node_modules:
