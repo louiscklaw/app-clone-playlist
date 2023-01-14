@@ -39,3 +39,22 @@ model Profile {
   views     Int     @default(0)
   likes     Int     @default(0)
 }
+
+model HotelInfo {
+  id             Int      @id @default(autoincrement())
+  address        String
+  check_in_time  DateTime @default(now())
+  check_out_time DateTime @default(now())
+  no_of_rooms    String   @default("10")
+  tel            String   @default("")
+  fax            String   @default("")
+  // content   String?
+  // published Boolean @default(false)
+  // author    User    @relation(fields: [authorId], references: [id])
+  // authorId  Int
+  // views     Int     @default(0)
+  // likes     Int     @default(0)
+  // User    User?  @relation(fields: [userId], references: [id])
+  // userId  Int?
+  // User    User?  @relation(fields: [userId], references: [id])
+}

@@ -1,15 +1,13 @@
 import { PrismaClient } from '@prisma/client';
-import { helloworld } from './seed/helloworld';
-import { hotel_info } from './seed/hotel_info';
 const prisma = new PrismaClient();
 
-async function main() {
+async function hotel_info() {
   for (var i = 0; i < 1; i++) {
     const alice = await prisma.user.upsert({
-      where: { email: `alice${i}@prisma.io` },
+      where: { email: `alice${i}@hotel_info.io` },
       update: {},
       create: {
-        email: `alice${i}@prisma.io`,
+        email: `alice${i}@hotel_info.io`,
         name: 'Alice',
         posts: {
           create: {
@@ -24,6 +22,4 @@ async function main() {
   }
 }
 
-Promise.all([main(), helloworld(), hotel_info()]).then(values => {
-  console.log('done');
-});
+export { hotel_info };
