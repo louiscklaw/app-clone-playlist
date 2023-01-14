@@ -17,6 +17,9 @@ npm run into_backend
 # landling
 http://localhost:3000/hkg/zh-hk
 
+# api test
+http://localhost:3000/apiTest
+
 # ask
 http://localhost:3000/hkg/zh-hk/ask
 

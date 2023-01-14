@@ -25,15 +25,15 @@ app.get('/', (req, res) => {
     res.send('Express + TypeScript Server');
 });
 app.get('/hotel_infos', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const hotels = yield prisma.hotel_info.findMany({
+    const hotel_infos = yield prisma.hotelInfo.findMany({
         where: { enabled: true },
         // include: { author: true },
     });
-    res.json(hotels);
+    res.json(hotel_infos);
 }));
-app.get('/hotel_info', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/hotel_info?:hotel_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const hotels = yield prisma.hotelInfo.findMany({
-        where: { enabled: true },
+        where: { enabled: true, id: parseInt(req.query.hotel_id) },
         // include: { author: true },
     });
     res.json(hotels);

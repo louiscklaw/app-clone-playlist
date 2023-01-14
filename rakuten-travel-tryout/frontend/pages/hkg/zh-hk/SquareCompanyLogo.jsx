@@ -1,6 +1,6 @@
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
-export default (props) => {
+export default props => {
   return (
     <>
       <Box {...props}>
@@ -11,11 +11,11 @@ export default (props) => {
               xs: "url('/img/SquareCompanyLogo.png')",
               md: "url('/img/SquareCompanyLogo.png')",
             },
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "200px",
-            height: "100px",
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            width: '200px',
+            height: '100px',
           }}
         ></Box>
       </Box>

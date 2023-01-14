@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function hotel_info() {
-  for (var i = 0; i < 1; i++) {
+  for (var i = 0; i < 3; i++) {
     const alice = await prisma.hotelInfo.upsert({
       where: { email: `alice${i}@hotel_info.io` },
       update: {},
