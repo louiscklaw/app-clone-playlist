@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { helloworld } from './seed/helloworld';
 import { hotel_info } from './seed/hotel_info';
+import { CurrencyOption } from './seed/CurrencyOption';
 
 const prisma = new PrismaClient();
 
@@ -25,6 +26,6 @@ async function main() {
   }
 }
 
-Promise.all([main(), helloworld(), hotel_info()]).then(values => {
+Promise.all([main(), helloworld(), CurrencyOption()]).then(values => {
   console.log('done');
 });

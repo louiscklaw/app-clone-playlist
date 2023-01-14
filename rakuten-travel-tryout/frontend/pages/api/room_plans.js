@@ -1,11 +1,11 @@
-import DoneIcon from "@mui/icons-material/Done";
+import DoneIcon from '@mui/icons-material/Done';
 
 const room_plans = [
   {
-    name: "房間不含餐計劃 [不含餐]",
+    name: '房間不含餐計劃 [不含餐]',
     price: {
-      value: "3581.62",
-      currency: "$",
+      value: '3581.62',
+      currency: '$',
       description: `
 包稅與其他費用
 1 間房 2 位住客 1 晚
@@ -20,30 +20,30 @@ const room_plans = [
 `.trim(),
     photos: [
       {
-        text: "",
-        src: "https://trvis.r10s.com/d/strg/ctrl/26/29b07c11adfbe275fccb7954078ce369f4117416.82.9.26.3.jpg",
+        text: '',
+        src: 'https://trvis.r10s.com/d/strg/ctrl/26/29b07c11adfbe275fccb7954078ce369f4117416.82.9.26.3.jpg',
       },
       {
-        src: "https://trvis.r10s.com/d/strg/ctrl/26/8ec76ddf7c5016c1184536f286383abcd7282894.47.9.26.3.jpg",
+        src: 'https://trvis.r10s.com/d/strg/ctrl/26/8ec76ddf7c5016c1184536f286383abcd7282894.47.9.26.3.jpg',
       },
     ],
     points: [
-      { icon: <DoneIcon />, text: "特大雙人床 x 1" },
-      { icon: <DoneIcon />, text: "50m²" },
-      { icon: <DoneIcon />, text: "1–2 位住客" },
-      { icon: <DoneIcon />, text: "禁煙" },
-      { icon: <DoneIcon />, text: "海景" },
+      { icon: <DoneIcon />, text: '特大雙人床 x 1' },
+      { icon: <DoneIcon />, text: '50m²' },
+      { icon: <DoneIcon />, text: '1–2 位住客' },
+      { icon: <DoneIcon />, text: '禁煙' },
+      { icon: <DoneIcon />, text: '海景' },
     ],
     facilities: [
       {
-        title: "餐飲",
-        service_list: ["不含餐"],
+        title: '餐飲',
+        service_list: ['不含餐'],
       },
     ],
   },
 
   {
-    name: "民宿 [早餐]",
+    name: '民宿 [早餐]',
     description: `
 僅含房價的最靈活計劃。
 蔚藍的大海和潔白的沙灘展現在你的面前。
@@ -85,24 +85,24 @@ const room_plans = [
 `.trim(),
     photos: [
       {
-        text: "",
-        src: "https://trvis.r10s.com/d/strg/ctrl/26/29b07c11adfbe275fccb7954078ce369f4117416.82.9.26.3.jpg",
+        text: '',
+        src: 'https://trvis.r10s.com/d/strg/ctrl/26/29b07c11adfbe275fccb7954078ce369f4117416.82.9.26.3.jpg',
       },
       {
-        src: "https://trvis.r10s.com/d/strg/ctrl/26/8ec76ddf7c5016c1184536f286383abcd7282894.47.9.26.3.jpg",
+        src: 'https://trvis.r10s.com/d/strg/ctrl/26/8ec76ddf7c5016c1184536f286383abcd7282894.47.9.26.3.jpg',
       },
     ],
     points: [
-      { icon: <DoneIcon />, text: "特大雙人床 x 1" },
-      { icon: <DoneIcon />, text: "50m²" },
-      { icon: <DoneIcon />, text: "1–2 位住客" },
-      { icon: <DoneIcon />, text: "禁煙" },
-      { icon: <DoneIcon />, text: "海景" },
+      { icon: <DoneIcon />, text: '特大雙人床 x 1' },
+      { icon: <DoneIcon />, text: '50m²' },
+      { icon: <DoneIcon />, text: '1–2 位住客' },
+      { icon: <DoneIcon />, text: '禁煙' },
+      { icon: <DoneIcon />, text: '海景' },
     ],
     facilities: [
       {
-        title: "餐飲",
-        service_list: ["不含餐"],
+        title: '餐飲',
+        service_list: ['不含餐'],
       },
     ],
   },

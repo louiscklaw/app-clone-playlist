@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
 const helloworld_1 = require("./seed/helloworld");
-const hotel_info_1 = require("./seed/hotel_info");
+const CurrencyOption_1 = require("./seed/CurrencyOption");
 const prisma = new client_1.PrismaClient();
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -35,6 +35,6 @@ function main() {
         }
     });
 }
-Promise.all([main(), (0, helloworld_1.helloworld)(), (0, hotel_info_1.hotel_info)()]).then(values => {
+Promise.all([main(), (0, helloworld_1.helloworld)(), (0, CurrencyOption_1.CurrencyOption)()]).then(values => {
     console.log('done');
 });

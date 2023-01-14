@@ -1,6 +1,6 @@
-import { Box, Typography, Stack } from "@mui/material";
+import { Box, Typography, Stack } from '@mui/material';
 
-const handleDragStart = (e) => e.preventDefault();
+const handleDragStart = e => e.preventDefault();
 
 const Caption = ({ children }) => {
   return (
@@ -23,10 +23,10 @@ const ImageCell = ({ img_src, caption, width, height }) => {
             role="presentation"
             width={width || 200}
             height={height}
-            style={{ borderRadius: "1rem" }}
+            style={{ borderRadius: '1rem' }}
           />
         </Box>
-        <Box sx={{ paddingTop: "0.5rem" }}>
+        <Box sx={{ paddingTop: '0.5rem' }}>
           <Caption>{caption}</Caption>
         </Box>
       </Stack>
