@@ -11,82 +11,16 @@ const port = process.env.PORT;
 
 // routes
 import helloworld from './routes/index';
+import hotel_info from './routes/hotel_info';
 
 app.use(cors());
 
-helloworld(app);
+// init routes
+helloworld(app, prisma);
+hotel_info(app, prisma);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
-});
-
-app.get('/hotel_infos', async (req: Request, res: Response) => {
-  const hotel_infos = await prisma.hotelInfo.findMany({
-    where: { enabled: true },
-    // include: { author: true },
-  });
-
-  res.json(hotel_infos);
-});
-
-app.get('/hotel_info?:hotel_id', async (req: Request, res: Response) => {
-  const hotels = await prisma.hotelInfo.findMany({
-    where: { enabled: true, id: parseInt(req.query.hotel_id) },
-    // include: { author: true },
-  });
-
-  res.json(hotels);
-});
-
-app.get('/feed', async (req, res) => {
-  const posts = await prisma.post.findMany({
-    where: { published: true },
-    include: { author: true },
-  });
-
-  res.json(posts);
-});
-
-app.post('/post', async (req, res) => {
-  const { title, content, authorEmail } = req.body;
-
-  const post = await prisma.post.create({
-    data: {
-      title,
-
-      content,
-
-      published: false,
-
-      author: { connect: { email: authorEmail } },
-    },
-  });
-
-  res.json(post);
-});
-
-app.put('/publish/:id', async (req, res) => {
-  const { id } = req.params;
-
-  const post = await prisma.post.update({
-    where: { id },
-
-    data: { published: true },
-  });
-
-  res.json(post);
-});
-
-app.delete('/user/:id', async (req, res) => {
-  const { id } = req.params;
-
-  const user = await prisma.user.delete({
-    where: {
-      id,
-    },
-  });
-
-  res.json(user);
 });
 
 app.listen(port, () => {
