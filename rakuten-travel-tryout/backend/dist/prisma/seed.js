@@ -10,10 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
+const helloworld_1 = require("./seed/helloworld");
+const hotel_info_1 = require("./seed/hotel_info");
 const prisma = new client_1.PrismaClient();
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        for (var i = 0; i < 99; i++) {
+        for (var i = 0; i < 1; i++) {
             const alice = yield prisma.user.upsert({
                 where: { email: `alice${i}@prisma.io` },
                 update: {},
@@ -31,52 +33,8 @@ function main() {
             });
             console.dir(alice);
         }
-        // const alice = await prisma.user.upsert({
-        //   where: { email: 'alice@prisma.io' },
-        //   update: {},
-        //   create: {
-        //     email: 'alice@prisma.io',
-        //     name: 'Alice',
-        //     posts: {
-        //       create: {
-        //         title: 'Check out Prisma with Next.js',
-        //         content: 'https://www.prisma.io/nextjs',
-        //         published: true,
-        //       },
-        //     },
-        //   },
-        // })
-        // const bob = await prisma.user.upsert({
-        //   where: { email: 'bob@prisma.io' },
-        //   update: {},
-        //   create: {
-        //     email: 'bob@prisma.io',
-        //     name: 'Bob',
-        //     posts: {
-        //       create: [
-        //         {
-        //           title: 'Follow Prisma on Twitter',
-        //           content: 'https://twitter.com/prisma',
-        //           published: true,
-        //         },
-        //         {
-        //           title: 'Follow Nexus on Twitter',
-        //           content: 'https://twitter.com/nexusgql',
-        //           published: true,
-        //         },
-        //       ],
-        //     },
-        //   },
-        // })
-        // console.log({ alice, bob })
     });
 }
-main()
-    .then(() => __awaiter(void 0, void 0, void 0, function* () {
-    yield prisma.$disconnect();
-}))
-    .catch((e) => __awaiter(void 0, void 0, void 0, function* () {
-    console.error(e);
-    yield prisma.$disconnect();
-    process.exit(1);
-}));
+Promise.all([main(), (0, helloworld_1.helloworld)(), (0, hotel_info_1.hotel_info)()]).then(values => {
+    console.log('done');
+});

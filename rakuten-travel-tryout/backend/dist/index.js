@@ -24,19 +24,20 @@ app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
     res.send('Express + TypeScript Server');
 });
-app.get('/hotel_info', (req, res) => {
-    res.send([
-        {
-            name: '地址',
-            value: '日本, 906-0203, 935-8 Ueno Miyaguni, Miyakojima-shi, Okinawa',
-        },
-        { name: '入住時間', value: '14:00 - 19:00 ' },
-        { name: '退房時間', value: '10:00 ' },
-        { name: '客房總數', value: '12 ' },
-        { name: '電話號碼', value: '+81 980 74 7500 ' },
-        { name: '傳真號碼', value: '+81 980 74 7501' },
-    ]);
-});
+app.get('/hotel_infos', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const hotels = yield prisma.hotel_info.findMany({
+        where: { enabled: true },
+        // include: { author: true },
+    });
+    res.json(hotels);
+}));
+app.get('/hotel_info', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const hotels = yield prisma.hotelInfo.findMany({
+        where: { enabled: true },
+        // include: { author: true },
+    });
+    res.json(hotels);
+}));
 app.get('/feed', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const posts = yield prisma.post.findMany({
         where: { published: true },
