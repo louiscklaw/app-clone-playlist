@@ -2,9 +2,11 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function hotel_info() {
-  for (var i = 0; i < 3; i++) {
+  process.stdout.write('seeding hotel_info ...');
+
+  for (var i = 0; i < 999; i++) {
     const alice = await prisma.hotelInfo.upsert({
-      where: { email: `alice${i}@hotel_info.io` },
+      where: { id: i },
       update: {},
       create: {
         email: `hotel_info${i}@hotel_info.io`,
@@ -27,8 +29,8 @@ async function hotel_info() {
         },
       },
     });
-    console.dir(alice);
   }
+  console.log('seed done');
 }
 
-export { hotel_info };
+export default hotel_info;

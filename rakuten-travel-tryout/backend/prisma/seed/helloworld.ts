@@ -2,7 +2,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function helloworld() {
-  for (var i = 0; i < 1; i++) {
+  process.stdout.write('seeding helloworld ...');
+
+  for (var i = 0; i < 199; i++) {
     const alice = await prisma.helloworld.upsert({
       where: { id: i },
       update: {},
@@ -13,7 +15,8 @@ async function helloworld() {
     });
   }
 
+  await prisma.$disconnect();
   console.log('seed helloworld done');
 }
 
-export { helloworld };
+export default helloworld;

@@ -2,17 +2,19 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function tags() {
-  for (var i = 0; i < 3; i++) {
+  process.stdout.write('seeding tags...');
+  for (var i = 0; i < 199; i++) {
     await prisma.tags.upsert({
       where: { id: i },
       update: {},
       create: {
-        name: '宮古島上野費利斯別墅套房酒店',
+        name: '度假村酒店',
       },
     });
   }
 
+  await prisma.$disconnect();
   console.log('seed tags done');
 }
 
-export { tags };
+export default tags;

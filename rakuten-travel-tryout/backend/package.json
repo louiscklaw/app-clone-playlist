@@ -17,6 +17,7 @@
     "gen_erd": "npx prisma generate",
     "db_push": "npx prisma db push --accept-data-loss --force-reset",
     "db_seed": "npx prisma db seed",
+    "db_reset": "npm run rm_db && npm run db_push && npm run db_seed",
     "rm_db": "rm -rf ./prisma/dev.db"
   },
   "prisma": {
