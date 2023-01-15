@@ -23,9 +23,12 @@ export default () => {
 
   return (
     <>
-      prisma_helloworld
-      {JSON.stringify(hotel_info, null, 2)}
-      {JSON.stringify(hotel_infos, null, 2)}
+      <h3>apiTest helloworld</h3>
+      <pre>hotel_info</pre>
+      <pre>{JSON.stringify(hotel_info, null, 2)}</pre>
+
+      <pre>hotel_infos</pre>
+      <pre>{JSON.stringify(hotel_infos, null, 2)}</pre>
     </>
   );
 };

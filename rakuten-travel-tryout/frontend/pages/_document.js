@@ -1,7 +1,7 @@
-import * as React from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import createEmotionServer from "@emotion/server/create-instance";
-import createEmotionCache from "../utility/createEmotionCache";
+import * as React from 'react';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import createEmotionServer from '@emotion/server/create-instance';
+import createEmotionCache from '../utility/createEmotionCache';
 
 export default class MyDocument extends Document {
   render() {
@@ -10,12 +10,9 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
 
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400&display=swap"
@@ -27,7 +24,7 @@ export default class MyDocument extends Document {
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
             integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
             crossOrigin="anonymous"
-            referrerpolicy="no-referrer"
+            referrerPolicy="no-referrer"
           />
         </Head>
         <body>
@@ -41,7 +38,7 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+MyDocument.getInitialProps = async ctx => {
   // Resolution order
   //
   // On the server:
@@ -74,7 +71,7 @@ MyDocument.getInitialProps = async (ctx) => {
   /* eslint-disable */
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) =>
+      enhanceApp: App =>
         function EnhanceApp(props) {
           return <App emotionCache={cache} {...props} />;
         },
@@ -85,9 +82,9 @@ MyDocument.getInitialProps = async (ctx) => {
   // This is important. It prevents emotion to render invalid HTML.
   // See https://github.com/mui-org/material-ui/issues/26561#issuecomment-855286153
   const emotionStyles = extractCriticalToChunks(initialProps.html);
-  const emotionStyleTags = emotionStyles.styles.map((style) => (
+  const emotionStyleTags = emotionStyles.styles.map(style => (
     <style
-      data-emotion={`${style.key} ${style.ids.join(" ")}`}
+      data-emotion={`${style.key} ${style.ids.join(' ')}`}
       key={style.key}
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: style.css }}
@@ -97,9 +94,6 @@ MyDocument.getInitialProps = async (ctx) => {
   return {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      ...emotionStyleTags,
-    ],
+    styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
   };
 };
