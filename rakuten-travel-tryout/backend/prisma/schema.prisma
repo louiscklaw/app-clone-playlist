@@ -81,7 +81,7 @@ model HotelInfo {
   updatedAt            DateTime        @updatedAt
   views                Int             @default(0)
   likes                Int             @default(0)
-  photos               String          @default("")
+  images               String          @default("")
   accommodation_notice String          @default("")
   posts                Post[]
   facilities           Facility[]
