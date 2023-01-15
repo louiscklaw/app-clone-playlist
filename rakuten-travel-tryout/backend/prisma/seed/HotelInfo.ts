@@ -24,6 +24,9 @@ async function HotelInfo() {
             {
               name: 'Rakuten Travel Gold Award 2021',
             },
+            {
+              name: 'Rakuten Travel Gold Award 2020',
+            },
           ],
         },
         facilities: {
