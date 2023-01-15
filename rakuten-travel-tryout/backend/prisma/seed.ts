@@ -3,13 +3,17 @@ import helloworld from './seed/helloworld';
 import tags from './seed/tags';
 import hotel_info from './seed/hotel_info';
 import user from './seed/user';
-import CurrencyOption from './seed/CurrencyOption';
+import HotelType from './seed/HotelType';
+import HotelFacility from './seed/HotelFacility';
+// import CurrencyOption from './seed/CurrencyOption';
 
 (async () => {
   await helloworld();
   await tags();
   await hotel_info();
   await user();
+  await HotelType();
+  await HotelFacility();
 
   console.log('seeding done');
 })();
