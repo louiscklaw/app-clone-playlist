@@ -9,8 +9,8 @@ async function user() {
       where: { email: `alice${i}@prisma.io` },
       update: {},
       create: {
-        email: `alice${i}@prisma.io`,
-        name: 'Alice',
+        email: `client${i}@gmail.com`,
+        name: `client ${i}`,
         posts: {
           create: {
             title: 'Check out Prisma with Next.js',
