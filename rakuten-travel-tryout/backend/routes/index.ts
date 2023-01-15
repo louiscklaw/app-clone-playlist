@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from 'express';
+import { PrismaClient } from '@prisma/client';
 
 const helloworld = (app: Express, prisma: PrismaClient) => {
   app.get('/helloworld', (req: Request, res: Response) => {
@@ -38,8 +39,7 @@ const helloworld = (app: Express, prisma: PrismaClient) => {
     const { id } = req.params;
 
     const post = await prisma.post.update({
-      where: { id },
-
+      where: { id: +id },
       data: { published: true },
     });
 
@@ -50,9 +50,7 @@ const helloworld = (app: Express, prisma: PrismaClient) => {
     const { id } = req.params;
 
     const user = await prisma.user.delete({
-      where: {
-        id,
-      },
+      where: { id: +id },
     });
 
     res.json(user);
