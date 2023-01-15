@@ -143,6 +143,15 @@ model Awards {
   hotelInfoId Int?
 }
 
+model Tags {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @default("")
+  deleted     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model Helloworld {
   id          Int      @id @default(autoincrement())
   name        String
