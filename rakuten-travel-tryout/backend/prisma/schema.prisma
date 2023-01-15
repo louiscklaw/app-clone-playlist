@@ -144,12 +144,8 @@ model Awards {
 }
 
 model Tags {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String   @default("")
-  deleted     Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id   Int     @id @default(autoincrement())
+  name String?
 }
 
 model Helloworld {

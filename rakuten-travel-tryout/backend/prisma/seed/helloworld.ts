@@ -3,23 +3,17 @@ const prisma = new PrismaClient();
 
 async function helloworld() {
   for (var i = 0; i < 1; i++) {
-    const alice = await prisma.user.upsert({
-      where: { email: `alice${i}@helloworld.io` },
+    const alice = await prisma.helloworld.upsert({
+      where: { id: i },
       update: {},
       create: {
-        email: `alice${i}@helloworld.io`,
-        name: 'Alice',
-        posts: {
-          create: {
-            title: 'Check out Prisma with Next.js',
-            content: 'https://www.prisma.io/nextjs',
-            published: true,
-          },
-        },
+        name: `alice${i}@helloworld.io`,
+        description: 'Alice',
       },
     });
-    console.dir(alice);
   }
+
+  console.log('seed helloworld done');
 }
 
 export { helloworld };
