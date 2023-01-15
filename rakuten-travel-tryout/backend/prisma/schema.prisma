@@ -64,26 +64,27 @@ model Profile {
 }
 
 model HotelInfo {
-  id             Int        @id @default(autoincrement())
-  email          String     @unique
-  name           String?
-  address        String     @default("")
-  access         String     @default("")
-  description    String     @default("")
-  check_in_time  DateTime   @default(now())
-  check_out_time DateTime   @default(now())
-  no_of_rooms    String     @default("10")
-  tel            String     @default("")
-  fax            String     @default("")
-  enabled        Boolean    @default(true)
-  createdAt      DateTime   @default(now())
-  updatedAt      DateTime   @updatedAt
-  views          Int        @default(0)
-  likes          Int        @default(0)
-  photos         String     @default("")
-  posts          Post[]
-  facilities     Facility[]
-  awards         Awards[]
+  id                   Int        @id @default(autoincrement())
+  email                String     @unique
+  name                 String?
+  address              String     @default("")
+  access               String     @default("")
+  description          String     @default("")
+  check_in_time        DateTime   @default(now())
+  check_out_time       DateTime   @default(now())
+  no_of_rooms          String     @default("10")
+  tel                  String     @default("")
+  fax                  String     @default("")
+  enabled              Boolean    @default(true)
+  createdAt            DateTime   @default(now())
+  updatedAt            DateTime   @updatedAt
+  views                Int        @default(0)
+  likes                Int        @default(0)
+  photos               String     @default("")
+  accommodation_notice String     @default("")
+  posts                Post[]
+  facilities           Facility[]
+  awards               Awards[]
   // content   String?
   // published Boolean @default(false)
   // author    User    @relation(fields: [authorId], references: [id])
@@ -121,6 +122,16 @@ model Comment {
   deleted   Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model LanguageAccept {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  enabled     Boolean  @default(true)
+  deleted     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model PaymentAccept {
@@ -178,6 +189,15 @@ model Awards {
 model Tags {
   id   Int     @id @default(autoincrement())
   name String?
+}
+
+model RecommendedLocation {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @default("")
+  deleted     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Helloworld {
