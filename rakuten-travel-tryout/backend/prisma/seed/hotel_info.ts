@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 async function hotel_info() {
   process.stdout.write('seeding hotel_info ...');
 
-  for (var i = 0; i < 999; i++) {
+  for (var i = 0; i < 19; i++) {
     const alice = await prisma.hotelInfo.upsert({
       where: { id: i },
       update: {},

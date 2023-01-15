@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 async function helloworld() {
   process.stdout.write('seeding helloworld ...');
 
-  for (var i = 0; i < 199; i++) {
+  for (var i = 0; i < 19; i++) {
     const alice = await prisma.helloworld.upsert({
       where: { id: i },
       update: {},

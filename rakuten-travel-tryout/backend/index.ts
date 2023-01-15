@@ -4,26 +4,17 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 import HelloworldCron from './scheduledFunctions';
-import mailer from './nodemailer';
+// import mailer from './nodemailer';
 
-(async () => {
-  await mailer.sendMail({
-    from: 'from@me.com',
-    to: 'to@you.com',
-    subject: 'Hello',
-    text: 'Hello, World!',
-  });
-})();
+// routes
+import helloworld from './routes/index';
+import hotel_info from './routes/hotel_info';
 
 dotenv.config();
 
 const prisma = new PrismaClient();
 const app: Express = express();
 const port = process.env.PORT;
-
-// routes
-import helloworld from './routes/index';
-import hotel_info from './routes/hotel_info';
 
 app.use(cors());
 

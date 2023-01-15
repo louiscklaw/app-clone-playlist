@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 async function tags() {
   process.stdout.write('seeding tags...');
-  for (var i = 0; i < 199; i++) {
+  for (var i = 0; i < 19; i++) {
     await prisma.tags.upsert({
       where: { id: i },
       update: {},

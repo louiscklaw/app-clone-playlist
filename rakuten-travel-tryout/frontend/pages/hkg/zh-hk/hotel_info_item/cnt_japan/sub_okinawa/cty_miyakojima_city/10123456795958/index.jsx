@@ -49,13 +49,13 @@ export default () => {
       >
         <div class="column">
           <TopPlate sx={{}} hotel_info={hotel_info} />
-          <SearchPlan style={{ display: 'none' }} />
-          <MarksAndComments style={{ display: 'none' }} />
-          <SpecialsPlate style={{ display: 'none' }} />
-          <ResidentInfoPlate style={{ display: 'none' }} />
-          <CovinPlate style={{ display: 'none' }} />
-          <AwardPlate style={{ display: 'none' }} />
-          <FacilitiesPlate style={{ display: 'none' }} />
+          {/* <SearchPlan style={{ display: 'none' }} /> */}
+          {/* <MarksAndComments style={{ display: 'none' }} /> */}
+          {/* <SpecialsPlate style={{ display: 'none' }} /> */}
+          {/* <ResidentInfoPlate style={{ display: 'none' }} /> */}
+          {/* <CovinPlate style={{ display: 'none' }} /> */}
+          {/* <AwardPlate style={{ display: 'none' }} /> */}
+          {/* <FacilitiesPlate style={{ display: 'none' }} /> */}
         </div>
       </Box>
       <BottomBreadcrumbs />

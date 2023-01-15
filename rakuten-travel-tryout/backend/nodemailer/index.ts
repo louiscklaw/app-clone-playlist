@@ -1,23 +1,33 @@
 import nodemailer from 'nodemailer';
 
-const helloworld_mailer = 'helloworld-mailer';
-
-let mailer;
+let mailer: nodemailer.Transporter;
 
 console.log('hello node mailer');
 
-if (process.env.NODE_ENV === 'development') {
-  mailer = nodemailer.createTransport({
-    host: 'mailhog',
-    port: 1025,
-  });
+mailer = nodemailer.createTransport({
+  host: 'mailhog',
+  port: 1025,
+});
 
-  console.log('using develop mail config');
-} else {
-  // mailer = nodemailer.createTransport({
-  //   // SES: new AWS.SES(),
-  // });
-}
+// if (process.env.NODE_ENV === 'development') {
+
+//   console.log('using develop mail config');
+// } else {
+//   // mailer = nodemailer.createTransport({
+//   //   // SES: new AWS.SES(),
+//   // });
+// }
+
+// (async () => {
+//   await mailer.sendMail({
+//     from: 'from@me.com',
+//     to: 'to@you.com',
+//     subject: 'Hello',
+//     text: 'Hello, World!',
+//   });
+// })();
+
+export default mailer;
 
 // export default helloworld_mailer;
 
@@ -56,4 +66,3 @@ if (process.env.NODE_ENV === 'development') {
 // };
 
 // export default sendConfirmationEmail;
-export default mailer;
