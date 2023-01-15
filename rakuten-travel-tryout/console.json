@@ -1,0 +1,83 @@
+{
+    "child": {
+        "child1": {
+            "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
+            "height": 339,
+            "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+            "readOnly": false,
+            "synchronizedInput": true,
+            "type": "Terminal",
+            "uuid": "3c0fcbe0-8dd1-4045-aad9-93942fc70e53",
+            "width": 772
+        },
+        "child2": {
+            "child1": {
+                "child1": {
+                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
+                    "height": 339,
+                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "uuid": "05ee4277-52dc-47fe-8aa6-cfcb0303f364",
+                    "width": 383
+                },
+                "child2": {
+                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
+                    "height": 339,
+                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "uuid": "2f18b22c-044c-4cdc-b89d-e35b394c3122",
+                    "width": 384
+                },
+                "orientation": 0,
+                "position": 49,
+                "ratio": 0.496113989637305686,
+                "type": "Paned"
+            },
+            "child2": {
+                "child1": {
+                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
+                    "height": 340,
+                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "uuid": "a888022d-988d-46e0-89be-9802b7520222",
+                    "width": 383
+                },
+                "child2": {
+                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
+                    "height": 340,
+                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "uuid": "65da4dfc-3804-4940-926d-d6b40211adeb",
+                    "width": 384
+                },
+                "orientation": 0,
+                "position": 49,
+                "ratio": 0.496113989637305686,
+                "type": "Paned"
+            },
+            "orientation": 1,
+            "position": 32,
+            "ratio": 0.495614035087719285,
+            "type": "Paned"
+        },
+        "orientation": 1,
+        "position": 32,
+        "ratio": 0.329766536964980539,
+        "type": "Paned"
+    },
+    "height": 1028,
+    "name": "${title}",
+    "synchronizedInput": false,
+    "type": "Session",
+    "uuid": "d781278a-1693-4142-bc7d-d44508543c44",
+    "version": "1.0",
+    "width": 772
+}
