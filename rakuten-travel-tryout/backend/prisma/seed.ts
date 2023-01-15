@@ -26,6 +26,10 @@ async function main() {
   }
 }
 
-Promise.all([main(), helloworld(), CurrencyOption()]).then(values => {
+Promise.all([
+  main(),
+  // helloworld(),
+  hotel_info(),
+]).then(values => {
   console.log('done');
 });

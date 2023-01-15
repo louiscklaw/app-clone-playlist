@@ -6,54 +6,82 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "./erd.svg"
+  theme    = "forest"
+}
+
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id      Int       @id @default(autoincrement())
-  email   String    @unique
-  name    String?
-  posts   Post[]
-  Profile Profile[]
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String?
+  valid     Boolean   @default(true)
+  Profile   Profile[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  posts     Post[]
+}
+
+model HotelOperator {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  valid     Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
-  views     Int     @default(0)
-  likes     Int     @default(0)
+  id          Int        @id @default(autoincrement())
+  title       String
+  content     String?
+  published   Boolean    @default(false)
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    Int
+  views       Int        @default(0)
+  likes       Int        @default(0)
+  HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int?
 }
 
 model Profile {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
-  views     Int     @default(0)
-  likes     Int     @default(0)
+  id              Int     @id @default(autoincrement())
+  title           String
+  content         String?
+  published       Boolean @default(false)
+  author          User    @relation(fields: [authorId], references: [id])
+  authorId        Int
+  views           Int     @default(0)
+  likes           Int     @default(0)
+  hotelOperatorId Int?
 }
 
 model HotelInfo {
-  id             Int      @id @default(autoincrement())
-  email          String   @unique
+  id             Int        @id @default(autoincrement())
+  email          String     @unique
   name           String?
-  address        String   @default("")
-  check_in_time  DateTime @default(now())
-  check_out_time DateTime @default(now())
-  no_of_rooms    String   @default("10")
-  tel            String   @default("")
-  fax            String   @default("")
-  enabled        Boolean  @default(true)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  address        String     @default("")
+  description    String     @default("")
+  check_in_time  DateTime   @default(now())
+  check_out_time DateTime   @default(now())
+  no_of_rooms    String     @default("10")
+  tel            String     @default("")
+  fax            String     @default("")
+  enabled        Boolean    @default(true)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  views          Int        @default(0)
+  likes          Int        @default(0)
+  photos         String     @default("")
+  posts          Post[]
+  facilities     Facility[]
+  awards         Awards[]
   // content   String?
   // published Boolean @default(false)
   // author    User    @relation(fields: [authorId], references: [id])
@@ -66,7 +94,60 @@ model HotelInfo {
 }
 
 model CurrencyOption {
-  id       Int     @id @default(autoincrement())
-  name     String  @unique
-  location String?
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  location  String?
+  enabled   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Services {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  location  String?
+  type      String?
+  enabled   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  enabled   Boolean  @default(true)
+  deleted   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Facility {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String     @default("")
+  deleted     Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int?
+}
+
+model Awards {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String     @default("")
+  deleted     Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int?
+}
+
+model Helloworld {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @default("")
+  deleted     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
