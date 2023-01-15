@@ -13,13 +13,13 @@ async function CovinPractice() {
   ];
 
   for (var i = 0; i < list.length; i++) {
-    const alice = await prisma.covinPractice.upsert({
-      where: { id: i },
-      update: {},
-      create: {
-        ...list[i],
-      },
-    });
+    // const alice = await prisma.covinPractice.upsert({
+    //   where: { id: i },
+    //   update: {},
+    //   create: {
+    //     ...list[i],
+    //   },
+    // });
   }
 
   await prisma.$disconnect();
