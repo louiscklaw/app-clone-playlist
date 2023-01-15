@@ -70,6 +70,7 @@ model HotelInfo {
   address              String          @default("")
   access               String          @default("")
   description          String          @default("")
+  short_description    String          @default("")
   check_in_time        DateTime        @default(now())
   check_out_time       DateTime        @default(now())
   no_of_rooms          String          @default("10")
@@ -86,6 +87,7 @@ model HotelInfo {
   facilities           Facility[]
   awards               Awards[]
   covin_practice       CovinPractice[]
+  hotel_type           HotelType[]
   // content   String?
   // published Boolean @default(false)
   // author    User    @relation(fields: [authorId], references: [id])
@@ -146,13 +148,15 @@ model PaymentAccept {
 }
 
 model HotelType {
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String
-  description String
-  enabled     Boolean  @default(true)
-  deleted     Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  description String     @default("")
+  enabled     Boolean    @default(true)
+  deleted     Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int?
 }
 
 model HotelFacility {
