@@ -3,23 +3,51 @@ const prisma = new PrismaClient();
 
 async function HotelInfo() {
   process.stdout.write('seeding HotelInfo ...');
-  let plan_list = ['p1', 'p2', 'p3'];
-  let room_list = ['r1', 'r2', 'r3'];
+
+  let room_list = [
+    {
+      name: '2房型（帶日式房間）帶泳池 [日式西式客房] [禁菸] [海景]',
+      points: '日式床組 x 3 單人床 x 4,129m²,1–7 位住客,禁菸,海景',
+    },
+    {
+      name: '2房型（帶日式房間）帶泳池 [日式西式客房] [禁菸] [海景]',
+      points: '日式床組 x 3 單人床 x 4,129m²,1–7 位住客,禁菸,海景',
+    },
+    {
+      name: '2房型（帶日式房間）帶泳池 [日式西式客房] [禁菸] [海景]',
+      points: '日式床組 x 3 單人床 x 4,129m²,1–7 位住客,禁菸,海景',
+    },
+  ];
 
   for (var i = 0; i < room_list.length; i++) {
     await prisma.roomSetup.upsert({
       where: { id: i + 1 },
       update: {},
-      create: { name: `room_${i}` },
+      create: { name: room_list[i].name, points: room_list[i].points },
     });
   }
+
+  let plan_list = [
+    {
+      name: '房間不含餐計劃 [不供餐]',
+      points: '不供餐',
+    },
+    {
+      name: '房間不含餐計劃 [不供餐]',
+      points: '不供餐',
+    },
+    {
+      name: '房間不含餐計劃 [不供餐]',
+      points: '不供餐',
+    },
+  ];
 
   for (var i = 0; i < plan_list.length; i++) {
     await prisma.planSetup.upsert({
       where: { id: i + 1 },
       update: {},
       create: {
-        name: `${plan_list[i]}`,
+        name: plan_list[i].name,
         rooms: {
           create: [
             {

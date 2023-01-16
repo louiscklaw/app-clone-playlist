@@ -299,6 +299,7 @@ model CommentReply {
 model PlanSetup {
   id          Int           @id @default(autoincrement())
   name        String
+  points      String        @default("")
   rooms       PlanOnRooms[]
   PlanOnHotel PlanOnHotel[]
 }
@@ -306,6 +307,7 @@ model PlanSetup {
 model RoomSetup {
   id          Int           @id @default(autoincrement())
   name        String
+  points      String        @default("")
   plans       PlanOnRooms[]
   RoomOnHotel RoomOnHotel[]
 }
