@@ -76,6 +76,7 @@ async function HotelInfo() {
             },
           ],
         },
+        comments: { create: [] },
       },
     });
   }
