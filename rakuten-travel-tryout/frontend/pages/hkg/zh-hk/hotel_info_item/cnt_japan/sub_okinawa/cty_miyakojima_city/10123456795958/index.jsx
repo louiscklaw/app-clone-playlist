@@ -21,13 +21,12 @@ import { getHotelInfo } from 'pages/api/hotel_info';
 
 export default () => {
   const [value, setValue] = React.useState(0);
-  const [hotel_info, setHotelInfo] = React.useState({});
+  const [hotel_info, setHotelInfo] = React.useState();
 
   useEffect(() => {
     getHotelInfo({ hotel_id: 1 })
       .then(res => res.json())
       .then(res_json => {
-        console.log('helloworld');
         setHotelInfo(res_json[0]);
       });
   }, []);
@@ -36,7 +35,7 @@ export default () => {
     setValue(newValue);
   };
 
-  if (hotel_info === {}) return <>loading</>;
+  if (!hotel_info) return <>loading</>;
 
   return (
     <>
@@ -48,14 +47,14 @@ export default () => {
         }}
       >
         <div class="column">
-          <TopPlate sx={{}} hotel_info={hotel_info} />
-          {/* <SearchPlan style={{ display: 'none' }} /> */}
-          {/* <MarksAndComments style={{ display: 'none' }} /> */}
-          {/* <SpecialsPlate style={{ display: 'none' }} /> */}
-          {/* <ResidentInfoPlate style={{ display: 'none' }} /> */}
-          {/* <CovinPlate style={{ display: 'none' }} /> */}
-          {/* <AwardPlate style={{ display: 'none' }} /> */}
-          {/* <FacilitiesPlate style={{ display: 'none' }} /> */}
+          {/* <TopPlate hotel_info={hotel_info} /> */}
+          {/* <SearchPlan hotel_info={hotel_info} /> */}
+          <MarksAndComments hotel_info={hotel_info} />
+          {/* <SpecialsPlate hotel_info={hotel_info} /> */}
+          {/* <ResidentInfoPlate hotel_info={hotel_info} /> */}
+          {/* <CovinPlate hotel_info={hotel_info} /> */}
+          {/* <AwardPlate hotel_info={hotel_info} /> */}
+          {/* <FacilitiesPlate hotel_info={hotel_info} /> */}
         </div>
       </Box>
       <BottomBreadcrumbs />

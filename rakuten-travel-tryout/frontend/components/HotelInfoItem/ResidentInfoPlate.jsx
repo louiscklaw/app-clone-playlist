@@ -10,22 +10,14 @@ import hotel_info, { getHotelInfo } from 'pages/api/hotel_info';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-export default props => {
-  let [hotel_info, setHotelInfo] = useState({});
-
-  useEffect(() => {
-    getHotelInfo({ hotel_id: 1 })
-      .then(res => res.json())
-      .then(res_json => setHotelInfo(res_json));
-  }, []);
+export default ({ sx, hotel_info }) => {
+  let { hotel_type } = hotel_info;
 
   if (hotel_info == {}) return <>loading</>;
 
-  return <></>;
-
   return (
     <>
-      <div {...props}>
+      <div style={sx}>
         <Stack sx={{ width: '100%' }} spacing={3}>
           <Typography variant="h5" fontWeight={'bold'} sx={{}}>
             住宿設施資訊
@@ -34,13 +26,13 @@ export default props => {
           <Stack direction="row">
             <Box sx={{ width: '50%' }}>
               <Stack direction="column" spacing={1}>
-                <Typography variant="body2">度假村酒店</Typography>
-                <Typography variant="body2">
-                  這棟別墅是別墅風格的夏威夷公寓出租。 所有 12 棟別墅均設有溫水游泳池，私密性強。
-                  廚房、家具、家電一應俱全，可長期入住。 在您逗留期間，這將是一個只屬於您的私人空間，所以請隨意使用。
-                </Typography>
+                {hotel_type.map((ht, i) => (
+                  <Typography variant="body2">{ht.name}</Typography>
+                ))}
+
+                <Typography variant="body2">{hotel_info.description}</Typography>
                 <div>
-                  {hotel_info.map(({ name, value }) => (
+                  {[].map(({ name, value }) => (
                     <Stack direction="row" sx={{ paddingBottom: '0.5rem' }} spacing={1}>
                       <DoneIcon />
                       <Typography variant="body1" sx={{ width: '150px' }}>

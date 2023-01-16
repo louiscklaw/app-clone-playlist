@@ -1,8 +1,8 @@
-import MarkCircularProgress from "components/MarkCircularProgress";
+import MarkCircularProgress from 'components/MarkCircularProgress';
 
 const marks = {
   value: 5,
-  description: "Exceptional",
+  description: 'Exceptional',
   peoples: 24,
   breakdown: {
     location: 5,
@@ -18,14 +18,14 @@ export default ({ sx }) => {
   return (
     <>
       <div style={sx}>
-        評分和評價
+        評分和評語
         <div class="row">
-          <div style={{ minWidth: "300px", width: "30%" }}>
+          <div style={{ minWidth: '300px', width: '30%' }}>
             <MarkCircularProgress />
             {marks.description}
             {marks.peoples}
           </div>
-          <div style={{ flexGrow: 1, backgroundColor: "tomato" }}>2</div>
+          <div style={{ flexGrow: 1, backgroundColor: 'tomato' }}>2</div>
         </div>
       </div>
     </>
