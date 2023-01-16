@@ -25,7 +25,7 @@ async function Role() {
   }
 
   let result = await prisma.role.findMany({});
-  console.log(JSON.stringify(result, null, 2));
+  // console.log(JSON.stringify(result, null, 2));
 
   await prisma.$disconnect();
   console.log('seed Role done');
