@@ -99,6 +99,9 @@ model HotelInfo {
   // 支援語言
   language_accept LanguageAccept[]
 
+  plans PlanOnHotel[]
+  rooms RoomOnHotel[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -294,15 +297,17 @@ model CommentReply {
 }
 
 model PlanSetup {
-  id    Int           @id @default(autoincrement())
-  name  String
-  rooms PlanOnRooms[]
+  id          Int           @id @default(autoincrement())
+  name        String
+  rooms       PlanOnRooms[]
+  PlanOnHotel PlanOnHotel[]
 }
 
 model RoomSetup {
-  id    Int           @id @default(autoincrement())
-  name  String
-  plans PlanOnRooms[]
+  id          Int           @id @default(autoincrement())
+  name        String
+  plans       PlanOnRooms[]
+  RoomOnHotel RoomOnHotel[]
 }
 
 model PlanOnRooms {
@@ -315,6 +320,30 @@ model PlanOnRooms {
   assignedBy String
 
   @@id([planId, roomId])
+}
+
+model PlanOnHotel {
+  plan        PlanSetup @relation(fields: [planId], references: [id])
+  planId      Int // relation scalar field (used in the `@relation` attribute above)
+  hotelInfo   HotelInfo @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int // relation scalar field (used in the `@relation` attribute above)
+
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([planId, hotelInfoId])
+}
+
+model RoomOnHotel {
+  room        RoomSetup @relation(fields: [roomId], references: [id])
+  roomId      Int // relation scalar field (used in the `@relation` attribute above)
+  hotel       HotelInfo @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int // relation scalar field (used in the `@relation` attribute above)
+
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([roomId, hotelInfoId])
 }
 
 model PostTest {
