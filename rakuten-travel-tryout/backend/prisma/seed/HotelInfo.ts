@@ -236,7 +236,14 @@ async function HotelInfo() {
   }
 
   const result_category = await prisma.hotelInfo.findMany({
-    include: { plans: { include: { plan: true } }, rooms: { include: { room: true } } },
+    include: {
+      plans: {
+        include: { plan: true },
+      },
+      rooms: {
+        include: { room: true },
+      },
+    },
   });
   // console.log(JSON.stringify(result_category, null, 2));
 

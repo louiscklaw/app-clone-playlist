@@ -387,7 +387,7 @@ model CategoriesOnPostTest {
 
 model Serverity {
   id        Int            @id @default(autoincrement())
-  serverity String         @default("")
+  category  String         @default("")
   createdAt DateTime       @default(now())
   updatedAt DateTime       @updatedAt
   logs      ServityOnLog[]

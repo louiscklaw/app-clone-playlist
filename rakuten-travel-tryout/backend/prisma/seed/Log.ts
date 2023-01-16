@@ -11,7 +11,7 @@ async function Log() {
       where: { id: i + 1 },
       update: {},
       create: {
-        serverity: list_serveties[i],
+        category: list_serveties[i],
       },
     });
   }
@@ -30,8 +30,14 @@ async function Log() {
     });
   }
 
-  let result_log = await prisma.log.findMany({ include: { serverity: true } });
-  console.log({ result_log });
+  let result_log = await prisma.log.findMany({
+    include: {
+      serverity: {
+        include: { servity: true },
+      },
+    },
+  });
+  console.log(JSON.stringify(result_log, null, 2));
 
   await prisma.$disconnect();
   console.log('seed log done');
