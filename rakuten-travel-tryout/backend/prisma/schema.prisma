@@ -65,14 +65,15 @@ model Profile {
 
 model HotelInfo {
   id                   Int             @id @default(autoincrement())
+  // body
   email                String          @unique
   name                 String?
   address              String          @default("")
   access               String          @default("")
   description          String          @default("")
   short_description    String          @default("")
-  check_in_time        DateTime        @default(now())
-  check_out_time       DateTime        @default(now())
+  check_in_time        String          @default("")
+  check_out_time       String          @default("")
   no_of_rooms          String          @default("10")
   tel                  String          @default("")
   fax                  String          @default("")
