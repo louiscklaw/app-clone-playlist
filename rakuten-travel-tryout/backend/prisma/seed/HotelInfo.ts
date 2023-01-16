@@ -40,6 +40,22 @@ async function HotelInfo() {
         },
         facilities: { create: [{ name: '停車場' }] },
         hotel_type: { create: [{ name: '度假村酒店' }] },
+        room_plan: {
+          create: [
+            {
+              name: '房間不含餐計劃 [不含餐]',
+              description: '該計劃僅適用於房費。請注意，不提供餐點。',
+              plan_setup: {
+                create: [
+                  {
+                    name: '2房型（帶日式房間）帶泳池 [日式西式客房] [禁煙] [海景]',
+                    description: 'Semi Western-Style Room',
+                  },
+                ],
+              },
+            },
+          ],
+        },
       },
     });
   }
