@@ -87,8 +87,11 @@ model HotelInfo {
   awards               Awards[]
   covin_practice       CovinPractice[]
   hotel_type           HotelType[]
-  room_plan            RoomPlan[]
-  comments             HotelComments[]
+
+  // rooms and plans
+  // rooms    RoomsSetup[]
+  // plans    PlanSetup[]
+  comments HotelComments[]
 
   // 可用付款方式
   payment_accept PaymentAccept[]
@@ -188,6 +191,7 @@ model Facility {
 model Awards {
   id          Int        @id @default(autoincrement())
   name        String
+  image       String     @default("")
   description String     @default("")
   deleted     Boolean    @default(false)
   createdAt   DateTime   @default(now())
@@ -242,17 +246,7 @@ model CovinPractice {
   hotelInfoId Int?
 }
 
-model RoomPlan {
-  id          Int         @id @default(autoincrement())
-  name        String
-  description String      @default("")
-  deleted     Boolean     @default(false)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  HotelInfo   HotelInfo?  @relation(fields: [hotelInfoId], references: [id])
-  hotelInfoId Int?
-  plan_setup  PlanSetup[]
-}
+// plans
 
 model HotelComments {
   id Int @id @default(autoincrement())
@@ -300,16 +294,51 @@ model CommentReply {
 }
 
 model PlanSetup {
-  id          Int       @id @default(autoincrement())
-  name        String
-  images      String
-  points      String    @default("")
-  description String    @default("")
-  deleted     Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  RoomPlan    RoomPlan? @relation(fields: [roomPlanId], references: [id])
-  roomPlanId  Int?
+  id    Int           @id @default(autoincrement())
+  name  String
+  rooms PlanOnRooms[]
+}
+
+model RoomSetup {
+  id    Int           @id @default(autoincrement())
+  name  String
+  plans PlanOnRooms[]
+}
+
+model PlanOnRooms {
+  plan   PlanSetup @relation(fields: [planId], references: [id])
+  planId Int // relation scalar field (used in the `@relation` attribute above)
+  room   RoomSetup @relation(fields: [roomId], references: [id])
+  roomId Int // relation scalar field (used in the `@relation` attribute above)
+
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([planId, roomId])
+}
+
+model PostTest {
+  id         Int                    @id @default(autoincrement())
+  title      String
+  content    String                 @default("123")
+  categories CategoriesOnPostTest[]
+}
+
+model Category {
+  id    Int                    @id @default(autoincrement())
+  name  String
+  posts CategoriesOnPostTest[]
+}
+
+model CategoriesOnPostTest {
+  post       PostTest @relation(fields: [postId], references: [id])
+  postId     Int // relation scalar field (used in the `@relation` attribute above)
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([postId, categoryId])
 }
 
 model Helloworld {

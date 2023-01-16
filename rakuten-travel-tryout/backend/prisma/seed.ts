@@ -13,6 +13,7 @@ import RecommendedLocation from './seed/RecommendedLocation';
 import Role from './seed/Role';
 import Tags from './seed/Tags';
 import User from './seed/User';
+import CategoriesOnPostTest from './seed/CategoriesOnPostTest';
 // import CurrencyOption from './seed/CurrencyOption';
 
 (async () => {
@@ -29,6 +30,7 @@ import User from './seed/User';
   await RecommendedLocation();
   await Role();
   await Tags();
+  await CategoriesOnPostTest();
   await User();
 
   console.log('seeding done');
