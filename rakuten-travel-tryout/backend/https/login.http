@@ -4,7 +4,6 @@ GET http://localhost:3001/login?user=123
 
 ###
 GET http://localhost:3001/user
-Authorization: Bearer {{JWT}}
 
 ###
 POST http://localhost:3001/login
