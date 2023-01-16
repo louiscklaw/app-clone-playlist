@@ -54,10 +54,9 @@ export default ({ sx, hotel_info }) => {
             </Stack>
           </div>
           <div style={{ width: '65%' }}>
-            <pre>{JSON.stringify(comments, null, 2)}</pre>
-            {[1].map((c, i) => {
-              <CommentList hotel_info={hotel_info} />;
-            })}
+            {comments.map((c, i) => (
+              <CommentList comment={c} />
+            ))}
           </div>
         </div>
       </Stack>
