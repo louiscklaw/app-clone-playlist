@@ -51,6 +51,10 @@ npm run db_seed
 
 # facilities
 
+### ERD
+
+![](./backend/prisma/erd.svg)
+
 ### mail test
 
 http://localhost:8025/
