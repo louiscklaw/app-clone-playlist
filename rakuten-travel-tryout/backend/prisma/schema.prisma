@@ -295,6 +295,7 @@ model HotelComments {
 model CommentReply {
   id              Int            @id @default(autoincrement())
   name            String         @default("")
+  author          String         @default("")
   date            String         @default("")
   content         String         @default("")
   deleted         Boolean        @default(false)
