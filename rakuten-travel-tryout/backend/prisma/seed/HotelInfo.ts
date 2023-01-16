@@ -30,15 +30,36 @@ async function HotelInfo() {
   let plan_list = [
     {
       name: '房間不含餐計劃 [不供餐]',
+      description: '該計劃僅適用於房費。 請注意，不提供餐點',
+      images: [
+        'https://trvis.r10s.com/d/strg/ctrl/26/610f38c119316ec5412edaa413ece05f9ff43bc5.47.1.26.2.jpg',
+        'https://trvis.r10s.com/d/strg/ctrl/26/a5dd0c6417d479bf7f82135ce931261ea19a89d6.47.1.26.2.jpg',
+      ].join(','),
       points: '不供餐',
+      price_value: '3,057.55',
+      price_description: '含稅費與其他費用 1 間房 2 位住客 1 晚',
     },
     {
       name: '房間不含餐計劃 [不供餐]',
+      description: '該計劃僅適用於房費。 請注意，不提供餐點',
+      images: [
+        'https://trvis.r10s.com/d/strg/ctrl/26/610f38c119316ec5412edaa413ece05f9ff43bc5.47.1.26.2.jpg',
+        'https://trvis.r10s.com/d/strg/ctrl/26/91d046af12015df16c75e62ab5eebe05154f4a0b.47.1.26.2.jpg',
+      ].join(','),
       points: '不供餐',
+      price_value: '3,057.55',
+      price_description: '含稅費與其他費用 1 間房 2 位住客 1 晚',
     },
     {
       name: '房間不含餐計劃 [不供餐]',
+      description: '該計劃僅適用於房費。 請注意，不提供餐點',
+      images: [
+        'https://trvis.r10s.com/d/strg/ctrl/26/21edcacd90fefea7251afed2e11ecabca9e5ef68.47.1.26.2.jpg',
+        'https://trvis.r10s.com/d/strg/ctrl/26/a5dd0c6417d479bf7f82135ce931261ea19a89d6.47.1.26.2.jpg',
+      ].join(','),
       points: '不供餐',
+      price_value: '3,057.55',
+      price_description: '含稅費與其他費用 1 間房 2 位住客 1 晚',
     },
   ];
 
@@ -48,6 +69,10 @@ async function HotelInfo() {
       update: {},
       create: {
         name: plan_list[i].name,
+        description: plan_list[i].description,
+        points: plan_list[i].points,
+        price_value: plan_list[i].price_value,
+        price_description: plan_list[i].price_description,
         rooms: {
           create: [
             {
