@@ -22,7 +22,7 @@ const helloworld = (app: Express, prisma: PrismaClient) => {
         facilities: true,
         language_accept: true,
         payment_accept: true,
-        comments: true,
+        comments: { include: { reply: true } },
         //
       },
     });
