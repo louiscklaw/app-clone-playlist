@@ -39,6 +39,7 @@ async function HotelInfo() {
           ],
         },
         facilities: { create: [{ name: '停車場' }] },
+        hotel_type: { create: [{ name: '度假村酒店' }] },
       },
     });
   }
