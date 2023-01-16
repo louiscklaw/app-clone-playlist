@@ -88,6 +88,9 @@ model HotelInfo {
   awards               Awards[]
   covin_practice       CovinPractice[]
   hotel_type           HotelType[]
+  room_plan            RoomPlan[]
+  comments             HotelComments[]
+
   // content   String?
   // published Boolean @default(false)
   // author    User    @relation(fields: [authorId], references: [id])
@@ -223,6 +226,42 @@ model CovinPractice {
   updatedAt   DateTime   @updatedAt
   HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
   hotelInfoId Int?
+}
+
+model RoomPlan {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String      @default("")
+  deleted     Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  HotelInfo   HotelInfo?  @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int?
+  plan_setup  PlanSetup[]
+}
+
+model HotelComments {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String     @default("")
+  deleted     Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int?
+}
+
+model PlanSetup {
+  id          Int       @id @default(autoincrement())
+  name        String
+  images      String
+  points      String    @default("")
+  description String    @default("")
+  deleted     Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  RoomPlan    RoomPlan? @relation(fields: [roomPlanId], references: [id])
+  roomPlanId  Int?
 }
 
 model Helloworld {
