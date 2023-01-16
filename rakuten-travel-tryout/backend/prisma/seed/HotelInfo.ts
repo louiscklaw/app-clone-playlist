@@ -23,6 +23,8 @@ async function HotelInfo() {
         access: '由宮古機場駕車約 15 分鐘可達',
         tel: '+81 980 74 7500',
         fax: '+81 980 74 7501',
+        accommodation_notice: '如果入住時間超過預定時間，請務必與我們聯繫。',
+        enabled: true,
       },
     });
   }
