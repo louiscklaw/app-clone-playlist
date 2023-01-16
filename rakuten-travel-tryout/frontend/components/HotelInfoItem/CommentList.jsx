@@ -22,7 +22,7 @@ export default ({ sx, comment }) => {
   // // 宿泊代は高級ですが、その価値に見合ったサービスではないでしょうか。 大変有意義な休日旅行となりました。
   // // ありがとうございました。 また今度は夏休みにリピートしたいです。`;
 
-  let { content } = comment;
+  let { content, reply } = comment;
   let short_content = content.split('').slice(0, 90).join('');
 
   if (!comment) return <>loading</>;
@@ -62,42 +62,38 @@ export default ({ sx, comment }) => {
           <Button>1 人認為有幫助</Button>
         </Stack>
 
-        <pre>{JSON.stringify(comment, null, 2)}</pre>
-
         {expand ? (
           <>
-            <Stack direction="column" spacing={1} sx={{ paddingTop: '1rem', paddingBottom: '1rem', width: '50%' }}>
-              <MarkRow text={'地點'} value={5} />
-              <MarkRow text={'設施與設備'} value={1} />
-              <MarkRow text={'服務與工作人員'} value={2} />
-              <MarkRow text={'舒適與整潔度'} value={3} />
-              <MarkRow text={'浴缸'} value={4} />
-              <MarkRow text={'餐食'} value={5} />
-            </Stack>
-
-            {comment.reply ? (
-              <Stack sx={{ backgroundColor: color.lightLightGrey, padding: '1rem', borderRadius: '10px' }} spacing={2}>
-                <Typography variant="body2" fontWeight="bold">
-                  住宿回覆
-                </Typography>
-                <Typography>
-                  この度は、フェリスヴィラスイート宮古島・上野をご利用くださいまして誠にありがとうございました。
-                  お忙しい中、お褒めのお言葉を頂きまして大変嬉しく存じます。
-                  お客様からいただくお言葉は私共の励みとなっております。これからもご滞在のすべてのお客様がご満足頂けるような施設造りをして参ります。
-                  年末年始のご滞在のご家族様へは宮古島メロン、大晦日には宮古そば等をご用意させていただきました。
-                  チェックアウト時にも美味しかったと感想をお話しくださった事鮮明に覚えております。お口に合い何よりでございます。
-                  フェリスヴィラスイートのフリードリンクはとても好評でございます。次回ご滞在の際はシークワサージュースを多めにご用意させていただきますね。
-                  プールは温水で提供しておりますが、表面温度は天候や外気温に影響されやすく、冬季のご滞在ですと日中のみのご利用になってしまったかと存じます。滞在中はお天気にも恵まれておりお楽しみいただけたご様子で何よりでございます。
-                  次回はご家族様で夏にお会いできます事を心よりお待ち申し上げております。
-                </Typography>
-                <Typography>フェリスヴィラスイート宮古島・上野　原田</Typography>
-                <Typography variant="body2" color={color.textDeepGrey}>
-                  發布日： 8/1/2023
-                </Typography>
+            <Stack direction="column" spacing={1}>
+              <Stack direction="column" spacing={1} sx={{ paddingTop: '1rem', paddingBottom: '1rem', width: '50%' }}>
+                <MarkRow text={'地點'} value={5} />
+                <MarkRow text={'設施與設備'} value={1} />
+                <MarkRow text={'服務與工作人員'} value={2} />
+                <MarkRow text={'舒適與整潔度'} value={3} />
+                <MarkRow text={'浴缸'} value={4} />
+                <MarkRow text={'餐食'} value={5} />
               </Stack>
-            ) : (
-              <></>
-            )}
+              {reply.map((r, i) => (
+                <>
+                  <Stack
+                    direction="column"
+                    sx={{ backgroundColor: color.lightLightGrey, padding: '1rem', borderRadius: '10px' }}
+                    spacing={2}
+                  >
+                    <Typography variant="body2" fontWeight="bold">
+                      住宿回覆
+                    </Typography>
+                    <Typography>{r.content}</Typography>
+                    <Typography>{r.author}</Typography>
+                    <div style={{ textAlign: 'right' }}>
+                      <Typography variant="body2" color={color.textDeepGrey}>
+                        發布日： {r.date}
+                      </Typography>
+                    </div>
+                  </Stack>
+                </>
+              ))}
+            </Stack>
           </>
         ) : (
           <></>

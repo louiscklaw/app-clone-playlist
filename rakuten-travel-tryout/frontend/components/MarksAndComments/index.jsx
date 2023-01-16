@@ -31,7 +31,7 @@ export default ({ sx, hotel_info }) => {
         <Typography variant="title2" color={color.textBlack}>
           評分和評語
         </Typography>
-        <div class="row">
+        <div class="row" style={{ gap: '5rem' }}>
           <div style={{ width: '35%' }}>
             <Stack direction="column" spacing={1}>
               <div class="row" style={{ gap: '1rem', alignItems: 'center' }}>
