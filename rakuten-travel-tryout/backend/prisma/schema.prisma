@@ -241,19 +241,40 @@ model RoomPlan {
 }
 
 model HotelComments {
-  id          Int        @id @default(autoincrement())
-  name        String
-  author      String     @default("")
-  date        String     @default("")
-  age         String     @default("")
-  location    String     @default("")
-  type        String     @default("")
-  content     String     @default("")
+  id Int @id @default(autoincrement())
+
+  // comments body
+  name     String
+  author   String @default("")
+  date     String @default("")
+  age      String @default("")
+  location String @default("")
+  type     String @default("")
+  content  String @default("")
+
+  // customer review
+  place                    Int @default(5)
+  facilities_and_equipment Int @default(5)
+  services_and_staff       Int @default(5)
+  comfort_and_cleanliness  Int @default(5)
+  take_a_bath              Int @default(5)
+  food                     Int @default(5)
+
+  // background field
   deleted     Boolean    @default(false)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
   hotelInfoId Int?
+}
+
+model CommentReply {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @default("")
+  deleted     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model PlanSetup {
