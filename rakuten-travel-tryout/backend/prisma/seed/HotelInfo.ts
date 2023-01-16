@@ -57,6 +57,7 @@ async function HotelInfo() {
                       'https://trvis.r10s.com/d/strg/ctrl/26/aff4af030b158d8b1e35f194b7bc2e5d51127857.47.1.26.2.jpg',
                       'https://trvis.r10s.com/d/strg/ctrl/26/818f8b9f5c7b9fcca36a917d972e85d67628cb02.47.1.26.2.jpg',
                     ].join(','),
+                    points: ['日式寢具 x 3 單人床 x 4', '129m²', '1–7 位住客', '禁煙'].join(','),
                   },
                 ],
               },
