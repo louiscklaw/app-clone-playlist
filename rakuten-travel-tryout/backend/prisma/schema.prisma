@@ -243,7 +243,12 @@ model RoomPlan {
 model HotelComments {
   id          Int        @id @default(autoincrement())
   name        String
-  description String     @default("")
+  author      String     @default("")
+  date        String     @default("")
+  age         String     @default("")
+  location    String     @default("")
+  type        String     @default("")
+  content     String     @default("")
   deleted     Boolean    @default(false)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt

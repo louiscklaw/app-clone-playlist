@@ -76,7 +76,15 @@ async function HotelInfo() {
             },
           ],
         },
-        comments: { create: [] },
+        comments: {
+          create: [
+            {
+              name: 'Anonymous',
+              author: 'Anonymous',
+              date: '3/1/2023',
+            },
+          ],
+        },
       },
     });
   }
