@@ -19,6 +19,8 @@ async function HotelInfo() {
         short_description: '設有私人溫水游泳池和廚房的別墅度假村',
         description:
           '這棟別墅是別墅風格的夏威夷公寓出租。 所有 12 棟別墅均設有溫水游泳池，私密性強。 廚房、家具、家電一應俱全，可長期入住。 在您逗留期間，這將是一個只屬於您的私人空間，所以請隨意使用。',
+        address: '日本, 906-0203, 935-8 Ueno Miyaguni, Miyakojima-shi, Okinawa',
+        access: '由宮古機場駕車約 15 分鐘可達',
       },
     });
   }
