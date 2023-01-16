@@ -10,4 +10,4 @@ npm run rm_db
 npm run db_push
 npm run db_seed
 
-# npm run dev
+npm run dev
