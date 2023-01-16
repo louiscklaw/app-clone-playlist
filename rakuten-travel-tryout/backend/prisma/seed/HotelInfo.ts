@@ -50,6 +50,13 @@ async function HotelInfo() {
                   {
                     name: '2房型（帶日式房間）帶泳池 [日式西式客房] [禁煙] [海景]',
                     description: 'Semi Western-Style Room',
+                    images: [
+                      'https://trvis.r10s.com/d/strg/ctrl/26/b4e5c25eabf083b616629c4228be5f398290a205.47.1.26.2.jpg',
+                      'https://trvis.r10s.com/d/strg/ctrl/26/21edcacd90fefea7251afed2e11ecabca9e5ef68.47.1.26.2.jpg',
+                      'https://trvis.r10s.com/d/strg/ctrl/26/d52d1604efc19c68d23a4a96d7adb3bac4fb6cbf.47.1.26.2.jpg',
+                      'https://trvis.r10s.com/d/strg/ctrl/26/aff4af030b158d8b1e35f194b7bc2e5d51127857.47.1.26.2.jpg',
+                      'https://trvis.r10s.com/d/strg/ctrl/26/818f8b9f5c7b9fcca36a917d972e85d67628cb02.47.1.26.2.jpg',
+                    ].join(','),
                   },
                 ],
               },
