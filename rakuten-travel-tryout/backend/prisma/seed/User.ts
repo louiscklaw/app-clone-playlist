@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-async function user() {
-  process.stdout.write('seeding user ...');
+async function User() {
+  process.stdout.write('seeding User ...');
 
   for (var i = 0; i < 19; i++) {
     const alice = await prisma.user.upsert({
@@ -23,7 +23,7 @@ async function user() {
   }
 
   await prisma.$disconnect();
-  console.log('user seed done');
+  console.log('User seed done');
 }
 
-export default user;
+export default User;
