@@ -88,6 +88,14 @@ model HotelInfo {
   covin_practice       CovinPractice[]
   hotel_type           HotelType[]
 
+  // 評分和評語
+  place                    Int @default(5)
+  facilities_and_equipment Int @default(5)
+  services_and_staff       Int @default(5)
+  comfort_and_cleanliness  Int @default(5)
+  take_a_bath              Int @default(5)
+  food                     Int @default(5)
+
   // rooms and plans
   // rooms    RoomsSetup[]
   // plans    PlanSetup[]

@@ -101,6 +101,12 @@ async function HotelInfo() {
         check_in_time: '14:00 - 19:00',
         check_out_time: '10:00',
         no_of_rooms: '12',
+        place: 5,
+        facilities_and_equipment: 5,
+        services_and_staff: 5,
+        comfort_and_cleanliness: 5,
+        take_a_bath: 5,
+        food: 5,
         images: [
           'https://trvis.r10s.com/d/strg/ctrl/26/437b86622a9af43c03f2628882661486821b7879.47.9.26.3.jpg',
           'https://trvis.r10s.com/d/strg/ctrl/26/91d046af12015df16c75e62ab5eebe05154f4a0b.47.1.26.2.jpg',
