@@ -58,3 +58,7 @@ npm run db_seed
 ### mail test
 
 http://localhost:8025/
+
+# references
+
+https://blog.logrocket.com/how-to-set-up-node-typescript-express/
