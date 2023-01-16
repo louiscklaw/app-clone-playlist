@@ -265,6 +265,8 @@ model HotelComments {
   location String @default("")
   type     String @default("")
   content  String @default("")
+  report   Int    @default(0)
+  helpful  Int    @default(0)
 
   // customer review
   place                    Int @default(5)
