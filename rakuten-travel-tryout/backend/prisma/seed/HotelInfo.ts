@@ -59,6 +59,18 @@ async function HotelInfo() {
                     ].join(','),
                     points: ['日式寢具 x 3 單人床 x 4', '129m²', '1–7 位住客', '禁煙'].join(','),
                   },
+                  {
+                    name: '1臥室類型（帶沙發床）游泳池和按摩浴缸 [套房] [禁煙] [海景]',
+                    description: 'SUITE Twin Room',
+                    images: [
+                      'https://trvis.r10s.com/d/strg/ctrl/26/21edcacd90fefea7251afed2e11ecabca9e5ef68.47.1.26.2.jpg',
+                      'https://trvis.r10s.com/d/strg/ctrl/26/a5dd0c6417d479bf7f82135ce931261ea19a89d6.47.1.26.2.jpg',
+                      'https://trvis.r10s.com/d/strg/ctrl/26/a5dd0c6417d479bf7f82135ce931261ea19a89d6.47.1.26.2.jpg',
+                      'https://trvis.r10s.com/d/strg/ctrl/26/b4e5c25eabf083b616629c4228be5f398290a205.47.1.26.2.jpg',
+                    ].join(','),
+                    // price: {value: 3,057.55, description: '包稅與其他費用 1 間房 2 位住客 1 晚'},
+                    points: ['日式寢具 x 3 單人床 x 4', '129m²', '1–7 位住客', '禁煙'].join(','),
+                  },
                 ],
               },
             },
