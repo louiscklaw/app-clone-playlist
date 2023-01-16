@@ -78,8 +78,6 @@ model HotelInfo {
   tel                  String          @default("")
   fax                  String          @default("")
   enabled              Boolean         @default(true)
-  createdAt            DateTime        @default(now())
-  updatedAt            DateTime        @updatedAt
   views                Int             @default(0)
   likes                Int             @default(0)
   images               String          @default("")
@@ -98,15 +96,8 @@ model HotelInfo {
   // 支援語言
   language_accept LanguageAccept[]
 
-  // content   String?
-  // published Boolean @default(false)
-  // author    User    @relation(fields: [authorId], references: [id])
-  // authorId  Int
-  // views     Int     @default(0)
-  // likes     Int     @default(0)
-  // User    User?  @relation(fields: [userId], references: [id])
-  // userId  Int?
-  // User    User?  @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model CurrencyOption {
