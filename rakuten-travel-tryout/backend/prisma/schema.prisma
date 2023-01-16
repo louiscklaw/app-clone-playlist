@@ -260,6 +260,9 @@ model HotelComments {
   take_a_bath              Int @default(5)
   food                     Int @default(5)
 
+  // reply
+  reply CommentReply[]
+
   // background field
   deleted     Boolean    @default(false)
   createdAt   DateTime   @default(now())
@@ -269,12 +272,15 @@ model HotelComments {
 }
 
 model CommentReply {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String   @default("")
-  deleted     Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              Int            @id @default(autoincrement())
+  name            String         @default("")
+  date            String         @default("")
+  content         String         @default("")
+  deleted         Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  HotelComments   HotelComments? @relation(fields: [hotelCommentsId], references: [id])
+  hotelCommentsId Int?
 }
 
 model PlanSetup {
