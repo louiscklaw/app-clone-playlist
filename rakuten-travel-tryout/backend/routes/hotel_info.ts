@@ -20,6 +20,8 @@ const helloworld = (app: Express, prisma: PrismaClient) => {
         covin_practice: true,
         hotel_type: true,
         facilities: true,
+        language_accept: true,
+        payment_accept: true,
         //
       },
     });
