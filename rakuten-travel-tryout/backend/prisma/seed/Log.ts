@@ -37,7 +37,7 @@ async function Log() {
       },
     },
   });
-  console.log(JSON.stringify(result_log, null, 2));
+  // console.log(JSON.stringify(result_log, null, 2));
 
   await prisma.$disconnect();
   console.log('seed log done');
