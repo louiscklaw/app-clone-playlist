@@ -14,6 +14,7 @@ import Role from './seed/Role';
 import Tags from './seed/Tags';
 import User from './seed/User';
 import CategoriesOnPostTest from './seed/CategoriesOnPostTest';
+import Log from './seed/Log';
 // import CurrencyOption from './seed/CurrencyOption';
 
 (async () => {
@@ -32,6 +33,7 @@ import CategoriesOnPostTest from './seed/CategoriesOnPostTest';
   await Tags();
   await CategoriesOnPostTest();
   await User();
+  await Log();
 
   console.log('seeding done');
 })();
