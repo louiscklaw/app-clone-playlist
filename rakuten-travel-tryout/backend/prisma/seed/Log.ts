@@ -3,14 +3,16 @@ const prisma = new PrismaClient();
 
 async function Log() {
   process.stdout.write('seeding log ...');
-  let list = ['log1', 'log2', 'log3'];
+  let list = Array(99)
+    .fill(0)
+    .map((x, i) => `log ${i}`);
 
   for (var i = 0; i < list.length; i++) {
     const alice = await prisma.log.upsert({
       where: { id: i + 1 },
       update: {},
       create: {
-        name: `alice${i}@log.io`,
+        name: `client_1@gmail.com`,
         description: `${list[i]}`,
         serverity: 'LOW',
       },
