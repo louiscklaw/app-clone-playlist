@@ -8,8 +8,9 @@ import LanguageAccept from './seed/LanguageAccept';
 import PaymentAccept from './seed/PaymentAccept';
 import RecommendedLocation from './seed/RecommendedLocation';
 import CovinPractice from './seed/CovinPractice';
-import tags from './seed/tags';
+import Tags from './seed/Tags';
 import user from './seed/user';
+import Permission from './seed/Permission';
 import Role from './seed/Role';
 // import CurrencyOption from './seed/CurrencyOption';
 
@@ -24,7 +25,8 @@ import Role from './seed/Role';
   await CovinPractice();
   await RecommendedLocation();
   await Role();
-  await tags();
+  await Tags();
+  await Permission();
   await user();
 
   console.log('seeding done');

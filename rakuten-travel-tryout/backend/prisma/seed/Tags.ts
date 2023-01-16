@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-async function tags() {
-  process.stdout.write('seeding tags...');
+async function Tags() {
+  process.stdout.write('seeding Tags...');
   for (var i = 0; i < 19; i++) {
     await prisma.tags.upsert({
       where: { id: i },
@@ -14,7 +14,7 @@ async function tags() {
   }
 
   await prisma.$disconnect();
-  console.log('seed tags done');
+  console.log('seed Tags done');
 }
 
-export default tags;
+export default Tags;
