@@ -125,7 +125,6 @@ async function HotelInfo() {
               image:
                 'https://image.space.rakuten.co.jp/d/strg/ctrl/26/ea208625443ffa03053eb13c9029d751833b4c7a.82.9.26.3.png',
             },
-            { name: 'Rakuten Travel Gold Award 2020' },
           ],
         },
         covin_practice: {

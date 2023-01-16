@@ -15,7 +15,13 @@ const helloworld = (app: Express, prisma: PrismaClient) => {
     let _id = 1;
     const hotels = await prisma.hotelInfo.findMany({
       where: { id: _id },
-      include: { awards: true, covin_practice: true, hotel_type: true },
+      include: {
+        awards: true,
+        covin_practice: true,
+        hotel_type: true,
+        facilities: true,
+        //
+      },
     });
 
     // include: { author: true },
