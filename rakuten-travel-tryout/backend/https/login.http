@@ -1,4 +1,10 @@
+@JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudDFAZ21haWwuY29tIiwiaWF0IjoxNjczODg0NDU5fQ.nTuyU32ge_XYZvgBHCT-OjkcoUgx3ZWkc_UVmzQFjR4
+
 GET http://localhost:3001/login?user=123
+
+###
+GET http://localhost:3001/user
+Authorization: Bearer {{JWT}}
 
 ###
 POST http://localhost:3001/login
