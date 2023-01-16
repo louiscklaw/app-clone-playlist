@@ -92,6 +92,12 @@ model HotelInfo {
   room_plan            RoomPlan[]
   comments             HotelComments[]
 
+  // 可用付款方式
+  payment_accept PaymentAccept[]
+
+  // 支援語言
+  language_accept LanguageAccept[]
+
   // content   String?
   // published Boolean @default(false)
   // author    User    @relation(fields: [authorId], references: [id])
@@ -131,24 +137,28 @@ model Comment {
   updatedAt DateTime @updatedAt
 }
 
+// 支援語言
 model LanguageAccept {
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String
   description String
-  enabled     Boolean  @default(true)
-  deleted     Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  enabled     Boolean    @default(true)
+  deleted     Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int?
 }
 
+// 可用付款方式
 model PaymentAccept {
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String
   description String
-  enabled     Boolean  @default(true)
-  deleted     Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  HotelInfo   HotelInfo? @relation(fields: [hotelInfoId], references: [id])
+  hotelInfoId Int?
 }
 
 model HotelType {

@@ -128,6 +128,21 @@ async function HotelInfo() {
             },
           ],
         },
+        payment_accept: {
+          create: [
+            { name: 'Visa 卡', description: '' },
+            { name: '萬事達卡', description: '' },
+            { name: 'American Express', description: '' },
+            { name: 'JCB 卡', description: '' },
+            { name: '可使用現金付款', description: '' },
+          ],
+        },
+        language_accept: {
+          create: [
+            { name: '日文', description: '' },
+            { name: '英文', description: '' },
+          ],
+        },
       },
     });
   }
