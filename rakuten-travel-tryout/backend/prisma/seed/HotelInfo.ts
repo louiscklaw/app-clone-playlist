@@ -16,16 +16,21 @@ async function HotelInfo() {
 
   for (var i = 0; i < plan_list.length; i++) {
     const post = await prisma.planSetup.upsert({
-      where: { id: i },
+      where: { id: i + 1 },
       update: {},
       create: {
-        name: 'How to be Bob',
+        name: `${plan_list[i]}`,
         rooms: {
           create: [
             {
               assignedBy: 'Bob',
               assignedAt: new Date(),
               room: { connect: { id: 1 } },
+            },
+            {
+              assignedBy: 'Bob',
+              assignedAt: new Date(),
+              room: { connect: { id: 2 } },
             },
           ],
         },
