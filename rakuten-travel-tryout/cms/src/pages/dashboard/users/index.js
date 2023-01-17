@@ -44,6 +44,8 @@ const useCustomers = search => {
       const response = await usersApi.getUsers(search);
       // const response = await customersApi.getCustomers(search);
 
+      console.log({ response });
+
       if (isMounted()) {
         setState({
           customers: response.data,

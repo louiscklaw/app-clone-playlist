@@ -11,10 +11,10 @@ class UsersApi {
     }
     const { filters, page, rowsPerPage, sortBy, sortDir } = request;
 
-    let data = deepCopy(customers);
-    let users = await fetch('//localhost:3001/users').then(res => res.json());
-    console.log({ users, data });
-    let count = users.length;
+    // let data = deepCopy(customers);
+    // console.log({ users, data });
+    let data = await fetch('//localhost:3001/users').then(res => res.json());
+    let count = data.length;
 
     if (typeof filters !== 'undefined') {
       data = data.filter(customer => {
