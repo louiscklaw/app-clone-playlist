@@ -5,6 +5,7 @@ import PlusIcon from '@untitled-ui/icons-react/build/esm/Plus';
 import Upload01Icon from '@untitled-ui/icons-react/build/esm/Upload01';
 import { Box, Button, Card, Container, Stack, SvgIcon, Typography } from '@mui/material';
 import { customersApi } from '../../../api/customers';
+import { usersApi } from '../../../api/users';
 import { useMounted } from '../../../hooks/use-mounted';
 import { usePageView } from '../../../hooks/use-page-view';
 import { Layout as DashboardLayout } from '../../../layouts/dashboard';
@@ -40,7 +41,8 @@ const useCustomers = search => {
 
   const getCustomers = useCallback(async () => {
     try {
-      const response = await customersApi.getCustomers(search);
+      const response = await usersApi.getUsers(search);
+      // const response = await customersApi.getCustomers(search);
 
       if (isMounted()) {
         setState({
@@ -67,6 +69,8 @@ const useCustomers = search => {
 const Page = () => {
   const { search, updateSearch } = useSearch();
   const { customers, customersCount } = useCustomers(search);
+
+  console.log({ customers });
 
   usePageView();
 

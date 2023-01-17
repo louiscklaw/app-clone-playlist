@@ -6,10 +6,10 @@ const prisma = new PrismaClient();
 async function User() {
   process.stdout.write('seeding User ...');
 
-  for (var i = 0; i < 19; i++) {
-    const salt = await bcrypt.genSalt();
-    let password = await bcrypt.hash('Aa1234567', salt);
+  const salt = await bcrypt.genSalt();
+  let password = await bcrypt.hash('Aa1234567', salt);
 
+  for (var i = 0; i < 19; i++) {
     const alice = await prisma.user.upsert({
       where: { email: `alice${i}@prisma.io` },
       update: {},
@@ -17,6 +17,7 @@ async function User() {
         email: `client${i}@gmail.com`,
         name: `client ${i}`,
         password: password,
+
         posts: {
           create: {
             title: 'Check out Prisma with Next.js',

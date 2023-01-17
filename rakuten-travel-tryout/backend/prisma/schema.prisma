@@ -37,6 +37,17 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   posts     Post[]
+
+  avatar               String  @default("")
+  city                 String  @default("")
+  country              String  @default("")
+  currency             String  @default("$")
+  hasAcceptedMarketing Boolean @default(true)
+  isProspect           Boolean @default(true)
+  isReturning          Boolean @default(true)
+  state                String  @default("")
+  totalSpent           Int     @default(0)
+  totalOrders          Int     @default(0)
 }
 
 model HotelOperator {
