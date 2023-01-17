@@ -56,6 +56,8 @@ export const AccountPopover = props => {
         }
       }
 
+      await fetch('//localhost:3001/logout');
+
       router.push(paths.index);
     } catch (err) {
       console.error(err);

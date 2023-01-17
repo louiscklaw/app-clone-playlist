@@ -174,6 +174,9 @@ export const AuthProvider = props => {
   );
 
   const signOut = useCallback(async () => {
+    console.log('sign out ?');
+    // debugger;
+
     localStorage.removeItem(STORAGE_KEY);
     dispatch({ type: ActionType.SIGN_OUT });
   }, [dispatch]);

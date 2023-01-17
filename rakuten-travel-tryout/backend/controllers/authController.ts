@@ -108,6 +108,8 @@ export const login_post = async (req: Request, res: Response) => {
 };
 
 export const logout_get = (req: Request, res: Response) => {
+  console.log('logout');
+
   res.cookie('jwt', '', { maxAge: 1 });
   res.redirect('/');
 };
