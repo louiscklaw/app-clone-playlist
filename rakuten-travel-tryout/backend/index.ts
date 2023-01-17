@@ -15,6 +15,7 @@ import HelloworldCron from './scheduledFunctions';
 // routes
 import helloworld from './routes/index';
 import hotel_info from './routes/hotel_info';
+import routes_user from './routes/user';
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use(authRoutes);
 // init routes
 helloworld(app);
 hotel_info(app);
+routes_user(app);
 
 // start cron job if any
 HelloworldCron.start();
