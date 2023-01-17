@@ -70,7 +70,7 @@ class UsersApi {
     });
   }
 
-  getCustomer(request) {
+  getUser(request) {
     return Promise.resolve(deepCopy(customer));
   }
 
