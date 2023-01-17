@@ -1,37 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
     "gitUpdate": "git add . && git commit -m'update rakuten-travel-tryout,'&& git push",
     "reYarn": "rm -rf node_modules && yarn --dev && yarn gulp",
     "docker_rebuild": "docker compose up -d --build",
     "docker_rebuild_logs": "docker compose up -d --build && docker compose logs -f",
     "into_frontend": "docker compose exec -it frontend /bin/bash",
     "into_backend": "docker compose exec -it backend /bin/bash",
+    "into_cms": "docker compose exec -it cms /bin/bash",
     "format": "prettier --write \"./{pages,components,api}/**/*.{js,jsx}\""
   },
   "dependencies": {
-    "@date-io/dayjs": "^2.16.0",
-    "@emotion/cache": "^11.7.1",
-    "@emotion/react": "^11.10.5",
-    "@emotion/server": "^11.4.0",
-    "@emotion/styled": "^11.10.5",
-    "@fontsource/roboto": "^4.5.1",
-    "@mui/icons-material": "^5.2.4",
-    "@mui/material": "^5.2.4",
-    "@mui/x-date-pickers": "^5.0.13",
-    "moment": "^2.29.4",
-    "next": "^12.0.7",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-alice-carousel": "^2.7.0",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "eslint": "^8.5.0",
-    "eslint-config-next": "^12.0.7"
+    "prettier": "^2.8.3"
   }
 }
