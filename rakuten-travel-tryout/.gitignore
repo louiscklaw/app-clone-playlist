@@ -4,3 +4,4 @@ backend/prisma/dev.db
 **/dist
 dist
 *del
+volumes
