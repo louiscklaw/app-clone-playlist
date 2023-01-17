@@ -35,7 +35,7 @@ const useParams = () => {
 };
 
 const initialValues = {
-  email: 'demo@devias.io',
+  email: 'demo@louislabs.com',
   password: 'Password123!',
   submit: null,
 };
@@ -141,7 +141,7 @@ const Page = () => {
         <Stack spacing={3} sx={{ mt: 3 }}>
           <Alert severity="error">
             <div>
-              You can use <b>demo@devias.io</b> and password <b>Password123!</b>
+              You can use <b>demo@louislabs.com</b> and password <b>Password123!</b>
             </div>
           </Alert>
           <AuthIssuer issuer={issuer} />

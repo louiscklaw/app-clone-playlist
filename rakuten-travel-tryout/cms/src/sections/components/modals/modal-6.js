@@ -9,15 +9,9 @@ export const Modal6 = () => (
       p: 3,
     }}
   >
-    <Paper
-      elevation={12}
-      sx={{
-        maxWidth: 320,
-        mx: 'auto',
-      }}
-    >
+    <Paper elevation={12} sx={{ maxWidth: 320, mx: 'auto' }}>
       <Box sx={{ p: 2 }}>
-        <Typography variant="subtitle2">demo@devias.io</Typography>
+        <Typography variant="subtitle2">demo@louislabs.com</Typography>
         <Typography color="text.secondary" variant="subtitle2">
           Devias
         </Typography>

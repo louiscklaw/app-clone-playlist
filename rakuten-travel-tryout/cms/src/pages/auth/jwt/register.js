@@ -36,9 +36,9 @@ const useParams = () => {
 };
 
 const initialValues = {
-  email: '123@123.com',
-  name: 'test create',
-  password: 'Aa1234567!',
+  email: '',
+  name: '',
+  password: '',
   policy: false,
   submit: null,
 };
@@ -145,7 +145,7 @@ const Page = () => {
                 <Checkbox checked={formik.values.policy} name="policy" onChange={formik.handleChange} />
                 <Typography color="text.secondary" variant="body2">
                   I have read the{' '}
-                  <Link component="a" href="#">
+                  <Link component="a" href="/terms">
                     Terms and Conditions
                   </Link>
                 </Typography>
