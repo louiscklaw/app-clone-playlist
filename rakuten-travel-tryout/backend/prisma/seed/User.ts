@@ -21,6 +21,13 @@ async function User() {
         country: 'USA',
         currency: '$',
         city: 'Cleveland',
+        hasAcceptedMarketing: true,
+        isProspect: false,
+        isReturning: true,
+        state: 'Ohio',
+        totalSpent: 300,
+        totalOrders: 3,
+
         posts: {
           create: {
             title: 'Check out Prisma with Next.js',
