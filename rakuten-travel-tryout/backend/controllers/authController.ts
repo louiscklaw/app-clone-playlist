@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import * as yup from 'yup';
 import * as bcrypt from 'bcrypt';
+import { Request, Response } from 'express';
 
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
@@ -9,13 +10,13 @@ const handleErrors = err => {};
 
 const maxAge = 3 * 24 * 60 * 60;
 
-const createToken = ({ email }) => {
+const createToken = (email: { email: string }) => {
   return jwt.sign({ email }, process.env.TOKEN_SECRET, {
     expiresIn: maxAge,
   });
 };
 
-const loginService = async ({ email, password }) => {
+const loginService = async ({ email, password }: { email: string; password: string }) => {
   let prisma;
 
   try {
@@ -46,13 +47,13 @@ export const loginSchema = yup.object().shape({
   password: yup.string().required(),
 });
 
-export const signup_get = (req, res) => {};
+export const signup_get = (req: Request, res: Response) => {};
 
-export const signup_post = (req, res) => {};
+export const signup_post = (req: Request, res: Response) => {};
 
-export const login_get = (req, res) => {};
+export const login_get = (req: Request, res: Response) => {};
 
-export const login_post = async (req, res) => {
+export const login_post = async (req: Request, res: Response) => {
   try {
     const data = req.body;
     await loginSchema.validate(data);
@@ -70,4 +71,4 @@ export const login_post = async (req, res) => {
   }
 };
 
-export const logout_get = (req, res) => {};
+export const logout_get = (req: Request, res: Response) => {};
