@@ -3,6 +3,7 @@ version: '3.8'
 
 services:
   backend:
+    restart: always
     build: $PWD/backend
     ports:
       - 3001:3001
@@ -15,6 +16,7 @@ services:
     command: sleep infinity
 
   frontend:
+    restart: always
     build: $PWD/frontend
     ports:
       - 3000:3000
