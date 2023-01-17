@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-npm i -d
+npm i -D
 
 npx browserslist@latest --update-db
 

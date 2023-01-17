@@ -1,5 +1,5 @@
 # CREDIT: https://github.com/shren207/nextjs-docker-compose
-version: '3.8'
+# version: '3.8'
 
 services:
   backend:
@@ -13,6 +13,19 @@ services:
     volumes:
       - $PWD/backend:/app
       - be_node_modules:/app/node_modules
+    command: sleep infinity
+
+  cms:
+    restart: always
+    build: $PWD/cms
+    ports:
+      - 3002:3000
+      # - 5555:5555
+    user: 1000:1000
+    working_dir: /app
+    volumes:
+      - $PWD/cms:/app
+      - cms_node_modules:/app/node_modules
     command: sleep infinity
 
   frontend:
@@ -39,8 +52,23 @@ services:
       - 'traefik.http.routers.portfolio.tls.certresolver=myresolver'
       - 'traefik.http.services.portfolio.loadbalancer.server.port=3000'
 
+  minio:
+    image: minio/minio:latest
+    restart: always
+    environment:
+      MINIO_BROWSER: on
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - $PWD/volumes/minio/data:/data
+    ports:
+      - 9000:9000
+      - 9001:9001
+    command: server /data --console-address ":9001"
+
   mailhog:
     image: 'mailhog/mailhog:latest'
+    restart: always
     ports:
       - '1025:1025'
       - '8025:8025'
@@ -53,3 +81,4 @@ services:
 volumes:
   fe_node_modules:
   be_node_modules:
+  cms_node_modules:

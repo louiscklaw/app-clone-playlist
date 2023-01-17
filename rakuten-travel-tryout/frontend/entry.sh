@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-npm i -d
+npm i -D
 
 npm run dev
