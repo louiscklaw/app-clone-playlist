@@ -16,12 +16,12 @@ import {
   Popper,
   Stack,
   SvgIcon,
-  Typography
+  Typography,
 } from '@mui/material';
 import { chatApi } from '../../../api/chat';
 import { Scrollbar } from '../../../components/scrollbar';
 
-export const ChatComposerRecipients = (props) => {
+export const ChatComposerRecipients = props => {
   const { onRecipientAdd, onRecipientRemove, recipients = [], ...other } = props;
   const searchRef = useRef(null);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -31,29 +31,32 @@ export const ChatComposerRecipients = (props) => {
   const showSearchResults = !!(searchFocused && searchQuery);
   const hasSearchResults = searchResults.length > 0;
 
-  const handleSearchChange = useCallback(async (event) => {
-    const query = event.target.value;
+  const handleSearchChange = useCallback(
+    async event => {
+      const query = event.target.value;
 
-    setSearchQuery(query);
+      setSearchQuery(query);
 
-    if (!query) {
-      setSearchResults([]);
-      return;
-    }
+      if (!query) {
+        setSearchResults([]);
+        return;
+      }
 
-    try {
-      const contacts = await chatApi.getContacts({ query });
+      try {
+        const contacts = await chatApi.getContacts({ query });
 
-      // Filter already picked recipients
+        // Filter already picked recipients
 
-      const recipientIds = recipients.map((recipient) => recipient.id);
-      const filtered = contacts.filter((contact) => !recipientIds.includes(contact.id));
+        const recipientIds = recipients.map(recipient => recipient.id);
+        const filtered = contacts.filter(contact => !recipientIds.includes(contact.id));
 
-      setSearchResults(filtered);
-    } catch (err) {
-      console.error(err);
-    }
-  }, [recipients]);
+        setSearchResults(filtered);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    [recipients],
+  );
 
   const handleSearchClickAway = useCallback(() => {
     if (showSearchResults) {
@@ -65,10 +68,13 @@ export const ChatComposerRecipients = (props) => {
     setSearchFocused(true);
   }, []);
 
-  const handleSearchSelect = useCallback((contact) => {
-    setSearchQuery('');
-    onRecipientAdd?.(contact);
-  }, [onRecipientAdd]);
+  const handleSearchSelect = useCallback(
+    contact => {
+      setSearchQuery('');
+      onRecipientAdd?.(contact);
+    },
+    [onRecipientAdd],
+  );
 
   return (
     <>
@@ -78,7 +84,7 @@ export const ChatComposerRecipients = (props) => {
             sx={{
               alignItems: 'center',
               display: 'flex',
-              p: 2
+              p: 2,
             }}
           >
             <ClickAwayListener onClickAway={handleSearchClickAway}>
@@ -89,27 +95,23 @@ export const ChatComposerRecipients = (props) => {
                   onFocus={handleSearchFocus}
                   placeholder="Search contacts"
                   ref={searchRef}
-                  startAdornment={(
+                  startAdornment={
                     <InputAdornment position="start">
                       <SvgIcon>
                         <SearchMdIcon />
                       </SvgIcon>
                     </InputAdornment>
-                  )}
+                  }
                   sx={{
                     '&.MuiInputBase-root': {
                       height: 40,
-                      minWidth: 260
-                    }
+                      minWidth: 260,
+                    },
                   }}
                   value={searchQuery}
                 />
                 {showSearchResults && (
-                  <Popper
-                    anchorEl={searchRef.current}
-                    open={searchFocused}
-                    placement="bottom-start"
-                  >
+                  <Popper anchorEl={searchRef.current} open={searchFocused} placement="bottom-start">
                     <Paper
                       elevation={16}
                       sx={{
@@ -118,86 +120,64 @@ export const ChatComposerRecipients = (props) => {
                         borderWidth: 1,
                         maxWidth: '100%',
                         mt: 1,
-                        width: 320
+                        width: 320,
                       }}
                     >
-                      {hasSearchResults
-                        ? (
-                          <>
-                            <Box
-                              sx={{
-                                px: 2,
-                                pt: 2
-                              }}
-                            >
-                              <Typography
-                                color="text.secondary"
-                                variant="subtitle2"
-                              >
-                                Contacts
-                              </Typography>
-                            </Box>
-                            <List>
-                              {searchResults.map((contact) => (
-                                <ListItemButton
-                                  key={contact.id}
-                                  onClick={() => handleSearchSelect(contact)}
-                                >
-                                  <ListItemAvatar>
-                                    <Avatar src={contact.avatar} />
-                                  </ListItemAvatar>
-                                  <ListItemText
-                                    primary={contact.name}
-                                    primaryTypographyProps={{
-                                      noWrap: true,
-                                      variant: 'subtitle2'
-                                    }}
-                                  />
-                                </ListItemButton>
-                              ))}
-                            </List>
-                          </>
-                        )
-                        : (
+                      {hasSearchResults ? (
+                        <>
                           <Box
                             sx={{
-                              p: 2,
-                              textAlign: 'center'
+                              px: 2,
+                              pt: 2,
                             }}
                           >
-                            <Typography
-                              gutterBottom
-                              variant="h6"
-                            >
-                              Nothing Found
-                            </Typography>
-                            <Typography
-                              color="text.secondary"
-                              variant="body2"
-                            >
-                              We couldn&apos;t find any matches for &quot;{searchQuery}&quot;.
-                              Try checking for typos or using complete words.
+                            <Typography color="text.secondary" variant="subtitle2">
+                              Contacts
                             </Typography>
                           </Box>
-                        )}
+                          <List>
+                            {searchResults.map(contact => (
+                              <ListItemButton key={contact.id} onClick={() => handleSearchSelect(contact)}>
+                                <ListItemAvatar>
+                                  <Avatar src={contact.avatar} />
+                                </ListItemAvatar>
+                                <ListItemText
+                                  primary={contact.name}
+                                  primaryTypographyProps={{
+                                    noWrap: true,
+                                    variant: 'subtitle2',
+                                  }}
+                                />
+                              </ListItemButton>
+                            ))}
+                          </List>
+                        </>
+                      ) : (
+                        <Box
+                          sx={{
+                            p: 2,
+                            textAlign: 'center',
+                          }}
+                        >
+                          <Typography gutterBottom variant="h6">
+                            Nothing Found
+                          </Typography>
+                          <Typography color="text.secondary" variant="body2">
+                            We couldn&apos;t find any matches for &quot;{searchQuery}&quot;. Try checking for typos or
+                            using complete words.
+                          </Typography>
+                        </Box>
+                      )}
                     </Paper>
                   </Popper>
                 )}
               </Box>
             </ClickAwayListener>
-            <Typography
-              color="text.secondary"
-              sx={{ mr: 2 }}
-              variant="body2"
-            >
+            <Typography color="text.secondary" sx={{ mr: 2 }} variant="body2">
               To:
             </Typography>
-            <Stack
-              alignItems="center"
-              direction="row"
-              spacing={2}
-            >
-              {recipients.map((recipient) => (
+            <Stack alignItems="center" direction="row" spacing={2}>
+              {recipients.map(recipient => (
                 <Chip
                   avatar={<Avatar src={recipient.avatar} />}
                   key={recipient.id}
@@ -216,5 +196,5 @@ export const ChatComposerRecipients = (props) => {
 ChatComposerRecipients.propTypes = {
   onRecipientAdd: PropTypes.func,
   onRecipientRemove: PropTypes.func,
-  recipients: PropTypes.array
+  recipients: PropTypes.array,
 };

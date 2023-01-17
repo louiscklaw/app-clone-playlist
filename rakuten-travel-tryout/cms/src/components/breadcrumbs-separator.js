@@ -6,7 +6,7 @@ export const BreadcrumbsSeparator = () => (
       backgroundColor: 'neutral.500',
       borderRadius: '50%',
       height: 4,
-      width: 4
+      width: 4,
     }}
   />
 );

@@ -1,17 +1,11 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 
-const EcommerceWorldMap = (props) => {
+const EcommerceWorldMap = props => {
   const { markerColor } = props;
 
   return (
-    <svg
-      fill="none"
-      height="100%"
-      viewBox="0 0 480 233"
-      width="100%"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg fill="none" height="100%" viewBox="0 0 480 233" width="100%" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M456.119 216.281C456.515 216.281 456.835 215.96 456.835 215.564C456.835 215.169 456.515 214.848 456.119 214.848C455.724 214.848 455.403 215.169 455.403 215.564C455.403 215.96 455.724 216.281 456.119 216.281Z"
         fill="#9DA4AE"
@@ -25500,72 +25494,21 @@ const EcommerceWorldMap = (props) => {
         d="M226.865 51.571C227.261 51.571 227.582 51.2504 227.582 50.8549C227.582 50.4594 227.261 50.1388 226.865 50.1388C226.47 50.1388 226.149 50.4594 226.149 50.8549C226.149 51.2504 226.47 51.571 226.865 51.571Z"
         fill="#9DA4AE"
       />
-      <circle
-        opacity="0.2"
-        cx="87.3697"
-        cy="71.2399"
-        r="16"
-        fill={markerColor}
-      />
-      <circle
-        opacity="0.3"
-        cx="87.3697"
-        cy="71.2399"
-        r="12"
-        fill={markerColor}
-      />
-      <circle
-        cx="87.3697"
-        cy="71.2399"
-        r="4"
-        fill={markerColor}
-      />
-      <circle
-        opacity="0.2"
-        cx="206.836"
-        cy="95.2787"
-        r="16"
-        fill={markerColor}
-      />
-      <circle
-        opacity="0.3"
-        cx="206.836"
-        cy="95.2787"
-        r="12"
-        fill={markerColor}
-      />
-      <circle
-        cx="206.836"
-        cy="95.2787"
-        r="4"
-        fill={markerColor}
-      />
-      <circle
-        opacity="0.2"
-        cx="247.176"
-        cy="54.9556"
-        r="16"
-        fill={markerColor}
-      />
-      <circle
-        opacity="0.3"
-        cx="247.176"
-        cy="54.9556"
-        r="12"
-        fill={markerColor}
-      />
-      <circle
-        cx="247.176"
-        cy="54.9556"
-        r="4"
-        fill={markerColor}
-      />
+      <circle opacity="0.2" cx="87.3697" cy="71.2399" r="16" fill={markerColor} />
+      <circle opacity="0.3" cx="87.3697" cy="71.2399" r="12" fill={markerColor} />
+      <circle cx="87.3697" cy="71.2399" r="4" fill={markerColor} />
+      <circle opacity="0.2" cx="206.836" cy="95.2787" r="16" fill={markerColor} />
+      <circle opacity="0.3" cx="206.836" cy="95.2787" r="12" fill={markerColor} />
+      <circle cx="206.836" cy="95.2787" r="4" fill={markerColor} />
+      <circle opacity="0.2" cx="247.176" cy="54.9556" r="16" fill={markerColor} />
+      <circle opacity="0.3" cx="247.176" cy="54.9556" r="12" fill={markerColor} />
+      <circle cx="247.176" cy="54.9556" r="4" fill={markerColor} />
     </svg>
   );
 };
 
 EcommerceWorldMap.propTypes = {
-  markerColor: PropTypes.string.isRequired
+  markerColor: PropTypes.string.isRequired,
 };
 
 const memoized = memo(EcommerceWorldMap);

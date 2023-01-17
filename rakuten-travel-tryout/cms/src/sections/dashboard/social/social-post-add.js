@@ -11,54 +11,33 @@ import {
   OutlinedInput,
   Stack,
   SvgIcon,
-  useMediaQuery
+  useMediaQuery,
 } from '@mui/material';
 import { useMockedUser } from '../../../hooks/use-mocked-user';
 import { getInitials } from '../../../utils/get-initials';
 
-export const SocialPostAdd = (props) => {
+export const SocialPostAdd = props => {
   const user = useMockedUser();
-  const smUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
+  const smUp = useMediaQuery(theme => theme.breakpoints.up('sm'));
 
   return (
     <Card {...props}>
       <CardContent>
-        <Stack
-          alignItems="flex-start"
-          direction="row"
-          spacing={2}
-        >
+        <Stack alignItems="flex-start" direction="row" spacing={2}>
           <Avatar
             src={user.avatar}
             sx={{
               height: 40,
-              width: 40
+              width: 40,
             }}
           >
             {getInitials(user.name)}
           </Avatar>
-          <Stack
-            spacing={3}
-            sx={{ flexGrow: 1 }}
-          >
-            <OutlinedInput
-              fullWidth
-              multiline
-              placeholder="What's on your mind"
-              rows={3}
-            />
-            <Stack
-              alignItems="center"
-              direction="row"
-              justifyContent="space-between"
-              spacing={3}
-            >
+          <Stack spacing={3} sx={{ flexGrow: 1 }}>
+            <OutlinedInput fullWidth multiline placeholder="What's on your mind" rows={3} />
+            <Stack alignItems="center" direction="row" justifyContent="space-between" spacing={3}>
               {smUp && (
-                <Stack
-                  alignItems="center"
-                  direction="row"
-                  spacing={1}
-                >
+                <Stack alignItems="center" direction="row" spacing={1}>
                   <IconButton>
                     <SvgIcon>
                       <Image01Icon />
@@ -82,9 +61,7 @@ export const SocialPostAdd = (props) => {
                 </Stack>
               )}
               <div>
-                <Button variant="contained">
-                  Post
-                </Button>
+                <Button variant="contained">Post</Button>
               </div>
             </Stack>
           </Stack>

@@ -15,25 +15,25 @@ const useSearch = () => {
   const [search, setSearch] = useState({
     filters: {
       query: undefined,
-      status: undefined
+      status: undefined,
     },
     page: 0,
     rowsPerPage: 5,
     sortBy: 'createdAt',
-    sortDir: 'desc'
+    sortDir: 'desc',
   });
 
   return {
     search,
-    updateSearch: setSearch
+    updateSearch: setSearch,
   };
 };
 
-const useOrders = (search) => {
+const useOrders = search => {
   const isMounted = useMounted();
   const [state, setState] = useState({
     orders: [],
-    ordersCount: 0
+    ordersCount: 0,
   });
 
   const getOrders = useCallback(async () => {
@@ -43,7 +43,7 @@ const useOrders = (search) => {
       if (isMounted()) {
         setState({
           orders: response.data,
-          ordersCount: response.count
+          ordersCount: response.count,
         });
       }
     } catch (err) {
@@ -51,11 +51,13 @@ const useOrders = (search) => {
     }
   }, [search, isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getOrders();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [search]);
+    [search],
+  );
 
   return state;
 };
@@ -66,76 +68,89 @@ const Page = () => {
   const { orders, ordersCount } = useOrders(search);
   const [drawer, setDrawer] = useState({
     isOpen: false,
-    data: undefined
+    data: undefined,
   });
   const currentOrder = useMemo(() => {
     if (!drawer.data) {
       return undefined;
     }
 
-    return orders.find((order) => order.id === drawer.data);
+    return orders.find(order => order.id === drawer.data);
   }, [drawer, orders]);
 
   usePageView();
 
-  const handleFiltersChange = useCallback((filters) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      filters
-    }));
-  }, [updateSearch]);
+  const handleFiltersChange = useCallback(
+    filters => {
+      updateSearch(prevState => ({
+        ...prevState,
+        filters,
+      }));
+    },
+    [updateSearch],
+  );
 
-  const handleSortChange = useCallback((sortDir) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      sortDir
-    }));
-  }, [updateSearch]);
+  const handleSortChange = useCallback(
+    sortDir => {
+      updateSearch(prevState => ({
+        ...prevState,
+        sortDir,
+      }));
+    },
+    [updateSearch],
+  );
 
-  const handlePageChange = useCallback((event, page) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      page
-    }));
-  }, [updateSearch]);
+  const handlePageChange = useCallback(
+    (event, page) => {
+      updateSearch(prevState => ({
+        ...prevState,
+        page,
+      }));
+    },
+    [updateSearch],
+  );
 
-  const handleRowsPerPageChange = useCallback((event) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      rowsPerPage: parseInt(event.target.value, 10)
-    }));
-  }, [updateSearch]);
+  const handleRowsPerPageChange = useCallback(
+    event => {
+      updateSearch(prevState => ({
+        ...prevState,
+        rowsPerPage: parseInt(event.target.value, 10),
+      }));
+    },
+    [updateSearch],
+  );
 
-  const handleOrderOpen = useCallback((orderId) => {
-    // Close drawer if is the same order
+  const handleOrderOpen = useCallback(
+    orderId => {
+      // Close drawer if is the same order
 
-    if (drawer.isOpen && drawer.data === orderId) {
+      if (drawer.isOpen && drawer.data === orderId) {
+        setDrawer({
+          isOpen: false,
+          data: undefined,
+        });
+        return;
+      }
+
       setDrawer({
-        isOpen: false,
-        data: undefined
+        isOpen: true,
+        data: orderId,
       });
-      return;
-    }
-
-    setDrawer({
-      isOpen: true,
-      data: orderId
-    });
-  }, [drawer]);
+    },
+    [drawer],
+  );
 
   const handleOrderClose = useCallback(() => {
     setDrawer({
       isOpen: false,
-      data: undefined
+      data: undefined,
     });
   }, []);
 
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Order List | Devias Kit PRO
-        </title>
+        <title>Dashboard: Order List | Devias Kit PRO</title>
       </Head>
       <Divider />
       <Box
@@ -145,7 +160,7 @@ const Page = () => {
           display: 'flex',
           flex: '1 1 auto',
           overflow: 'hidden',
-          position: 'relative'
+          position: 'relative',
         }}
       >
         <Box
@@ -156,29 +171,22 @@ const Page = () => {
             left: 0,
             position: 'absolute',
             right: 0,
-            top: 0
+            top: 0,
           }}
         >
           <OrderListContainer open={drawer.isOpen}>
             <Box sx={{ p: 3 }}>
-              <Stack
-                alignItems="flex-start"
-                direction="row"
-                justifyContent="space-between"
-                spacing={4}
-              >
+              <Stack alignItems="flex-start" direction="row" justifyContent="space-between" spacing={4}>
                 <div>
-                  <Typography variant="h4">
-                    Orders
-                  </Typography>
+                  <Typography variant="h4">Orders</Typography>
                 </div>
                 <div>
                   <Button
-                    startIcon={(
+                    startIcon={
                       <SvgIcon>
                         <PlusIcon />
                       </SvgIcon>
-                    )}
+                    }
                     variant="contained"
                   >
                     Add
@@ -216,10 +224,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

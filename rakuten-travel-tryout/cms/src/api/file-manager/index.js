@@ -11,7 +11,7 @@ class FileManagerApi {
     let count = data.length;
 
     if (typeof filters !== 'undefined') {
-      data = data.filter((file) => {
+      data = data.filter(file => {
         if (typeof filters.query !== 'undefined' && filters.query !== '') {
           const matched = file.name.toLowerCase().includes(filters.query.toLowerCase());
 
@@ -35,7 +35,7 @@ class FileManagerApi {
 
     return Promise.resolve({
       data,
-      count
+      count,
     });
   }
 }

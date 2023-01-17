@@ -8,10 +8,10 @@ const sliderSettings = {
   infinite: true,
   speed: 500,
   slidesToShow: 1,
-  slidesToScroll: 1
+  slidesToScroll: 1,
 };
 
-export const OverviewTips = (props) => {
+export const OverviewTips = props => {
   const { sx, tips } = props;
 
   return (
@@ -20,7 +20,7 @@ export const OverviewTips = (props) => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%'
+          height: '100%',
         }}
       >
         <Box sx={{ mb: 6 }}>
@@ -30,30 +30,24 @@ export const OverviewTips = (props) => {
           sx={{
             flexGrow: 1,
             '& .slick-slider': {
-              cursor: 'grab'
+              cursor: 'grab',
             },
             '& .slick-slider, & .slick-list, & .slick-track': {
-              height: '100%'
+              height: '100%',
             },
             '& .slick-dots': {
               top: -50,
               bottom: 'unset',
               left: -10,
-              textAlign: 'left'
-            }
+              textAlign: 'left',
+            },
           }}
         >
           <Slider {...sliderSettings}>
-            {tips.map((tip) => (
+            {tips.map(tip => (
               <div key={tip.title}>
-                <Typography variant="h6">
-                  {tip.title}
-                </Typography>
-                <Typography
-                  color="text.secondary"
-                  sx={{ mt: 1 }}
-                  variant="body1"
-                >
+                <Typography variant="h6">{tip.title}</Typography>
+                <Typography color="text.secondary" sx={{ mt: 1 }} variant="body1">
                   {tip.content}
                 </Typography>
               </div>
@@ -68,5 +62,5 @@ export const OverviewTips = (props) => {
 OverviewTips.propTypes = {
   // @ts-ignore
   sx: PropTypes.object,
-  tips: PropTypes.array.isRequired
+  tips: PropTypes.array.isRequired,
 };

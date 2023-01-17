@@ -11,7 +11,7 @@ import {
   Stack,
   SvgIcon,
   Typography,
-  Unstable_Grid2 as Grid
+  Unstable_Grid2 as Grid,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { CompanyJobs } from './company-jobs';
@@ -24,11 +24,11 @@ const MarkdownWrapper = styled('div')(({ theme }) => ({
   '& p': {
     fontSize: theme.typography.body2.fontSize,
     lineHeight: theme.typography.body1.lineHeight,
-    marginBottom: theme.spacing(2)
-  }
+    marginBottom: theme.spacing(2),
+  },
 }));
 
-export const CompanyOverview = (props) => {
+export const CompanyOverview = props => {
   const { company, ...other } = props;
 
   // Limit to 2 members visible
@@ -38,22 +38,12 @@ export const CompanyOverview = (props) => {
   return (
     <div {...other}>
       <div>
-        <Typography variant="h5">
-          {company.shortDescription}
-        </Typography>
+        <Typography variant="h5">{company.shortDescription}</Typography>
       </div>
       <Box sx={{ mt: 3 }}>
-        <MarkdownWrapper>
-          {company.description && (
-            <Markdown children={company.description} />
-          )}
-        </MarkdownWrapper>
+        <MarkdownWrapper>{company.description && <Markdown children={company.description} />}</MarkdownWrapper>
       </Box>
-      <ImageList
-        cols={3}
-        gap={24}
-        variant="masonry"
-      >
+      <ImageList cols={3} gap={24} variant="masonry">
         {images.map((image, index) => (
           <ImageListItem key={index}>
             <img
@@ -73,9 +63,7 @@ export const CompanyOverview = (props) => {
         spacing={3}
         sx={{ mt: 3 }}
       >
-        <Typography variant="h6">
-          Jobs
-        </Typography>
+        <Typography variant="h6">Jobs</Typography>
         <Link
           color="inherit"
           component={NextLink}
@@ -83,13 +71,10 @@ export const CompanyOverview = (props) => {
           variant="subtitle2"
           sx={{
             alignItems: 'center',
-            display: 'flex'
+            display: 'flex',
           }}
         >
-          <Typography
-            sx={{ mr: 1 }}
-            variant="subtitle2"
-          >
+          <Typography sx={{ mr: 1 }} variant="subtitle2">
             Jobs
           </Typography>
           <SvgIcon>
@@ -101,16 +86,8 @@ export const CompanyOverview = (props) => {
         <CompanyJobs jobs={company.jobs} />
       </Box>
       <Divider sx={{ my: 3 }} />
-      <Stack
-        alignItems="center"
-        direction="row"
-        flexWrap="wrap"
-        justifyContent="space-between"
-        spacing={3}
-      >
-        <Typography variant="h6">
-          Members
-        </Typography>
+      <Stack alignItems="center" direction="row" flexWrap="wrap" justifyContent="space-between" spacing={3}>
+        <Typography variant="h6">Members</Typography>
         <Link
           color="inherit"
           component={NextLink}
@@ -118,13 +95,10 @@ export const CompanyOverview = (props) => {
           variant="subtitle2"
           sx={{
             alignItems: 'center',
-            display: 'flex'
+            display: 'flex',
           }}
         >
-          <Typography
-            sx={{ mr: 1 }}
-            variant="subtitle2"
-          >
+          <Typography sx={{ mr: 1 }} variant="subtitle2">
             Members
           </Typography>
           <SvgIcon>
@@ -136,19 +110,12 @@ export const CompanyOverview = (props) => {
         sx={{
           mb: -1.5,
           mt: 1.5,
-          mx: -1.5
+          mx: -1.5,
         }}
       >
-        <Grid
-          container
-          spacing={3}
-        >
-          {members.map((member) => (
-            <Grid
-              key={member.id}
-              xs={12}
-              sm={6}
-            >
+        <Grid container spacing={3}>
+          {members.map(member => (
+            <Grid key={member.id} xs={12} sm={6}>
               <CompanyMember member={member} />
             </Grid>
           ))}
@@ -160,5 +127,5 @@ export const CompanyOverview = (props) => {
 
 CompanyOverview.propTypes = {
   // @ts-ignore
-  company: PropTypes.object.isRequired
+  company: PropTypes.object.isRequired,
 };

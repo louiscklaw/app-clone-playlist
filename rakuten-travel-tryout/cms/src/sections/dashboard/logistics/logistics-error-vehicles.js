@@ -2,39 +2,27 @@ import PropTypes from 'prop-types';
 import AlertTriangleIcon from '@untitled-ui/icons-react/build/esm/AlertTriangle';
 import { Avatar, Card, Stack, SvgIcon, Typography } from '@mui/material';
 
-export const LogisticsErrorVehicles = (props) => {
+export const LogisticsErrorVehicles = props => {
   const { amount } = props;
 
   return (
     <Card>
-      <Stack
-        spacing={1}
-        sx={{ p: 3 }}
-      >
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
+      <Stack spacing={1} sx={{ p: 3 }}>
+        <Stack alignItems="center" direction="row" spacing={2}>
           <Avatar
             variant="rounded"
             sx={{
               backgroundColor: 'error.alpha12',
-              color: 'error.main'
+              color: 'error.main',
             }}
           >
             <SvgIcon>
               <AlertTriangleIcon />
             </SvgIcon>
           </Avatar>
-          <Typography variant="h5">
-            {amount}
-          </Typography>
+          <Typography variant="h5">{amount}</Typography>
         </Stack>
-        <Typography
-          color="text.secondary"
-          variant="body2"
-        >
+        <Typography color="text.secondary" variant="body2">
           Vehicles with errors
         </Typography>
       </Stack>
@@ -43,6 +31,5 @@ export const LogisticsErrorVehicles = (props) => {
 };
 
 LogisticsErrorVehicles.propTypes = {
-  amount: PropTypes.number.isRequired
+  amount: PropTypes.number.isRequired,
 };
-

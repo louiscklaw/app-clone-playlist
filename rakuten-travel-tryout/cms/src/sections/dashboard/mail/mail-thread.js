@@ -9,22 +9,26 @@ import { MailThreadMessage } from './mail-thread-message';
 import { MailThreadReply } from './mail-thread-reply';
 import { MailThreadToolbar } from './mail-thread-toolbar';
 
-const useEmail = (emailId) => {
+const useEmail = emailId => {
   const dispatch = useDispatch();
-  const email = useSelector((state) => state.mail.emails.byId[emailId]);
+  const email = useSelector(state => state.mail.emails.byId[emailId]);
 
-  useEffect(() => {
-      dispatch(thunks.getEmail({
-        emailId
-      }));
+  useEffect(
+    () => {
+      dispatch(
+        thunks.getEmail({
+          emailId,
+        }),
+      );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [emailId]);
+    [emailId],
+  );
 
   return email;
 };
 
-export const MailThread = (props) => {
+export const MailThread = props => {
   const { emailId, currentLabelId } = props;
   const email = useEmail(emailId);
 
@@ -32,9 +36,10 @@ export const MailThread = (props) => {
     return null;
   }
 
-  const backHref = (currentLabelId && currentLabelId !== 'inbox')
-    ? paths.dashboard.mail + `?label=${currentLabelId}`
-    : paths.dashboard.mail;
+  const backHref =
+    currentLabelId && currentLabelId !== 'inbox'
+      ? paths.dashboard.mail + `?label=${currentLabelId}`
+      : paths.dashboard.mail;
 
   const hasMessage = !!email.message;
   const hasAttachments = email.attachments && email.attachments.length > 0;
@@ -44,29 +49,19 @@ export const MailThread = (props) => {
       sx={{
         flexGrow: 1,
         height: '100%',
-        overflowY: 'auto'
+        overflowY: 'auto',
       }}
     >
-      <MailThreadToolbar
-        backHref={backHref}
-        createdAt={email.createdAt}
-        from={email.from}
-        to={email.to}
-      />
+      <MailThreadToolbar backHref={backHref} createdAt={email.createdAt} from={email.from} to={email.to} />
       <Box
         sx={{
           flexGrow: 1,
           px: 3,
-          py: 6
+          py: 6,
         }}
       >
-        <Typography variant="h3">
-          {email.subject}
-        </Typography>
-        <Stack
-          sx={{ mt: 2 }}
-          spacing={6}
-        >
+        <Typography variant="h3">{email.subject}</Typography>
+        <Stack sx={{ mt: 2 }} spacing={6}>
           {hasMessage && <MailThreadMessage message={email.message} />}
           {hasAttachments && <MailThreadAttachments attachments={email.attachments} />}
         </Stack>
@@ -78,5 +73,5 @@ export const MailThread = (props) => {
 
 MailThread.propTypes = {
   emailId: PropTypes.string.isRequired,
-  currentLabelId: PropTypes.string
+  currentLabelId: PropTypes.string,
 };

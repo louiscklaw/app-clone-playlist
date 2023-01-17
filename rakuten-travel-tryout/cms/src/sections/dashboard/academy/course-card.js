@@ -12,11 +12,11 @@ import {
   Link,
   Stack,
   SvgIcon,
-  Typography
+  Typography,
 } from '@mui/material';
 import { paths } from '../../../paths';
 
-export const CourseCard = (props) => {
+export const CourseCard = props => {
   const { course } = props;
 
   return (
@@ -37,49 +37,34 @@ export const CourseCard = (props) => {
         >
           {course.title}
         </Link>
-        <Typography
-          color="text.secondary"
-          sx={{ mt: 1 }}
-          variant="body2"
-        >
+        <Typography color="text.secondary" sx={{ mt: 1 }} variant="body2">
           {course.description}
         </Typography>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={1}
-          sx={{ mt: 1 }}
-        >
+        <Stack alignItems="center" direction="row" spacing={1} sx={{ mt: 1 }}>
           <SvgIcon>
             <ClockIcon />
           </SvgIcon>
-          <Typography
-            color="text.secondary"
-            variant="caption"
-          >
+          <Typography color="text.secondary" variant="caption">
             {course.duration}
           </Typography>
         </Stack>
       </CardContent>
-      <LinearProgress
-        value={course.progress}
-        variant="determinate"
-      />
+      <LinearProgress value={course.progress} variant="determinate" />
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'flex-end',
-          p: 1
+          p: 1,
         }}
       >
         <Button
           color="inherit"
           component={NextLink}
-          endIcon={(
+          endIcon={
             <SvgIcon>
               <ArrowRightIcon />
             </SvgIcon>
-          )}
+          }
           href={paths.dashboard.academy.courseDetails}
         >
           Continue
@@ -91,5 +76,5 @@ export const CourseCard = (props) => {
 
 CourseCard.propTypes = {
   // @ts-ignore
-  course: PropTypes.object.isRequired
+  course: PropTypes.object.isRequired,
 };

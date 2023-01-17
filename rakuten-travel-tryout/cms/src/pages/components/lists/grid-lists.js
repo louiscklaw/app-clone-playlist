@@ -14,28 +14,28 @@ import { GridList6 } from '../../../sections/components/grid-lists/grid-list-6';
 const components = [
   {
     element: <GridList1 />,
-    title: 'Grid list 1'
+    title: 'Grid list 1',
   },
   {
     element: <GridList2 />,
-    title: 'Grid list 2'
+    title: 'Grid list 2',
   },
   {
     element: <GridList3 />,
-    title: 'Grid list 3'
+    title: 'Grid list 3',
   },
   {
     element: <GridList4 />,
-    title: 'Grid list 4'
+    title: 'Grid list 4',
   },
   {
     element: <GridList5 />,
-    title: 'Grid list 5'
+    title: 'Grid list 5',
   },
   {
     element: <GridList6 />,
-    title: 'Grid list 6'
-  }
+    title: 'Grid list 6',
+  },
 ];
 
 const Page = () => {
@@ -44,24 +44,19 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Components: Grid Lists | Devias Kit PRO
-        </title>
+        <title>Components: Grid Lists | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Stack spacing={8}>
-            {components.map((component) => (
-              <Previewer
-                key={component.title}
-                title={component.title}
-              >
+            {components.map(component => (
+              <Previewer key={component.title} title={component.title}>
                 {component.element}
               </Previewer>
             ))}
@@ -72,11 +67,9 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <MarketingLayout>
-    <ComponentsLayout title="Grid Lists">
-      {page}
-    </ComponentsLayout>
+    <ComponentsLayout title="Grid Lists">{page}</ComponentsLayout>
   </MarketingLayout>
 );
 

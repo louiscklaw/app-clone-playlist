@@ -33,32 +33,27 @@ const useAnalytics = () => {
   }, []);
 };
 
-const App = (props) => {
+const App = props => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   useAnalytics();
 
-  const getLayout = Component.getLayout ?? ((page) => page);
+  const getLayout = Component.getLayout ?? (page => page);
 
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>
-          Devias Kit PRO
-        </title>
-        <meta
-          name="viewport"
-          content="initial-scale=1, width=device-width"
-        />
+        <title>Devias Kit PRO</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ReduxProvider store={store}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <AuthProvider>
             <AuthConsumer>
-              {(auth) => (
+              {auth => (
                 <SettingsProvider>
                   <SettingsConsumer>
-                    {(settings) => {
+                    {settings => {
                       // Prevent theme flicker when restoring custom settings from browser storage
                       if (!settings.isInitialized) {
                         // return null;
@@ -69,7 +64,7 @@ const App = (props) => {
                         contrast: settings.contrast,
                         direction: settings.direction,
                         paletteMode: settings.paletteMode,
-                        responsiveFontSizes: settings.responsiveFontSizes
+                        responsiveFontSizes: settings.responsiveFontSizes,
                       });
 
                       // Prevent guards from redirecting
@@ -78,44 +73,36 @@ const App = (props) => {
                       return (
                         <ThemeProvider theme={theme}>
                           <Head>
-                            <meta
-                              name="color-scheme"
-                              content={settings.paletteMode}
-                            />
-                            <meta
-                              name="theme-color"
-                              content={theme.palette.neutral[900]}
-                            />
+                            <meta name="color-scheme" content={settings.paletteMode} />
+                            <meta name="theme-color" content={theme.palette.neutral[900]} />
                           </Head>
                           <RTL direction={settings.direction}>
                             <CssBaseline />
-                            {showSlashScreen
-                              ? <SplashScreen />
-                              : (
-                                <>
-                                  {getLayout(
-                                    <Component {...pageProps} />
-                                  )}
-                                  <SettingsButton onClick={settings.handleDrawerOpen} />
-                                  <SettingsDrawer
-                                    canReset={settings.isCustom}
-                                    onClose={settings.handleDrawerClose}
-                                    onReset={settings.handleReset}
-                                    onUpdate={settings.handleUpdate}
-                                    open={settings.openDrawer}
-                                    values={{
-                                      colorPreset: settings.colorPreset,
-                                      contrast: settings.contrast,
-                                      direction: settings.direction,
-                                      paletteMode: settings.paletteMode,
-                                      responsiveFontSizes: settings.responsiveFontSizes,
-                                      stretch: settings.stretch,
-                                      layout: settings.layout,
-                                      navColor: settings.navColor
-                                    }}
-                                  />
-                                </>
-                              )}
+                            {showSlashScreen ? (
+                              <SplashScreen />
+                            ) : (
+                              <>
+                                {getLayout(<Component {...pageProps} />)}
+                                <SettingsButton onClick={settings.handleDrawerOpen} />
+                                <SettingsDrawer
+                                  canReset={settings.isCustom}
+                                  onClose={settings.handleDrawerClose}
+                                  onReset={settings.handleReset}
+                                  onUpdate={settings.handleUpdate}
+                                  open={settings.openDrawer}
+                                  values={{
+                                    colorPreset: settings.colorPreset,
+                                    contrast: settings.contrast,
+                                    direction: settings.direction,
+                                    paletteMode: settings.paletteMode,
+                                    responsiveFontSizes: settings.responsiveFontSizes,
+                                    stretch: settings.stretch,
+                                    layout: settings.layout,
+                                    navColor: settings.navColor,
+                                  }}
+                                />
+                              </>
+                            )}
                             <Toaster />
                           </RTL>
                         </ThemeProvider>

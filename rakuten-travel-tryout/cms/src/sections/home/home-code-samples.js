@@ -58,7 +58,7 @@ const Page = () => {
     </Box>
   );
 };
-`
+`,
   },
   {
     lang: 'tsx',
@@ -113,8 +113,8 @@ const Page: NextPage = () => {
     </Box>
   );
 };
-`
-  }
+`,
+  },
 ];
 
 export const HomeCodeSamples = () => {
@@ -125,14 +125,14 @@ export const HomeCodeSamples = () => {
   }, []);
 
   const code = useMemo(() => {
-    return samples.find((sample) => sample.lang === currentLang)?.code.trim() || '';
+    return samples.find(sample => sample.lang === currentLang)?.code.trim() || '';
   }, [currentLang]);
 
   return (
     <Box
       sx={{
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
       }}
     >
       <Stack
@@ -141,16 +141,16 @@ export const HomeCodeSamples = () => {
         spacing={2}
         sx={{
           backdropFilter: 'blur(6px)',
-          backgroundColor: (theme) => alpha(theme.palette.neutral[800], .95),
+          backgroundColor: theme => alpha(theme.palette.neutral[800], 0.95),
           borderBottomColor: 'neutral.700',
           borderBottomStyle: 'solid',
           borderBottomWidth: 1,
-          borderTopLeftRadius: (theme) => theme.shape.borderRadius,
-          borderTopRightRadius: (theme) => theme.shape.borderRadius,
+          borderTopLeftRadius: theme => theme.shape.borderRadius,
+          borderTopRightRadius: theme => theme.shape.borderRadius,
           boxShadow: 24,
           flex: '0 0 auto',
           overflow: 'hidden',
-          px: 2
+          px: 2,
         }}
       >
         <Stack
@@ -163,47 +163,39 @@ export const HomeCodeSamples = () => {
               backgroundColor: 'rgba(255, 255, 255, 0.16)',
               borderRadius: '50%',
               height: 10,
-              width: 10
-            }
+              width: 10,
+            },
           }}
         >
           <div />
           <div />
           <div />
         </Stack>
-        <Tabs
-          onChange={handleLangChange}
-          value={currentLang}
-        >
-          {samples.map((sample) => (
+        <Tabs onChange={handleLangChange} value={currentLang}>
+          {samples.map(sample => (
             <Tab
               key={sample.lang}
-              label={<Stack
-                alignItems="center"
-                direction="row"
-                spacing={1}
-              >
-                <Box
-                  sx={{
-                    borderRadius: '4px',
-                    flex: '0 0 auto',
-                    height: 20,
-                    overflow: 'hidden',
-                    width: 20,
-                    '& img': {
-                      width: '100%'
-                    }
-                  }}
-                >
-                  <img src={sample.icon} />
-                </Box>
-                <Typography
-                  sx={{ color: 'neutral.300' }}
-                  variant="body2"
-                >
-                  {sample.label}
-                </Typography>
-              </Stack>}
+              label={
+                <Stack alignItems="center" direction="row" spacing={1}>
+                  <Box
+                    sx={{
+                      borderRadius: '4px',
+                      flex: '0 0 auto',
+                      height: 20,
+                      overflow: 'hidden',
+                      width: 20,
+                      '& img': {
+                        width: '100%',
+                      },
+                    }}
+                  >
+                    <img src={sample.icon} />
+                  </Box>
+                  <Typography sx={{ color: 'neutral.300' }} variant="body2">
+                    {sample.label}
+                  </Typography>
+                </Stack>
+              }
               value={sample.lang}
             />
           ))}
@@ -212,9 +204,9 @@ export const HomeCodeSamples = () => {
       <Box
         sx={{
           backdropFilter: 'blur(6px)',
-          backgroundColor: (theme) => alpha(theme.palette.neutral[800], .9),
-          borderBottomLeftRadius: (theme) => theme.shape.borderRadius,
-          borderBottomRightRadius: (theme) => theme.shape.borderRadius,
+          backgroundColor: theme => alpha(theme.palette.neutral[800], 0.9),
+          borderBottomLeftRadius: theme => theme.shape.borderRadius,
+          borderBottomRightRadius: theme => theme.shape.borderRadius,
           flex: '1 1 auto',
           overflow: 'hidden',
           p: 2,
@@ -225,18 +217,14 @@ export const HomeCodeSamples = () => {
             height: '100%',
             m: '0 !important',
             overflow: 'hidden !important',
-            p: '0 !important'
+            p: '0 !important',
           },
           '& code': {
-            fontSize: '12px !important'
-          }
+            fontSize: '12px !important',
+          },
         }}
       >
-        <SyntaxHighlighter
-          children={code}
-          language={currentLang}
-          style={codeStyle}
-        />
+        <SyntaxHighlighter children={code} language={currentLang} style={codeStyle} />
       </Box>
     </Box>
   );

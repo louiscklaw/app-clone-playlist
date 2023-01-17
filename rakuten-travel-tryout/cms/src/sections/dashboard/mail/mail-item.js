@@ -5,30 +5,24 @@ import { format } from 'date-fns';
 import Attachment01Icon from '@untitled-ui/icons-react/build/esm/Attachment01';
 import BookmarkIcon from '@untitled-ui/icons-react/build/esm/Bookmark';
 import Star01Icon from '@untitled-ui/icons-react/build/esm/Star01';
-import {
-  Avatar,
-  Box,
-  Checkbox,
-  Chip,
-  IconButton,
-  SvgIcon,
-  Tooltip,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, Checkbox, Chip, IconButton, SvgIcon, Tooltip, Typography } from '@mui/material';
 import { getInitials } from '../../../utils/get-initials';
 
-export const MailItem = (props) => {
+export const MailItem = props => {
   const { email, onDeselect, onSelect, selected, href, ...other } = props;
 
-  const handleSelectToggle = useCallback((event) => {
-    const { checked } = event.target;
+  const handleSelectToggle = useCallback(
+    event => {
+      const { checked } = event.target;
 
-    if (checked) {
-      onSelect?.();
-    } else {
-      onDeselect?.();
-    }
-  }, [onSelect, onDeselect]);
+      if (checked) {
+        onSelect?.();
+      } else {
+        onDeselect?.();
+      }
+    },
+    [onSelect, onDeselect],
+  );
 
   const createdAt = format(email.createdAt, 'dd MMM');
   const hasAnyAttachments = !!(email.attachments && email.attachments.length > 0);
@@ -52,36 +46,34 @@ export const MailItem = (props) => {
             left: 0,
             position: 'absolute',
             top: 0,
-            width: 4
+            width: 4,
           },
           '& $name, & $subject': {
-            fontWeight: 600
-          }
+            fontWeight: 600,
+          },
         }),
         ...(selected && {
-          backgroundColor: 'primary.lightest'
+          backgroundColor: 'primary.lightest',
         }),
         ...(!selected && {
           '&:hover': {
-            backgroundColor: 'action.hover'
-          }
-        })
+            backgroundColor: 'action.hover',
+          },
+        }),
       }}
-      {...other}>
+      {...other}
+    >
       <Box
         sx={{
           alignItems: 'center',
           display: {
             md: 'flex',
-            xs: 'none'
+            xs: 'none',
           },
-          mr: 1
+          mr: 1,
         }}
       >
-        <Checkbox
-          checked={selected}
-          onChange={handleSelectToggle}
-        />
+        <Checkbox checked={selected} onChange={handleSelectToggle} />
         <Tooltip title="Starred">
           <IconButton>
             <SvgIcon
@@ -89,10 +81,10 @@ export const MailItem = (props) => {
                 ...(email.isStarred && {
                   color: 'warning.main',
                   '& path': {
-                    fill: (theme) => theme.palette.warning.main,
-                    fillOpacity: 1
-                  }
-                })
+                    fill: theme => theme.palette.warning.main,
+                    fillOpacity: 1,
+                  },
+                }),
               }}
             >
               <Star01Icon />
@@ -106,10 +98,10 @@ export const MailItem = (props) => {
                 ...(email.isImportant && {
                   color: 'warning.main',
                   '& path': {
-                    fill: (theme) => theme.palette.warning.main,
-                    fillOpacity: 1
-                  }
-                })
+                    fill: theme => theme.palette.warning.main,
+                    fillOpacity: 1,
+                  },
+                }),
               }}
             >
               <BookmarkIcon />
@@ -127,29 +119,27 @@ export const MailItem = (props) => {
           flexGrow: 1,
           flexWrap: {
             xs: 'wrap',
-            md: 'nowrap'
+            md: 'nowrap',
           },
           minWidth: 1,
-          textDecoration: 'none'
+          textDecoration: 'none',
         }}
       >
         <Box
           sx={{
             alignItems: 'center',
-            display: 'flex'
+            display: 'flex',
           }}
         >
-          <Avatar src={email.from.avatar || undefined}>
-            {getInitials(email.from.name)}
-          </Avatar>
+          <Avatar src={email.from.avatar || undefined}>{getInitials(email.from.name)}</Avatar>
           <Typography
             color="text.primary"
             sx={{
               width: 120,
               ml: 2,
               ...(!email.isUnread && {
-                fontWeight: 600
-              })
+                fontWeight: 600,
+              }),
             }}
             noWrap
             variant="body2"
@@ -162,17 +152,17 @@ export const MailItem = (props) => {
             flexGrow: 1,
             ml: {
               xs: 0,
-              md: 2
+              md: 2,
             },
             my: {
               xs: 2,
-              md: 0
+              md: 0,
             },
             overflow: 'hidden',
             width: {
               xs: '100%',
-              md: 'auto'
-            }
+              md: 'auto',
+            },
           }}
         >
           <Box
@@ -180,7 +170,7 @@ export const MailItem = (props) => {
               alignItems: 'center',
               display: 'flex',
               maxWidth: 800,
-              width: '100%'
+              width: '100%',
             }}
           >
             <Typography
@@ -189,40 +179,29 @@ export const MailItem = (props) => {
                 fontWeight: 600,
                 minWidth: 100,
                 maxWidth: 400,
-                mr: 1
+                mr: 1,
               }}
               noWrap
               variant="body2"
             >
               {email.subject}
             </Typography>
-            <Typography
-              color="text.secondary"
-              noWrap
-              variant="body2"
-            >
-              —
-              {email.message}
+            <Typography color="text.secondary" noWrap variant="body2">
+              —{email.message}
             </Typography>
           </Box>
           {hasAnyAttachments && (
             <Box sx={{ mt: 1 }}>
               <Chip
-                icon={(
+                icon={
                   <SvgIcon>
                     <Attachment01Icon />
                   </SvgIcon>
-                )}
+                }
                 label={email.attachments[0].name}
                 size="small"
               />
-              {hasManyAttachments && (
-                <Chip
-                  label="+1"
-                  size="small"
-                  sx={{ ml: 1 }}
-                />
-              )}
+              {hasManyAttachments && <Chip label="+1" size="small" sx={{ ml: 1 }} />}
             </Box>
           )}
         </Box>
@@ -233,10 +212,10 @@ export const MailItem = (props) => {
             display: 'block',
             textAlign: {
               xs: 'left',
-              md: 'right'
+              md: 'right',
             },
             whiteSpace: 'nowrap',
-            width: 100
+            width: 100,
           }}
         >
           {createdAt}
@@ -252,5 +231,5 @@ MailItem.propTypes = {
   href: PropTypes.string.isRequired,
   onDeselect: PropTypes.func,
   onSelect: PropTypes.func,
-  selected: PropTypes.bool.isRequired
+  selected: PropTypes.bool.isRequired,
 };

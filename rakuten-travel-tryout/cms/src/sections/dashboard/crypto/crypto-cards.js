@@ -9,10 +9,10 @@ const sliderSettings = {
   infinite: true,
   speed: 500,
   slidesToShow: 1,
-  slidesToScroll: 1
+  slidesToScroll: 1,
 };
 
-export const CryptoCards = (props) => {
+export const CryptoCards = props => {
   const { cards } = props;
 
   return (
@@ -20,32 +20,30 @@ export const CryptoCards = (props) => {
       sx={{
         '& .slick-list': {
           borderRadius: 2,
-          boxShadow: 12
+          boxShadow: 12,
         },
         '& .slick-dots': {
           bottom: 'unset',
-          left: (theme) => theme.spacing(3),
+          left: theme => theme.spacing(3),
           textAlign: 'left',
-          top: (theme) => theme.spacing(1)
+          top: theme => theme.spacing(1),
         },
         '& .slick-dots li button': {
           '&:before': {
             fontSize: 10,
-            color: 'common.white'
-          }
+            color: 'common.white',
+          },
         },
         '& .slick-dots li.slick-active button': {
           '&:before': {
-            color: 'common.white'
-          }
-        }
+            color: 'common.white',
+          },
+        },
       }}
     >
       <Slider {...sliderSettings}>
-        {cards.map((card) => (
-          <CryptoCard
-            key={card.id}
-            {...card} />
+        {cards.map(card => (
+          <CryptoCard key={card.id} {...card} />
         ))}
       </Slider>
     </Box>
@@ -53,5 +51,5 @@ export const CryptoCards = (props) => {
 };
 
 CryptoCards.propTypes = {
-  cards: PropTypes.array.isRequired
+  cards: PropTypes.array.isRequired,
 };

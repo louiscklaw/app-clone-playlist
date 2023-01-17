@@ -4,7 +4,7 @@ import { createComponents } from './create-components';
 // Here we do not modify the "palette" and "shadows" because "light" and "dark" mode
 // may have different values.
 
-export const createOptions = (config) => {
+export const createOptions = config => {
   const { direction = 'ltr' } = config;
 
   return {
@@ -14,14 +14,14 @@ export const createOptions = (config) => {
         sm: 600,
         md: 900,
         lg: 1200,
-        xl: 1440
-      }
+        xl: 1440,
+      },
     },
     components: createComponents(),
     direction,
     shape: {
-      borderRadius: 8
+      borderRadius: 8,
     },
-    typography: createTypography()
+    typography: createTypography(),
   };
 };

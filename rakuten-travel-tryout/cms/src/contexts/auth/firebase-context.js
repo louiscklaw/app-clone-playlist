@@ -7,7 +7,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signOut
+  signOut,
 } from 'firebase/auth';
 import { firebaseApp } from '../../libs/firebase';
 import { Issuer } from '../../utils/auth';
@@ -22,7 +22,7 @@ var ActionType;
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 const reducer = (state, action) => {
@@ -33,7 +33,7 @@ const reducer = (state, action) => {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   }
 
@@ -46,44 +46,49 @@ export const AuthContext = createContext({
   createUserWithEmailAndPassword: () => Promise.resolve(),
   signInWithEmailAndPassword: () => Promise.resolve(),
   signInWithGoogle: () => Promise.resolve(),
-  signOut: () => Promise.resolve()
+  signOut: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleAuthStateChanged = useCallback((user) => {
-    if (user) {
-      // Here you should extract the complete user profile to make it available in your entire app.
-      // The auth state only provides basic information.
-      dispatch({
-        type: ActionType.AUTH_STATE_CHANGED,
-        payload: {
-          isAuthenticated: true,
-          user: {
-            id: user.uid,
-            avatar: user.photoURL || undefined,
-            email: user.email || 'anika.visser@devias.io',
-            name: 'Anika Visser',
-            plan: 'Premium'
-          }
-        }
-      });
-    } else {
-      dispatch({
-        type: ActionType.AUTH_STATE_CHANGED,
-        payload: {
-          isAuthenticated: false,
-          user: null
-        }
-      });
-    }
-  }, [dispatch]);
+  const handleAuthStateChanged = useCallback(
+    user => {
+      if (user) {
+        // Here you should extract the complete user profile to make it available in your entire app.
+        // The auth state only provides basic information.
+        dispatch({
+          type: ActionType.AUTH_STATE_CHANGED,
+          payload: {
+            isAuthenticated: true,
+            user: {
+              id: user.uid,
+              avatar: user.photoURL || undefined,
+              email: user.email || 'anika.visser@devias.io',
+              name: 'Anika Visser',
+              plan: 'Premium',
+            },
+          },
+        });
+      } else {
+        dispatch({
+          type: ActionType.AUTH_STATE_CHANGED,
+          payload: {
+            isAuthenticated: false,
+            user: null,
+          },
+        });
+      }
+    },
+    [dispatch],
+  );
 
-  useEffect(() => onAuthStateChanged(auth, handleAuthStateChanged),
+  useEffect(
+    () => onAuthStateChanged(auth, handleAuthStateChanged),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   const _signInWithEmailAndPassword = useCallback(async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password);
@@ -111,7 +116,7 @@ export const AuthProvider = (props) => {
         createUserWithEmailAndPassword: _createUserWithEmailAndPassword,
         signInWithEmailAndPassword: _signInWithEmailAndPassword,
         signInWithGoogle,
-        signOut: _signOut
+        signOut: _signOut,
       }}
     >
       {children}
@@ -120,7 +125,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

@@ -24,11 +24,13 @@ const usePosts = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getPosts();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return posts;
 };
@@ -41,35 +43,25 @@ const SocialFeed = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Social Feed | Devias Kit PRO
-        </title>
+        <title>Dashboard: Social Feed | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Stack spacing={1}>
-            <Typography
-              color="text.secondary"
-              variant="overline"
-            >
+            <Typography color="text.secondary" variant="overline">
               Social Feed
             </Typography>
-            <Typography variant="h4">
-              Here&apos;s what your connections posted
-            </Typography>
+            <Typography variant="h4">Here&apos;s what your connections posted</Typography>
           </Stack>
-          <Stack
-            spacing={3}
-            sx={{ mt: 3 }}
-          >
+          <Stack spacing={3} sx={{ mt: 3 }}>
             <SocialPostAdd />
-            {posts.map((post) => (
+            {posts.map(post => (
               <SocialPostCard
                 key={post.id}
                 authorAvatar={post.author.avatar}
@@ -89,10 +81,6 @@ const SocialFeed = () => {
   );
 };
 
-SocialFeed.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+SocialFeed.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default SocialFeed;

@@ -6,14 +6,14 @@ import { Box, Card, CardHeader, Divider, IconButton, SvgIcon, ThemeProvider } fr
 import { useSettings } from '../../hooks/use-settings';
 import { createTheme } from '../../theme';
 
-export const Previewer = (props) => {
+export const Previewer = props => {
   const { children, title, ...other } = props;
   const settings = useSettings();
   const [paletteMode, setPaletteMode] = useState(settings.paletteMode);
   const theme = useMemo(() => {
     return createTheme({
       ...settings,
-      paletteMode
+      paletteMode,
     });
   }, [settings, paletteMode]);
 
@@ -22,30 +22,24 @@ export const Previewer = (props) => {
   }, [settings.paletteMode]);
 
   const handleModeSwitch = useCallback(() => {
-    setPaletteMode((prevState) => {
+    setPaletteMode(prevState => {
       return prevState === 'light' ? 'dark' : 'light';
     });
   }, []);
 
   return (
-    <Card
-      variant="outlined"
-      {...other}>
+    <Card variant="outlined" {...other}>
       <CardHeader
-        action={(
+        action={
           <IconButton onClick={handleModeSwitch}>
-            <SvgIcon fontSize="small">
-              {paletteMode === 'light' ? <Moon01Icon /> : <SunIcon />}
-            </SvgIcon>
+            <SvgIcon fontSize="small">{paletteMode === 'light' ? <Moon01Icon /> : <SunIcon />}</SvgIcon>
           </IconButton>
-        )}
+        }
         title={title}
       />
       <Divider />
       <ThemeProvider theme={theme}>
-        <Box sx={{ colorScheme: paletteMode }}>
-          {children}
-        </Box>
+        <Box sx={{ colorScheme: paletteMode }}>{children}</Box>
       </ThemeProvider>
     </Card>
   );
@@ -53,5 +47,5 @@ export const Previewer = (props) => {
 
 Previewer.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };

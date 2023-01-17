@@ -9,10 +9,10 @@ import { mapboxConfig } from '../../../config';
 const VIEW_STATE = {
   latitude: 40.74281576586265,
   longitude: -73.99277240443942,
-  zoom: 11
+  zoom: 11,
 };
 
-export const LogisticsFleetMap = (props) => {
+export const LogisticsFleetMap = props => {
   const { onVehicleSelect, currentVehicleId, vehicles = [] } = props;
   const theme = useTheme();
   const mapRef = useRef(null);
@@ -20,7 +20,7 @@ export const LogisticsFleetMap = (props) => {
     if (!currentVehicleId) {
       return VIEW_STATE;
     } else {
-      const vehicle = vehicles.find((vehicle) => vehicle.id === currentVehicleId);
+      const vehicle = vehicles.find(vehicle => vehicle.id === currentVehicleId);
 
       if (!vehicle) {
         return VIEW_STATE;
@@ -28,7 +28,7 @@ export const LogisticsFleetMap = (props) => {
         return {
           latitude: vehicle.latitude,
           longitude: vehicle.longitude,
-          zoom: 13
+          zoom: 13,
         };
       }
     }
@@ -43,15 +43,15 @@ export const LogisticsFleetMap = (props) => {
 
     let flyOptions;
 
-    const vehicle = vehicles.find((vehicle) => vehicle.id === currentVehicleId);
+    const vehicle = vehicles.find(vehicle => vehicle.id === currentVehicleId);
 
     if (!vehicle) {
       flyOptions = {
-        center: [VIEW_STATE.longitude, VIEW_STATE.latitude]
+        center: [VIEW_STATE.longitude, VIEW_STATE.latitude],
       };
     } else {
       flyOptions = {
-        center: [vehicle.longitude, vehicle.latitude]
+        center: [vehicle.longitude, vehicle.latitude],
       };
     }
 
@@ -59,15 +59,15 @@ export const LogisticsFleetMap = (props) => {
   }, [vehicles, currentVehicleId]);
 
   // Recenter if vehicles or current vehicle change
-  useEffect(() => {
+  useEffect(
+    () => {
       handleRecenter();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [vehicles, currentVehicleId]);
+    [vehicles, currentVehicleId],
+  );
 
-  const mapStyle = theme.palette.mode === 'dark'
-    ? 'mapbox://styles/mapbox/dark-v9'
-    : 'mapbox://styles/mapbox/light-v9';
+  const mapStyle = theme.palette.mode === 'dark' ? 'mapbox://styles/mapbox/dark-v9' : 'mapbox://styles/mapbox/light-v9';
 
   if (!mapboxConfig.apiKey) {
     return (
@@ -77,7 +77,7 @@ export const LogisticsFleetMap = (props) => {
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
-          justifyContent: 'center'
+          justifyContent: 'center',
         }}
       >
         <Box sx={{ mb: 3 }}>
@@ -86,20 +86,14 @@ export const LogisticsFleetMap = (props) => {
             src="/assets/errors/error-404.png"
             sx={{
               width: 200,
-              maxWidth: '100%'
+              maxWidth: '100%',
             }}
           />
         </Box>
-        <Typography
-          variant="h5"
-          sx={{ mb: 1 }}
-        >
+        <Typography variant="h5" sx={{ mb: 1 }}>
           Map cannot be loaded
         </Typography>
-        <Typography
-          color="text.secondary"
-          variant="subtitle2"
-        >
+        <Typography color="text.secondary" variant="subtitle2">
           Mapbox API Key is not configured.
         </Typography>
       </Box>
@@ -116,7 +110,7 @@ export const LogisticsFleetMap = (props) => {
       maxZoom={20}
       minZoom={11}
     >
-      {vehicles.map((vehicle) => (
+      {vehicles.map(vehicle => (
         <Marker
           key={vehicle.id}
           latitude={vehicle.latitude}
@@ -128,11 +122,11 @@ export const LogisticsFleetMap = (props) => {
               height: 50,
               width: 50,
               ...(vehicle.id === currentVehicleId && {
-                filter: (theme) => `drop-shadow(0px 0px 8px ${theme.palette.primary.main})`
+                filter: theme => `drop-shadow(0px 0px 8px ${theme.palette.primary.main})`,
               }),
               '& img': {
-                height: '100%'
-              }
+                height: '100%',
+              },
             }}
           >
             <img src="/assets/car-marker.png" />
@@ -146,5 +140,5 @@ export const LogisticsFleetMap = (props) => {
 LogisticsFleetMap.propTypes = {
   currentVehicleId: PropTypes.string,
   onVehicleSelect: PropTypes.func,
-  vehicles: PropTypes.array
+  vehicles: PropTypes.array,
 };

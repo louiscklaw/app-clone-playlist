@@ -12,24 +12,20 @@ import {
   linearProgressClasses,
   Stack,
   SvgIcon,
-  Typography
+  Typography,
 } from '@mui/material';
 import { TaskCheckItem } from './task-check-item';
 import { TaskCheckItemAdd } from './task-check-item-add';
 
-const calculateProgress = (checkItems) => {
+const calculateProgress = checkItems => {
   const totalCheckItems = checkItems.length;
-  const completedCheckItems = checkItems
-    .filter((checkItem) => checkItem.state === 'complete')
-    .length;
-  const progress = totalCheckItems === 0
-    ? 100
-    : (completedCheckItems / totalCheckItems) * 100;
+  const completedCheckItems = checkItems.filter(checkItem => checkItem.state === 'complete').length;
+  const progress = totalCheckItems === 0 ? 100 : (completedCheckItems / totalCheckItems) * 100;
 
   return Math.round(progress);
 };
 
-export const TaskChecklist = (props) => {
+export const TaskChecklist = props => {
   const {
     checklist,
     onCheckItemAdd,
@@ -50,13 +46,15 @@ export const TaskChecklist = (props) => {
     setNameCopy(checklist.name);
   }, [checklist]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handleNameReset();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [checklist]);
+    [checklist],
+  );
 
-  const handleNameChange = useCallback((event) => {
+  const handleNameChange = useCallback(event => {
     setNameCopy(event.target.value);
   }, []);
 
@@ -80,7 +78,7 @@ export const TaskChecklist = (props) => {
     onRename?.(nameCopy);
   }, [checklist, nameCopy, onRename]);
 
-  const handleCheckItemRenameInit = useCallback((checkItemId) => {
+  const handleCheckItemRenameInit = useCallback(checkItemId => {
     setCheckItemId(checkItemId);
   }, []);
 
@@ -88,25 +86,21 @@ export const TaskChecklist = (props) => {
     setCheckItemId(null);
   }, []);
 
-  const handleCheckItemRenameComplete = useCallback((checkItemId, name) => {
-    setCheckItemId(null);
-    onCheckItemRename?.(checkItemId, name);
-  }, [onCheckItemRename]);
+  const handleCheckItemRenameComplete = useCallback(
+    (checkItemId, name) => {
+      setCheckItemId(null);
+      onCheckItemRename?.(checkItemId, name);
+    },
+    [onCheckItemRename],
+  );
 
   // Maybe use memo to calculate the progress
   const progress = calculateProgress(checklist.checkItems);
   const hasCheckItems = checklist.checkItems.length > 0;
 
   return (
-    <Card
-      variant="outlined"
-      {...other}>
-      <Stack
-        alignItems="center"
-        direction="row"
-        spacing={2}
-        sx={{ p: 1 }}
-      >
+    <Card variant="outlined" {...other}>
+      <Stack alignItems="center" direction="row" spacing={2} sx={{ p: 1 }}>
         <Input
           disableUnderline
           fullWidth
@@ -122,41 +116,29 @@ export const TaskChecklist = (props) => {
               textOverflow: 'ellipsis',
               wordWrap: 'break-word',
               '&:hover, &:focus': {
-                backgroundColor: (theme) => theme.palette.mode === 'dark'
-                  ? 'neutral.800'
-                  : 'neutral.100',
-                borderRadius: 1
-              }
-            }
+                backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+                borderRadius: 1,
+              },
+            },
           }}
           value={nameCopy}
         />
-        {isRenaming
-          ? (
-            <>
-              <Button
-                onClick={handleRenameComplete}
-                size="small"
-                variant="contained"
-              >
-                Save
-              </Button>
-              <Button
-                color="inherit"
-                onClick={handleRenameCancel}
-                size="small"
-              >
-                Cancel
-              </Button>
-            </>
-          )
-          : (
-            <IconButton onClick={onDelete}>
-              <SvgIcon fontSize="small">
-                <Trash02Icon />
-              </SvgIcon>
-            </IconButton>
-          )}
+        {isRenaming ? (
+          <>
+            <Button onClick={handleRenameComplete} size="small" variant="contained">
+              Save
+            </Button>
+            <Button color="inherit" onClick={handleRenameCancel} size="small">
+              Cancel
+            </Button>
+          </>
+        ) : (
+          <IconButton onClick={onDelete}>
+            <SvgIcon fontSize="small">
+              <Trash02Icon />
+            </SvgIcon>
+          </IconButton>
+        )}
       </Stack>
       <Stack
         alignItems="center"
@@ -165,7 +147,7 @@ export const TaskChecklist = (props) => {
         sx={{
           pb: 3,
           pt: 2,
-          px: 3
+          px: 3,
         }}
       >
         <LinearProgress
@@ -175,27 +157,21 @@ export const TaskChecklist = (props) => {
             flexGrow: 1,
             height: 8,
             [`& .${linearProgressClasses.bar}`]: {
-              borderRadius: 'inherit'
-            }
+              borderRadius: 'inherit',
+            },
           }}
           value={progress}
           variant="determinate"
         />
-        <Typography
-          color="text.secondary"
-          variant="body2"
-        >
+        <Typography color="text.secondary" variant="body2">
           {progress}%
         </Typography>
       </Stack>
       <Divider />
       {hasCheckItems && (
         <>
-          <Stack
-            divider={<Divider />}
-            spacing={1}
-          >
-            {checklist.checkItems.map((checkItem) => {
+          <Stack divider={<Divider />} spacing={1}>
+            {checklist.checkItems.map(checkItem => {
               const isRenaming = checkItemId === checkItem.id;
 
               return (
@@ -205,7 +181,7 @@ export const TaskChecklist = (props) => {
                   onCheck={() => onCheckItemCheck?.(checkItem.id)}
                   onDelete={() => onCheckItemDelete?.(checkItem.id)}
                   onRenameCancel={handleCheckItemRenameCancel}
-                  onRenameComplete={(name) => handleCheckItemRenameComplete(checkItem.id, name)}
+                  onRenameComplete={name => handleCheckItemRenameComplete(checkItem.id, name)}
                   onRenameInit={() => handleCheckItemRenameInit(checkItem.id)}
                   onUncheck={() => onCheckItemUncheck?.(checkItem.id)}
                   isRenaming={isRenaming}
@@ -225,5 +201,5 @@ export const TaskChecklist = (props) => {
 
 TaskChecklist.propTypes = {
   // @ts-ignore
-  checklist: PropTypes.object.isRequired
+  checklist: PropTypes.object.isRequired,
 };

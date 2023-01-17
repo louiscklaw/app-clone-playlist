@@ -6,22 +6,22 @@ import { contacts, threads } from './data';
 const user = {
   id: '5e86809283e28b96d2d38537',
   avatar: '/assets/avatars/avatar-anika-visser.png',
-  name: 'Anika Visser'
+  name: 'Anika Visser',
 };
 
-const findThreadById = (threadId) => {
-  return threads.find((thread) => thread.id === threadId);
+const findThreadById = threadId => {
+  return threads.find(thread => thread.id === threadId);
 };
 
-const findThreadByParticipantIds = (participantIds) => {
-  return threads.find((thread) => {
+const findThreadByParticipantIds = participantIds => {
+  return threads.find(thread => {
     if (thread.participantIds.length !== participantIds.length) {
       return false;
     }
 
     const foundParticipantIds = new Set();
 
-    thread.participantIds.forEach((participantId) => {
+    thread.participantIds.forEach(participantId => {
       if (participantIds.includes(participantId)) {
         foundParticipantIds.add(participantId);
       }
@@ -41,8 +41,7 @@ class ChatApi {
 
         if (query) {
           const cleanQuery = query.toLowerCase().trim();
-          foundContacts =
-            foundContacts.filter((contact) => (contact.name.toLowerCase().includes(cleanQuery)));
+          foundContacts = foundContacts.filter(contact => contact.name.toLowerCase().includes(cleanQuery));
         }
 
         resolve(deepCopy(foundContacts));
@@ -54,24 +53,23 @@ class ChatApi {
   }
 
   getThreads(request) {
-
-    const expandedThreads = threads.map((thread) => {
+    const expandedThreads = threads.map(thread => {
       const participants = [user];
 
-      contacts.forEach((contact) => {
+      contacts.forEach(contact => {
         if (thread.participantIds.includes(contact.id)) {
           participants.push({
             id: contact.id,
             avatar: contact.avatar,
             lastActivity: contact.lastActivity,
-            name: contact.name
+            name: contact.name,
           });
         }
       });
 
       return {
         ...thread,
-        participants
+        participants,
       };
     });
 
@@ -91,7 +89,7 @@ class ChatApi {
         let thread;
 
         // Thread key might be a contact ID
-        const contact = contacts.find((contact) => contact.id === threadKey);
+        const contact = contacts.find(contact => contact.id === threadKey);
 
         if (contact) {
           thread = findThreadByParticipantIds([user.id, contact.id]);
@@ -111,20 +109,20 @@ class ChatApi {
 
         const participants = [user];
 
-        contacts.forEach((contact) => {
+        contacts.forEach(contact => {
           if (thread.participantIds.includes(contact.id)) {
             participants.push({
               id: contact.id,
               avatar: contact.avatar,
               lastActivity: contact.lastActivity,
-              name: contact.name
+              name: contact.name,
             });
           }
         });
 
         const expandedThread = {
           ...thread,
-          participants
+          participants,
         };
 
         resolve(deepCopy(expandedThread));
@@ -140,7 +138,7 @@ class ChatApi {
 
     return new Promise((resolve, reject) => {
       try {
-        const thread = threads.find((thread) => thread.id === threadId);
+        const thread = threads.find(thread => thread.id === threadId);
 
         if (thread) {
           thread.unreadCount = 0;
@@ -165,18 +163,18 @@ class ChatApi {
         let thread = findThreadById(threadKey);
 
         if (thread) {
-          contacts.forEach((contact) => {
+          contacts.forEach(contact => {
             if (thread.participantIds.includes(contact.id)) {
               participants.push({
                 id: contact.id,
                 avatar: contact.avatar,
                 lastActivity: contact.lastActivity,
-                name: contact.name
+                name: contact.name,
               });
             }
           });
         } else {
-          const contact = contacts.find((contact) => contact.id === threadKey);
+          const contact = contacts.find(contact => contact.id === threadKey);
 
           // If no contact found, the user is trying a shady route
           if (!contact) {
@@ -188,7 +186,7 @@ class ChatApi {
             id: contact.id,
             avatar: contact.avatar,
             lastActivity: contact.lastActivity,
-            name: contact.name
+            name: contact.name,
           });
         }
 
@@ -238,7 +236,7 @@ class ChatApi {
             messages: [],
             participantIds,
             type: participantIds.length === 2 ? 'ONE_TO_ONE' : 'GROUP',
-            unreadCount: 0
+            unreadCount: 0,
           };
 
           // Add the new thread to the DB
@@ -251,14 +249,14 @@ class ChatApi {
           body,
           contentType: 'text',
           createdAt: new Date().getTime(),
-          authorId: user.id
+          authorId: user.id,
         };
 
         thread.messages.push(message);
 
         resolve({
           threadId: thread.id,
-          message
+          message,
         });
       } catch (err) {
         console.error('[Chat Api]: ', err);

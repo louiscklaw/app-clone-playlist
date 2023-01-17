@@ -11,13 +11,13 @@ class CustomersApi {
     let count = data.length;
 
     if (typeof filters !== 'undefined') {
-      data = data.filter((customer) => {
+      data = data.filter(customer => {
         if (typeof filters.query !== 'undefined' && filters.query !== '') {
           let queryMatched = false;
           const properties = ['email', 'name'];
 
-          properties.forEach((property) => {
-            if ((customer[property]).toLowerCase().includes(filters.query.toLowerCase())) {
+          properties.forEach(property => {
+            if (customer[property].toLowerCase().includes(filters.query.toLowerCase())) {
               queryMatched = true;
             }
           });
@@ -60,7 +60,7 @@ class CustomersApi {
 
     return Promise.resolve({
       data,
-      count
+      count,
     });
   }
 

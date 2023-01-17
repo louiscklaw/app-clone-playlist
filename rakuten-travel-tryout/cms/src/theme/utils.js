@@ -1,6 +1,6 @@
 import { blue, green, indigo, purple } from './colors';
 
-export const getPrimary = (preset) => {
+export const getPrimary = preset => {
   switch (preset) {
     case 'blue':
       return blue;

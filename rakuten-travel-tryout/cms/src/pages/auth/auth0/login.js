@@ -12,24 +12,24 @@ const Page = () => {
     const searchParams = new URLSearchParams(globalThis.location.search);
     const returnTo = searchParams.get('returnTo');
     await loginWithRedirect({
-      returnTo: returnTo || paths.dashboard.index
+      returnTo: returnTo || paths.dashboard.index,
     });
   }, [loginWithRedirect]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handle();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return null;
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <IssuerGuard issuer={Issuer.Auth0}>
-    <GuestGuard>
-      {page}
-    </GuestGuard>
+    <GuestGuard>{page}</GuestGuard>
   </IssuerGuard>
 );
 

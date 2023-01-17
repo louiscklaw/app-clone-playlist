@@ -17,11 +17,13 @@ const useMobileNav = () => {
     }
   }, [isOpen]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handlePathnameChange();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pathname]);
+    [pathname],
+  );
 
   const handleOpen = useCallback(() => {
     setIsOpen(true);
@@ -34,29 +36,24 @@ const useMobileNav = () => {
   return {
     isOpen,
     handleOpen,
-    handleClose
+    handleClose,
   };
 };
 
 const LayoutRoot = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
-  height: '100%'
+  height: '100%',
 }));
 
-export const Layout = (props) => {
+export const Layout = props => {
   const { children } = props;
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'));
   const mobileNav = useMobileNav();
 
   return (
     <>
       <TopNav onMobileNavOpen={mobileNav.handleOpen} />
-      {!lgUp && (
-        <SideNav
-          onClose={mobileNav.handleClose}
-          open={mobileNav.isOpen}
-        />
-      )}
+      {!lgUp && <SideNav onClose={mobileNav.handleClose} open={mobileNav.isOpen} />}
       <LayoutRoot>
         {children}
         <Footer />
@@ -66,5 +63,5 @@ export const Layout = (props) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

@@ -18,7 +18,7 @@ import {
   TableRow,
   TableSortLabel,
   Tooltip,
-  Typography
+  Typography,
 } from '@mui/material';
 import { applySort } from '../../../utils/apply-sort';
 
@@ -28,10 +28,10 @@ const flagMap = {
   es: '/assets/flags/flag-es.svg',
   ru: '/assets/flags/flag-ru.svg',
   uk: '/assets/flags/flag-uk.svg',
-  us: '/assets/flags/flag-us.svg'
+  us: '/assets/flags/flag-us.svg',
 };
 
-export const AnalyticsVisitsByCountry = (props) => {
+export const AnalyticsVisitsByCountry = props => {
   const { visits } = props;
   const [sort, setSort] = useState('desc');
 
@@ -40,7 +40,7 @@ export const AnalyticsVisitsByCountry = (props) => {
   }, [visits, sort]);
 
   const handleSort = useCallback(() => {
-    setSort((prevState) => {
+    setSort(prevState => {
       if (prevState === 'asc') {
         return 'desc';
       }
@@ -53,49 +53,38 @@ export const AnalyticsVisitsByCountry = (props) => {
     <Card>
       <CardHeader
         title="Visits by Country"
-        action={(
+        action={
           <Tooltip title="Refresh rate is 24h">
             <SvgIcon color="action">
               <InfoCircleIcon />
             </SvgIcon>
           </Tooltip>
-        )}
+        }
       />
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>
-              Country
-            </TableCell>
+            <TableCell>Country</TableCell>
             <TableCell sortDirection={sort}>
-              <TableSortLabel
-                active
-                direction={sort}
-                onClick={handleSort}
-              >
+              <TableSortLabel active direction={sort} onClick={handleSort}>
                 Value
               </TableSortLabel>
             </TableCell>
-            <TableCell>
-              SEO
-            </TableCell>
+            <TableCell>SEO</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {sortedVisits.map((visit) => {
+          {sortedVisits.map(visit => {
             const visits = numeral(visit.value).format('0,0');
             const flag = flagMap[visit.id];
 
             return (
-              <TableRow
-                key={visit.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
+              <TableRow key={visit.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell>
                   <Box
                     sx={{
                       alignItems: 'center',
-                      display: 'flex'
+                      display: 'flex',
                     }}
                   >
                     <Box
@@ -104,29 +93,19 @@ export const AnalyticsVisitsByCountry = (props) => {
                         width: 16,
                         '& img': {
                           height: 16,
-                          width: 16
-                        }
+                          width: 16,
+                        },
                       }}
                     >
-                      <img
-                        alt={visit.name}
-                        src={flag}
-                      />
+                      <img alt={visit.name} src={flag} />
                     </Box>
-                    <Typography
-                      sx={{ ml: 1 }}
-                      variant="subtitle2"
-                    >
+                    <Typography sx={{ ml: 1 }} variant="subtitle2">
                       {visit.name}
                     </Typography>
                   </Box>
                 </TableCell>
-                <TableCell>
-                  {visits}
-                </TableCell>
-                <TableCell>
-                  {visit.seoPercentage}%
-                </TableCell>
+                <TableCell>{visits}</TableCell>
+                <TableCell>{visit.seoPercentage}%</TableCell>
               </TableRow>
             );
           })}
@@ -136,11 +115,11 @@ export const AnalyticsVisitsByCountry = (props) => {
       <CardActions>
         <Button
           color="inherit"
-          endIcon={(
+          endIcon={
             <SvgIcon>
               <ArrowRightIcon />
             </SvgIcon>
-          )}
+          }
           size="small"
         >
           See more
@@ -151,5 +130,5 @@ export const AnalyticsVisitsByCountry = (props) => {
 };
 
 AnalyticsVisitsByCountry.propTypes = {
-  visits: PropTypes.array.isRequired
+  visits: PropTypes.array.isRequired,
 };

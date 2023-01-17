@@ -10,30 +10,26 @@ import {
   MenuList,
   Paper,
   Popper,
-  SvgIcon
+  SvgIcon,
 } from '@mui/material';
 
-const options = [
-  'Create a merge commit',
-  'Squash and merge',
-  'Rebase and merge'
-];
+const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
 
 export const Buttons3 = () => {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(1);
 
-  const handleMenuItemClick = useCallback((index) => {
+  const handleMenuItemClick = useCallback(index => {
     setSelectedIndex(index);
     setOpen(false);
   }, []);
 
   const handleToggle = useCallback(() => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen(prevOpen => !prevOpen);
   }, []);
 
-  const handleClose = useCallback((event) => {
+  const handleClose = useCallback(event => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
@@ -43,35 +39,21 @@ export const Buttons3 = () => {
 
   return (
     <Box sx={{ p: 3 }}>
-      <ButtonGroup
-        ref={anchorRef}
-        variant="contained"
-      >
-        <Button>
-          {options[selectedIndex]}
-        </Button>
-        <Button
-          onClick={handleToggle}
-          size="small"
-          sx={{ backgroundColor: 'primary.dark' }}
-        >
+      <ButtonGroup ref={anchorRef} variant="contained">
+        <Button>{options[selectedIndex]}</Button>
+        <Button onClick={handleToggle} size="small" sx={{ backgroundColor: 'primary.dark' }}>
           <SvgIcon>
             <ChevronDownIcon />
           </SvgIcon>
         </Button>
       </ButtonGroup>
-      <Popper
-        anchorEl={anchorRef.current}
-        open={open}
-        transition
-      >
+      <Popper anchorEl={anchorRef.current} open={open} transition>
         {({ TransitionProps, placement }) => (
-          <Grow {...TransitionProps}
-                style={{
-                  transformOrigin: placement === 'bottom'
-                    ? 'center top'
-                    : 'center bottom'
-                }}
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+            }}
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>

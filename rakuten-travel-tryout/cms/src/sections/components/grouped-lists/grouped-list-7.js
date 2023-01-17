@@ -11,7 +11,7 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Typography
+  Typography,
 } from '@mui/material';
 import { customLocale } from '../../../utils/date-locale';
 
@@ -24,7 +24,7 @@ const messages = [
     createdAt: subMinutes(now, 2).getTime(),
     senderAvatar: '/assets/avatars/avatar-alcides-antonio.png',
     senderName: 'Alcides Antonio',
-    senderOnline: true
+    senderOnline: true,
   },
   {
     id: 'de0eb1ac517aae1aa57c0b7e',
@@ -32,7 +32,7 @@ const messages = [
     createdAt: subMinutes(now, 56).getTime(),
     senderAvatar: '/assets/avatars/avatar-marcus-finn.png',
     senderName: 'Marcus Finn',
-    senderOnline: true
+    senderOnline: true,
   },
   {
     id: '38e2b0942c90d0ad724e6f40',
@@ -40,7 +40,7 @@ const messages = [
     createdAt: subHours(subMinutes(now, 23), 3).getTime(),
     senderAvatar: '/assets/avatars/avatar-carson-darrin.png',
     senderName: 'Carson Darrin',
-    senderOnline: false
+    senderOnline: false,
   },
   {
     id: '467505f3356f25a69f4c4890',
@@ -48,7 +48,7 @@ const messages = [
     createdAt: subHours(subMinutes(now, 6), 8).getTime(),
     senderAvatar: '/assets/avatars/avatar-fran-perez.png',
     senderName: 'Fran Perez',
-    senderOnline: true
+    senderOnline: true,
   },
   {
     id: '7e6af808e801a8361ce4cf8b',
@@ -56,28 +56,26 @@ const messages = [
     createdAt: subHours(subMinutes(now, 18), 10).getTime(),
     senderAvatar: '/assets/avatars/avatar-jie-yan-song.png',
     senderName: 'Jie Yan Song',
-    senderOnline: false
-  }
+    senderOnline: false,
+  },
 ];
 
 export const GroupedList7 = () => (
   <Box
     sx={{
-      backgroundColor: (theme) => theme.palette.mode === 'dark'
-        ? 'neutral.800'
-        : 'neutral.100',
+      backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
       display: 'flex',
       justifyContent: 'center',
-      p: 3
+      p: 3,
     }}
   >
     <Card sx={{ maxWidth: 363 }}>
       <CardHeader title="Inbox" />
       <List disablePadding>
-        {messages.map((message) => {
+        {messages.map(message => {
           const ago = formatDistanceStrict(message.createdAt, new Date(), {
             addSuffix: true,
-            locale: customLocale
+            locale: customLocale,
           });
 
           return (
@@ -86,62 +84,56 @@ export const GroupedList7 = () => (
               sx={{
                 '&:hover': {
                   backgroundColor: 'action.hover',
-                  cursor: 'pointer'
-                }
+                  cursor: 'pointer',
+                },
               }}
             >
               <ListItemAvatar>
-                {message.senderOnline
-                  ? (
-                    <Badge
-                      anchorOrigin={{
-                        horizontal: 'right',
-                        vertical: 'bottom'
-                      }}
-                      color="success"
-                      variant="dot"
-                    >
-                      <Avatar src={message.senderAvatar} />
-                    </Badge>
-                  )
-                  : (
+                {message.senderOnline ? (
+                  <Badge
+                    anchorOrigin={{
+                      horizontal: 'right',
+                      vertical: 'bottom',
+                    }}
+                    color="success"
+                    variant="dot"
+                  >
                     <Avatar src={message.senderAvatar} />
-                  )}
+                  </Badge>
+                ) : (
+                  <Avatar src={message.senderAvatar} />
+                )}
               </ListItemAvatar>
               <ListItemText
                 disableTypography
-                primary={(
+                primary={
                   <Typography
                     sx={{
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap'
+                      whiteSpace: 'nowrap',
                     }}
                     variant="subtitle2"
                   >
                     {message.senderName}
                   </Typography>
-                )}
-                secondary={(
+                }
+                secondary={
                   <Typography
                     color="text.secondary"
                     sx={{
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap'
+                      whiteSpace: 'nowrap',
                     }}
                     variant="body2"
                   >
                     {message.content}
                   </Typography>
-                )}
+                }
                 sx={{ pr: 2 }}
               />
-              <Typography
-                color="text.secondary"
-                sx={{ whiteSpace: 'nowrap' }}
-                variant="caption"
-              >
+              <Typography color="text.secondary" sx={{ whiteSpace: 'nowrap' }} variant="caption">
                 {ago}
               </Typography>
             </ListItem>
@@ -149,10 +141,7 @@ export const GroupedList7 = () => (
         })}
       </List>
       <CardActions>
-        <Button
-          color="inherit"
-          size="small"
-        >
+        <Button color="inherit" size="small">
           Go to chat
         </Button>
       </CardActions>

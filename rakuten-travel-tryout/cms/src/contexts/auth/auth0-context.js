@@ -10,8 +10,8 @@ const auth0Client = new Auth0Client({
   clientId: auth0Config.client_id,
   cacheLocation: 'localstorage',
   authorizationParams: {
-    redirect_uri: auth0Config.base_url + paths.auth.auth0.callback
-  }
+    redirect_uri: auth0Config.base_url + paths.auth.auth0.callback,
+  },
 });
 
 var ActionType;
@@ -24,7 +24,7 @@ var ActionType;
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 const handlers = {
@@ -35,7 +35,7 @@ const handlers = {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   },
   LOGIN: (state, action) => {
@@ -44,29 +44,27 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
-  LOGOUT: (state) => ({
+  LOGOUT: state => ({
     ...state,
     isAuthenticated: false,
-    user: null
-  })
+    user: null,
+  }),
 };
 
-const reducer = (state, action) => (handlers[action.type]
-  ? handlers[action.type](state, action)
-  : state);
+const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
 
 export const AuthContext = createContext({
   ...initialState,
   issuer: Issuer.Auth0,
   loginWithRedirect: () => Promise.resolve(),
   handleRedirectCallback: () => Promise.resolve(undefined),
-  logout: () => Promise.resolve()
+  logout: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -92,17 +90,17 @@ export const AuthProvider = (props) => {
               avatar: user.picture,
               email: user.email,
               name: 'Anika Visser',
-              plan: 'Premium'
-            }
-          }
+              plan: 'Premium',
+            },
+          },
         });
       } else {
         dispatch({
           type: ActionType.INITIALIZE,
           payload: {
             isAuthenticated,
-            user: null
-          }
+            user: null,
+          },
         });
       }
     } catch (err) {
@@ -111,21 +109,23 @@ export const AuthProvider = (props) => {
         type: ActionType.INITIALIZE,
         payload: {
           isAuthenticated: false,
-          user: null
-        }
+          user: null,
+        },
       });
     }
   }, [dispatch]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       initialize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
-  const loginWithRedirect = useCallback(async (appState) => {
+  const loginWithRedirect = useCallback(async appState => {
     await auth0Client.loginWithRedirect({
-      appState
+      appState,
     });
   }, []);
 
@@ -144,9 +144,9 @@ export const AuthProvider = (props) => {
           avatar: user.picture,
           email: user.email,
           name: 'Anika Visser',
-          plan: 'Premium'
-        }
-      }
+          plan: 'Premium',
+        },
+      },
     });
 
     return result.appState;
@@ -155,7 +155,7 @@ export const AuthProvider = (props) => {
   const logout = useCallback(async () => {
     await auth0Client.logout();
     dispatch({
-      type: ActionType.LOGOUT
+      type: ActionType.LOGOUT,
     });
   }, []);
 
@@ -166,7 +166,7 @@ export const AuthProvider = (props) => {
         issuer: Issuer.Auth0,
         loginWithRedirect,
         handleRedirectCallback,
-        logout
+        logout,
       }}
     >
       {children}
@@ -175,7 +175,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

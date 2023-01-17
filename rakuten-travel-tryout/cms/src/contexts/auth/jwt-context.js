@@ -16,7 +16,7 @@ var ActionType;
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 const handlers = {
@@ -27,7 +27,7 @@ const handlers = {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   },
   SIGN_IN: (state, action) => {
@@ -36,7 +36,7 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
   SIGN_UP: (state, action) => {
@@ -45,29 +45,27 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
-  SIGN_OUT: (state) => ({
+  SIGN_OUT: state => ({
     ...state,
     isAuthenticated: false,
-    user: null
-  })
+    user: null,
+  }),
 };
 
-const reducer = (state, action) => (handlers[action.type]
-  ? handlers[action.type](state, action)
-  : state);
+const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
 
 export const AuthContext = createContext({
   ...initialState,
   issuer: Issuer.JWT,
   signIn: () => Promise.resolve(),
   signUp: () => Promise.resolve(),
-  signOut: () => Promise.resolve()
+  signOut: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -82,16 +80,16 @@ export const AuthProvider = (props) => {
           type: ActionType.INITIALIZE,
           payload: {
             isAuthenticated: true,
-            user
-          }
+            user,
+          },
         });
       } else {
         dispatch({
           type: ActionType.INITIALIZE,
           payload: {
             isAuthenticated: false,
-            user: null
-          }
+            user: null,
+          },
         });
       }
     } catch (err) {
@@ -100,45 +98,53 @@ export const AuthProvider = (props) => {
         type: ActionType.INITIALIZE,
         payload: {
           isAuthenticated: false,
-          user: null
-        }
+          user: null,
+        },
       });
     }
   }, [dispatch]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       initialize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
-  const signIn = useCallback(async (email, password) => {
-    const { accessToken } = await authApi.signIn({ email, password });
-    const user = await authApi.me({ accessToken });
+  const signIn = useCallback(
+    async (email, password) => {
+      const { accessToken } = await authApi.signIn({ email, password });
+      const user = await authApi.me({ accessToken });
 
-    localStorage.setItem(STORAGE_KEY, accessToken);
+      localStorage.setItem(STORAGE_KEY, accessToken);
 
-    dispatch({
-      type: ActionType.SIGN_IN,
-      payload: {
-        user
-      }
-    });
-  }, [dispatch]);
+      dispatch({
+        type: ActionType.SIGN_IN,
+        payload: {
+          user,
+        },
+      });
+    },
+    [dispatch],
+  );
 
-  const signUp = useCallback(async (email, name, password) => {
-    const { accessToken } = await authApi.signUp({ email, name, password });
-    const user = await authApi.me({ accessToken });
+  const signUp = useCallback(
+    async (email, name, password) => {
+      const { accessToken } = await authApi.signUp({ email, name, password });
+      const user = await authApi.me({ accessToken });
 
-    localStorage.setItem(STORAGE_KEY, accessToken);
+      localStorage.setItem(STORAGE_KEY, accessToken);
 
-    dispatch({
-      type: ActionType.SIGN_UP,
-      payload: {
-        user
-      }
-    });
-  }, [dispatch]);
+      dispatch({
+        type: ActionType.SIGN_UP,
+        payload: {
+          user,
+        },
+      });
+    },
+    [dispatch],
+  );
 
   const signOut = useCallback(async () => {
     localStorage.removeItem(STORAGE_KEY);
@@ -152,7 +158,7 @@ export const AuthProvider = (props) => {
         issuer: Issuer.JWT,
         signIn,
         signUp,
-        signOut
+        signOut,
       }}
     >
       {children}
@@ -161,7 +167,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

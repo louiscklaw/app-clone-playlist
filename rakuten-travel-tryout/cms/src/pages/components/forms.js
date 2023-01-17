@@ -24,68 +24,68 @@ import { Form16 } from '../../sections/components/forms/form-16';
 const components = [
   {
     element: <Form1 />,
-    title: 'Form 1'
+    title: 'Form 1',
   },
   {
     element: <Form2 />,
-    title: 'Form 2'
+    title: 'Form 2',
   },
   {
     element: <Form3 />,
-    title: 'Form 3'
+    title: 'Form 3',
   },
   {
     element: <Form4 />,
-    title: 'Form 4'
+    title: 'Form 4',
   },
   {
     element: <Form5 />,
-    title: 'Form 5'
+    title: 'Form 5',
   },
   {
     element: <Form6 />,
-    title: 'Form 6'
+    title: 'Form 6',
   },
   {
     element: <Form7 />,
-    title: 'Form 7'
+    title: 'Form 7',
   },
   {
     element: <Form8 />,
-    title: 'Form 8'
+    title: 'Form 8',
   },
   {
     element: <Form9 />,
-    title: 'Form 9'
+    title: 'Form 9',
   },
   {
     element: <Form10 />,
-    title: 'Form 10'
+    title: 'Form 10',
   },
   {
     element: <Form11 />,
-    title: 'Form 11'
+    title: 'Form 11',
   },
   {
     element: <Form12 />,
-    title: 'Form 12'
+    title: 'Form 12',
   },
   {
     element: <Form13 />,
-    title: 'Form 13'
+    title: 'Form 13',
   },
   {
     element: <Form14 />,
-    title: 'Form 14'
+    title: 'Form 14',
   },
   {
     element: <Form15 />,
-    title: 'Form 15'
+    title: 'Form 15',
   },
   {
     element: <Form16 />,
-    title: 'Form 16'
-  }
+    title: 'Form 16',
+  },
 ];
 
 const Page = () => {
@@ -94,24 +94,19 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Components: Forms | Devias Kit PRO
-        </title>
+        <title>Components: Forms | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Stack spacing={8}>
-            {components.map((component) => (
-              <Previewer
-                key={component.title}
-                title={component.title}
-              >
+            {components.map(component => (
+              <Previewer key={component.title} title={component.title}>
                 {component.element}
               </Previewer>
             ))}
@@ -122,11 +117,9 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <MarketingLayout>
-    <ComponentsLayout title="Forms">
-      {page}
-    </ComponentsLayout>
+    <ComponentsLayout title="Forms">{page}</ComponentsLayout>
   </MarketingLayout>
 );
 

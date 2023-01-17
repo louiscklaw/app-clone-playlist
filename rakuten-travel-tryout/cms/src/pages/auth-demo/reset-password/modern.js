@@ -8,26 +8,21 @@ import { paths } from '../../../paths';
 
 const initialValues = {
   password: '',
-  passwordConfirm: ''
+  passwordConfirm: '',
 };
 
 const validationSchema = Yup.object({
-  password: Yup
-    .string()
-    .min(7, 'Must be at least 7 characters')
-    .max(255)
-    .required('Required'),
-  passwordConfirm: Yup
-    .string()
+  password: Yup.string().min(7, 'Must be at least 7 characters').max(255).required('Required'),
+  passwordConfirm: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Required')
+    .required('Required'),
 });
 
 const Page = () => {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: () => { }
+    onSubmit: () => {},
   });
 
   return (
@@ -39,30 +34,20 @@ const Page = () => {
           href={paths.dashboard.index}
           sx={{
             alignItems: 'center',
-            display: 'inline-flex'
+            display: 'inline-flex',
           }}
           underline="hover"
         >
           <SvgIcon sx={{ mr: 1 }}>
             <ArrowLeftIcon />
           </SvgIcon>
-          <Typography variant="subtitle2">
-            Dashboard
-          </Typography>
+          <Typography variant="subtitle2">Dashboard</Typography>
         </Link>
       </Box>
-      <Stack
-        sx={{ mb: 4 }}
-        spacing={1}
-      >
-        <Typography variant="h5">
-          Reset password
-        </Typography>
+      <Stack sx={{ mb: 4 }} spacing={1}>
+        <Typography variant="h5">Reset password</Typography>
       </Stack>
-      <form
-        noValidate
-        onSubmit={formik.handleSubmit}
-      >
+      <form noValidate onSubmit={formik.handleSubmit}>
         <Stack spacing={3}>
           <TextField
             error={!!(formik.touched.password && formik.errors.password)}
@@ -87,13 +72,7 @@ const Page = () => {
             value={formik.values.passwordConfirm}
           />
         </Stack>
-        <Button
-          fullWidth
-          size="large"
-          sx={{ mt: 3 }}
-          type="submit"
-          variant="contained"
-        >
+        <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
           Reset
         </Button>
       </form>
@@ -101,10 +80,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <AuthLayout>
-    {page}
-  </AuthLayout>
-);
+Page.getLayout = page => <AuthLayout>{page}</AuthLayout>;
 
 export default Page;

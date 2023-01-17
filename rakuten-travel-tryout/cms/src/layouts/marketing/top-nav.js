@@ -3,16 +3,7 @@ import { usePathname } from 'next/navigation';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import Menu01Icon from '@untitled-ui/icons-react/build/esm/Menu01';
-import {
-  Box,
-  Button,
-  Chip,
-  Container,
-  IconButton,
-  Stack,
-  SvgIcon,
-  useMediaQuery
-} from '@mui/material';
+import { Box, Button, Chip, Container, IconButton, Stack, SvgIcon, useMediaQuery } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { Logo } from '../../components/logo';
 import { useWindowScroll } from '../../hooks/use-window-scroll';
@@ -23,24 +14,24 @@ import { TopNavItem } from './top-nav-item';
 const items = [
   {
     title: 'Components',
-    path: paths.components.index
+    path: paths.components.index,
   },
   {
     title: 'Pages',
-    children: <PagesPopover />
+    children: <PagesPopover />,
   },
   {
     title: 'Docs',
-    path: paths.docs.welcome
-  }
+    path: paths.docs.welcome,
+  },
 ];
 
 const TOP_NAV_HEIGHT = 64;
 
-export const TopNav = (props) => {
+export const TopNav = props => {
   const { onMobileNavOpen } = props;
   const pathname = usePathname();
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
   const [elevate, setElevate] = useState(false);
   const offset = 64;
   const delay = 100;
@@ -55,7 +46,7 @@ export const TopNav = (props) => {
 
   useWindowScroll({
     handler: handleWindowScroll,
-    delay
+    delay,
   });
 
   return (
@@ -67,7 +58,7 @@ export const TopNav = (props) => {
         right: 0,
         top: 0,
         pt: 2,
-        zIndex: (theme) => theme.zIndex.appBar
+        zIndex: theme => theme.zIndex.appBar,
       }}
     >
       <Container
@@ -77,27 +68,19 @@ export const TopNav = (props) => {
           backgroundColor: 'transparent',
           borderRadius: 2.5,
           boxShadow: 'none',
-          transition: (theme) => theme.transitions.create('box-shadow, background-color', {
-            easing: theme.transitions.easing.easeInOut,
-            duration: 200
-          }),
+          transition: theme =>
+            theme.transitions.create('box-shadow, background-color', {
+              easing: theme.transitions.easing.easeInOut,
+              duration: 200,
+            }),
           ...(elevate && {
-            backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.90),
-            boxShadow: 8
-          })
+            backgroundColor: theme => alpha(theme.palette.background.paper, 0.9),
+            boxShadow: 8,
+          }),
         }}
       >
-        <Stack
-          direction="row"
-          spacing={2}
-          sx={{ height: TOP_NAV_HEIGHT }}
-        >
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={1}
-            sx={{ flexGrow: 1 }}
-          >
+        <Stack direction="row" spacing={2} sx={{ height: TOP_NAV_HEIGHT }}>
+          <Stack alignItems="center" direction="row" spacing={1} sx={{ flexGrow: 1 }}>
             <Stack
               alignItems="center"
               component={NextLink}
@@ -111,7 +94,7 @@ export const TopNav = (props) => {
                 sx={{
                   display: 'inline-flex',
                   height: 24,
-                  width: 24
+                  width: 24,
                 }}
               >
                 <Logo />
@@ -120,35 +103,25 @@ export const TopNav = (props) => {
                 <Box
                   sx={{
                     color: 'text.primary',
-                    fontFamily: '\'Plus Jakarta Sans\', sans-serif',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontSize: 14,
                     fontWeight: 800,
                     letterSpacing: '0.3px',
                     lineHeight: 2.5,
                     '& span': {
-                      color: 'primary.main'
-                    }
+                      color: 'primary.main',
+                    },
                   }}
                 >
                   Devias Kit <span>PRO</span>
                 </Box>
               )}
             </Stack>
-            <Chip
-              label="v6.0.0"
-              size="small"
-            />
+            <Chip label="v6.0.0" size="small" />
           </Stack>
           {mdUp && (
-            <Stack
-              alignItems="center"
-              direction="row"
-              spacing={2}
-            >
-              <Box
-                component="nav"
-                sx={{ height: '100%' }}
-              >
+            <Stack alignItems="center" direction="row" spacing={2}>
+              <Box component="nav" sx={{ height: '100%' }}>
                 <Stack
                   component="ul"
                   alignItems="center"
@@ -159,23 +132,18 @@ export const TopNav = (props) => {
                     height: '100%',
                     listStyle: 'none',
                     m: 0,
-                    p: 0
+                    p: 0,
                   }}
                 >
                   <>
-                    {items.map((item) => {
+                    {items.map(item => {
                       const checkPath = !!(item.path && pathname);
                       const partialMatch = checkPath ? pathname.includes(item.path) : false;
                       const exactMatch = checkPath ? pathname === item.path : false;
                       const active = item.children ? partialMatch : exactMatch;
 
                       return (
-                        <TopNavItem
-                          active={active}
-                          key={item.title}
-                          path={item.path}
-                          title={item.title}
-                        >
+                        <TopNavItem active={active} key={item.title} path={item.path} title={item.title}>
                           {item.children}
                         </TopNavItem>
                       );
@@ -185,13 +153,7 @@ export const TopNav = (props) => {
               </Box>
             </Stack>
           )}
-          <Stack
-            alignItems="center"
-            direction="row"
-            justifyContent="flex-end"
-            spacing={2}
-            sx={{ flexGrow: 1 }}
-          >
+          <Stack alignItems="center" direction="row" justifyContent="flex-end" spacing={2} sx={{ flexGrow: 1 }}>
             <Button
               component="a"
               size={mdUp ? 'medium' : 'small'}
@@ -216,5 +178,5 @@ export const TopNav = (props) => {
 };
 
 TopNav.propTypes = {
-  onMobileNavOpen: PropTypes.func
+  onMobileNavOpen: PropTypes.func,
 };

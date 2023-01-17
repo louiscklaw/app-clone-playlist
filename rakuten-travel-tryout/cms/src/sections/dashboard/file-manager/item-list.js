@@ -4,7 +4,7 @@ import { Scrollbar } from '../../../components/scrollbar';
 import { ItemListCard } from './item-list-card';
 import { ItemListRow } from './item-list-row';
 
-export const ItemList = (props) => {
+export const ItemList = props => {
   const {
     items,
     itemsCount,
@@ -15,7 +15,7 @@ export const ItemList = (props) => {
     onRowsPerPageChange,
     page,
     rowsPerPage,
-    view = 'grid'
+    view = 'grid',
   } = props;
 
   let content;
@@ -26,17 +26,11 @@ export const ItemList = (props) => {
         sx={{
           display: 'grid',
           gap: 3,
-          gridTemplateColumns: 'repeat(3, 1fr)'
+          gridTemplateColumns: 'repeat(3, 1fr)',
         }}
       >
-        {items.map((item) => (
-          <ItemListCard
-            key={item.id}
-            item={item}
-            onDelete={onDelete}
-            onFavorite={onFavorite}
-            onOpen={onOpen}
-          />
+        {items.map(item => (
+          <ItemListCard key={item.id} item={item} onDelete={onDelete} onFavorite={onFavorite} onOpen={onOpen} />
         ))}
       </Box>
     );
@@ -50,18 +44,12 @@ export const ItemList = (props) => {
               sx={{
                 minWidth: 600,
                 borderCollapse: 'separate',
-                borderSpacing: '0 8px'
+                borderSpacing: '0 8px',
               }}
             >
               <TableBody>
-                {items.map((item) => (
-                  <ItemListRow
-                    key={item.id}
-                    item={item}
-                    onDelete={onDelete}
-                    onFavorite={onFavorite}
-                    onOpen={onOpen}
-                  />
+                {items.map(item => (
+                  <ItemListRow key={item.id} item={item} onDelete={onDelete} onFavorite={onFavorite} onOpen={onOpen} />
                 ))}
               </TableBody>
             </Table>
@@ -97,5 +85,5 @@ ItemList.propTypes = {
   onRowsPerPageChange: PropTypes.func,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
-  view: PropTypes.oneOf(['grid', 'list'])
+  view: PropTypes.oneOf(['grid', 'list']),
 };

@@ -10,17 +10,17 @@ const useNotifications = () => {
     return notifications.reduce((acc, notification) => acc + (notification.read ? 0 : 1), 0);
   }, [notifications]);
 
-  const handleRemoveOne = useCallback((notificationId) => {
-    setNotifications((prevState) => {
-      return prevState.filter((notification) => notification.id !== notificationId);
+  const handleRemoveOne = useCallback(notificationId => {
+    setNotifications(prevState => {
+      return prevState.filter(notification => notification.id !== notificationId);
     });
   }, []);
 
   const handleMarkAllAsRead = useCallback(() => {
-    setNotifications((prevState) => {
-      return prevState.map((notification) => ({
+    setNotifications(prevState => {
+      return prevState.map(notification => ({
         ...notification,
-        read: true
+        read: true,
       }));
     });
   }, []);
@@ -29,7 +29,7 @@ const useNotifications = () => {
     handleMarkAllAsRead,
     handleRemoveOne,
     notifications,
-    unread
+    unread,
   };
 };
 
@@ -49,14 +49,8 @@ export const NotificationsButton = () => {
   return (
     <>
       <Tooltip title="Notifications">
-        <IconButton
-          ref={anchorRef}
-          onClick={handlePopoverOpen}
-        >
-          <Badge
-            color="error"
-            badgeContent={unread}
-          >
+        <IconButton ref={anchorRef} onClick={handlePopoverOpen}>
+          <Badge color="error" badgeContent={unread}>
             <SvgIcon>
               <Bell01Icon />
             </SvgIcon>

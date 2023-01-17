@@ -6,16 +6,16 @@ import { Chart } from '../../../components/chart';
 const chartSeries = [
   {
     name: 'Organic',
-    data: [3350, 1840, 2254, 5780, 9349, 5241, 2770, 2051, 3764, 2385, 5912, 8323]
+    data: [3350, 1840, 2254, 5780, 9349, 5241, 2770, 2051, 3764, 2385, 5912, 8323],
   },
   {
     name: 'Referral',
-    data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+    data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35],
   },
   {
     name: 'Social Media',
-    data: [100, 122, 50, 300, 250, 400, 312, 200, 10, 60, 90, 400]
-  }
+    data: [100, 122, 50, 300, 250, 400, 312, 200, 10, 60, 90, 400],
+  },
 ];
 
 const useChartOptions = () => {
@@ -26,52 +26,48 @@ const useChartOptions = () => {
       background: 'transparent',
       stacked: false,
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
-    colors: [
-      theme.palette.primary.main,
-      theme.palette.info.main,
-      theme.palette.warning.main
-    ],
+    colors: [theme.palette.primary.main, theme.palette.info.main, theme.palette.warning.main],
     grid: {
       borderColor: theme.palette.divider,
       strokeDashArray: 2,
       xaxis: {
         lines: {
-          show: false
-        }
+          show: false,
+        },
       },
       yaxis: {
         lines: {
-          show: true
-        }
-      }
+          show: true,
+        },
+      },
     },
     markers: {
       hover: {
         size: undefined,
-        sizeOffset: 2
+        sizeOffset: 2,
       },
       radius: 2,
       shape: 'circle',
       size: 4,
-      strokeWidth: 0
+      strokeWidth: 0,
     },
     stroke: {
       curve: 'smooth',
       lineCap: 'butt',
-      width: 3
+      width: 3,
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     xaxis: {
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: true
+        show: true,
       },
       categories: [
         '01 Jan',
@@ -85,51 +81,51 @@ const useChartOptions = () => {
         '09 Jan',
         '10 Jan',
         '11 Jan',
-        '12 Jan'
+        '12 Jan',
       ],
       labels: {
         style: {
-          colors: theme.palette.text.secondary
-        }
-      }
+          colors: theme.palette.text.secondary,
+        },
+      },
     },
     yaxis: [
       {
         axisBorder: {
-          show: false
+          show: false,
         },
         axisTicks: {
-          show: false
+          show: false,
         },
         labels: {
-          show: false
-        }
+          show: false,
+        },
       },
       {
         axisTicks: {
-          show: false
+          show: false,
         },
         axisBorder: {
-          show: false
+          show: false,
         },
         labels: {
-          show: false
+          show: false,
         },
-        opposite: true
+        opposite: true,
       },
       {
         axisTicks: {
-          show: false
+          show: false,
         },
         axisBorder: {
-          show: false
+          show: false,
         },
         labels: {
-          show: false
+          show: false,
         },
-        opposite: true
-      }
-    ]
+        opposite: true,
+      },
+    ],
   };
 };
 
@@ -139,30 +135,23 @@ export const Chart7 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.mode === 'dark'
-          ? 'neutral.800'
-          : 'neutral.100',
-        p: 3
+        backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+        p: 3,
       }}
     >
       <Card>
         <CardHeader
-          action={(
+          action={
             <Tooltip title="Chart 7 Source by channel">
               <SvgIcon>
                 <InfoCircleIcon />
               </SvgIcon>
             </Tooltip>
-          )}
+          }
           title="Traffic Sources"
         />
         <CardContent>
-          <Chart
-            height={350}
-            options={chartOptions}
-            series={chartSeries}
-            type="line"
-          />
+          <Chart height={350} options={chartOptions} series={chartSeries} type="line" />
         </CardContent>
       </Card>
     </Box>

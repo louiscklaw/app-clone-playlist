@@ -24,106 +24,103 @@ const useChartOptions = () => {
       background: 'transparent',
       stacked: false,
       toolbar: {
-        show: false
+        show: false,
       },
       zoom: {
-        enabled: false
-      }
+        enabled: false,
+      },
     },
-    colors: [
-      theme.palette.primary.main,
-      theme.palette.warning.main
-    ],
+    colors: [theme.palette.primary.main, theme.palette.warning.main],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     fill: {
       opacity: 1,
-      type: 'solid'
+      type: 'solid',
     },
     grid: {
       borderColor: theme.palette.divider,
       strokeDashArray: 2,
       xaxis: {
         lines: {
-          show: false
-        }
+          show: false,
+        },
       },
       yaxis: {
         lines: {
-          show: true
-        }
-      }
+          show: true,
+        },
+      },
     },
     legend: {
       horizontalAlign: 'right',
       labels: {
-        colors: theme.palette.text.secondary
+        colors: theme.palette.text.secondary,
       },
       position: 'top',
-      show: true
+      show: true,
     },
     markers: {
       hover: {
         size: undefined,
-        sizeOffset: 2
+        sizeOffset: 2,
       },
       radius: 2,
       shape: 'circle',
       size: 4,
-      strokeWidth: 0
+      strokeWidth: 0,
     },
     stroke: {
       curve: 'smooth',
       dashArray: [0, 3],
       lineCap: 'butt',
-      width: 3
+      width: 3,
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     xaxis: {
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: false
+        show: false,
       },
       categories,
       labels: {
         style: {
-          colors: theme.palette.text.secondary
-        }
-      }
+          colors: theme.palette.text.secondary,
+        },
+      },
     },
     yaxis: [
       {
         axisBorder: {
-          show: false
+          show: false,
         },
         axisTicks: {
-          show: false
+          show: false,
         },
         labels: {
-          show: false
-        }
+          show: false,
+        },
       },
       {
         axisBorder: {
-          show: false
+          show: false,
         },
         axisTicks: {
-          show: false
+          show: false,
         },
         labels: {
-          show: false
-        }
-      }
-    ]
+          show: false,
+        },
+      },
+    ],
   };
 };
 
-export const EcommerceSalesRevenue = (props) => {
+export const EcommerceSalesRevenue = props => {
   const { chartSeries } = props;
   const chartOptions = useChartOptions();
 
@@ -131,12 +128,7 @@ export const EcommerceSalesRevenue = (props) => {
     <Card>
       <CardHeader title="Sales Revenue" />
       <CardContent sx={{ pt: 0 }}>
-        <Chart
-          height={320}
-          options={chartOptions}
-          series={chartSeries}
-          type="line"
-        />
+        <Chart height={320} options={chartOptions} series={chartSeries} type="line" />
       </CardContent>
     </Card>
   );

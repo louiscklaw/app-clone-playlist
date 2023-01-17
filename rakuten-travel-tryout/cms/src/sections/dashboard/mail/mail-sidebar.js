@@ -11,20 +11,20 @@ import {
   Stack,
   SvgIcon,
   Typography,
-  useMediaQuery
+  useMediaQuery,
 } from '@mui/material';
 import { MailLabel } from './mail-label';
 import { paths } from '../../../paths';
 import { useRouter } from 'next/navigation';
 import XIcon from '@untitled-ui/icons-react/build/esm/X';
 
-const groupLabels = (labels) => {
+const groupLabels = labels => {
   const groups = {
     system: [],
-    custom: []
+    custom: [],
   };
 
-  labels.forEach((label) => {
+  labels.forEach(label => {
     if (label.type === 'system') {
       groups.system.push(label);
     } else {
@@ -35,22 +35,23 @@ const groupLabels = (labels) => {
   return groups;
 };
 
-export const MailSidebar = (props) => {
+export const MailSidebar = props => {
   const { currentLabelId = 'inbox', container, labels, onClose, onCompose, open, ...other } = props;
   const router = useRouter();
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
 
-  const handleLabelSelect = useCallback((label) => {
-    if (!mdUp) {
-      onClose?.();
-    }
+  const handleLabelSelect = useCallback(
+    label => {
+      if (!mdUp) {
+        onClose?.();
+      }
 
-    const href = label.id !== 'inbox'
-      ? paths.dashboard.mail + `?label=${label.id}`
-      : paths.dashboard.mail;
+      const href = label.id !== 'inbox' ? paths.dashboard.mail + `?label=${label.id}` : paths.dashboard.mail;
 
-    router.push(href);
-  }, [router, mdUp, onClose]);
+      router.push(href);
+    },
+    [router, mdUp, onClose],
+  );
 
   // Maybe use memo
   const groupedLabels = groupLabels(labels);
@@ -63,13 +64,10 @@ export const MailSidebar = (props) => {
         spacing={2}
         sx={{
           pt: 2,
-          px: 2
+          px: 2,
         }}
       >
-        <Typography
-          variant="h5"
-          sx={{ flexGrow: 1 }}
-        >
+        <Typography variant="h5" sx={{ flexGrow: 1 }}>
           Mailbox
         </Typography>
         {!mdUp && (
@@ -84,11 +82,11 @@ export const MailSidebar = (props) => {
         <Button
           fullWidth
           onClick={onCompose}
-          startIcon={(
+          startIcon={
             <SvgIcon>
               <PlusIcon />
             </SvgIcon>
-          )}
+          }
           sx={{ mt: 2 }}
           variant="contained"
         >
@@ -98,32 +96,24 @@ export const MailSidebar = (props) => {
       <Box
         sx={{
           pb: 2,
-          px: 2
+          px: 2,
         }}
       >
-        {Object.keys(groupedLabels).map((type) => (
+        {Object.keys(groupedLabels).map(type => (
           <Fragment key={type}>
             {type === 'custom' && (
               <ListSubheader disableSticky={true}>
-                <Typography
-                  color="text.secondary"
-                  variant="overline"
-                >
+                <Typography color="text.secondary" variant="overline">
                   Labels
                 </Typography>
               </ListSubheader>
             )}
             <List disablePadding>
-              {groupedLabels[type].map((label) => {
+              {groupedLabels[type].map(label => {
                 const isActive = currentLabelId === label.id;
 
                 return (
-                  <MailLabel
-                    active={isActive}
-                    key={label.id}
-                    label={label}
-                    onClick={() => handleLabelSelect(label)}
-                  />
+                  <MailLabel active={isActive} key={label.id} label={label} onClick={() => handleLabelSelect(label)} />
                 );
               })}
             </List>
@@ -141,12 +131,13 @@ export const MailSidebar = (props) => {
         PaperProps={{
           sx: {
             position: 'relative',
-            width: 280
-          }
+            width: 280,
+          },
         }}
         SlideProps={{ container }}
         variant="persistent"
-        {...other}>
+        {...other}
+      >
         {content}
       </Drawer>
     );
@@ -160,8 +151,8 @@ export const MailSidebar = (props) => {
         container,
         sx: {
           pointerEvents: 'none',
-          position: 'absolute'
-        }
+          position: 'absolute',
+        },
       }}
       onClose={onClose}
       open={open}
@@ -170,12 +161,13 @@ export const MailSidebar = (props) => {
           maxWidth: '100%',
           width: 280,
           pointerEvents: 'auto',
-          position: 'absolute'
-        }
+          position: 'absolute',
+        },
       }}
       SlideProps={{ container }}
       variant="temporary"
-      {...other}>
+      {...other}
+    >
       {content}
     </Drawer>
   );
@@ -187,5 +179,5 @@ MailSidebar.propTypes = {
   labels: PropTypes.array.isRequired,
   onClose: PropTypes.func,
   onCompose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

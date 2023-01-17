@@ -32,11 +32,13 @@ const useOrder = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getOrder();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return order;
 };
@@ -55,15 +57,13 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Order Details | Devias Kit PRO
-        </title>
+        <title>Dashboard: Order Details | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
@@ -75,70 +75,48 @@ const Page = () => {
                 href={paths.dashboard.orders.index}
                 sx={{
                   alignItems: 'center',
-                  display: 'inline-flex'
+                  display: 'inline-flex',
                 }}
                 underline="hover"
               >
                 <SvgIcon sx={{ mr: 1 }}>
                   <ArrowLeftIcon />
                 </SvgIcon>
-                <Typography variant="subtitle2">
-                  Orders
-                </Typography>
+                <Typography variant="subtitle2">Orders</Typography>
               </Link>
             </div>
             <div>
-              <Stack
-                alignItems="flex-start"
-                direction="row"
-                justifyContent="space-between"
-                spacing={3}
-              >
+              <Stack alignItems="flex-start" direction="row" justifyContent="space-between" spacing={3}>
                 <Stack spacing={1}>
-                  <Typography variant="h4">
-                    {order.number}
-                  </Typography>
-                  <Stack
-                    alignItems="center"
-                    direction="row"
-                    spacing={1}
-                  >
-                    <Typography
-                      color="text.secondary"
-                      variant="body2"
-                    >
+                  <Typography variant="h4">{order.number}</Typography>
+                  <Stack alignItems="center" direction="row" spacing={1}>
+                    <Typography color="text.secondary" variant="body2">
                       Placed on
                     </Typography>
                     <SvgIcon color="action">
                       <CalendarIcon />
                     </SvgIcon>
-                    <Typography variant="body2">
-                      {createdAt}
-                    </Typography>
+                    <Typography variant="body2">{createdAt}</Typography>
                   </Stack>
                 </Stack>
                 <div>
-                  <Stack
-                    alignItems="center"
-                    direction="row"
-                    spacing={2}
-                  >
+                  <Stack alignItems="center" direction="row" spacing={2}>
                     <Button
                       color="inherit"
-                      endIcon={(
+                      endIcon={
                         <SvgIcon>
                           <Edit02Icon />
                         </SvgIcon>
-                      )}
+                      }
                     >
                       Edit
                     </Button>
                     <Button
-                      endIcon={(
+                      endIcon={
                         <SvgIcon>
                           <ChevronDownIcon />
                         </SvgIcon>
-                      )}
+                      }
                       variant="contained"
                     >
                       Action
@@ -157,11 +135,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;
-

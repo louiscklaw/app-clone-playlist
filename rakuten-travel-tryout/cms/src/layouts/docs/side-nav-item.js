@@ -5,12 +5,12 @@ import ChevronDownIcon from '@untitled-ui/icons-react/build/esm/ChevronDown';
 import ChevronRightIcon from '@untitled-ui/icons-react/build/esm/ChevronRight';
 import { Box, ButtonBase, Collapse, SvgIcon } from '@mui/material';
 
-export const SideNavItem = (props) => {
+export const SideNavItem = props => {
   const { active, children, depth = 0, icon, label, open: openProp, path, title } = props;
   const [open, setOpen] = useState(!!openProp);
 
   const handleToggle = useCallback(() => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen(prevOpen => !prevOpen);
   }, []);
 
   const offset = depth === 0 ? 0 : 8 * depth;
@@ -30,8 +30,8 @@ export const SideNavItem = (props) => {
             textAlign: 'left',
             width: '100%',
             '&:hover': {
-              backgroundColor: 'action.hover'
-            }
+              backgroundColor: 'action.hover',
+            },
           }}
         >
           {icon && (
@@ -44,8 +44,8 @@ export const SideNavItem = (props) => {
                 justifyContent: 'center',
                 mr: 2,
                 ...(active && {
-                  color: 'primary.main'
-                })
+                  color: 'primary.main',
+                }),
               }}
             >
               {icon}
@@ -56,30 +56,24 @@ export const SideNavItem = (props) => {
             sx={{
               color: 'text.primary',
               flexGrow: 1,
-              fontFamily: (theme) => theme.typography.fontFamily,
+              fontFamily: theme => theme.typography.fontFamily,
               fontSize: depth > 0 ? 13 : 14,
               fontWeight: 600,
               lineHeight: '24px',
               whiteSpace: 'nowrap',
               ...(active && {
                 color: 'primary.main',
-                fontWeight: 700
-              })
+                fontWeight: 700,
+              }),
             }}
           >
             {title}
           </Box>
-          <SvgIcon
-            fontSize="small"
-            sx={{ color: 'action.active' }}
-          >
+          <SvgIcon fontSize="small" sx={{ color: 'action.active' }}>
             {open ? <ChevronDownIcon /> : <ChevronRightIcon />}
           </SvgIcon>
         </ButtonBase>
-        <Collapse
-          in={open}
-          sx={{ mt: 0.5 }}
-        >
+        <Collapse in={open} sx={{ mt: 0.5 }}>
           {children}
         </Collapse>
       </li>
@@ -95,14 +89,14 @@ export const SideNavItem = (props) => {
 
     linkProps = isExternal
       ? {
-        component: 'a',
-        href: path,
-        target: '_blank'
-      }
+          component: 'a',
+          href: path,
+          target: '_blank',
+        }
       : {
-        component: NextLink,
-        href: path
-      };
+          component: NextLink,
+          href: path,
+        };
   }
 
   return (
@@ -117,10 +111,11 @@ export const SideNavItem = (props) => {
           textAlign: 'left',
           width: '100%',
           '&:hover': {
-            backgroundColor: 'action.hover'
-          }
+            backgroundColor: 'action.hover',
+          },
         }}
-        {...linkProps}>
+        {...linkProps}
+      >
         {icon && (
           <Box
             component="span"
@@ -131,8 +126,8 @@ export const SideNavItem = (props) => {
               justifyContent: 'center',
               mr: 2,
               ...(active && {
-                color: 'primary.main'
-              })
+                color: 'primary.main',
+              }),
             }}
           >
             {icon}
@@ -142,24 +137,21 @@ export const SideNavItem = (props) => {
           sx={{
             color: 'text.primary',
             flexGrow: 1,
-            fontFamily: (theme) => theme.typography.fontFamily,
+            fontFamily: theme => theme.typography.fontFamily,
             fontSize: depth > 0 ? 13 : 14,
             fontWeight: 600,
             lineHeight: '24px',
             whiteSpace: 'nowrap',
             ...(active && {
               color: 'primary.main',
-              fontWeight: 700
-            })
+              fontWeight: 700,
+            }),
           }}
         >
           {title}
         </Box>
         {label && (
-          <Box
-            component="span"
-            sx={{ ml: 2 }}
-          >
+          <Box component="span" sx={{ ml: 2 }}>
             {label}
           </Box>
         )}
@@ -175,5 +167,5 @@ SideNavItem.propTypes = {
   icon: PropTypes.node,
   open: PropTypes.bool,
   path: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };

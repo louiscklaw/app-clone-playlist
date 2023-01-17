@@ -22,7 +22,7 @@ class CalendarApi {
           description,
           end,
           start,
-          title
+          title,
         };
 
         // Add the new event to events
@@ -48,7 +48,7 @@ class CalendarApi {
         const clonedEvents = deepCopy(data.events);
 
         // Find the event that will be updated
-        const event = clonedEvents.find((event) => event.id === eventId);
+        const event = clonedEvents.find(event => event.id === eventId);
 
         if (!event) {
           reject(new Error('Event not found'));
@@ -78,14 +78,14 @@ class CalendarApi {
         let clonedEvents = deepCopy(data.events);
 
         // Find the event that will be removed
-        const event = clonedEvents.find((event) => event.id === eventId);
+        const event = clonedEvents.find(event => event.id === eventId);
 
         if (!event) {
           reject(new Error('Event not found'));
           return;
         }
 
-        clonedEvents = clonedEvents.filter((event) => event.id !== eventId);
+        clonedEvents = clonedEvents.filter(event => event.id !== eventId);
 
         // Save changes
         data.events = clonedEvents;

@@ -13,8 +13,8 @@ export const getStaticPaths = () => {
     if (typeof article.slug !== 'undefined') {
       acc.push({
         params: {
-          slug: article.slug
-        }
+          slug: article.slug,
+        },
       });
     }
 
@@ -23,23 +23,23 @@ export const getStaticPaths = () => {
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 };
 
-export const getStaticProps = (context) => {
+export const getStaticProps = context => {
   const { slug } = context.params;
 
   const article = getArticle(slug, ['content', 'slug', 'title']);
 
   return {
     props: {
-      article
-    }
+      article,
+    },
   };
 };
 
-const Page = (props) => {
+const Page = props => {
   const { article } = props;
 
   usePageView();
@@ -51,24 +51,15 @@ const Page = (props) => {
   return (
     <>
       <Head>
-        <title>
-          {`Docs: ${article.title} | Devias Kit PRO`}
-        </title>
+        <title>{`Docs: ${article.title} | Devias Kit PRO`}</title>
       </Head>
-      <Container
-        maxWidth="lg"
-        sx={{ pb: '120px' }}
-      >
+      <Container maxWidth="lg" sx={{ pb: '120px' }}>
         <ArticleContent content={article.content || ''} />
       </Container>
     </>
   );
 };
 
-Page.getLayout = (page) => (
-  <DocsLayout>
-    {page}
-  </DocsLayout>
-);
+Page.getLayout = page => <DocsLayout>{page}</DocsLayout>;
 
 export default Page;

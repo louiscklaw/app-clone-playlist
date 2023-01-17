@@ -23,27 +23,27 @@ const sections = [
         children: [
           {
             title: 'Overview',
-            path: paths.dashboard.index
+            path: paths.dashboard.index,
           },
           {
             title: 'Customers',
-            path: paths.dashboard.customers.index
+            path: paths.dashboard.customers.index,
           },
           {
             title: 'Logistics',
-            path: paths.dashboard.logistics.index
+            path: paths.dashboard.logistics.index,
           },
           {
             title: 'File Manager',
-            path: paths.dashboard.fileManager
+            path: paths.dashboard.fileManager,
           },
           {
             title: 'Academy',
-            path: paths.dashboard.academy.index
-          }
-        ]
-      }
-    ]
+            path: paths.dashboard.academy.index,
+          },
+        ],
+      },
+    ],
   },
   {
     items: [
@@ -54,7 +54,7 @@ const sections = [
           <SvgIcon fontSize="small">
             <LayoutAlt02Icon />
           </SvgIcon>
-        )
+        ),
       },
       {
         title: 'Pricing',
@@ -63,7 +63,7 @@ const sections = [
           <SvgIcon fontSize="small">
             <CreditCard01Icon />
           </SvgIcon>
-        )
+        ),
       },
       {
         title: 'Contact',
@@ -72,7 +72,7 @@ const sections = [
           <SvgIcon fontSize="small">
             <Mail04Icon />
           </SvgIcon>
-        )
+        ),
       },
       {
         title: 'Checkout',
@@ -81,7 +81,7 @@ const sections = [
           <SvgIcon fontSize="small">
             <LogOut01Icon />
           </SvgIcon>
-        )
+        ),
       },
       {
         title: 'Error',
@@ -90,10 +90,10 @@ const sections = [
           <SvgIcon fontSize="small">
             <XSquareIcon />
           </SvgIcon>
-        )
-      }
-    ]
-  }
+        ),
+      },
+    ],
+  },
 ];
 
 export const PagesPopover = () => (
@@ -102,7 +102,7 @@ export const PagesPopover = () => (
       display: 'grid',
       gap: 3,
       gridTemplateColumns: 'repeat(2, 1fr)',
-      p: 3
+      p: 3,
     }}
   >
     {sections.map((section, index) => {
@@ -114,10 +114,10 @@ export const PagesPopover = () => (
           sx={{
             listStyle: 'none',
             m: 0,
-            p: 0
+            p: 0,
           }}
         >
-          {section.items.map((item) => {
+          {section.items.map(item => {
             let linkProps = undefined;
 
             if (item.path) {
@@ -125,14 +125,14 @@ export const PagesPopover = () => (
 
               linkProps = isExternal
                 ? {
-                  component: 'a',
-                  href: item.path,
-                  target: '_blank'
-                }
+                    component: 'a',
+                    href: item.path,
+                    target: '_blank',
+                  }
                 : {
-                  component: NextLink,
-                  href: item.path
-                };
+                    component: NextLink,
+                    href: item.path,
+                  };
             }
 
             return (
@@ -148,10 +148,11 @@ export const PagesPopover = () => (
                     textAlign: 'left',
                     width: '100%',
                     '&:hover': {
-                      backgroundColor: 'action.hover'
-                    }
+                      backgroundColor: 'action.hover',
+                    },
                   }}
-                  {...linkProps}>
+                  {...linkProps}
+                >
                   <Box
                     component="span"
                     sx={{
@@ -160,24 +161,21 @@ export const PagesPopover = () => (
                       display: 'inline-flex',
                       justifyContent: 'center',
                       mr: 2,
-                      width: 20
+                      width: 20,
                     }}
                   >
                     {item.icon}
                   </Box>
-                  <Box
-                    component="span"
-                    sx={{ flexGrow: 1 }}
-                  >
+                  <Box component="span" sx={{ flexGrow: 1 }}>
                     <Box
                       component="span"
                       sx={{
                         display: 'block',
-                        fontFamily: (theme) => theme.typography.fontFamily,
+                        fontFamily: theme => theme.typography.fontFamily,
                         fontSize: 14,
                         fontWeight: 500,
                         lineHeight: '24px',
-                        whiteSpace: 'nowrap'
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       {item.title}
@@ -188,11 +186,11 @@ export const PagesPopover = () => (
                         sx={{
                           color: 'text.secondary',
                           display: 'block',
-                          fontFamily: (theme) => theme.typography.fontFamily,
+                          fontFamily: theme => theme.typography.fontFamily,
                           fontSize: 12,
                           fontWeight: 400,
                           lineHeight: '18px',
-                          whiteSpace: 'nowrap'
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {item.caption}
@@ -208,10 +206,10 @@ export const PagesPopover = () => (
                       listStyle: 'none',
                       m: 0,
                       p: 0,
-                      pl: 20 + 16 + 'px' // icon size + icon margin
+                      pl: 20 + 16 + 'px', // icon size + icon margin
                     }}
                   >
-                    {item.children.map((child) => {
+                    {item.children.map(child => {
                       let linkProps = undefined;
 
                       if (child.path) {
@@ -219,14 +217,14 @@ export const PagesPopover = () => (
 
                         linkProps = isExternal
                           ? {
-                            component: 'a',
-                            href: child.path,
-                            target: '_blank'
-                          }
+                              component: 'a',
+                              href: child.path,
+                              target: '_blank',
+                            }
                           : {
-                            component: NextLink,
-                            href: child.path
-                          };
+                              component: NextLink,
+                              href: child.path,
+                            };
                       }
 
                       return (
@@ -242,20 +240,21 @@ export const PagesPopover = () => (
                               textAlign: 'left',
                               width: '100%',
                               '&:hover': {
-                                backgroundColor: 'action.hover'
-                              }
+                                backgroundColor: 'action.hover',
+                              },
                             }}
-                            {...linkProps}>
+                            {...linkProps}
+                          >
                             <Box
                               component="span"
                               sx={{
                                 color: 'text.secondary',
                                 display: 'block',
-                                fontFamily: (theme) => theme.typography.fontFamily,
+                                fontFamily: theme => theme.typography.fontFamily,
                                 fontSize: 14,
                                 fontWeight: 500,
                                 lineHeight: '24px',
-                                whiteSpace: 'nowrap'
+                                whiteSpace: 'nowrap',
                               }}
                             >
                               {child.title}

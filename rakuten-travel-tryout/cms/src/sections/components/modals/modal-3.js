@@ -1,23 +1,12 @@
 import XIcon from '@untitled-ui/icons-react/build/esm/X';
 import SearchMdIcon from '@untitled-ui/icons-react/build/esm/SearchMd';
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-  Paper,
-  SvgIcon
-} from '@mui/material';
+import { Box, Button, Container, IconButton, InputAdornment, OutlinedInput, Paper, SvgIcon } from '@mui/material';
 
 export const Modal3 = () => (
   <Box
     sx={{
-      backgroundColor: (theme) => theme.palette.mode === 'dark'
-        ? 'neutral.800'
-        : 'neutral.100',
-      p: 3
+      backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+      p: 3,
     }}
   >
     <Paper elevation={12}>
@@ -25,7 +14,7 @@ export const Modal3 = () => (
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
           }}
         >
           <IconButton>
@@ -40,25 +29,21 @@ export const Modal3 = () => (
           <Box
             sx={{
               alignItems: 'center',
-              display: 'flex'
+              display: 'flex',
             }}
           >
             <OutlinedInput
               fullWidth
               placeholder="Search..."
-              startAdornment={(
+              startAdornment={
                 <InputAdornment position="start">
                   <SvgIcon>
                     <SearchMdIcon />
                   </SvgIcon>
                 </InputAdornment>
-              )}
+              }
             />
-            <Button
-              size="large"
-              sx={{ ml: 2 }}
-              variant="contained"
-            >
+            <Button size="large" sx={{ ml: 2 }} variant="contained">
               Search
             </Button>
           </Box>

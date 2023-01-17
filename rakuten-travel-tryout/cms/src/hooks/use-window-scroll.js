@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { throttle } from 'lodash';
 
-export const useWindowScroll = (config) => {
+export const useWindowScroll = config => {
   useEffect(() => {
     const { handler, delay } = config;
 

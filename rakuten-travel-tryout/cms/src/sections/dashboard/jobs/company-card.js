@@ -8,7 +8,7 @@ import { getInitials } from '../../../utils/get-initials';
 import { CompanyJobs } from './company-jobs';
 import { paths } from '../../../paths';
 
-export const CompanyCard = (props) => {
+export const CompanyCard = props => {
   const { company, ...other } = props;
 
   return (
@@ -19,7 +19,7 @@ export const CompanyCard = (props) => {
           spacing={2}
           direction={{
             xs: 'column',
-            sm: 'row'
+            sm: 'row',
           }}
         >
           <Avatar
@@ -31,79 +31,42 @@ export const CompanyCard = (props) => {
             {getInitials(company.name)}
           </Avatar>
           <div>
-            <Link
-              color="text.primary"
-              component={NextLink}
-              href={paths.dashboard.jobs.companies.details}
-              variant="h6"
-            >
+            <Link color="text.primary" component={NextLink} href={paths.dashboard.jobs.companies.details} variant="h6">
               {company.name}
             </Link>
-            <Typography variant="body2">
-              {company.shortDescription}
-            </Typography>
-            <Stack
-              alignItems="center"
-              direction="row"
-              flexWrap="wrap"
-              spacing={3}
-              sx={{ mt: 1 }}
-            >
-              <Stack
-                alignItems="center"
-                spacing={1}
-                direction="row"
-              >
+            <Typography variant="body2">{company.shortDescription}</Typography>
+            <Stack alignItems="center" direction="row" flexWrap="wrap" spacing={3} sx={{ mt: 1 }}>
+              <Stack alignItems="center" spacing={1} direction="row">
                 <SvgIcon color="action">
                   <Users01Icon />
                 </SvgIcon>
-                <Typography
-                  color="text.secondary"
-                  noWrap
-                  variant="overline"
-                >
+                <Typography color="text.secondary" noWrap variant="overline">
                   {company.employees}
                 </Typography>
               </Stack>
-              <Stack
-                alignItems="center"
-                spacing={1}
-                direction="row"
-              >
+              <Stack alignItems="center" spacing={1} direction="row">
                 <SvgIcon color="action">
                   <Star01Icon />
                 </SvgIcon>
-                <Typography
-                  color="text.secondary"
-                  noWrap
-                  variant="overline"
-                >
+                <Typography color="text.secondary" noWrap variant="overline">
                   {company.averageRating}
                   /5
                 </Typography>
               </Stack>
               {company.isVerified && (
-                <Stack
-                  alignItems="center"
-                  direction="row"
-                  spacing={0.5}
-                >
+                <Stack alignItems="center" direction="row" spacing={0.5}>
                   <SvgIcon
                     sx={{
                       color: 'background.paper',
                       '& path': {
-                        fill: (theme) => theme.palette.success.main,
-                        fillOpacity: 1
-                      }
+                        fill: theme => theme.palette.success.main,
+                        fillOpacity: 1,
+                      },
                     }}
                   >
                     <CheckVerified01 />
                   </SvgIcon>
-                  <Typography
-                    color="success"
-                    noWrap
-                    variant="overline"
-                  >
+                  <Typography color="success" noWrap variant="overline">
                     Verified
                   </Typography>
                 </Stack>
@@ -121,5 +84,5 @@ export const CompanyCard = (props) => {
 
 CompanyCard.propTypes = {
   // @ts-ignore
-  company: PropTypes.object.isRequired
+  company: PropTypes.object.isRequired,
 };

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Menu01Icon from '@untitled-ui/icons-react/build/esm/Menu01';
 import { Box, Card, IconButton, SvgIcon } from '@mui/material';
 
-export const LogisticsFleetToolbar = (props) => {
+export const LogisticsFleetToolbar = props => {
   const { onDrawerOpen } = props;
 
   return (
@@ -14,13 +14,13 @@ export const LogisticsFleetToolbar = (props) => {
         position: 'absolute',
         top: 0,
         width: '100%',
-        zIndex: 10
+        zIndex: 10,
       }}
     >
       <Card
         sx={{
           p: 2,
-          pointerEvents: 'auto'
+          pointerEvents: 'auto',
         }}
       >
         <IconButton onClick={onDrawerOpen}>
@@ -34,5 +34,5 @@ export const LogisticsFleetToolbar = (props) => {
 };
 
 LogisticsFleetToolbar.propTypes = {
-  onDrawerOpen: PropTypes.func
+  onDrawerOpen: PropTypes.func,
 };

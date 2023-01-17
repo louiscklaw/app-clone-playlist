@@ -10,21 +10,16 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Job Create | Devias Kit PRO
-        </title>
+        <title>Dashboard: Job Create | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           display: 'flex',
-          flexGrow: 1
+          flexGrow: 1,
         }}
       >
-        <Grid
-          container
-          sx={{ flexGrow: 1 }}
-        >
+        <Grid container sx={{ flexGrow: 1 }}>
           <Grid
             xs={12}
             sm={4}
@@ -35,8 +30,8 @@ const Page = () => {
               backgroundSize: 'cover',
               display: {
                 xs: 'none',
-                md: 'block'
-              }
+                md: 'block',
+              },
             }}
           />
           <Grid
@@ -46,17 +41,12 @@ const Page = () => {
               p: {
                 xs: 4,
                 sm: 6,
-                md: 8
-              }
+                md: 8,
+              },
             }}
           >
-            <Stack
-              maxWidth="sm"
-              spacing={3}
-            >
-              <Typography variant="h4">
-                Create Job Ad
-              </Typography>
+            <Stack maxWidth="sm" spacing={3}>
+              <Typography variant="h4">Create Job Ad</Typography>
               <JobCreateForm />
             </Stack>
           </Grid>
@@ -66,10 +56,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

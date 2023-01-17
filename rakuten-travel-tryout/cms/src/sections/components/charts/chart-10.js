@@ -15,35 +15,31 @@ const useChartOptions = () => {
       background: 'transparent',
       stacked: false,
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
-    colors: [
-      theme.palette.primary.main,
-      theme.palette.info.main,
-      theme.palette.warning.main
-    ],
+    colors: [theme.palette.primary.main, theme.palette.info.main, theme.palette.warning.main],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     fill: {
       opacity: 1,
-      type: 'solid'
+      type: 'solid',
     },
     labels,
     legend: {
-      show: false
+      show: false,
     },
     stroke: {
       colors: [theme.palette.background.paper],
-      width: 1
+      width: 1,
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     tooltip: {
-      fillSeriesColor: false
-    }
+      fillSeriesColor: false,
+    },
   };
 };
 
@@ -53,22 +49,15 @@ export const Chart10 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.mode === 'dark'
-          ? 'neutral.800'
-          : 'neutral.100',
-        p: 3
+        backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+        p: 3,
       }}
     >
       <Container maxWidth="md">
         <Card>
           <CardHeader title="Cost Breakdown" />
           <CardContent>
-            <Chart
-              height={260}
-              options={chartOptions}
-              series={chartSeries}
-              type="pie"
-            />
+            <Chart height={260} options={chartOptions} series={chartSeries} type="pie" />
             {chartSeries.map((item, index) => {
               const amount = numeral(item).format('$0,0.00');
 
@@ -78,7 +67,7 @@ export const Chart10 = () => {
                   sx={{
                     alignItems: 'center',
                     display: 'flex',
-                    p: 1
+                    p: 1,
                   }}
                 >
                   <Box
@@ -86,20 +75,14 @@ export const Chart10 = () => {
                       backgroundColor: chartOptions.colors[index],
                       borderRadius: '50%',
                       height: 8,
-                      width: 8
+                      width: 8,
                     }}
                   />
-                  <Typography
-                    sx={{ ml: 2 }}
-                    variant="subtitle2"
-                  >
+                  <Typography sx={{ ml: 2 }} variant="subtitle2">
                     {labels[index]}
                   </Typography>
                   <Box sx={{ flexGrow: 1 }} />
-                  <Typography
-                    color="text.secondary"
-                    variant="subtitle2"
-                  >
+                  <Typography color="text.secondary" variant="subtitle2">
                     {amount}
                   </Typography>
                 </Box>

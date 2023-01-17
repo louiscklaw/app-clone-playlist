@@ -8,7 +8,7 @@ export const ChatBlank = () => (
       flexGrow: 1,
       flexDirection: 'column',
       justifyContent: 'center',
-      overflow: 'hidden'
+      overflow: 'hidden',
     }}
   >
     <Box
@@ -16,14 +16,10 @@ export const ChatBlank = () => (
       src="/assets/errors/error-404.png"
       sx={{
         height: 'auto',
-        maxWidth: 120
+        maxWidth: 120,
       }}
     />
-    <Typography
-      color="text.secondary"
-      sx={{ mt: 2 }}
-      variant="subtitle1"
-    >
+    <Typography color="text.secondary" sx={{ mt: 2 }} variant="subtitle1">
       Start meaningful conversations!
     </Typography>
   </Box>

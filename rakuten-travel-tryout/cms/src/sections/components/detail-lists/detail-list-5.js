@@ -15,7 +15,7 @@ import {
   TableCell,
   TableRow,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 
 const order = {
@@ -29,7 +29,7 @@ const order = {
     city: 'San Diego',
     country: 'USA',
     email: 'miron.vitold@devias.io',
-    name: 'Miron Vitold'
+    name: 'Miron Vitold',
   },
   items: [
     {
@@ -38,7 +38,7 @@ const order = {
       currency: '$',
       name: 'Project Points',
       quantity: 25,
-      unitAmount: 50.25
+      unitAmount: 50.25,
     },
     {
       id: '5ecb8ac10f116d04bed990eb',
@@ -46,13 +46,13 @@ const order = {
       currency: '$',
       name: 'Freelancer Subscription',
       quantity: 1,
-      unitAmount: 5.00
-    }
+      unitAmount: 5.0,
+    },
   ],
   number: 'DEV-103',
   paymentMethod: 'CreditCard',
   status: 'pending',
-  totalAmount: 500.00
+  totalAmount: 500.0,
 };
 
 const statusOptions = ['Canceled', 'Completed', 'Rejected'];
@@ -60,7 +60,7 @@ const statusOptions = ['Canceled', 'Completed', 'Rejected'];
 export const DetailList5 = () => {
   const [status, setStatus] = useState(statusOptions[0]);
 
-  const handleChange = useCallback((event) => {
+  const handleChange = useCallback(event => {
     setStatus(event.target.value);
   }, []);
 
@@ -70,10 +70,8 @@ export const DetailList5 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.mode === 'dark'
-          ? 'neutral.800'
-          : 'neutral.100',
-        p: 3
+        backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+        p: 3,
       }}
     >
       <Card>
@@ -83,80 +81,48 @@ export const DetailList5 = () => {
           <TableBody>
             <TableRow>
               <TableCell>
-                <Typography variant="subtitle2">
-                  Customer
-                </Typography>
+                <Typography variant="subtitle2">Customer</Typography>
               </TableCell>
               <TableCell>
-                <div>
-                  {order.customer.name}
-                </div>
-                <div>
-                  {order.customer.address1}
-                </div>
-                <div>
-                  {order.customer.city}
-                </div>
-                <div>
-                  {order.customer.country}
-                </div>
+                <div>{order.customer.name}</div>
+                <div>{order.customer.address1}</div>
+                <div>{order.customer.city}</div>
+                <div>{order.customer.country}</div>
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
-                <Typography variant="subtitle2">
-                  ID
-                </Typography>
+                <Typography variant="subtitle2">ID</Typography>
               </TableCell>
-              <TableCell>
-                #{order.id}
-              </TableCell>
+              <TableCell>#{order.id}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
-                <Typography variant="subtitle2">
-                  Number
-                </Typography>
+                <Typography variant="subtitle2">Number</Typography>
               </TableCell>
-              <TableCell>
-                {order.number}
-              </TableCell>
+              <TableCell>{order.number}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
-                <Typography variant="subtitle2">
-                  Date
-                </Typography>
+                <Typography variant="subtitle2">Date</Typography>
               </TableCell>
-              <TableCell>
-                {createdAt}
-              </TableCell>
+              <TableCell>{createdAt}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
-                <Typography variant="subtitle2">
-                  Promotion Code
-                </Typography>
+                <Typography variant="subtitle2">Promotion Code</Typography>
               </TableCell>
-              <TableCell>
-                {order.coupon ? order.coupon : 'N/A'}
-              </TableCell>
+              <TableCell>{order.coupon ? order.coupon : 'N/A'}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
-                <Typography variant="subtitle2">
-                  Total Amount
-                </Typography>
+                <Typography variant="subtitle2">Total Amount</Typography>
               </TableCell>
-              <TableCell>
-                {totalAmount}
-              </TableCell>
+              <TableCell>{totalAmount}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
-                <Typography variant="subtitle2">
-                  Status
-                </Typography>
+                <Typography variant="subtitle2">Status</Typography>
               </TableCell>
               <TableCell>
                 <TextField
@@ -168,11 +134,8 @@ export const DetailList5 = () => {
                   value={status}
                   variant="outlined"
                 >
-                  {statusOptions.map((option) => (
-                    <option
-                      key={option}
-                      value={option}
-                    >
+                  {statusOptions.map(option => (
+                    <option key={option} value={option}>
                       {option}
                     </option>
                   ))}
@@ -184,11 +147,11 @@ export const DetailList5 = () => {
         <CardActions>
           <Button
             color="inherit"
-            startIcon={(
+            startIcon={
               <SvgIcon>
                 <ReceiptIcon />
               </SvgIcon>
-            )}
+            }
           >
             Resend Invoice
           </Button>

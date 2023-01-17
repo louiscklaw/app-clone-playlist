@@ -14,13 +14,13 @@ import {
   Stack,
   SvgIcon,
   Tooltip,
-  Typography
+  Typography,
 } from '@mui/material';
 import { bytesToSize } from '../../../utils/bytes-to-size';
 import { ItemIcon } from './item-icon';
 import { ItemMenu } from './item-menu';
 
-export const ItemListCard = (props) => {
+export const ItemListCard = props => {
   const { item, onDelete, onFavorite, onOpen } = props;
   const menuRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
@@ -54,14 +54,15 @@ export const ItemListCard = (props) => {
         sx={{
           backgroundColor: 'transparent',
           boxShadow: 0,
-          transition: (theme) => theme.transitions.create(['background-color, box-shadow'], {
-            easing: theme.transitions.easing.easeInOut,
-            duration: 200
-          }),
+          transition: theme =>
+            theme.transitions.create(['background-color, box-shadow'], {
+              easing: theme.transitions.easing.easeInOut,
+              duration: 200,
+            }),
           '&:hover': {
             backgroundColor: 'background.paper',
-            boxShadow: 16
-          }
+            boxShadow: 16,
+          },
         }}
         variant="outlined"
       >
@@ -72,21 +73,15 @@ export const ItemListCard = (props) => {
           spacing={3}
           sx={{
             pt: 2,
-            px: 2
+            px: 2,
           }}
         >
           <IconButton onClick={() => onFavorite?.(item.id, !item.isFavorite)}>
-            <SvgIcon
-              fontSize="small"
-              sx={{ color: item.isFavorite ? 'warning.main' : 'action.active' }}
-            >
+            <SvgIcon fontSize="small" sx={{ color: item.isFavorite ? 'warning.main' : 'action.active' }}>
               <Star01Icon />
             </SvgIcon>
           </IconButton>
-          <IconButton
-            onClick={handleMenuOpen}
-            ref={menuRef}
-          >
+          <IconButton onClick={handleMenuOpen} ref={menuRef}>
             <SvgIcon fontSize="small">
               <DotsVerticalIcon />
             </SvgIcon>
@@ -96,41 +91,26 @@ export const ItemListCard = (props) => {
           <Box
             sx={{
               display: 'flex',
-              mb: 1
+              mb: 1,
             }}
           >
             <Box
               onClick={() => onOpen?.(item.id)}
               sx={{
                 display: 'inline-flex',
-                cursor: 'pointer'
+                cursor: 'pointer',
               }}
             >
-              <ItemIcon
-                type={item.type}
-                extension={item.extension}
-              />
+              <ItemIcon type={item.type} extension={item.extension} />
             </Box>
           </Box>
-          <Typography
-            onClick={() => onOpen?.(item.id)}
-            sx={{ cursor: 'pointer' }}
-            variant="subtitle2"
-          >
+          <Typography onClick={() => onOpen?.(item.id)} sx={{ cursor: 'pointer' }} variant="subtitle2">
             {item.name}
           </Typography>
           <Divider sx={{ my: 1 }} />
-          <Stack
-            alignItems="center"
-            direction="row"
-            justifyContent="space-between"
-            spacing={1}
-          >
+          <Stack alignItems="center" direction="row" justifyContent="space-between" spacing={1}>
             <div>
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
+              <Typography color="text.secondary" variant="body2">
                 {size}
               </Typography>
             </div>
@@ -140,7 +120,7 @@ export const ItemListCard = (props) => {
                   <Avatar
                     sx={{
                       height: 32,
-                      width: 32
+                      width: 32,
                     }}
                   >
                     <SvgIcon fontSize="small">
@@ -151,13 +131,13 @@ export const ItemListCard = (props) => {
               )}
               {showShared && (
                 <AvatarGroup max={3}>
-                  {item.shared?.map((person) => (
+                  {item.shared?.map(person => (
                     <Avatar
                       key={person.name}
                       src={person.avatar}
                       sx={{
                         height: 32,
-                        width: 32
+                        width: 32,
                       }}
                     />
                   ))}
@@ -165,20 +145,12 @@ export const ItemListCard = (props) => {
               )}
             </div>
           </Stack>
-          <Typography
-            color="text.secondary"
-            variant="caption"
-          >
+          <Typography color="text.secondary" variant="caption">
             Created at {createdAt}
           </Typography>
         </Box>
       </Card>
-      <ItemMenu
-        anchorEl={menuRef.current}
-        onClose={handleMenuClose}
-        onDelete={handleDelete}
-        open={openMenu}
-      />
+      <ItemMenu anchorEl={menuRef.current} onClose={handleMenuClose} onDelete={handleDelete} open={openMenu} />
     </>
   );
 };
@@ -188,5 +160,5 @@ ItemListCard.propTypes = {
   item: PropTypes.object.isRequired,
   onDelete: PropTypes.func,
   onFavorite: PropTypes.func,
-  onOpen: PropTypes.func
+  onOpen: PropTypes.func,
 };

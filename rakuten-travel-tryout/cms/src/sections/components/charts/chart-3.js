@@ -12,13 +12,13 @@ const useChartOptions = () => {
       background: 'transparent',
       stacked: false,
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
     colors: [theme.palette.primary.main],
     fill: {
       opacity: 1,
-      type: 'solid'
+      type: 'solid',
     },
     labels: ['System Health'],
     plotOptions: {
@@ -26,35 +26,35 @@ const useChartOptions = () => {
         dataLabels: {
           name: {
             color: theme.palette.text.primary,
-            fontFamily: theme.typography.fontFamily
+            fontFamily: theme.typography.fontFamily,
           },
           value: {
-            color: theme.palette.text.secondary
-          }
+            color: theme.palette.text.secondary,
+          },
         },
         hollow: {
-          size: '60%'
+          size: '60%',
         },
         track: {
-          background: theme.palette.background.default
-        }
-      }
+          background: theme.palette.background.default,
+        },
+      },
     },
     states: {
       active: {
         filter: {
-          type: 'none'
-        }
+          type: 'none',
+        },
       },
       hover: {
         filter: {
-          type: 'none'
-        }
-      }
+          type: 'none',
+        },
+      },
     },
     theme: {
-      mode: theme.palette.mode
-    }
+      mode: theme.palette.mode,
+    },
   };
 };
 
@@ -64,27 +64,15 @@ export const Chart3 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.mode === 'dark'
-          ? 'neutral.800'
-          : 'neutral.100',
-        p: 3
+        backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+        p: 3,
       }}
     >
       <Container maxWidth="sm">
         <Card>
           <CardContent>
-            <Chart
-              height={300}
-              options={chartOptions}
-              series={chartSeries}
-              type="radialBar"
-            />
-            <Typography
-              align="center"
-              color="text.secondary"
-              component="p"
-              variant="caption"
-            >
+            <Chart height={300} options={chartOptions} series={chartSeries} type="radialBar" />
+            <Typography align="center" color="text.secondary" component="p" variant="caption">
               This shouldn&apos;t be bellow 80%
             </Typography>
           </CardContent>

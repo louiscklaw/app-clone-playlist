@@ -15,13 +15,13 @@ import {
   tableCellClasses,
   TableRow,
   Tooltip,
-  Typography
+  Typography,
 } from '@mui/material';
 import { bytesToSize } from '../../../utils/bytes-to-size';
 import { ItemIcon } from './item-icon';
 import { ItemMenu } from './item-menu';
 
-export const ItemListRow = (props) => {
+export const ItemListRow = props => {
   const { item, onDelete, onFavorite, onOpen } = props;
   const menuRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
@@ -56,13 +56,14 @@ export const ItemListRow = (props) => {
           backgroundColor: 'transparent',
           borderRadius: 1.5,
           boxShadow: 0,
-          transition: (theme) => theme.transitions.create(['background-color', 'box-shadow'], {
-            easing: theme.transitions.easing.easeInOut,
-            duration: 200
-          }),
+          transition: theme =>
+            theme.transitions.create(['background-color', 'box-shadow'], {
+              easing: theme.transitions.easing.easeInOut,
+              duration: 200,
+            }),
           '&:hover': {
             backgroundColor: 'background.paper',
-            boxShadow: 16
+            boxShadow: 16,
           },
           [`& .${tableCellClasses.root}`]: {
             borderBottomWidth: 1,
@@ -72,68 +73,42 @@ export const ItemListRow = (props) => {
             borderTopColor: 'divider',
             borderTopStyle: 'solid',
             '&:first-of-type': {
-              borderTopLeftRadius: (theme) => theme.shape.borderRadius * 1.5,
-              borderBottomLeftRadius: (theme) => theme.shape.borderRadius * 1.5,
+              borderTopLeftRadius: theme => theme.shape.borderRadius * 1.5,
+              borderBottomLeftRadius: theme => theme.shape.borderRadius * 1.5,
               borderLeftWidth: 1,
               borderLeftColor: 'divider',
-              borderLeftStyle: 'solid'
+              borderLeftStyle: 'solid',
             },
             '&:last-of-type': {
-              borderTopRightRadius: (theme) => theme.shape.borderRadius * 1.5,
-              borderBottomRightRadius: (theme) => theme.shape.borderRadius * 1.5,
+              borderTopRightRadius: theme => theme.shape.borderRadius * 1.5,
+              borderBottomRightRadius: theme => theme.shape.borderRadius * 1.5,
               borderRightWidth: 1,
               borderRightColor: 'divider',
-              borderRightStyle: 'solid'
-            }
-          }
+              borderRightStyle: 'solid',
+            },
+          },
         }}
       >
         <TableCell>
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={2}
-          >
-            <Box
-              onClick={() => onOpen?.(item.id)}
-              sx={{ cursor: 'pointer' }}
-            >
-              <ItemIcon
-                type={item.type}
-                extension={item.extension}
-              />
+          <Stack alignItems="center" direction="row" spacing={2}>
+            <Box onClick={() => onOpen?.(item.id)} sx={{ cursor: 'pointer' }}>
+              <ItemIcon type={item.type} extension={item.extension} />
             </Box>
             <div>
-              <Typography
-                noWrap
-                onClick={() => onOpen?.(item.id)}
-                sx={{ cursor: 'pointer' }}
-                variant="subtitle2"
-              >
+              <Typography noWrap onClick={() => onOpen?.(item.id)} sx={{ cursor: 'pointer' }} variant="subtitle2">
                 {item.name}
               </Typography>
-              <Typography
-                color="text.secondary"
-                noWrap
-                variant="body2"
-              >
+              <Typography color="text.secondary" noWrap variant="body2">
                 {size}
               </Typography>
             </div>
           </Stack>
         </TableCell>
         <TableCell>
-          <Typography
-            noWrap
-            variant="subtitle2"
-          >
+          <Typography noWrap variant="subtitle2">
             Created at
           </Typography>
-          <Typography
-            color="text.secondary"
-            noWrap
-            variant="body2"
-          >
+          <Typography color="text.secondary" noWrap variant="body2">
             {createdAt}
           </Typography>
         </TableCell>
@@ -144,7 +119,7 @@ export const ItemListRow = (props) => {
                 <Avatar
                   sx={{
                     height: 32,
-                    width: 32
+                    width: 32,
                   }}
                 >
                   <SvgIcon fontSize="small">
@@ -155,13 +130,13 @@ export const ItemListRow = (props) => {
             )}
             {showShared && (
               <AvatarGroup max={3}>
-                {item.shared?.map((person) => (
+                {item.shared?.map(person => (
                   <Avatar
                     key={person.name}
                     src={person.avatar}
                     sx={{
                       height: 32,
-                      width: 32
+                      width: 32,
                     }}
                   />
                 ))}
@@ -171,31 +146,20 @@ export const ItemListRow = (props) => {
         </TableCell>
         <TableCell align="right">
           <IconButton onClick={() => onFavorite?.(item.id, !item.isFavorite)}>
-            <SvgIcon
-              fontSize="small"
-              sx={{ color: item.isFavorite ? 'warning.main' : 'action.active' }}
-            >
+            <SvgIcon fontSize="small" sx={{ color: item.isFavorite ? 'warning.main' : 'action.active' }}>
               <Star01Icon />
             </SvgIcon>
           </IconButton>
         </TableCell>
         <TableCell align="right">
-          <IconButton
-            onClick={handleMenuOpen}
-            ref={menuRef}
-          >
+          <IconButton onClick={handleMenuOpen} ref={menuRef}>
             <SvgIcon fontSize="small">
               <DotsVerticalIcon />
             </SvgIcon>
           </IconButton>
         </TableCell>
       </TableRow>
-      <ItemMenu
-        anchorEl={menuRef.current}
-        onClose={handleMenuClose}
-        onDelete={handleDelete}
-        open={openMenu}
-      />
+      <ItemMenu anchorEl={menuRef.current} onClose={handleMenuClose} onDelete={handleDelete} open={openMenu} />
     </>
   );
 };
@@ -205,5 +169,5 @@ ItemListRow.propTypes = {
   item: PropTypes.object.isRequired,
   onDelete: PropTypes.func,
   onFavorite: PropTypes.func,
-  onOpen: PropTypes.func
+  onOpen: PropTypes.func,
 };

@@ -2,43 +2,27 @@ import NextLink from 'next/link';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import ArrowLeftIcon from '@untitled-ui/icons-react/build/esm/ArrowLeft';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Link,
-  Stack,
-  SvgIcon,
-  TextField,
-  Typography
-} from '@mui/material';
+import { Box, Button, Card, CardContent, CardHeader, Link, Stack, SvgIcon, TextField, Typography } from '@mui/material';
 import { Layout as AuthLayout } from '../../../layouts/auth/classic-layout';
 import { paths } from '../../../paths';
 
 const initialValues = {
   password: '',
-  passwordConfirm: ''
+  passwordConfirm: '',
 };
 
 const validationSchema = Yup.object({
-  password: Yup
-    .string()
-    .min(7, 'Must be at least 7 characters')
-    .max(255)
-    .required('Required'),
-  passwordConfirm: Yup
-    .string()
+  password: Yup.string().min(7, 'Must be at least 7 characters').max(255).required('Required'),
+  passwordConfirm: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Required')
+    .required('Required'),
 });
 
 const Page = () => {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: () => { }
+    onSubmit: () => {},
   });
 
   return (
@@ -50,28 +34,20 @@ const Page = () => {
           href={paths.dashboard.index}
           sx={{
             alignItems: 'center',
-            display: 'inline-flex'
+            display: 'inline-flex',
           }}
           underline="hover"
         >
           <SvgIcon sx={{ mr: 1 }}>
             <ArrowLeftIcon />
           </SvgIcon>
-          <Typography variant="subtitle2">
-            Dashboard
-          </Typography>
+          <Typography variant="subtitle2">Dashboard</Typography>
         </Link>
       </Box>
       <Card elevation={16}>
-        <CardHeader
-          sx={{ pb: 0 }}
-          title="Reset Password"
-        />
+        <CardHeader sx={{ pb: 0 }} title="Reset Password" />
         <CardContent>
-          <form
-            noValidate
-            onSubmit={formik.handleSubmit}
-          >
+          <form noValidate onSubmit={formik.handleSubmit}>
             <Stack spacing={3}>
               <TextField
                 error={!!(formik.touched.password && formik.errors.password)}
@@ -96,13 +72,7 @@ const Page = () => {
                 value={formik.values.passwordConfirm}
               />
             </Stack>
-            <Button
-              fullWidth
-              size="large"
-              sx={{ mt: 2 }}
-              type="submit"
-              variant="contained"
-            >
+            <Button fullWidth size="large" sx={{ mt: 2 }} type="submit" variant="contained">
               Reset
             </Button>
           </form>
@@ -112,10 +82,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <AuthLayout>
-    {page}
-  </AuthLayout>
-);
+Page.getLayout = page => <AuthLayout>{page}</AuthLayout>;
 
 export default Page;

@@ -13,75 +13,68 @@ import {
   TextField,
   ToggleButton,
   ToggleButtonGroup,
-  toggleButtonGroupClasses
+  toggleButtonGroupClasses,
 } from '@mui/material';
 
 const sortOptions = [
   {
     label: 'Latest',
-    value: 'desc'
+    value: 'desc',
   },
   {
     label: 'Oldest',
-    value: 'asc'
-  }
+    value: 'asc',
+  },
 ];
 
-export const ItemSearch = (props) => {
-  const {
-    onFiltersChange,
-    onSortChange,
-    onViewChange,
-    view = 'grid',
-    sortBy = 'createdAt',
-    sortDir = 'asc'
-  } = props;
+export const ItemSearch = props => {
+  const { onFiltersChange, onSortChange, onViewChange, view = 'grid', sortBy = 'createdAt', sortDir = 'asc' } = props;
   const queryRef = useRef(null);
 
-  const handleQueryChange = useCallback((event) => {
-    event.preventDefault();
-    const query = queryRef.current?.value || '';
+  const handleQueryChange = useCallback(
+    event => {
+      event.preventDefault();
+      const query = queryRef.current?.value || '';
 
-    onFiltersChange?.({
-      query
-    });
-  }, [onFiltersChange]);
+      onFiltersChange?.({
+        query,
+      });
+    },
+    [onFiltersChange],
+  );
 
-  const handleSortChange = useCallback((event) => {
-    const sortDir = event.target.value;
-    onSortChange?.(sortDir);
-  }, [onSortChange]);
+  const handleSortChange = useCallback(
+    event => {
+      const sortDir = event.target.value;
+      onSortChange?.(sortDir);
+    },
+    [onSortChange],
+  );
 
-  const handleViewChange = useCallback((event, value) => {
-    onViewChange?.(value);
-  }, [onViewChange]);
+  const handleViewChange = useCallback(
+    (event, value) => {
+      onViewChange?.(value);
+    },
+    [onViewChange],
+  );
 
   return (
     <Card>
-      <Stack
-        alignItems="center"
-        direction="row"
-        gap={2}
-        sx={{ p: 2 }}
-      >
-        <Box
-          component="form"
-          onSubmit={handleQueryChange}
-          sx={{ flexGrow: 1 }}
-        >
+      <Stack alignItems="center" direction="row" gap={2} sx={{ p: 2 }}>
+        <Box component="form" onSubmit={handleQueryChange} sx={{ flexGrow: 1 }}>
           <OutlinedInput
             defaultValue=""
             fullWidth
             inputProps={{ ref: queryRef }}
             name="itemName"
             placeholder="Search"
-            startAdornment={(
+            startAdornment={
               <InputAdornment position="start">
                 <SvgIcon>
                   <SearchMdIcon />
                 </SvgIcon>
               </InputAdornment>
-            )}
+            }
           />
         </Box>
         <ToggleButtonGroup
@@ -95,12 +88,12 @@ export const ItemSearch = (props) => {
               margin: 0.5,
               border: 0,
               '&:not(:first-of-type)': {
-                borderRadius: 1
+                borderRadius: 1,
               },
               '&:first-of-type': {
-                borderRadius: 1
-              }
-            }
+                borderRadius: 1,
+              },
+            },
           }}
           value={view}
         >
@@ -123,11 +116,8 @@ export const ItemSearch = (props) => {
           SelectProps={{ native: true }}
           value={sortDir}
         >
-          {sortOptions.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-            >
+          {sortOptions.map(option => (
+            <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
@@ -143,5 +133,5 @@ ItemSearch.propTypes = {
   onViewChange: PropTypes.func,
   sortBy: PropTypes.string,
   sortDir: PropTypes.oneOf(['asc', 'desc']),
-  view: PropTypes.oneOf(['grid', 'list'])
+  view: PropTypes.oneOf(['grid', 'list']),
 };

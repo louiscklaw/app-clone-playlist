@@ -1,11 +1,5 @@
-export const LogoAccenture = (props) => (
-  <svg
-    width={93}
-    height={24}
-    viewBox="0 0 93 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}>
+export const LogoAccenture = props => (
+  <svg width={93} height={24} viewBox="0 0 93 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <g clipPath="url(#clip0_11275_169474)">
       <path
         d="M53.7278 6.69767L58.9743 4.74419L53.7278 2.73488V0L62.7138 3.62791V5.86046L53.7278 9.48837V6.69767Z"
@@ -18,12 +12,7 @@ export const LogoAccenture = (props) => (
     </g>
     <defs>
       <clipPath id="clip0_11275_169474">
-        <rect
-          width={92}
-          height={24}
-          fill="white"
-          transform="translate(0.5)"
-        />
+        <rect width={92} height={24} fill="white" transform="translate(0.5)" />
       </clipPath>
     </defs>
   </svg>

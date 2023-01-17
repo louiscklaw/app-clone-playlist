@@ -19,48 +19,48 @@ import { GroupedList11 } from '../../../sections/components/grouped-lists/groupe
 const components = [
   {
     element: <GroupedList1 />,
-    title: 'Grouped list 1'
+    title: 'Grouped list 1',
   },
   {
     element: <GroupedList2 />,
-    title: 'Grouped list 2'
+    title: 'Grouped list 2',
   },
   {
     element: <GroupedList3 />,
-    title: 'Grouped list 3'
+    title: 'Grouped list 3',
   },
   {
     element: <GroupedList4 />,
-    title: 'Grouped list 4'
+    title: 'Grouped list 4',
   },
   {
     element: <GroupedList5 />,
-    title: 'Grouped list 5'
+    title: 'Grouped list 5',
   },
   {
     element: <GroupedList6 />,
-    title: 'Grouped list 6'
+    title: 'Grouped list 6',
   },
   {
     element: <GroupedList7 />,
-    title: 'Grouped list 7'
+    title: 'Grouped list 7',
   },
   {
     element: <GroupedList8 />,
-    title: 'Grouped list 8'
+    title: 'Grouped list 8',
   },
   {
     element: <GroupedList9 />,
-    title: 'Grouped list 9'
+    title: 'Grouped list 9',
   },
   {
     element: <GroupedList10 />,
-    title: 'Grouped list 10'
+    title: 'Grouped list 10',
   },
   {
     element: <GroupedList11 />,
-    title: 'Grouped list 11'
-  }
+    title: 'Grouped list 11',
+  },
 ];
 
 const Page = () => {
@@ -69,24 +69,19 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Components: Grouped Lists | Devias Kit PRO
-        </title>
+        <title>Components: Grouped Lists | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Stack spacing={8}>
-            {components.map((component) => (
-              <Previewer
-                key={component.title}
-                title={component.title}
-              >
+            {components.map(component => (
+              <Previewer key={component.title} title={component.title}>
                 {component.element}
               </Previewer>
             ))}
@@ -97,11 +92,9 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <MarketingLayout>
-    <ComponentsLayout title="Grouped Lists">
-      {page}
-    </ComponentsLayout>
+    <ComponentsLayout title="Grouped Lists">{page}</ComponentsLayout>
   </MarketingLayout>
 );
 

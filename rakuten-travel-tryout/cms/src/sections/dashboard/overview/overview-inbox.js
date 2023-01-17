@@ -16,30 +16,30 @@ import {
   ListItemAvatar,
   ListItemText,
   SvgIcon,
-  Typography
+  Typography,
 } from '@mui/material';
 import { customLocale } from '../../../utils/date-locale';
 
-export const OverviewInbox = (props) => {
+export const OverviewInbox = props => {
   const { messages } = props;
 
   return (
     <Card>
       <CardHeader
         title="Inbox"
-        action={(
+        action={
           <IconButton color="inherit">
             <SvgIcon fontSize="small">
               <RefreshCcw01Icon />
             </SvgIcon>
           </IconButton>
-        )}
+        }
       />
       <List disablePadding>
-        {messages.map((message) => {
+        {messages.map(message => {
           const ago = formatDistanceStrict(message.createdAt, new Date(), {
             addSuffix: true,
-            locale: customLocale
+            locale: customLocale,
           });
 
           return (
@@ -48,62 +48,56 @@ export const OverviewInbox = (props) => {
               sx={{
                 '&:hover': {
                   backgroundColor: 'action.hover',
-                  cursor: 'pointer'
-                }
+                  cursor: 'pointer',
+                },
               }}
             >
               <ListItemAvatar>
-                {message.senderOnline
-                  ? (
-                    <Badge
-                      anchorOrigin={{
-                        horizontal: 'right',
-                        vertical: 'bottom'
-                      }}
-                      color="success"
-                      variant="dot"
-                    >
-                      <Avatar src={message.senderAvatar} />
-                    </Badge>
-                  )
-                  : (
+                {message.senderOnline ? (
+                  <Badge
+                    anchorOrigin={{
+                      horizontal: 'right',
+                      vertical: 'bottom',
+                    }}
+                    color="success"
+                    variant="dot"
+                  >
                     <Avatar src={message.senderAvatar} />
-                  )}
+                  </Badge>
+                ) : (
+                  <Avatar src={message.senderAvatar} />
+                )}
               </ListItemAvatar>
               <ListItemText
                 disableTypography
-                primary={(
+                primary={
                   <Typography
                     sx={{
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap'
+                      whiteSpace: 'nowrap',
                     }}
                     variant="subtitle2"
                   >
                     {message.senderName}
                   </Typography>
-                )}
-                secondary={(
+                }
+                secondary={
                   <Typography
                     color="text.secondary"
                     sx={{
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap'
+                      whiteSpace: 'nowrap',
                     }}
                     variant="body2"
                   >
                     {message.content}
                   </Typography>
-                )}
+                }
                 sx={{ pr: 2 }}
               />
-              <Typography
-                color="text.secondary"
-                sx={{ whiteSpace: 'nowrap' }}
-                variant="caption"
-              >
+              <Typography color="text.secondary" sx={{ whiteSpace: 'nowrap' }} variant="caption">
                 {ago}
               </Typography>
             </ListItem>
@@ -114,11 +108,11 @@ export const OverviewInbox = (props) => {
       <CardActions>
         <Button
           color="inherit"
-          endIcon={(
+          endIcon={
             <SvgIcon>
               <ArrowRightIcon />
             </SvgIcon>
-          )}
+          }
           size="small"
         >
           Go to chat
@@ -129,5 +123,5 @@ export const OverviewInbox = (props) => {
 };
 
 OverviewInbox.propTypes = {
-  messages: PropTypes.array.isRequired
+  messages: PropTypes.array.isRequired,
 };

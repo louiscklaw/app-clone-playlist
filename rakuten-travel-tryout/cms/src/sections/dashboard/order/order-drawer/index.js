@@ -5,10 +5,10 @@ import { Box, Drawer, IconButton, Stack, SvgIcon, Typography, useMediaQuery } fr
 import { OrderDetails } from './order-details';
 import { OrderEdit } from './order-edit';
 
-export const OrderDrawer = (props) => {
+export const OrderDrawer = props => {
   const { container, onClose, open, order } = props;
   const [isEditing, setIsEditing] = useState(false);
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'));
 
   const handleEditOpen = useCallback(() => {
     setIsEditing(true);
@@ -29,19 +29,13 @@ export const OrderDrawer = (props) => {
           justifyContent="space-between"
           sx={{
             px: 3,
-            py: 2
+            py: 2,
           }}
         >
-          <Typography
-            color="inherit"
-            variant="h6"
-          >
+          <Typography color="inherit" variant="h6">
             {order.number}
           </Typography>
-          <IconButton
-            color="inherit"
-            onClick={onClose}
-          >
+          <IconButton color="inherit" onClick={onClose}>
             <SvgIcon>
               <XIcon />
             </SvgIcon>
@@ -50,25 +44,14 @@ export const OrderDrawer = (props) => {
         <Box
           sx={{
             px: 3,
-            py: 4
+            py: 4,
           }}
         >
-          {!isEditing
-            ? (
-              <OrderDetails
-                onApprove={onClose}
-                onEdit={handleEditOpen}
-                onReject={onClose}
-                order={order}
-              />
-            )
-            : (
-              <OrderEdit
-                onCancel={handleEditCancel}
-                onSave={handleEditCancel}
-                order={order}
-              />
-            )}
+          {!isEditing ? (
+            <OrderDetails onApprove={onClose} onEdit={handleEditOpen} onReject={onClose} order={order} />
+          ) : (
+            <OrderEdit onCancel={handleEditCancel} onSave={handleEditCancel} order={order} />
+          )}
         </Box>
       </div>
     );
@@ -82,8 +65,8 @@ export const OrderDrawer = (props) => {
         PaperProps={{
           sx: {
             position: 'relative',
-            width: 500
-          }
+            width: 500,
+          },
         }}
         SlideProps={{ container }}
         variant="persistent"
@@ -101,8 +84,8 @@ export const OrderDrawer = (props) => {
         container,
         sx: {
           pointerEvents: 'none',
-          position: 'absolute'
-        }
+          position: 'absolute',
+        },
       }}
       onClose={onClose}
       open={open}
@@ -111,8 +94,8 @@ export const OrderDrawer = (props) => {
           maxWidth: '100%',
           width: 400,
           pointerEvents: 'auto',
-          position: 'absolute'
-        }
+          position: 'absolute',
+        },
       }}
       SlideProps={{ container }}
       variant="temporary"
@@ -127,5 +110,5 @@ OrderDrawer.propTypes = {
   onClose: PropTypes.func,
   open: PropTypes.bool,
   // @ts-ignore
-  order: PropTypes.object
+  order: PropTypes.object,
 };

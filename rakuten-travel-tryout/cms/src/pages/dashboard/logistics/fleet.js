@@ -17,7 +17,7 @@ const useVehicles = () => {
       temp: '8°C',
       startedAt: 'Sep 01, 7:53 AM',
       departedAt: 'Sep 01, 8:02 AM',
-      arrivedAt: 'Sep 01, 8:18 AM'
+      arrivedAt: 'Sep 01, 8:18 AM',
     },
     {
       id: 'VOL-653CD3',
@@ -27,7 +27,7 @@ const useVehicles = () => {
       temp: '6°C',
       startedAt: 'Sep 01, 8:21 AM',
       departedAt: 'Sep 01, 8:36 AM',
-      arrivedAt: 'Sep 01, 9:54 AM'
+      arrivedAt: 'Sep 01, 9:54 AM',
     },
     {
       id: 'VOL-653CD4',
@@ -37,19 +37,19 @@ const useVehicles = () => {
       temp: '8°C',
       startedAt: 'Sep 01, 6:34 AM',
       departedAt: 'Sep 01, 7:41 AM',
-      arrivedAt: 'Sep 01, 9:20 AM'
-    }
+      arrivedAt: 'Sep 01, 9:20 AM',
+    },
   ];
 };
 
 const Page = () => {
   const rootRef = useRef(null);
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
   const vehicles = useVehicles();
   const [openDrawer, setOpenDrawer] = useState(false);
   const [currentVehicleId, setCurrentVehicleId] = useState(vehicles[0]?.id);
 
-  const handleVehicleSelect = useCallback((vehicleId) => {
+  const handleVehicleSelect = useCallback(vehicleId => {
     setCurrentVehicleId(vehicleId);
   }, []);
 
@@ -68,9 +68,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Logistics Fleet | Devias Kit PRO
-        </title>
+        <title>Dashboard: Logistics Fleet | Devias Kit PRO</title>
       </Head>
       <Divider />
       <Box
@@ -80,7 +78,7 @@ const Page = () => {
           display: 'flex',
           flex: '1 1 auto',
           overflow: 'hidden',
-          position: 'relative'
+          position: 'relative',
         }}
       >
         {mdUp && (
@@ -89,13 +87,11 @@ const Page = () => {
               borderRightColor: 'divider',
               borderRightStyle: 'solid',
               borderRightWidth: 1,
-              flex: '0 0 400px'
+              flex: '0 0 400px',
             }}
           >
             <Box sx={{ p: 2 }}>
-              <Typography variant="h5">
-                Fleet
-              </Typography>
+              <Typography variant="h5">Fleet</Typography>
             </Box>
             <LogisticsFleetList
               currentVehicleId={currentVehicleId}
@@ -109,7 +105,7 @@ const Page = () => {
           sx={{
             flex: '1 1 auto',
             overflow: 'hidden',
-            position: 'relative'
+            position: 'relative',
           }}
         >
           {!mdUp && <LogisticsFleetToolbar onDrawerOpen={handleDrawerOpen} />}
@@ -121,11 +117,7 @@ const Page = () => {
         </Box>
       </Box>
       {!mdUp && (
-        <LogisticsFleetDrawer
-          container={rootRef.current}
-          onClose={handleDrawerClose}
-          open={openDrawer}
-        >
+        <LogisticsFleetDrawer container={rootRef.current} onClose={handleDrawerClose} open={openDrawer}>
           <LogisticsFleetList
             currentVehicleId={currentVehicleId}
             onVehicleDeselect={handleVehicleDeselect}
@@ -138,10 +130,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

@@ -14,7 +14,7 @@ import {
   Link,
   Stack,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { GuestGuard } from '../../../guards/guest-guard';
 import { IssuerGuard } from '../../../guards/issuer-guard';
@@ -31,7 +31,7 @@ const useParams = () => {
   const returnTo = searchParams.get('returnTo') || undefined;
 
   return {
-    returnTo
+    returnTo,
   };
 };
 
@@ -40,27 +40,14 @@ const initialValues = {
   name: '',
   password: '',
   policy: false,
-  submit: null
+  submit: null,
 };
 
 const validationSchema = Yup.object({
-  email: Yup
-    .string()
-    .email('Must be a valid email')
-    .max(255)
-    .required('Email is required'),
-  name: Yup
-    .string()
-    .max(255)
-    .required('Name is required'),
-  password: Yup
-    .string()
-    .min(7)
-    .max(255)
-    .required('Password is required'),
-  policy: Yup
-    .boolean()
-    .oneOf([true], 'This field must be checked')
+  email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+  name: Yup.string().max(255).required('Name is required'),
+  password: Yup.string().min(7).max(255).required('Password is required'),
+  policy: Yup.boolean().oneOf([true], 'This field must be checked'),
 });
 
 const Page = () => {
@@ -87,7 +74,7 @@ const Page = () => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   usePageView();
@@ -95,38 +82,24 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Register | Devias Kit PRO
-        </title>
+        <title>Register | Devias Kit PRO</title>
       </Head>
       <div>
         <Card elevation={16}>
           <CardHeader
-            subheader={(
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
-                Already have an account?
-                &nbsp;
-                <Link
-                  component={NextLink}
-                  href={paths.auth.jwt.login}
-                  underline="hover"
-                  variant="subtitle2"
-                >
+            subheader={
+              <Typography color="text.secondary" variant="body2">
+                Already have an account? &nbsp;
+                <Link component={NextLink} href={paths.auth.jwt.login} underline="hover" variant="subtitle2">
                   Log in
                 </Link>
               </Typography>
-            )}
+            }
             sx={{ pb: 0 }}
             title="Register"
           />
           <CardContent>
-            <form
-              noValidate
-              onSubmit={formik.handleSubmit}
-            >
+            <form noValidate onSubmit={formik.handleSubmit}>
               <Stack spacing={3}>
                 <TextField
                   error={!!(formik.touched.name && formik.errors.name)}
@@ -166,38 +139,22 @@ const Page = () => {
                   alignItems: 'center',
                   display: 'flex',
                   ml: -1,
-                  mt: 1
+                  mt: 1,
                 }}
               >
-                <Checkbox
-                  checked={formik.values.policy}
-                  name="policy"
-                  onChange={formik.handleChange}
-                />
-                <Typography
-                  color="text.secondary"
-                  variant="body2"
-                >
-                  I have read the
-                  {' '}
-                  <Link
-                    component="a"
-                    href="#"
-                  >
+                <Checkbox checked={formik.values.policy} name="policy" onChange={formik.handleChange} />
+                <Typography color="text.secondary" variant="body2">
+                  I have read the{' '}
+                  <Link component="a" href="#">
                     Terms and Conditions
                   </Link>
                 </Typography>
               </Box>
               {!!(formik.touched.policy && formik.errors.policy) && (
-                <FormHelperText error>
-                  {formik.errors.policy}
-                </FormHelperText>
+                <FormHelperText error>{formik.errors.policy}</FormHelperText>
               )}
               {formik.errors.submit && (
-                <FormHelperText
-                  error
-                  sx={{ mt: 3 }}
-                >
+                <FormHelperText error sx={{ mt: 3 }}>
                   {formik.errors.submit}
                 </FormHelperText>
               )}
@@ -222,12 +179,10 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <IssuerGuard issuer={Issuer.JWT}>
     <GuestGuard>
-      <AuthLayout>
-        {page}
-      </AuthLayout>
+      <AuthLayout>{page}</AuthLayout>
     </GuestGuard>
   </IssuerGuard>
 );

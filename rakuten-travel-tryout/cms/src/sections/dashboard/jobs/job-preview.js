@@ -9,23 +9,17 @@ export const JobPreview = () => (
           backgroundColor: 'success.main',
           color: 'success.contrastText',
           height: 40,
-          width: 40
+          width: 40,
         }}
       >
         <SvgIcon>
           <CheckIcon />
         </SvgIcon>
       </Avatar>
-      <Typography
-        variant="h6"
-        sx={{ mt: 2 }}
-      >
+      <Typography variant="h6" sx={{ mt: 2 }}>
         All done!
       </Typography>
-      <Typography
-        color="text.secondary"
-        variant="body2"
-      >
+      <Typography color="text.secondary" variant="body2">
         Here’s a preview of your newly created job
       </Typography>
     </div>
@@ -37,34 +31,20 @@ export const JobPreview = () => (
         justifyContent="space-between"
         sx={{
           px: 2,
-          py: 1.5
+          py: 1.5,
         }}
       >
         <div>
-          <Typography variant="subtitle1">
-            Senior Backend Engineer
-          </Typography>
-          <Typography
-            color="text.secondary"
-            variant="caption"
-          >
+          <Typography variant="subtitle1">Senior Backend Engineer</Typography>
+          <Typography color="text.secondary" variant="caption">
             Remote possible • $150k - $210K
           </Typography>
         </div>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
-          <Typography
-            color="text.secondary"
-            variant="caption"
-          >
+        <Stack alignItems="center" direction="row" spacing={2}>
+          <Typography color="text.secondary" variant="caption">
             1 minute ago
           </Typography>
-          <Button size="small">
-            Apply
-          </Button>
+          <Button size="small">Apply</Button>
         </Stack>
       </Stack>
     </Card>

@@ -11,7 +11,7 @@ class InvoicesApi {
     let count = data.length;
 
     if (typeof filters !== 'undefined') {
-      data = data.filter((invoice) => {
+      data = data.filter(invoice => {
         if (typeof filters.query !== 'undefined' && filters.query !== '') {
           const matched = invoice.number.toLowerCase().includes(filters.query.toLowerCase());
 
@@ -69,7 +69,7 @@ class InvoicesApi {
 
     return Promise.resolve({
       data,
-      count
+      count,
     });
   }
 

@@ -21,56 +21,56 @@ import { Chart13 } from '../../sections/components/charts/chart-13';
 const components = [
   {
     element: <Chart1 />,
-    title: 'Chart 1'
+    title: 'Chart 1',
   },
   {
     element: <Chart2 />,
-    title: 'Chart 2'
+    title: 'Chart 2',
   },
   {
     element: <Chart3 />,
-    title: 'Chart 3'
+    title: 'Chart 3',
   },
   {
     element: <Chart4 />,
-    title: 'Chart 4'
+    title: 'Chart 4',
   },
   {
     element: <Chart5 />,
-    title: 'Chart 5'
+    title: 'Chart 5',
   },
   {
     element: <Chart6 />,
-    title: 'Chart 6'
+    title: 'Chart 6',
   },
   {
     element: <Chart7 />,
-    title: 'Chart 7'
+    title: 'Chart 7',
   },
   {
     element: <Chart8 />,
-    title: 'Chart 8'
+    title: 'Chart 8',
   },
   {
     element: <Chart9 />,
-    title: 'Chart 9'
+    title: 'Chart 9',
   },
   {
     element: <Chart10 />,
-    title: 'Chart 10'
+    title: 'Chart 10',
   },
   {
     element: <Chart11 />,
-    title: 'Chart 11'
+    title: 'Chart 11',
   },
   {
     element: <Chart12 />,
-    title: 'Chart 12'
+    title: 'Chart 12',
   },
   {
     element: <Chart13 />,
-    title: 'Chart 13'
-  }
+    title: 'Chart 13',
+  },
 ];
 
 const Page = () => {
@@ -79,24 +79,19 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Components: Charts | Devias Kit PRO
-        </title>
+        <title>Components: Charts | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Stack spacing={8}>
-            {components.map((component) => (
-              <Previewer
-                key={component.title}
-                title={component.title}
-              >
+            {components.map(component => (
+              <Previewer key={component.title} title={component.title}>
                 {component.element}
               </Previewer>
             ))}
@@ -107,11 +102,9 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <MarketingLayout>
-    <ComponentsLayout title="Charts">
-      {page}
-    </ComponentsLayout>
+    <ComponentsLayout title="Charts">{page}</ComponentsLayout>
   </MarketingLayout>
 );
 

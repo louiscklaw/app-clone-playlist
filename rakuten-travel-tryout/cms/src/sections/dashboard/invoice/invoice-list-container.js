@@ -1,7 +1,6 @@
 import { styled } from '@mui/material/styles';
 
-export const InvoiceListContainer = styled('div',
-  { shouldForwardProp: (prop) => prop !== 'open' })(
+export const InvoiceListContainer = styled('div', { shouldForwardProp: prop => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
     overflow: 'auto',
@@ -11,19 +10,20 @@ export const InvoiceListContainer = styled('div',
     paddingBottom: theme.spacing(8),
     zIndex: 1,
     [theme.breakpoints.up('lg')]: {
-      marginLeft: -380
+      marginLeft: -380,
     },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     ...(open && {
       [theme.breakpoints.up('lg')]: {
-        marginLeft: 0
+        marginLeft: 0,
       },
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
-      })
-    })
-  }));
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    }),
+  }),
+);

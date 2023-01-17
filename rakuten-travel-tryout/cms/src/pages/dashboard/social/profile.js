@@ -17,7 +17,7 @@ import {
   Tab,
   Tabs,
   Tooltip,
-  Typography
+  Typography,
 } from '@mui/material';
 import { blueGrey } from '@mui/material/colors';
 import { socialApi } from '../../../api/social';
@@ -30,7 +30,7 @@ import { SocialTimeline } from '../../../sections/dashboard/social/social-timeli
 
 const tabs = [
   { label: 'Timeline', value: 'timeline' },
-  { label: 'Connections', value: 'connections' }
+  { label: 'Connections', value: 'connections' },
 ];
 
 const useProfile = () => {
@@ -49,11 +49,13 @@ const useProfile = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getProfile();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return profile;
 };
@@ -74,11 +76,13 @@ const usePosts = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getPosts();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return posts;
 };
@@ -95,13 +99,15 @@ const useConnections = (search = '') => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getConnections();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [search]);
+    [search],
+  );
 
-  return connections.filter((connection) => {
+  return connections.filter(connection => {
     return connection.name?.toLowerCase().includes(search);
   });
 };
@@ -128,7 +134,7 @@ export const SocialProfile = () => {
     setCurrentTab(value);
   }, []);
 
-  const handleConnectionsQueryChange = useCallback((event) => {
+  const handleConnectionsQueryChange = useCallback(event => {
     setConnectionsQuery(event.target.value);
   }, []);
 
@@ -142,15 +148,13 @@ export const SocialProfile = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Social Profile | Devias Kit PRO
-        </title>
+        <title>Dashboard: Social Profile | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
@@ -166,68 +170,54 @@ export const SocialProfile = () => {
                 position: 'relative',
                 '&:hover': {
                   '& button': {
-                    visibility: 'visible'
-                  }
-                }
+                    visibility: 'visible',
+                  },
+                },
               }}
             >
               <Button
-                startIcon={(
+                startIcon={
                   <SvgIcon>
                     <Image01Icon />
                   </SvgIcon>
-                )}
+                }
                 sx={{
                   backgroundColor: blueGrey[900],
                   bottom: {
                     lg: 24,
-                    xs: 'auto'
+                    xs: 'auto',
                   },
                   color: 'common.white',
                   position: 'absolute',
                   right: 24,
                   top: {
                     lg: 'auto',
-                    xs: 24
+                    xs: 24,
                   },
                   visibility: 'hidden',
                   '&:hover': {
-                    backgroundColor: blueGrey[900]
-                  }
+                    backgroundColor: blueGrey[900],
+                  },
                 }}
                 variant="contained"
               >
                 Change Cover
               </Button>
             </Box>
-            <Stack
-              alignItems="center"
-              direction="row"
-              spacing={2}
-              sx={{ mt: 5 }}
-            >
-              <Stack
-                alignItems="center"
-                direction="row"
-                spacing={2}
-              >
+            <Stack alignItems="center" direction="row" spacing={2} sx={{ mt: 5 }}>
+              <Stack alignItems="center" direction="row" spacing={2}>
                 <Avatar
                   src={profile.avatar}
                   sx={{
                     height: 64,
-                    width: 64
+                    width: 64,
                   }}
                 />
                 <div>
-                  <Typography
-                    color="text.secondary"
-                    variant="overline"
-                  >
+                  <Typography color="text.secondary" variant="overline">
                     {profile.bio}
                   </Typography>
-                  <Typography variant="h6">
-                    {profile.name}
-                  </Typography>
+                  <Typography variant="h6">{profile.name}</Typography>
                 </div>
               </Stack>
               <Box sx={{ flexGrow: 1 }} />
@@ -238,31 +228,26 @@ export const SocialProfile = () => {
                 sx={{
                   display: {
                     md: 'block',
-                    xs: 'none'
-                  }
+                    xs: 'none',
+                  },
                 }}
               >
                 {showConnect && (
                   <Button
                     onClick={handleConnectionAdd}
                     size="small"
-                    startIcon={(
+                    startIcon={
                       <SvgIcon>
                         <UserPlus02Icon />
                       </SvgIcon>
-                    )}
+                    }
                     variant="outlined"
                   >
                     Connect
                   </Button>
                 )}
                 {showPending && (
-                  <Button
-                    color="primary"
-                    onClick={handleConnectionRemove}
-                    size="small"
-                    variant="outlined"
-                  >
+                  <Button color="primary" onClick={handleConnectionRemove} size="small" variant="outlined">
                     Pending
                   </Button>
                 )}
@@ -270,11 +255,11 @@ export const SocialProfile = () => {
                   component={NextLink}
                   href={paths.dashboard.chat}
                   size="small"
-                  startIcon={(
+                  startIcon={
                     <SvgIcon>
                       <MessageChatSquareIcon />
                     </SvgIcon>
-                  )}
+                  }
                   variant="contained"
                 >
                   Send Message
@@ -298,22 +283,13 @@ export const SocialProfile = () => {
             value={currentTab}
             variant="scrollable"
           >
-            {tabs.map((tab) => (
-              <Tab
-                key={tab.value}
-                label={tab.label}
-                value={tab.value}
-              />
+            {tabs.map(tab => (
+              <Tab key={tab.value} label={tab.label} value={tab.value} />
             ))}
           </Tabs>
           <Divider />
           <Box sx={{ mt: 3 }}>
-            {currentTab === 'timeline' && (
-              <SocialTimeline
-                posts={posts}
-                profile={profile}
-              />
-            )}
+            {currentTab === 'timeline' && <SocialTimeline posts={posts} profile={profile} />}
             {currentTab === 'connections' && (
               <SocialConnections
                 connections={connections}
@@ -328,10 +304,6 @@ export const SocialProfile = () => {
   );
 };
 
-SocialProfile.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+SocialProfile.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default SocialProfile;

@@ -13,45 +13,34 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Blank | Devias Kit PRO
-        </title>
+        <title>Dashboard: Blank | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth={settings.stretch ? false : 'xl'}>
           <Stack
             spacing={{
               xs: 3,
-              lg: 4
+              lg: 4,
             }}
           >
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              spacing={4}
-            >
+            <Stack direction="row" justifyContent="space-between" spacing={4}>
               <div>
-                <Typography variant="h4">
-                  Blank
-                </Typography>
+                <Typography variant="h4">Blank</Typography>
               </div>
               <div>
-                <Stack
-                  direction="row"
-                  spacing={4}
-                >
+                <Stack direction="row" spacing={4}>
                   <Button
-                    startIcon={(
+                    startIcon={
                       <SvgIcon>
                         <PlusIcon />
                       </SvgIcon>
-                    )}
+                    }
                     variant="contained"
                   >
                     Action
@@ -65,7 +54,7 @@ const Page = () => {
                 borderStyle: 'dashed',
                 borderWidth: 1,
                 height: 300,
-                p: '4px'
+                p: '4px',
               }}
             />
           </Stack>
@@ -75,10 +64,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

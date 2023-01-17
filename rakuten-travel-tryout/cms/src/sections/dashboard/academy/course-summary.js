@@ -1,19 +1,9 @@
 import PropTypes from 'prop-types';
 import CheckIcon from '@untitled-ui/icons-react/build/esm/Check';
 import ClockIcon from '@untitled-ui/icons-react/build/esm/Clock';
-import {
-  Avatar,
-  Box,
-  LinearProgress,
-  Stack,
-  Step,
-  StepLabel,
-  Stepper,
-  SvgIcon,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, LinearProgress, Stack, Step, StepLabel, Stepper, SvgIcon, Typography } from '@mui/material';
 
-const StepIcon = (props) => {
+const StepIcon = props => {
   const { active, completed, icon } = props;
 
   const highlight = active || completed;
@@ -25,83 +15,58 @@ const StepIcon = (props) => {
         width: 24,
         ...(highlight
           ? {
-            backgroundColor: 'primary.main',
-            color: 'primary.contrastText'
-          }
+              backgroundColor: 'primary.main',
+              color: 'primary.contrastText',
+            }
           : {
-            backgroundColor: (theme) => theme.palette.mode === 'dark'
-              ? 'neutral.700'
-              : 'neutral.400',
-            color: 'common.white'
-          })
+              backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.700' : 'neutral.400'),
+              color: 'common.white',
+            }),
       }}
       variant="circular"
     >
-      {completed
-        ? (
-          <SvgIcon fontSize="small">
-            <CheckIcon />
-          </SvgIcon>
-        )
-        : icon}
+      {completed ? (
+        <SvgIcon fontSize="small">
+          <CheckIcon />
+        </SvgIcon>
+      ) : (
+        icon
+      )}
     </Avatar>
   );
 };
 
-export const CourseSummary = (props) => {
+export const CourseSummary = props => {
   const { course, activeChapter = 0 } = props;
 
   const chapters = course.chapters || [];
 
   return (
     <div>
-      <Stack
-        alignItems="center"
-        direction="row"
-        spacing={2}
-      >
+      <Stack alignItems="center" direction="row" spacing={2}>
         <LinearProgress
           value={course.progress}
           sx={{
             flexGrow: 1,
-            height: 8
+            height: 8,
           }}
           variant="determinate"
         />
-        <Typography
-          color="text.secondary"
-          variant="body2"
-        >
+        <Typography color="text.secondary" variant="body2">
           {course.progress}%
         </Typography>
       </Stack>
-      <Stack
-        alignItems="center"
-        direction="row"
-        spacing={1}
-        sx={{ mt: 1 }}
-      >
-        <SvgIcon
-          color="action"
-          fontSize="small"
-        >
+      <Stack alignItems="center" direction="row" spacing={1} sx={{ mt: 1 }}>
+        <SvgIcon color="action" fontSize="small">
           <ClockIcon />
         </SvgIcon>
-        <Typography
-          color="text.secondary"
-          variant="caption"
-        >
+        <Typography color="text.secondary" variant="caption">
           {course.duration}
         </Typography>
       </Stack>
       <Box sx={{ mt: 2 }}>
-        <Typography variant="subtitle1">
-          {course.title}
-        </Typography>
-        <Typography
-          color="text.secondary"
-          variant="body2"
-        >
+        <Typography variant="subtitle1">{course.title}</Typography>
+        <Typography color="text.secondary" variant="body2">
           {course.description}
         </Typography>
       </Box>
@@ -111,12 +76,12 @@ export const CourseSummary = (props) => {
         sx={{
           mt: 3,
           '& .MuiStepLabel-iconContainer': {
-            pr: 3
+            pr: 3,
           },
           '& .MuiStepConnector-line': {
             borderLeftColor: 'divider',
-            borderLeftWidth: 2
-          }
+            borderLeftWidth: 2,
+          },
         }}
       >
         {chapters.map((chapter, index) => {
@@ -125,16 +90,10 @@ export const CourseSummary = (props) => {
           return (
             <Step key={chapter.title}>
               <StepLabel StepIconComponent={StepIcon}>
-                <Typography
-                  color={isCompleted ? 'primary.main' : 'text.primary'}
-                  variant="subtitle2"
-                >
+                <Typography color={isCompleted ? 'primary.main' : 'text.primary'} variant="subtitle2">
                   {chapter.title}
                 </Typography>
-                <Typography
-                  color="text.secondary"
-                  variant="body2"
-                >
+                <Typography color="text.secondary" variant="body2">
                   {chapter.description}
                 </Typography>
               </StepLabel>
@@ -149,5 +108,5 @@ export const CourseSummary = (props) => {
 CourseSummary.propTypes = {
   activeChapter: PropTypes.number,
   // @ts-ignore
-  course: PropTypes.object.isRequired
+  course: PropTypes.object.isRequired,
 };

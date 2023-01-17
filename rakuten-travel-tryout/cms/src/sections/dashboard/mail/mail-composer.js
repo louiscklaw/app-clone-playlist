@@ -17,11 +17,11 @@ import {
   Stack,
   SvgIcon,
   Tooltip,
-  Typography
+  Typography,
 } from '@mui/material';
 import { QuillEditor } from '../../../components/quill-editor';
 
-export const MailComposer = (props) => {
+export const MailComposer = props => {
   const {
     maximize = false,
     message = '',
@@ -33,16 +33,22 @@ export const MailComposer = (props) => {
     onToChange,
     open = false,
     subject = '',
-    to = ''
+    to = '',
   } = props;
 
-  const handleSubjectChange = useCallback((event) => {
-    onSubjectChange?.(event.target.value);
-  }, [onSubjectChange]);
+  const handleSubjectChange = useCallback(
+    event => {
+      onSubjectChange?.(event.target.value);
+    },
+    [onSubjectChange],
+  );
 
-  const handleToChange = useCallback((event) => {
-    onToChange?.(event.target.value);
-  }, [onToChange]);
+  const handleToChange = useCallback(
+    event => {
+      onToChange?.(event.target.value);
+    },
+    [onToChange],
+  );
 
   if (!open) {
     return null;
@@ -57,8 +63,8 @@ export const MailComposer = (props) => {
           display: 'flex',
           flexDirection: 'column',
           margin: 3,
-          maxHeight: (theme) => `calc(100% - ${theme.spacing(6)})`,
-          maxWidth: (theme) => `calc(100% - ${theme.spacing(6)})`,
+          maxHeight: theme => `calc(100% - ${theme.spacing(6)})`,
+          maxWidth: theme => `calc(100% - ${theme.spacing(6)})`,
           minHeight: 500,
           outline: 'none',
           position: 'fixed',
@@ -72,8 +78,8 @@ export const MailComposer = (props) => {
             margin: 0,
             maxHeight: '100%',
             maxWidth: '100%',
-            width: '100%'
-          })
+            width: '100%',
+          }),
         }}
         elevation={12}
       >
@@ -82,28 +88,24 @@ export const MailComposer = (props) => {
             alignItems: 'center',
             display: 'flex',
             px: 2,
-            py: 1
+            py: 1,
           }}
         >
-          <Typography variant="h6">
-            New Message
-          </Typography>
+          <Typography variant="h6">New Message</Typography>
           <Box sx={{ flexGrow: 1 }} />
-          {maximize
-            ? (
-              <IconButton onClick={onMinimize}>
-                <SvgIcon>
-                  <Minimize01Icon />
-                </SvgIcon>
-              </IconButton>
-            )
-            : (
-              <IconButton onClick={onMaximize}>
-                <SvgIcon>
-                  <Expand01Icon />
-                </SvgIcon>
-              </IconButton>
-            )}
+          {maximize ? (
+            <IconButton onClick={onMinimize}>
+              <SvgIcon>
+                <Minimize01Icon />
+              </SvgIcon>
+            </IconButton>
+          ) : (
+            <IconButton onClick={onMaximize}>
+              <SvgIcon>
+                <Expand01Icon />
+              </SvgIcon>
+            </IconButton>
+          )}
           <IconButton onClick={onClose}>
             <SvgIcon>
               <XIcon />
@@ -118,7 +120,7 @@ export const MailComposer = (props) => {
           sx={{
             p: 1,
             borderBottom: 1,
-            borderColor: 'divider'
+            borderColor: 'divider',
           }}
           value={to}
         />
@@ -130,7 +132,7 @@ export const MailComposer = (props) => {
           sx={{
             p: 1,
             borderBottom: 1,
-            borderColor: 'divider'
+            borderColor: 'divider',
           }}
           value={subject}
         />
@@ -139,23 +141,13 @@ export const MailComposer = (props) => {
           placeholder="Leave a message"
           sx={{
             border: 'none',
-            flexGrow: 1
+            flexGrow: 1,
           }}
           value={message}
         />
         <Divider />
-        <Stack
-          alignItems="center"
-          direction="row"
-          justifyContent="space-between"
-          spacing={3}
-          sx={{ p: 2 }}
-        >
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={1}
-          >
+        <Stack alignItems="center" direction="row" justifyContent="space-between" spacing={3} sx={{ p: 2 }}>
+          <Stack alignItems="center" direction="row" spacing={1}>
             <Tooltip title="Attach image">
               <IconButton size="small">
                 <SvgIcon>
@@ -172,9 +164,7 @@ export const MailComposer = (props) => {
             </Tooltip>
           </Stack>
           <div>
-            <Button variant="contained">
-              Send
-            </Button>
+            <Button variant="contained">Send</Button>
           </div>
         </Stack>
       </Paper>
@@ -193,5 +183,5 @@ MailComposer.propTypes = {
   onToChange: PropTypes.func,
   open: PropTypes.bool,
   subject: PropTypes.string,
-  to: PropTypes.string
+  to: PropTypes.string,
 };

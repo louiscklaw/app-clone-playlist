@@ -1,10 +1,5 @@
-const Mail04 = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    fill="none"
-    {...props}>
+const Mail04 = props => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
     <path
       fill="currentColor"
       d="M10.256 13.3663 2 7.9999l8.256-5.3664c.6313-.4104.9469-.6155 1.287-.6953a1.9997 1.9997 0 0 1 .914 0c.3401.0798.6557.285 1.287.6953L22 7.9999l-8.256 5.3664c-.6313.4103-.9469.6155-1.287.6953a2.0014 2.0014 0 0 1-.914 0c-.3401-.0798-.6557-.285-1.287-.6953Z"

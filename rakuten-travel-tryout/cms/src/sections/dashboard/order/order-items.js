@@ -10,11 +10,11 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography
+  Typography,
 } from '@mui/material';
 import { Scrollbar } from '../../../components/scrollbar';
 
-export const OrderItems = (props) => {
+export const OrderItems = props => {
   const { items, ...other } = props;
 
   return (
@@ -25,35 +25,23 @@ export const OrderItems = (props) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>
-                  Description
-                </TableCell>
-                <TableCell>
-                  Billing Cycle
-                </TableCell>
-                <TableCell>
-                  Amount
-                </TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Billing Cycle</TableCell>
+                <TableCell>Amount</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {items.map((item) => {
+              {items.map(item => {
                 const title = `${item.name} x ${item.quantity}`;
                 const unitAmount = numeral(item.unitAmount).format(`${item.currency}0,0.00`);
 
                 return (
                   <TableRow key={item.id}>
                     <TableCell>
-                      <Typography variant="subtitle2">
-                        {title}
-                      </Typography>
+                      <Typography variant="subtitle2">{title}</Typography>
                     </TableCell>
-                    <TableCell>
-                      {item.billingCycle}
-                    </TableCell>
-                    <TableCell>
-                      {unitAmount}
-                    </TableCell>
+                    <TableCell>{item.billingCycle}</TableCell>
+                    <TableCell>{unitAmount}</TableCell>
                   </TableRow>
                 );
               })}
@@ -64,8 +52,8 @@ export const OrderItems = (props) => {
       <TablePagination
         component="div"
         count={items.length}
-        onPageChange={() => { }}
-        onRowsPerPageChange={() => { }}
+        onPageChange={() => {}}
+        onRowsPerPageChange={() => {}}
         page={0}
         rowsPerPage={5}
         rowsPerPageOptions={[5, 10, 25]}
@@ -75,5 +63,5 @@ export const OrderItems = (props) => {
 };
 
 OrderItems.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
 };

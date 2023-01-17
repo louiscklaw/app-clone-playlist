@@ -15,7 +15,7 @@ import {
   FormLabel,
   Link,
   Stack,
-  TextField
+  TextField,
 } from '@mui/material';
 import { GuestGuard } from '../../../guards/guest-guard';
 import { IssuerGuard } from '../../../guards/issuer-guard';
@@ -31,38 +31,25 @@ const useParams = () => {
   const username = searchParams.get('username') || undefined;
 
   return {
-    username
+    username,
   };
 };
 
-const getInitialValues = (username) => ({
+const getInitialValues = username => ({
   code: '',
   email: username || '',
   password: '',
   passwordConfirm: '',
-  submit: null
+  submit: null,
 });
 
 const validationSchema = Yup.object({
-  code: Yup
-    .string()
-    .min(6)
-    .max(6)
-    .required('Code is required'),
-  email: Yup
-    .string()
-    .email('Must be a valid email')
-    .max(255)
-    .required('Email is required'),
-  password: Yup
-    .string()
-    .min(7, 'Must be at least 7 characters')
-    .max(255)
-    .required('Required'),
-  passwordConfirm: Yup
-    .string()
+  code: Yup.string().min(6).max(6).required('Code is required'),
+  email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+  password: Yup.string().min(7, 'Must be at least 7 characters').max(255).required('Required'),
+  passwordConfirm: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Required')
+    .required('Required'),
 });
 
 const Page = () => {
@@ -90,7 +77,7 @@ const Page = () => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   usePageView();
@@ -98,50 +85,35 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Reset Password | Devias Kit PRO
-        </title>
+        <title>Reset Password | Devias Kit PRO</title>
       </Head>
       <div>
         <Card elevation={16}>
-          <CardHeader
-            sx={{ pb: 0 }}
-            title="Reset Password"
-          />
+          <CardHeader sx={{ pb: 0 }} title="Reset Password" />
           <CardContent>
-            <form
-              noValidate
-              onSubmit={formik.handleSubmit}
-            >
+            <form noValidate onSubmit={formik.handleSubmit}>
               <Stack spacing={3}>
-                {username
-                  ? (
-                    <TextField
-                      disabled
-                      fullWidth
-                      label="Email"
-                      value={username}
-                    />
-                  )
-                  : (
-                    <TextField
-                      autoFocus
-                      error={!!(formik.touched.email && formik.errors.email)}
-                      fullWidth
-                      helperText={formik.touched.email && formik.errors.email}
-                      label="Email Address"
-                      name="email"
-                      onBlur={formik.handleBlur}
-                      onChange={formik.handleChange}
-                      type="email"
-                      value={formik.values.email}
-                    />
-                  )}
+                {username ? (
+                  <TextField disabled fullWidth label="Email" value={username} />
+                ) : (
+                  <TextField
+                    autoFocus
+                    error={!!(formik.touched.email && formik.errors.email)}
+                    fullWidth
+                    helperText={formik.touched.email && formik.errors.email}
+                    label="Email Address"
+                    name="email"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="email"
+                    value={formik.values.email}
+                  />
+                )}
                 <FormControl error={!!(formik.touched.code && formik.errors.code)}>
                   <FormLabel
                     sx={{
                       display: 'block',
-                      mb: 2
+                      mb: 2,
                     }}
                   >
                     Verification code
@@ -149,19 +121,17 @@ const Page = () => {
                   <MuiOtpInput
                     length={6}
                     onBlur={() => formik.handleBlur('code')}
-                    onChange={(value) => formik.setFieldValue('code', value)}
+                    onChange={value => formik.setFieldValue('code', value)}
                     onFocus={() => formik.setFieldTouched('code')}
                     sx={{
                       '& .MuiFilledInput-input': {
-                        p: '14px'
-                      }
+                        p: '14px',
+                      },
                     }}
                     value={formik.values.code}
                   />
                   {!!(formik.touched.code && formik.errors.code) && (
-                    <FormHelperText>
-                      {formik.errors.code}
-                    </FormHelperText>
+                    <FormHelperText>{formik.errors.code}</FormHelperText>
                   )}
                 </FormControl>
                 <TextField
@@ -188,10 +158,7 @@ const Page = () => {
                 />
               </Stack>
               {formik.errors.submit && (
-                <FormHelperText
-                  error
-                  sx={{ mt: 3 }}
-                >
+                <FormHelperText error sx={{ mt: 3 }}>
                   {formik.errors.submit}
                 </FormHelperText>
               )}
@@ -209,7 +176,7 @@ const Page = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  mt: 3
+                  mt: 3,
                 }}
               >
                 <Link
@@ -229,12 +196,10 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <IssuerGuard issuer={Issuer.Amplify}>
     <GuestGuard>
-      <AuthLayout>
-        {page}
-      </AuthLayout>
+      <AuthLayout>{page}</AuthLayout>
     </GuestGuard>
   </IssuerGuard>
 );

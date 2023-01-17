@@ -8,11 +8,9 @@ const options = [
     icon: (
       <Box
         sx={{
-          backgroundColor: (theme) => theme.palette.mode === 'dark'
-            ? 'neutral.900'
-            : 'background.paper',
+          backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.900' : 'background.paper'),
           flex: '1 1 auto',
-          p: 1
+          p: 1,
         }}
       >
         <Box
@@ -22,38 +20,30 @@ const options = [
             gridTemplateColumns: 'repeat(2, 1fr)',
             height: '100%',
             mx: 'auto',
-            width: '70%'
+            width: '70%',
           }}
         >
           <Box
             sx={{
-              backgroundColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.800'
-                : 'neutral.50',
-              borderColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.500'
-                : 'neutral.300',
+              backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.50'),
+              borderColor: theme => (theme.palette.mode === 'dark' ? 'neutral.500' : 'neutral.300'),
               borderRadius: 1,
               borderStyle: 'dashed',
-              borderWidth: 1
+              borderWidth: 1,
             }}
           />
           <Box
             sx={{
-              backgroundColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.800'
-                : 'neutral.50',
-              borderColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.500'
-                : 'neutral.300',
+              backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.50'),
+              borderColor: theme => (theme.palette.mode === 'dark' ? 'neutral.500' : 'neutral.300'),
               borderRadius: 1,
               borderStyle: 'dashed',
-              borderWidth: 1
+              borderWidth: 1,
             }}
           />
         </Box>
       </Box>
-    )
+    ),
   },
   {
     label: 'Wide',
@@ -61,11 +51,9 @@ const options = [
     icon: (
       <Box
         sx={{
-          backgroundColor: (theme) => theme.palette.mode === 'dark'
-            ? 'neutral.900'
-            : 'background.paper',
+          backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.900' : 'background.paper'),
           flex: '1 1 auto',
-          p: 1
+          p: 1,
         }}
       >
         <Box
@@ -74,64 +62,50 @@ const options = [
             gap: 0.5,
             gridTemplateColumns: 'repeat(2, 1fr)',
             height: '100%',
-            mx: 'auto'
+            mx: 'auto',
           }}
         >
           <Box
             sx={{
-              backgroundColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.800'
-                : 'neutral.50',
-              borderColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.500'
-                : 'neutral.300',
+              backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.50'),
+              borderColor: theme => (theme.palette.mode === 'dark' ? 'neutral.500' : 'neutral.300'),
               borderRadius: 1,
               borderStyle: 'dashed',
-              borderWidth: 1
+              borderWidth: 1,
             }}
           />
           <Box
             sx={{
-              backgroundColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.800'
-                : 'neutral.50',
-              borderColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.500'
-                : 'neutral.300',
+              backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.50'),
+              borderColor: theme => (theme.palette.mode === 'dark' ? 'neutral.500' : 'neutral.300'),
               borderRadius: 1,
               borderStyle: 'dashed',
-              borderWidth: 1
+              borderWidth: 1,
             }}
           />
         </Box>
       </Box>
-    )
-  }
+    ),
+  },
 ];
 
-export const OptionsStretch = (props) => {
+export const OptionsStretch = props => {
   const { onChange, value } = props;
 
   return (
     <Stack spacing={1}>
-      <Typography
-        color="text.secondary"
-        variant="overline"
-      >
+      <Typography color="text.secondary" variant="overline">
         Content
       </Typography>
       <Box
         sx={{
           gap: 1,
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, minmax(0, 140px))'
+          gridTemplateColumns: 'repeat(2, minmax(0, 140px))',
         }}
       >
         {options.map((option, index) => (
-          <Stack
-            key={index}
-            spacing={1}
-          >
+          <Stack key={index} spacing={1}>
             <Box
               onClick={() => onChange?.(option.value)}
               sx={{
@@ -144,17 +118,13 @@ export const OptionsStretch = (props) => {
                 height: 64,
                 overflow: 'hidden',
                 ...(option.value === value && {
-                  borderColor: 'primary.main'
-                })
+                  borderColor: 'primary.main',
+                }),
               }}
             >
               {option.icon}
             </Box>
-            <Typography
-              align="center"
-              sx={{ fontWight: 500 }}
-              variant="body2"
-            >
+            <Typography align="center" sx={{ fontWight: 500 }} variant="body2">
               {option.label}
             </Typography>
           </Stack>
@@ -166,5 +136,5 @@ export const OptionsStretch = (props) => {
 
 OptionsStretch.propTypes = {
   onChange: PropTypes.func,
-  value: PropTypes.bool
+  value: PropTypes.bool,
 };

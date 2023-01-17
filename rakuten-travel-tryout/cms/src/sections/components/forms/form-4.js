@@ -2,34 +2,13 @@ import { Box, Button, Divider, TextField, Unstable_Grid2 as Grid } from '@mui/ma
 
 export const Form4 = () => (
   <Box sx={{ p: 3 }}>
-    <form onSubmit={(event) => event.preventDefault()}>
-      <Grid
-        container
-        spacing={3}
-      >
-        <Grid
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <TextField
-            fullWidth
-            label="Password"
-            name="password"
-            type="password"
-          />
+    <form onSubmit={event => event.preventDefault()}>
+      <Grid container spacing={3}>
+        <Grid xs={12} sm={6} md={4}>
+          <TextField fullWidth label="Password" name="password" type="password" />
         </Grid>
-        <Grid
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <TextField
-            fullWidth
-            label="Password Confirmation"
-            name="passwordConfirm"
-            type="password"
-          />
+        <Grid xs={12} sm={6} md={4}>
+          <TextField fullWidth label="Password Confirmation" name="passwordConfirm" type="password" />
         </Grid>
       </Grid>
       <Divider sx={{ pt: 2 }} />
@@ -37,14 +16,10 @@ export const Form4 = () => (
         sx={{
           display: 'flex',
           justifyContent: 'flex-end',
-          p: 2
+          p: 2,
         }}
       >
-        <Button
-          color="primary"
-          type="submit"
-          variant="contained"
-        >
+        <Button color="primary" type="submit" variant="contained">
           Change Password
         </Button>
       </Box>

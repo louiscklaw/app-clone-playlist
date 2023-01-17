@@ -3,16 +3,7 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 import ChevronLeftIcon from '@untitled-ui/icons-react/build/esm/ChevronLeft';
 import ChevronRightIcon from '@untitled-ui/icons-react/build/esm/ChevronRight';
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Stack,
-  SvgIcon,
-  Typography,
-  Unstable_Grid2 as Grid
-} from '@mui/material';
+import { Box, Button, Container, IconButton, Stack, SvgIcon, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import { jobsApi } from '../../../api/jobs';
 import { useMounted } from '../../../hooks/use-mounted';
 import { usePageView } from '../../../hooks/use-page-view';
@@ -37,11 +28,13 @@ const useCompanies = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getCompanies();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return companies;
 };
@@ -54,15 +47,13 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Job Browse | Devias Kit PRO
-        </title>
+        <title>Dashboard: Job Browse | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
@@ -74,24 +65,14 @@ const Page = () => {
               borderRadius: 1,
               color: 'common.white',
               px: 4,
-              py: 8
+              py: 8,
             }}
           >
-            <Grid
-              xs={12}
-              sm={7}
-            >
-              <Typography
-                color="inherit"
-                variant="h3"
-              >
+            <Grid xs={12} sm={7}>
+              <Typography color="inherit" variant="h3">
                 Reach 50k+ potential candidates.
               </Typography>
-              <Typography
-                color="neutral.500"
-                sx={{ mt: 2 }}
-                variant="body1"
-              >
+              <Typography color="neutral.500" sx={{ mt: 2 }} variant="body1">
                 Post your job today for free. Promotions start at $99.
               </Typography>
               <Button
@@ -110,24 +91,18 @@ const Page = () => {
               sx={{
                 display: {
                   xs: 'none',
-                  sm: 'flex'
+                  sm: 'flex',
                 },
-                justifyContent: 'center'
+                justifyContent: 'center',
               }}
             >
               <img src="/assets/iconly/iconly-glass-shield.svg" />
             </Grid>
           </Grid>
-          <Stack
-            spacing={4}
-            sx={{ mt: 4 }}
-          >
+          <Stack spacing={4} sx={{ mt: 4 }}>
             <JobListSearch />
-            {companies.map((company) => (
-              <CompanyCard
-                key={company.id}
-                company={company}
-              />
+            {companies.map(company => (
+              <CompanyCard key={company.id} company={company} />
             ))}
             <Stack
               alignItems="center"
@@ -136,7 +111,7 @@ const Page = () => {
               spacing={2}
               sx={{
                 px: 3,
-                py: 2
+                py: 2,
               }}
             >
               <IconButton disabled>
@@ -157,10 +132,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

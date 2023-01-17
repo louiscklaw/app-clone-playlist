@@ -16,66 +16,44 @@ import {
   ListItemSecondaryAction,
   ListItemText,
   SvgIcon,
-  Typography
+  Typography,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 
-export const OverviewEvents = (props) => {
+export const OverviewEvents = props => {
   const { events } = props;
 
   return (
     <Card>
-      <CardHeader
-        title="Upcoming events"
-        subheader="Based on the linked bank accounts"
-      />
+      <CardHeader title="Upcoming events" subheader="Based on the linked bank accounts" />
       <CardContent sx={{ pt: 0 }}>
         <List disablePadding>
-          {events.map((event) => {
+          {events.map(event => {
             const createdAtMonth = format(event.createdAt, 'LLL').toUpperCase();
             const createdAtDay = format(event.createdAt, 'd');
 
             return (
-              <ListItem
-                disableGutters
-                sx={{ py: 1.5 }}
-                key={event.id}
-              >
+              <ListItem disableGutters sx={{ py: 1.5 }} key={event.id}>
                 <ListItemAvatar>
                   <Box
                     sx={{
                       p: 1,
-                      backgroundColor: (theme) => theme.palette.mode === 'dark'
-                        ? 'neutral.800'
-                        : 'neutral.100',
+                      backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
                       borderRadius: 2,
-                      maxWidth: 'fit-content'
+                      maxWidth: 'fit-content',
                     }}
                   >
-                    <Typography
-                      align="center"
-                      color="text.primary"
-                      variant="caption"
-                    >
+                    <Typography align="center" color="text.primary" variant="caption">
                       {createdAtMonth}
                     </Typography>
-                    <Typography
-                      align="center"
-                      color="text.primary"
-                      variant="h6"
-                    >
+                    <Typography align="center" color="text.primary" variant="h6">
                       {createdAtDay}
                     </Typography>
                   </Box>
                 </ListItemAvatar>
                 <ListItemText>
-                  <Typography variant="subtitle2">
-                    {event.title}
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    variant="body2"
-                  >
+                  <Typography variant="subtitle2">{event.title}</Typography>
+                  <Typography color="text.secondary" variant="body2">
                     {event.description}
                   </Typography>
                 </ListItemText>
@@ -95,11 +73,11 @@ export const OverviewEvents = (props) => {
       <CardActions>
         <Button
           color="inherit"
-          endIcon={(
+          endIcon={
             <SvgIcon>
               <ArrowRightIcon />
             </SvgIcon>
-          )}
+          }
           size="small"
         >
           See all
@@ -110,5 +88,5 @@ export const OverviewEvents = (props) => {
 };
 
 OverviewEvents.propTypes = {
-  events: PropTypes.array.isRequired
+  events: PropTypes.array.isRequired,
 };

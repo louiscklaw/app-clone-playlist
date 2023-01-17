@@ -7,20 +7,20 @@ export const Colors2 = () => {
   const colors = [
     {
       name: 'Success',
-      code: theme.palette.success.main
+      code: theme.palette.success.main,
     },
     {
       name: 'Error',
-      code: theme.palette.error.main
+      code: theme.palette.error.main,
     },
     {
       name: 'Warning',
-      code: theme.palette.warning.main
+      code: theme.palette.warning.main,
     },
     {
       name: 'Info',
-      code: theme.palette.info.main
-    }
+      code: theme.palette.info.main,
+    },
   ];
 
   return (
@@ -30,18 +30,15 @@ export const Colors2 = () => {
         sx={{
           '& li:not(:last-child)': {
             pb: '33px',
-            pt: 0
+            pt: 0,
           },
           '& li:last-child': {
-            py: 0
-          }
+            py: 0,
+          },
         }}
       >
-        {colors.map((color) => (
-          <ListItem
-            disableGutters
-            key={color.code}
-          >
+        {colors.map(color => (
+          <ListItem disableGutters key={color.code}>
             <ListItemAvatar>
               <Box
                 sx={{
@@ -49,24 +46,17 @@ export const Colors2 = () => {
                   borderRadius: '10px',
                   height: 46,
                   mr: 2,
-                  width: 46
+                  width: 46,
                 }}
               />
             </ListItemAvatar>
             <ListItemText
-              primary={(
-                <Typography variant="subtitle2">
-                  {color.name}
-                </Typography>
-              )}
-              secondary={(
-                <Typography
-                  color="text.secondary"
-                  variant="caption"
-                >
+              primary={<Typography variant="subtitle2">{color.name}</Typography>}
+              secondary={
+                <Typography color="text.secondary" variant="caption">
                   {color.code}
                 </Typography>
-              )}
+              }
             />
           </ListItem>
         ))}

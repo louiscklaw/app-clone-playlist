@@ -1,11 +1,5 @@
-export const LogoBolt = (props) => (
-  <svg
-    width={39}
-    height={22}
-    viewBox="0 0 39 22"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}>
+export const LogoBolt = props => (
+  <svg width={39} height={22} viewBox="0 0 39 22" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <g clipPath="url(#clip0_11275_169468)">
       <path
         fillRule="evenodd"
@@ -16,12 +10,7 @@ export const LogoBolt = (props) => (
     </g>
     <defs>
       <clipPath id="clip0_11275_169468">
-        <rect
-          width={38}
-          height={21}
-          fill="white"
-          transform="translate(0.5 0.5)"
-        />
+        <rect width={38} height={21} fill="white" transform="translate(0.5 0.5)" />
       </clipPath>
     </defs>
   </svg>

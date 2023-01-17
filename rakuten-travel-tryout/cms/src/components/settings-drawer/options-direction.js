@@ -11,7 +11,7 @@ const options = [
       <SvgIcon fontSize="small">
         <LeftIndent01Icon />
       </SvgIcon>
-    )
+    ),
   },
   {
     label: 'Right-to-left',
@@ -20,28 +20,20 @@ const options = [
       <SvgIcon fontSize="small">
         <RightIndent01Icon />
       </SvgIcon>
-    )
-  }
+    ),
+  },
 ];
 
-export const OptionsDirection = (props) => {
+export const OptionsDirection = props => {
   const { onChange, value } = props;
 
   return (
     <Stack spacing={1}>
-      <Typography
-        color="text.secondary"
-        variant="overline"
-      >
+      <Typography color="text.secondary" variant="overline">
         Orientation
       </Typography>
-      <Stack
-        alignItems="center"
-        direction="row"
-        flexWrap="wrap"
-        gap={2}
-      >
-        {options.map((option) => (
+      <Stack alignItems="center" direction="row" flexWrap="wrap" gap={2}>
+        {options.map(option => (
           <Chip
             icon={option.icon}
             key={option.label}
@@ -53,8 +45,8 @@ export const OptionsDirection = (props) => {
               borderStyle: 'solid',
               borderWidth: 2,
               ...(option.value === value && {
-                borderColor: 'primary.main'
-              })
+                borderColor: 'primary.main',
+              }),
             }}
           />
         ))}
@@ -65,5 +57,5 @@ export const OptionsDirection = (props) => {
 
 OptionsDirection.propTypes = {
   onChange: PropTypes.func,
-  value: PropTypes.oneOf(['ltr', 'rtl'])
+  value: PropTypes.oneOf(['ltr', 'rtl']),
 };

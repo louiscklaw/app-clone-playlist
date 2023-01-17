@@ -7,7 +7,7 @@ export const items = [
     id: '719a07ce8e46dee2388d411c',
     author: {
       avatar: '/assets/avatars/avatar-alcides-antonio.png',
-      name: 'Alcides Antonio'
+      name: 'Alcides Antonio',
     },
     createdAt: subMinutes(now, 15).getTime(),
     isFavorite: false,
@@ -18,23 +18,23 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser'
+        name: 'Anika Visser',
       },
       {
         avatar: '/assets/avatars/avatar-miron-vitold.png',
-        name: 'Miron Vitold'
-      }
+        name: 'Miron Vitold',
+      },
     ],
     size: 528381242,
     tags: ['Business', 'Work', 'Homework', 'Cats', 'Holiday', 'Friends'],
     type: 'folder',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'ed41ba8be80fac27d08efe3a',
     author: {
       avatar: '/assets/avatars/avatar-fran-perez.png',
-      name: 'Fran Perez'
+      name: 'Fran Perez',
     },
     createdAt: subMinutes(now, 23).getTime(),
     isFavorite: true,
@@ -46,13 +46,13 @@ export const items = [
     size: 519090127,
     tags: ['Friends', 'Business', 'Homework', 'Personal'],
     type: 'folder',
-    updatedAt: subMinutes(now, 2).getTime()
+    updatedAt: subMinutes(now, 2).getTime(),
   },
   {
     id: 'b8bb82b90aedf81d57ccdb4d',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subHours(subMinutes(now, 3), 4).getTime(),
     isFavorite: false,
@@ -63,34 +63,27 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-miron-vitold.png',
-        name: 'Miron Vitold'
+        name: 'Miron Vitold',
       },
       {
         avatar: '/assets/avatars/avatar-alcides-antonio.png',
-        name: 'Alcides Antonio'
+        name: 'Alcides Antonio',
       },
       {
         avatar: '/assets/avatars/avatar-nasimiyu-danai.png',
-        name: 'Nasimiyu Danai'
-      }
+        name: 'Nasimiyu Danai',
+      },
     ],
     size: 194220900,
-    tags: [
-      'Homework',
-      'Holiday',
-      'Important',
-      'Work',
-      'Friends',
-      'Personal'
-    ],
+    tags: ['Homework', 'Holiday', 'Important', 'Work', 'Friends', 'Personal'],
     type: 'folder',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'b33fe3f9ced7e4fa7efcbd9a',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subHours(subMinutes(now, 16), 20).getTime(),
     isFavorite: true,
@@ -101,13 +94,13 @@ export const items = [
     size: 731214568,
     tags: ['Personal', 'Important', 'Invoices'],
     type: 'folder',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'dffb38de19c7e9ce0dc690cf',
     author: {
       avatar: '/assets/avatars/avatar-carson-darrin.png',
-      name: 'Carson Darrin'
+      name: 'Carson Darrin',
     },
     createdAt: subHours(subMinutes(now, 23), 26).getTime(),
     isFavorite: true,
@@ -119,13 +112,13 @@ export const items = [
     size: 103885109,
     tags: ['Invoices', 'Personal', 'Holiday', 'Homework', 'Cats', 'Work'],
     type: 'folder',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'c23e85a978a79a5cb53c0b0a',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 41), 6), 2).getTime(),
     extension: 'pdf',
@@ -135,19 +128,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-alcides-antonio.png',
-        name: 'Alcides Antonio'
-      }
+        name: 'Alcides Antonio',
+      },
     ],
     size: 472262466,
     tags: ['Invoices', 'Work'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'b3acfe9aa417c1f9e1cda220',
     author: {
       avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
-      name: 'Siegbert Gottfried'
+      name: 'Siegbert Gottfried',
     },
     createdAt: subDays(subHours(subMinutes(now, 41), 6), 2).getTime(),
     extension: 'svg',
@@ -157,23 +150,23 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser'
+        name: 'Anika Visser',
       },
       {
         avatar: '/assets/avatars/avatar-nasimiyu-danai.png',
-        name: 'Nasimiyu Danai'
-      }
+        name: 'Nasimiyu Danai',
+      },
     ],
     size: 762152011,
     tags: ['Homework'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'afa0412fe4cdb39b3c8b9ad2',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 41), 6), 2).getTime(),
     extension: 'jpeg',
@@ -183,27 +176,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-iulia-albu.png',
-        name: 'Iulia Albu'
-      }
+        name: 'Iulia Albu',
+      },
     ],
     size: 746826456,
-    tags: [
-      'Important',
-      'Personal',
-      'Invoices',
-      'Homework',
-      'Business',
-      'Cats',
-      'Holiday'
-    ],
+    tags: ['Important', 'Personal', 'Invoices', 'Homework', 'Business', 'Cats', 'Holiday'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'f90e02aaa5f7f9f87ae14ad8',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 41), 6), 2).getTime(),
     extension: 'svg',
@@ -213,23 +198,23 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-nasimiyu-danai.png',
-        name: 'Nasimiyu Danai'
+        name: 'Nasimiyu Danai',
       },
       {
         avatar: '/assets/avatars/avatar-iulia-albu.png',
-        name: 'Iulia Albu'
-      }
+        name: 'Iulia Albu',
+      },
     ],
     size: 374404524,
     tags: [],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'b74e2b767d284d4a94de5e3a',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 41), 6), 2).getTime(),
     extension: 'log',
@@ -240,13 +225,13 @@ export const items = [
     size: 54765975,
     tags: ['Cats'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'b929bf2753254c05d45bc9fa',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 41), 6), 2).getTime(),
     extension: 'ico',
@@ -256,19 +241,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-carson-darrin.png',
-        name: 'Carson Darrin'
-      }
+        name: 'Carson Darrin',
+      },
     ],
     size: 674580489,
     tags: ['Homework', 'Cats', 'Business', 'Personal', 'Friends'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'fdbadfb4cbbd5b3ea44b1823',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 3), 14), 6).getTime(),
     extension: 'dmg',
@@ -278,23 +263,23 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
-        name: 'Siegbert Gottfried'
+        name: 'Siegbert Gottfried',
       },
       {
         avatar: '/assets/avatars/avatar-carson-darrin.png',
-        name: 'Carson Darrin'
-      }
+        name: 'Carson Darrin',
+      },
     ],
     size: 211681809,
     tags: ['Work', 'Personal', 'Invoices', 'Homework'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'edc8f7a0420fef23bfeaafed',
     author: {
       avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
-      name: 'Siegbert Gottfried'
+      name: 'Siegbert Gottfried',
     },
     createdAt: subDays(subHours(subMinutes(now, 21), 4), 9).getTime(),
     extension: '7z',
@@ -305,13 +290,13 @@ export const items = [
     size: 928256606,
     tags: [],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '28becedd58a2fb7be2d05cf5',
     author: {
       avatar: '/assets/avatars/avatar-marcus-finn.png',
-      name: 'Marcus Finn'
+      name: 'Marcus Finn',
     },
     createdAt: subDays(subHours(subMinutes(now, 45), 11), 9).getTime(),
     extension: 'msi',
@@ -320,23 +305,15 @@ export const items = [
     name: 'Graphic Driver 1.11.msi',
     shared: [],
     size: 436081098,
-    tags: [
-      'Homework',
-      'Holiday',
-      'Cats',
-      'Invoices',
-      'Important',
-      'Work',
-      'Friends'
-    ],
+    tags: ['Homework', 'Holiday', 'Cats', 'Invoices', 'Important', 'Work', 'Friends'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '5affd9c3af627afb1fdc7657',
     author: {
       avatar: '/assets/avatars/avatar-marcus-finn.png',
-      name: 'Marcus Finn'
+      name: 'Marcus Finn',
     },
     createdAt: subDays(subHours(subMinutes(now, 23), 3), 10).getTime(),
     extension: 'svg',
@@ -347,13 +324,13 @@ export const items = [
     size: 6273,
     tags: ['Personal'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '3bc08f0082b7dd2bd52fee6e',
     author: {
       avatar: '/assets/avatars/avatar-omar-darboe.png',
-      name: 'Omar Darobe'
+      name: 'Omar Darobe',
     },
     createdAt: subDays(subHours(subMinutes(now, 4), 2), 11).getTime(),
     extension: 'rar',
@@ -363,19 +340,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser'
-      }
+        name: 'Anika Visser',
+      },
     ],
     size: 785187212,
     tags: ['Work', 'Cats', 'Invoices'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '100bcfa1faeba4c36c7b5ad3',
     author: {
       avatar: '/assets/avatars/avatar-penjani-inyene.png',
-      name: 'Penjani Inyene'
+      name: 'Penjani Inyene',
     },
     createdAt: subDays(subHours(subMinutes(now, 31), 6), 11).getTime(),
     extension: 'png',
@@ -385,26 +362,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser'
-      }
+        name: 'Anika Visser',
+      },
     ],
     size: 442600692,
-    tags: [
-      'Important',
-      'Business',
-      'Holiday',
-      'Friends',
-      'Invoices',
-      'Personal'
-    ],
+    tags: ['Important', 'Business', 'Holiday', 'Friends', 'Invoices', 'Personal'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '6e638cfc6ab9bd1c78a28f73',
     author: {
       avatar: '/assets/avatars/avatar-jie-yan-song.png',
-      name: 'Jie Yan Song'
+      name: 'Jie Yan Song',
     },
     createdAt: subDays(subHours(subMinutes(now, 11), 12), 11).getTime(),
     extension: 'png',
@@ -415,13 +385,13 @@ export const items = [
     size: 363777187,
     tags: ['Important', 'Homework'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '45fb900df5e07ac0c5aeedfa',
     author: {
       avatar: '/assets/avatars/avatar-alcides-antonio.png',
-      name: 'Alcides Antonio'
+      name: 'Alcides Antonio',
     },
     createdAt: subDays(subHours(subMinutes(now, 4), 15), 15).getTime(),
     extension: 'mp4',
@@ -431,19 +401,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser'
-      }
+        name: 'Anika Visser',
+      },
     ],
     size: 841133109,
     tags: ['Personal', 'Important', 'Invoices'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '5e9b61b7caec888a9fb53fa5',
     author: {
       avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
-      name: 'Siegbert Gottfried'
+      name: 'Siegbert Gottfried',
     },
     createdAt: subDays(subHours(subMinutes(now, 31), 5), 17).getTime(),
     extension: 'dmg',
@@ -453,19 +423,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser'
-      }
+        name: 'Anika Visser',
+      },
     ],
     size: 258621281,
     tags: ['Homework', 'Work', 'Personal', 'Important'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'ec4754671acbd7ad74afffa6',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 11), 16), 18).getTime(),
     extension: 'pkg',
@@ -475,19 +445,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-neha-punita.png',
-        name: 'Neha Punita'
-      }
+        name: 'Neha Punita',
+      },
     ],
     size: 528228820,
     tags: ['Work', 'Holiday', 'Friends'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '97c43cc1e0ad50cbbf14b6ce',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 1), 3), 37).getTime(),
     extension: 'exe',
@@ -497,23 +467,23 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-cao-yu.png',
-        name: 'Cao Yu'
+        name: 'Cao Yu',
       },
       {
         avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
-        name: 'Siegbert Gottfried'
-      }
+        name: 'Siegbert Gottfried',
+      },
     ],
     size: 600779531,
     tags: ['Important', 'Friends'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '7cfdb3fed0bac18d77b555ba',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 12), 11), 40).getTime(),
     extension: 'psd',
@@ -523,19 +493,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-cao-yu.png',
-        name: 'Cao Yu'
-      }
+        name: 'Cao Yu',
+      },
     ],
     size: 333130679,
     tags: ['Cats', 'Personal', 'Work', 'Important', 'Friends'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: 'e23ee9ae093bb6e25cce9f85',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 15), 23), 41).getTime(),
     extension: 'tar',
@@ -545,27 +515,19 @@ export const items = [
     shared: [
       {
         avatar: '/assets/avatars/avatar-neha-punita.png',
-        name: 'Neha Punita'
-      }
+        name: 'Neha Punita',
+      },
     ],
     size: 516488635,
-    tags: [
-      'Cats',
-      'Friends',
-      'Important',
-      'Homework',
-      'Work',
-      'Personal',
-      'Business'
-    ],
+    tags: ['Cats', 'Friends', 'Important', 'Homework', 'Work', 'Personal', 'Business'],
     type: 'file',
-    updatedAt: null
+    updatedAt: null,
   },
   {
     id: '22fae356b5b7c5d13c4b4ba8',
     author: {
       avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser'
+      name: 'Anika Visser',
     },
     createdAt: subDays(subHours(subMinutes(now, 40), 11), 62).getTime(),
     extension: 'deb',
@@ -576,6 +538,6 @@ export const items = [
     size: 761277264,
     tags: ['Cats', 'Homework', 'Business', 'Personal'],
     type: 'file',
-    updatedAt: null
-  }
+    updatedAt: null,
+  },
 ];

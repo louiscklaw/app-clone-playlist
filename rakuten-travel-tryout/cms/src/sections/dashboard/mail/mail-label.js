@@ -18,10 +18,10 @@ const systemLabelIcons = {
   drafts: <Mail04Icon />,
   spam: <AlertCircleIcon />,
   starred: <Star01Icon />,
-  important: <BookmarkIcon />
+  important: <BookmarkIcon />,
 };
 
-const getIcon = (label) => {
+const getIcon = label => {
   if (label.type === 'system') {
     return systemLabelIcons[label.id];
   }
@@ -29,7 +29,7 @@ const getIcon = (label) => {
   return <Tag01Icon />;
 };
 
-const getColor = (label) => {
+const getColor = label => {
   if (label.type === 'custom') {
     return label.color || 'inherit';
   }
@@ -37,7 +37,7 @@ const getColor = (label) => {
   return 'inherit';
 };
 
-export const MailLabel = (props) => {
+export const MailLabel = props => {
   const { active, label, ...other } = props;
 
   const icon = getIcon(label);
@@ -50,47 +50,43 @@ export const MailLabel = (props) => {
       disablePadding
       sx={{
         '& + &': {
-          mt: 1
-        }
+          mt: 1,
+        },
       }}
-      {...other}>
+      {...other}
+    >
       <ButtonBase
         sx={{
           borderRadius: 1,
           color: 'text.secondary',
           flexGrow: 1,
-          fontSize: (theme) => theme.typography.button.fontSize,
-          fontWeight: (theme) => theme.typography.button.fontWeight,
+          fontSize: theme => theme.typography.button.fontSize,
+          fontWeight: theme => theme.typography.button.fontWeight,
           justifyContent: 'flex-start',
-          lineHeight: (theme) => theme.typography.button.lineHeight,
+          lineHeight: theme => theme.typography.button.lineHeight,
           py: 1,
           px: 2,
           textAlign: 'left',
           '&:hover': {
-            backgroundColor: 'action.hover'
+            backgroundColor: 'action.hover',
           },
           ...(active && {
             backgroundColor: 'action.selected',
-            color: 'text.primary'
-          })
+            color: 'text.primary',
+          }),
         }}
       >
         <SvgIcon
           sx={{
             color,
-            mr: 1
+            mr: 1,
           }}
         >
           {icon}
         </SvgIcon>
-        <Box sx={{ flexGrow: 1 }}>
-          {label.name}
-        </Box>
+        <Box sx={{ flexGrow: 1 }}>{label.name}</Box>
         {showUnreadCount && (
-          <Typography
-            color="inherit"
-            variant="subtitle2"
-          >
+          <Typography color="inherit" variant="subtitle2">
             {label.unreadCount}
           </Typography>
         )}
@@ -103,5 +99,5 @@ MailLabel.propTypes = {
   active: PropTypes.bool,
   // @ts-ignore
   label: PropTypes.object.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };

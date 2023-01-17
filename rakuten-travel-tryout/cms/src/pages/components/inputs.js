@@ -13,24 +13,24 @@ import { Inputs5 } from '../../sections/components/inputs/inputs-5';
 const components = [
   {
     element: <Inputs1 />,
-    title: 'Inputs 1'
+    title: 'Inputs 1',
   },
   {
     element: <Inputs2 />,
-    title: 'Inputs 2'
+    title: 'Inputs 2',
   },
   {
     element: <Inputs3 />,
-    title: 'Inputs 3'
+    title: 'Inputs 3',
   },
   {
     element: <Inputs4 />,
-    title: 'Inputs 4'
+    title: 'Inputs 4',
   },
   {
     element: <Inputs5 />,
-    title: 'Inputs 5'
-  }
+    title: 'Inputs 5',
+  },
 ];
 
 const Page = () => {
@@ -39,24 +39,19 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Components: Inputs | Devias Kit PRO
-        </title>
+        <title>Components: Inputs | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Stack spacing={8}>
-            {components.map((component) => (
-              <Previewer
-                key={component.title}
-                title={component.title}
-              >
+            {components.map(component => (
+              <Previewer key={component.title} title={component.title}>
                 {component.element}
               </Previewer>
             ))}
@@ -67,11 +62,9 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <MarketingLayout>
-    <ComponentsLayout title="Inputs">
-      {page}
-    </ComponentsLayout>
+    <ComponentsLayout title="Inputs">{page}</ComponentsLayout>
   </MarketingLayout>
 );
 

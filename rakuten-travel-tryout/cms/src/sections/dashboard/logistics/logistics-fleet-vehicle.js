@@ -1,16 +1,6 @@
 import { useCallback } from 'react';
 import Truck02Icon from '@untitled-ui/icons-react/build/esm/Truck02';
-import {
-  Avatar,
-  Box,
-  ButtonBase,
-  Collapse,
-  Divider,
-  LinearProgress,
-  Stack,
-  SvgIcon,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, ButtonBase, Collapse, Divider, LinearProgress, Stack, SvgIcon, Typography } from '@mui/material';
 import {
   Timeline,
   TimelineConnector,
@@ -18,10 +8,10 @@ import {
   TimelineDot,
   TimelineItem,
   timelineItemClasses,
-  TimelineSeparator
+  TimelineSeparator,
 } from '@mui/lab';
 
-export const LogisticsFleetVehicle = (props) => {
+export const LogisticsFleetVehicle = props => {
   const { onDeselect, onSelect, selected, vehicle } = props;
 
   const handleToggle = useCallback(() => {
@@ -30,12 +20,7 @@ export const LogisticsFleetVehicle = (props) => {
     } else {
       onDeselect?.();
     }
-  }, [
-    onDeselect,
-    onSelect,
-    selected,
-    vehicle
-  ]);
+  }, [onDeselect, onSelect, selected, vehicle]);
 
   return (
     <Stack component="li">
@@ -45,7 +30,7 @@ export const LogisticsFleetVehicle = (props) => {
           justifyContent: 'flex-start',
           p: 2,
           textAlign: 'left',
-          width: '100%'
+          width: '100%',
         }}
         onClick={handleToggle}
       >
@@ -55,13 +40,8 @@ export const LogisticsFleetVehicle = (props) => {
           </SvgIcon>
         </Avatar>
         <div>
-          <Typography>
-            {vehicle.id}
-          </Typography>
-          <Typography
-            color="text.secondary"
-            variant="body2"
-          >
+          <Typography>{vehicle.id}</Typography>
+          <Typography color="text.secondary" variant="body2">
             {vehicle.location}
           </Typography>
         </div>
@@ -70,26 +50,12 @@ export const LogisticsFleetVehicle = (props) => {
         <Divider />
         <Box sx={{ p: 2 }}>
           <Stack spacing={1}>
-            <Typography
-              color="text.secondary"
-              variant="caption"
-            >
+            <Typography color="text.secondary" variant="caption">
               Temperature (good)
             </Typography>
-            <Stack
-              alignItems="center"
-              direction="row"
-              spacing={2}
-            >
-              <LinearProgress
-                value={8}
-                sx={{ flexGrow: 1 }}
-                variant="determinate"
-              />
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
+            <Stack alignItems="center" direction="row" spacing={2}>
+              <LinearProgress value={8} sx={{ flexGrow: 1 }} variant="determinate" />
+              <Typography color="text.secondary" variant="body2">
                 {vehicle.temp}
               </Typography>
             </Stack>
@@ -100,8 +66,8 @@ export const LogisticsFleetVehicle = (props) => {
               px: 3,
               [`& .${timelineItemClasses.root}:before`]: {
                 flex: 0,
-                padding: 0
-              }
+                padding: 0,
+              },
             }}
           >
             <TimelineItem>
@@ -111,13 +77,8 @@ export const LogisticsFleetVehicle = (props) => {
               </TimelineSeparator>
               <TimelineContent>
                 <div>
-                  <Typography variant="body2">
-                    Tracking Number Created
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    variant="caption"
-                  >
+                  <Typography variant="body2">Tracking Number Created</Typography>
+                  <Typography color="text.secondary" variant="caption">
                     {vehicle.startedAt}
                   </Typography>
                 </div>
@@ -130,13 +91,8 @@ export const LogisticsFleetVehicle = (props) => {
               </TimelineSeparator>
               <TimelineContent>
                 <div>
-                  <Typography variant="body2">
-                    Out for Delivery
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    variant="caption"
-                  >
+                  <Typography variant="body2">Out for Delivery</Typography>
+                  <Typography color="text.secondary" variant="caption">
                     {vehicle.departedAt}
                   </Typography>
                 </div>
@@ -148,13 +104,8 @@ export const LogisticsFleetVehicle = (props) => {
               </TimelineSeparator>
               <TimelineContent>
                 <div>
-                  <Typography variant="body2">
-                    Arrived
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    variant="caption"
-                  >
+                  <Typography variant="body2">Arrived</Typography>
+                  <Typography color="text.secondary" variant="caption">
                     {vehicle.arrivedAt}
                   </Typography>
                 </div>

@@ -1,11 +1,5 @@
-export const LogoVisma = (props) => (
-  <svg
-    width={91}
-    height={18}
-    viewBox="0 0 91 18"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}>
+export const LogoVisma = props => (
+  <svg width={91} height={18} viewBox="0 0 91 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <g clipPath="url(#clip0_11275_169465)">
       <path
         fillRule="evenodd"
@@ -22,12 +16,7 @@ export const LogoVisma = (props) => (
     </g>
     <defs>
       <clipPath id="clip0_11275_169465">
-        <rect
-          width={90}
-          height={18}
-          fill="white"
-          transform="translate(0.5)"
-        />
+        <rect width={90} height={18} fill="white" transform="translate(0.5)" />
       </clipPath>
     </defs>
   </svg>

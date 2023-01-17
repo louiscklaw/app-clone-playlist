@@ -13,7 +13,7 @@ import { SideNavSection } from '../vertical-layout/side-nav-section';
 
 const MOBILE_NAV_WIDTH = 280;
 
-const useCssVars = (color) => {
+const useCssVars = color => {
   const theme = useTheme();
 
   return useMemo(() => {
@@ -37,7 +37,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[700],
             '--nav-item-chevron-color': theme.palette.neutral[700],
-            '--nav-scrollbar-color': theme.palette.neutral[400]
+            '--nav-scrollbar-color': theme.palette.neutral[400],
           };
         } else {
           return {
@@ -54,7 +54,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[400],
             '--nav-item-chevron-color': theme.palette.neutral[400],
-            '--nav-scrollbar-color': theme.palette.neutral[900]
+            '--nav-scrollbar-color': theme.palette.neutral[900],
           };
         }
 
@@ -74,7 +74,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[500],
             '--nav-item-chevron-color': theme.palette.neutral[600],
-            '--nav-scrollbar-color': theme.palette.neutral[400]
+            '--nav-scrollbar-color': theme.palette.neutral[400],
           };
         } else {
           return {
@@ -91,7 +91,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[500],
             '--nav-item-chevron-color': theme.palette.neutral[600],
-            '--nav-scrollbar-color': theme.palette.neutral[400]
+            '--nav-scrollbar-color': theme.palette.neutral[400],
           };
         }
 
@@ -101,7 +101,7 @@ const useCssVars = (color) => {
   }, [theme, color]);
 };
 
-export const MobileNav = (props) => {
+export const MobileNav = props => {
   const { color = 'evident', open, onClose, sections = [] } = props;
   const pathname = usePathname();
   const cssVars = useCssVars(color);
@@ -116,8 +116,8 @@ export const MobileNav = (props) => {
           ...cssVars,
           backgroundColor: 'var(--nav-bg)',
           color: 'var(--nav-color)',
-          width: MOBILE_NAV_WIDTH
-        }
+          width: MOBILE_NAV_WIDTH,
+        },
       }}
       variant="temporary"
     >
@@ -125,20 +125,15 @@ export const MobileNav = (props) => {
         sx={{
           height: '100%',
           '& .simplebar-content': {
-            height: '100%'
+            height: '100%',
           },
           '& .simplebar-scrollbar:before': {
-            background: 'var(--nav-scrollbar-color)'
-          }
+            background: 'var(--nav-scrollbar-color)',
+          },
         }}
       >
         <Stack sx={{ height: '100%' }}>
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={2}
-            sx={{ p: 3 }}
-          >
+          <Stack alignItems="center" direction="row" spacing={2} sx={{ p: 3 }}>
             <Box
               component={NextLink}
               href={paths.index}
@@ -150,7 +145,7 @@ export const MobileNav = (props) => {
                 display: 'flex',
                 height: 40,
                 p: '4px',
-                width: 40
+                width: 40,
               }}
             >
               <Logo />
@@ -162,41 +157,29 @@ export const MobileNav = (props) => {
             spacing={2}
             sx={{
               flexGrow: 1,
-              px: 2
+              px: 2,
             }}
           >
             {sections.map((section, index) => (
-              <SideNavSection
-                items={section.items}
-                key={index}
-                pathname={pathname}
-                subheader={section.subheader}
-              />
+              <SideNavSection items={section.items} key={index} pathname={pathname} subheader={section.subheader} />
             ))}
           </Stack>
           <Box sx={{ p: 3 }}>
-            <Typography
-              color="neutral.400"
-              variant="subtitle1"
-            >
+            <Typography color="neutral.400" variant="subtitle1">
               Need help?
             </Typography>
-            <Typography
-              color="neutral.400"
-              sx={{ mb: 2 }}
-              variant="body2"
-            >
+            <Typography color="neutral.400" sx={{ mb: 2 }} variant="body2">
               Please check our docs.
             </Typography>
             <Button
               component={NextLink}
               fullWidth
               href={paths.docs.welcome}
-              startIcon={(
+              startIcon={
                 <SvgIcon>
                   <File04Icon />
                 </SvgIcon>
-              )}
+              }
               variant="contained"
             >
               Documentation
@@ -212,5 +195,5 @@ MobileNav.propTypes = {
   color: PropTypes.oneOf(['blend-in', 'discreet', 'evident']),
   onClose: PropTypes.func,
   open: PropTypes.bool,
-  sections: PropTypes.array
+  sections: PropTypes.array,
 };

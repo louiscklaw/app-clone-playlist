@@ -6,10 +6,10 @@ const icons = {
   mp4: '/assets/icons/icon-mp4.svg',
   pdf: '/assets/icons/icon-pdf.svg',
   png: '/assets/icons/icon-png.svg',
-  svg: '/assets/icons/icon-svg.svg'
+  svg: '/assets/icons/icon-svg.svg',
 };
 
-export const FileIcon = (props) => {
+export const FileIcon = props => {
   const { extension } = props;
 
   let icon;
@@ -24,5 +24,5 @@ export const FileIcon = (props) => {
 };
 
 FileIcon.propTypes = {
-  extension: PropTypes.string
+  extension: PropTypes.string,
 };

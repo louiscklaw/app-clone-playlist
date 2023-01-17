@@ -2,17 +2,10 @@ import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { Avatar, Box, Button, Link, Stack, Typography } from '@mui/material';
-import {
-  Timeline,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineItem,
-  TimelineSeparator
-} from '@mui/lab';
+import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from '@mui/lab';
 import { getInitials } from '../../../utils/get-initials';
 
-const renderContent = (activity) => {
+const renderContent = activity => {
   switch (activity.type) {
     case 'new_job':
       return (
@@ -20,29 +13,17 @@ const renderContent = (activity) => {
           sx={{
             alignItems: 'center',
             display: 'flex',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
           }}
         >
-          <Typography
-            sx={{ mr: 0.5 }}
-            variant="subtitle2"
-          >
+          <Typography sx={{ mr: 0.5 }} variant="subtitle2">
             {activity.author}
           </Typography>
-          <Typography
-            sx={{ mr: 0.5 }}
-            variant="body2"
-          >
+          <Typography sx={{ mr: 0.5 }} variant="body2">
             added a new job
           </Typography>
-          <Typography
-            color="primary"
-            variant="subtitle2"
-          >
-            <Link
-              component={NextLink}
-              href="#"
-            >
+          <Typography color="primary" variant="subtitle2">
+            <Link component={NextLink} href="#">
               {activity.addedJob}
             </Link>
           </Typography>
@@ -54,30 +35,19 @@ const renderContent = (activity) => {
           sx={{
             alignItems: 'center',
             display: 'flex',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
           }}
         >
-          <Typography
-            sx={{ mr: 0.5 }}
-            variant="subtitle2"
-          >
+          <Typography sx={{ mr: 0.5 }} variant="subtitle2">
             {activity.author}
           </Typography>
-          <Typography
-            sx={{ mr: 0.5 }}
-            variant="body2"
-          >
+          <Typography sx={{ mr: 0.5 }} variant="body2">
             added
           </Typography>
-          <Typography
-            sx={{ mr: 0.5 }}
-            variant="subtitle2"
-          >
+          <Typography sx={{ mr: 0.5 }} variant="subtitle2">
             {activity.addedMember}
           </Typography>
-          <Typography variant="body2">
-            as a team member
-          </Typography>
+          <Typography variant="body2">as a team member</Typography>
         </Box>
       );
     case 'created':
@@ -86,24 +56,16 @@ const renderContent = (activity) => {
           sx={{
             alignItems: 'center',
             display: 'flex',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
           }}
         >
-          <Typography
-            sx={{ mr: 0.5 }}
-            variant="subtitle2"
-          >
+          <Typography sx={{ mr: 0.5 }} variant="subtitle2">
             {activity.author}
           </Typography>
-          <Typography
-            sx={{ mr: 0.5 }}
-            variant="body2"
-          >
+          <Typography sx={{ mr: 0.5 }} variant="body2">
             created
           </Typography>
-          <Typography variant="subtitle2">
-            {activity.createdCompany}
-          </Typography>
+          <Typography variant="subtitle2">{activity.createdCompany}</Typography>
         </Box>
       );
     default:
@@ -111,23 +73,19 @@ const renderContent = (activity) => {
   }
 };
 
-export const CompanyActivity = (props) => {
+export const CompanyActivity = props => {
   const { activities, ...other } = props;
 
   return (
-    <Stack
-      spacing={3}
-      {...other}>
+    <Stack spacing={3} {...other}>
       <div>
-        <Typography variant="h6">
-          Activity
-        </Typography>
+        <Typography variant="h6">Activity</Typography>
       </div>
       <Stack spacing={3}>
         <Timeline
           sx={{
             p: 0,
-            m: 0
+            m: 0,
           }}
         >
           {activities.map((activity, index) => {
@@ -139,32 +97,24 @@ export const CompanyActivity = (props) => {
                 key={activity.id}
                 sx={{
                   '&:before': {
-                    display: 'none'
-                  }
+                    display: 'none',
+                  },
                 }}
               >
                 <TimelineSeparator>
                   <TimelineDot
                     sx={{
                       border: 0,
-                      p: 0
+                      p: 0,
                     }}
                   >
-                    <Avatar src={activity.avatar}>
-                      {getInitials(activity.author)}
-                    </Avatar>
+                    <Avatar src={activity.avatar}>{getInitials(activity.author)}</Avatar>
                   </TimelineDot>
-                  {showConnector && (
-                    <TimelineConnector sx={{ minHeight: 30 }} />
-                  )}
+                  {showConnector && <TimelineConnector sx={{ minHeight: 30 }} />}
                 </TimelineSeparator>
                 <TimelineContent>
                   {renderContent(activity)}
-                  <Typography
-                    color="text.secondary"
-                    variant="caption"
-                    sx={{ mt: 1 }}
-                  >
+                  <Typography color="text.secondary" variant="caption" sx={{ mt: 1 }}>
                     {createdAt}
                   </Typography>
                 </TimelineContent>
@@ -175,12 +125,10 @@ export const CompanyActivity = (props) => {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}
         >
-          <Button color="inherit">
-            Load more
-          </Button>
+          <Button color="inherit">Load more</Button>
         </Box>
       </Stack>
     </Stack>
@@ -188,10 +136,10 @@ export const CompanyActivity = (props) => {
 };
 
 CompanyActivity.defaultProps = {
-  activities: []
+  activities: [],
 };
 
 CompanyActivity.propTypes = {
   // @ts-ignore
-  activities: PropTypes.array
+  activities: PropTypes.array,
 };

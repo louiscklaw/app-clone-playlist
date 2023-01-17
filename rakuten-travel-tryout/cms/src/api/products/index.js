@@ -10,7 +10,7 @@ class ProductsApi {
     let count = data.length;
 
     if (typeof filters !== 'undefined') {
-      data = data.filter((product) => {
+      data = data.filter(product => {
         if (typeof filters.name !== 'undefined' && filters.name !== '') {
           const nameMatched = product.name.toLowerCase().includes(filters.name.toLowerCase());
 
@@ -57,7 +57,7 @@ class ProductsApi {
 
     return Promise.resolve({
       data,
-      count
+      count,
     });
   }
 }

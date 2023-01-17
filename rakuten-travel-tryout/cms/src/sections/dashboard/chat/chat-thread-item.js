@@ -4,18 +4,16 @@ import { Avatar, avatarClasses, AvatarGroup, Box, Stack, Typography } from '@mui
 import { useMockedUser } from '../../../hooks/use-mocked-user';
 import { customLocale } from '../../../utils/date-locale';
 
-const getLastMessage = (thread) => {
+const getLastMessage = thread => {
   return thread.messages?.[thread.messages.length - 1];
 };
 
 const getRecipients = (participants, userId) => {
-  return participants.filter((participant) => participant.id !== userId);
+  return participants.filter(participant => participant.id !== userId);
 };
 
-const getDisplayName = (recipients) => {
-  return recipients
-    .map((participant) => participant.name)
-    .join(', ');
+const getDisplayName = recipients => {
+  return recipients.map(participant => participant.name).join(', ');
 };
 
 const getDisplayContent = (userId, lastMessage) => {
@@ -24,25 +22,23 @@ const getDisplayContent = (userId, lastMessage) => {
   }
 
   const author = lastMessage.authorId === userId ? 'Me: ' : '';
-  const message = lastMessage.contentType === 'image'
-    ? 'Sent a photo'
-    : lastMessage.body;
+  const message = lastMessage.contentType === 'image' ? 'Sent a photo' : lastMessage.body;
 
   return `${author}${message}`;
 };
 
-const getLastActivity = (lastMessage) => {
+const getLastActivity = lastMessage => {
   if (!lastMessage) {
     return null;
   }
 
   return formatDistanceStrict(lastMessage.createdAt, new Date(), {
     addSuffix: false,
-    locale: customLocale
+    locale: customLocale,
   });
 };
 
-export const ChatThreadItem = (props) => {
+export const ChatThreadItem = props => {
   const { active, thread, onSelect, ...other } = props;
   const user = useMockedUser();
 
@@ -66,82 +62,64 @@ export const ChatThreadItem = (props) => {
         px: 3,
         py: 2,
         '&:hover': {
-          backgroundColor: 'action.hover'
+          backgroundColor: 'action.hover',
         },
         ...(active && {
-          backgroundColor: 'action.hover'
-        })
+          backgroundColor: 'action.hover',
+        }),
       }}
-      {...other}>
+      {...other}
+    >
       <div>
         <AvatarGroup
           max={2}
           sx={{
             [`& .${avatarClasses.root}`]: groupThread
               ? {
-                height: 26,
-                width: 26,
-                '&:nth-of-type(2)': {
-                  mt: '10px'
+                  height: 26,
+                  width: 26,
+                  '&:nth-of-type(2)': {
+                    mt: '10px',
+                  },
                 }
-              }
               : {
-                height: 36,
-                width: 36
-              }
+                  height: 36,
+                  width: 36,
+                },
           }}
         >
-          {recipients.map((recipient) => (
-            <Avatar
-              key={recipient.id}
-              src={recipient.avatar || undefined}
-            />
+          {recipients.map(recipient => (
+            <Avatar key={recipient.id} src={recipient.avatar || undefined} />
           ))}
         </AvatarGroup>
       </div>
       <Box
         sx={{
           flexGrow: 1,
-          overflow: 'hidden'
+          overflow: 'hidden',
         }}
       >
-        <Typography
-          noWrap
-          variant="subtitle2"
-        >
+        <Typography noWrap variant="subtitle2">
           {displayName}
         </Typography>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={1}
-        >
+        <Stack alignItems="center" direction="row" spacing={1}>
           {isUnread && (
             <Box
               sx={{
                 backgroundColor: 'primary.main',
                 borderRadius: '50%',
                 height: 8,
-                width: 8
+                width: 8,
               }}
             />
           )}
-          <Typography
-            color="text.secondary"
-            noWrap
-            sx={{ flexGrow: 1 }}
-            variant="subtitle2"
-          >
+          <Typography color="text.secondary" noWrap sx={{ flexGrow: 1 }} variant="subtitle2">
             {displayContent}
           </Typography>
         </Stack>
       </Box>
       {lastActivity && (
-        <Typography
-          color="text.secondary"
-          sx={{ whiteSpace: 'nowrap' }}
-          variant="caption"
-        >
+        <Typography color="text.secondary" sx={{ whiteSpace: 'nowrap' }} variant="caption">
           {lastActivity}
         </Typography>
       )}
@@ -153,9 +131,9 @@ ChatThreadItem.propTypes = {
   active: PropTypes.bool,
   onSelect: PropTypes.func,
   // @ts-ignore
-  thread: PropTypes.object.isRequired
+  thread: PropTypes.object.isRequired,
 };
 
 ChatThreadItem.defaultProps = {
-  active: false
+  active: false,
 };

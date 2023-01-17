@@ -14,9 +14,9 @@ function descendingComparator(a, b, sortBy) {
 }
 
 function getComparator(sortDir, sortBy) {
-  return (sortDir === 'desc'
+  return sortDir === 'desc'
     ? (a, b) => descendingComparator(a, b, sortBy)
-    : (a, b) => -descendingComparator(a, b, sortBy));
+    : (a, b) => -descendingComparator(a, b, sortBy);
 }
 
 export function applySort(documents, sortBy, sortDir) {
@@ -36,5 +36,5 @@ export function applySort(documents, sortBy, sortDir) {
   });
 
   // @ts-ignore
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map(el => el[0]);
 }

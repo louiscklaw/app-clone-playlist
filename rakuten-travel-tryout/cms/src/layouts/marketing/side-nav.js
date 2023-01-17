@@ -9,7 +9,7 @@ import { SideNavItem } from './side-nav-item';
 const items = [
   {
     title: 'Components',
-    path: paths.components.index
+    path: paths.components.index,
   },
   {
     title: 'Pages',
@@ -19,66 +19,70 @@ const items = [
         items: [
           {
             title: 'Overview',
-            path: paths.dashboard.index
+            path: paths.dashboard.index,
           },
           {
             title: 'Customers',
-            path: paths.dashboard.customers.index
+            path: paths.dashboard.customers.index,
           },
           {
             title: 'Logistics',
-            path: paths.dashboard.logistics.index
+            path: paths.dashboard.logistics.index,
           },
           {
             title: 'File Manager',
-            path: paths.dashboard.fileManager
+            path: paths.dashboard.fileManager,
           },
           {
             title: 'Academy',
-            path: paths.dashboard.academy.index
-          }
-        ]
+            path: paths.dashboard.academy.index,
+          },
+        ],
       },
       {
         subheader: 'Other',
         items: [
           {
             title: 'Blog',
-            path: paths.dashboard.blog.index
+            path: paths.dashboard.blog.index,
           },
           {
             title: 'Pricing',
-            path: paths.pricing
+            path: paths.pricing,
           },
           {
             title: 'Contact',
-            path: paths.contact
+            path: paths.contact,
           },
           {
             title: 'Checkout',
-            path: paths.checkout
+            path: paths.checkout,
           },
           {
             title: 'Error',
-            path: paths[404]
-          }
-        ]
-      }
-    ]
+            path: paths[404],
+          },
+        ],
+      },
+    ],
   },
   {
     title: 'Docs',
-    path: paths.docs.welcome
-  }
+    path: paths.docs.welcome,
+  },
 ];
 
-const renderItems = ({ depth = 0, items, pathname }) => items.reduce((acc,
-  item) => reduceChildRoutes({
-  acc,
-  depth,
-  item,
-  pathname
-}), []);
+const renderItems = ({ depth = 0, items, pathname }) =>
+  items.reduce(
+    (acc, item) =>
+      reduceChildRoutes({
+        acc,
+        depth,
+        item,
+        pathname,
+      }),
+    [],
+  );
 
 const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
   const checkPath = !!(item.path && pathname);
@@ -105,7 +109,7 @@ const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
               sx={{
                 listStyle: 'none',
                 m: 0,
-                p: 0
+                p: 0,
               }}
             >
               {child.subheader && (
@@ -118,13 +122,13 @@ const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
                     lineHeight: 1.66,
                     mb: 1,
                     pl: '24px',
-                    textTransform: 'uppercase'
+                    textTransform: 'uppercase',
                   }}
                 >
                   {child.subheader}
                 </Box>
               )}
-              {child.items.map((item) => {
+              {child.items.map(item => {
                 const checkPath = !!(item.path && pathname);
                 const active = checkPath ? pathname === item.path : false;
 
@@ -135,14 +139,14 @@ const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
 
                   linkProps = isExternal
                     ? {
-                      component: 'a',
-                      href: item.path,
-                      target: '_blank'
-                    }
+                        component: 'a',
+                        href: item.path,
+                        target: '_blank',
+                      }
                     : {
-                      component: NextLink,
-                      href: item.path
-                    };
+                        component: NextLink,
+                        href: item.path,
+                      };
                 }
 
                 return (
@@ -158,19 +162,20 @@ const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
                         py: '8px',
                         textAlign: 'left',
                         '&:hover': {
-                          backgroundColor: 'action.hover'
+                          backgroundColor: 'action.hover',
                         },
                         ...(active && {
-                          color: 'primary.main'
-                        })
+                          color: 'primary.main',
+                        }),
                       }}
-                      {...linkProps}>
+                      {...linkProps}
+                    >
                       <Box
                         component="span"
                         sx={{
                           height: 6,
                           mr: 2,
-                          width: 6
+                          width: 6,
                         }}
                       >
                         <Box
@@ -184,8 +189,8 @@ const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
                               backgroundColor: 'primary.main',
                               height: 6,
                               opacity: 1,
-                              width: 6
-                            })
+                              width: 6,
+                            }),
                           }}
                         />
                       </Box>
@@ -193,11 +198,11 @@ const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
                         component="span"
                         sx={{
                           flexGrow: 1,
-                          fontFamily: (theme) => theme.typography.fontFamily,
+                          fontFamily: theme => theme.typography.fontFamily,
                           fontSize: 13,
                           fontWeight: 500,
                           lineHeight: '24px',
-                          whiteSpace: 'nowrap'
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {item.title}
@@ -209,7 +214,7 @@ const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
             </Stack>
           ))}
         </Stack>
-      </SideNavItem>
+      </SideNavItem>,
     );
   } else {
     acc.push(
@@ -220,14 +225,14 @@ const reduceChildRoutes = ({ acc, depth, item, pathname }) => {
         key={item.title}
         path={item.path}
         title={item.title}
-      />
+      />,
     );
   }
 
   return acc;
 };
 
-export const SideNav = (props) => {
+export const SideNav = props => {
   const { onClose, open = false } = props;
   const pathname = usePathname();
 
@@ -239,15 +244,15 @@ export const SideNav = (props) => {
       PaperProps={{
         sx: {
           maxWidth: '100%',
-          width: 300
-        }
+          width: 300,
+        },
       }}
       variant="temporary"
     >
       <Box
         sx={{
           pt: 2,
-          px: 2
+          px: 2,
         }}
       >
         <Stack
@@ -263,7 +268,7 @@ export const SideNav = (props) => {
             sx={{
               display: 'inline-flex',
               height: 24,
-              width: 24
+              width: 24,
             }}
           >
             <Logo />
@@ -271,31 +276,28 @@ export const SideNav = (props) => {
           <Box
             sx={{
               color: 'text.primary',
-              fontFamily: '\'Plus Jakarta Sans\', sans-serif',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: 14,
               fontWeight: 800,
               letterSpacing: '0.3px',
               lineHeight: 2.5,
               '& span': {
-                color: 'primary.main'
-              }
+                color: 'primary.main',
+              },
             }}
           >
             Devias Kit <span>PRO</span>
           </Box>
         </Stack>
       </Box>
-      <Box
-        component="nav"
-        sx={{ p: 2 }}
-      >
+      <Box component="nav" sx={{ p: 2 }}>
         <Stack
           component="ul"
           spacing={1}
           sx={{
             listStyle: 'none',
             m: 0,
-            p: 0
+            p: 0,
           }}
         >
           {renderItems({ items, pathname })}
@@ -307,5 +309,5 @@ export const SideNav = (props) => {
 
 SideNav.propTypes = {
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

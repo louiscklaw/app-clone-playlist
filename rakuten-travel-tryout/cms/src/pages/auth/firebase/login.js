@@ -16,7 +16,7 @@ import {
   Link,
   Stack,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { GuestGuard } from '../../../guards/guest-guard';
 import { IssuerGuard } from '../../../guards/issuer-guard';
@@ -33,26 +33,19 @@ const useParams = () => {
   const returnTo = searchParams.get('returnTo') || undefined;
 
   return {
-    returnTo
+    returnTo,
   };
 };
 
 const initialValues = {
   email: 'demo@devias.io',
   password: 'Password123!',
-  submit: null
+  submit: null,
 };
 
 const validationSchema = Yup.object({
-  email: Yup
-    .string()
-    .email('Must be a valid email')
-    .max(255)
-    .required('Email is required'),
-  password: Yup
-    .string()
-    .max(255)
-    .required('Password is required')
+  email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+  password: Yup.string().max(255).required('Password is required'),
 });
 
 const Page = () => {
@@ -79,7 +72,7 @@ const Page = () => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   const handleGoogleClick = useCallback(async () => {
@@ -99,42 +92,28 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Login | Devias Kit PRO
-        </title>
+        <title>Login | Devias Kit PRO</title>
       </Head>
       <div>
         <Card elevation={16}>
           <CardHeader
-            subheader={(
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
-                Don&apos;t have an account?
-                &nbsp;
-                <Link
-                  component={NextLink}
-                  href={paths.auth.firebase.register}
-                  underline="hover"
-                  variant="subtitle2"
-                >
+            subheader={
+              <Typography color="text.secondary" variant="body2">
+                Don&apos;t have an account? &nbsp;
+                <Link component={NextLink} href={paths.auth.firebase.register} underline="hover" variant="subtitle2">
                   Register
                 </Link>
               </Typography>
-            )}
+            }
             sx={{ pb: 0 }}
             title="Log in"
           />
           <CardContent>
-            <form
-              noValidate
-              onSubmit={formik.handleSubmit}
-            >
+            <form noValidate onSubmit={formik.handleSubmit}>
               <Box
                 sx={{
                   flexGrow: 1,
-                  mt: 3
+                  mt: 3,
                 }}
               >
                 <Button
@@ -146,34 +125,25 @@ const Page = () => {
                     color: 'common.black',
                     '&:hover': {
                       backgroundColor: 'common.white',
-                      color: 'common.black'
-                    }
+                      color: 'common.black',
+                    },
                   }}
                   variant="contained"
                 >
-                  <Box
-                    alt="Google"
-                    component="img"
-                    src="/assets/logos/logo-google.svg"
-                    sx={{ mr: 1 }}
-                  />
+                  <Box alt="Google" component="img" src="/assets/logos/logo-google.svg" sx={{ mr: 1 }} />
                   Google
                 </Button>
                 <Box
                   sx={{
                     alignItems: 'center',
                     display: 'flex',
-                    mt: 2
+                    mt: 2,
                   }}
                 >
                   <Box sx={{ flexGrow: 1 }}>
                     <Divider orientation="horizontal" />
                   </Box>
-                  <Typography
-                    color="text.secondary"
-                    sx={{ m: 2 }}
-                    variant="body1"
-                  >
+                  <Typography color="text.secondary" sx={{ m: 2 }} variant="body1">
                     OR
                   </Typography>
                   <Box sx={{ flexGrow: 1 }}>
@@ -206,31 +176,19 @@ const Page = () => {
                 />
               </Stack>
               {formik.errors.submit && (
-                <FormHelperText
-                  error
-                  sx={{ mt: 3 }}
-                >
+                <FormHelperText error sx={{ mt: 3 }}>
                   {formik.errors.submit}
                 </FormHelperText>
               )}
               <Box sx={{ mt: 2 }}>
-                <Button
-                  disabled={formik.isSubmitting}
-                  fullWidth
-                  size="large"
-                  type="submit"
-                  variant="contained"
-                >
+                <Button disabled={formik.isSubmitting} fullWidth size="large" type="submit" variant="contained">
                   Log In
                 </Button>
               </Box>
             </form>
           </CardContent>
         </Card>
-        <Stack
-          spacing={3}
-          sx={{ mt: 3 }}
-        >
+        <Stack spacing={3} sx={{ mt: 3 }}>
           <Alert severity="error">
             <div>
               You can use <b>demo@devias.io</b> and password <b>Password123!</b>
@@ -243,12 +201,10 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <IssuerGuard issuer={Issuer.Firebase}>
     <GuestGuard>
-      <AuthLayout>
-        {page}
-      </AuthLayout>
+      <AuthLayout>{page}</AuthLayout>
     </GuestGuard>
   </IssuerGuard>
 );

@@ -19,9 +19,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Contact | Devias Kit PRO
-        </title>
+        <title>Contact | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
@@ -29,23 +27,18 @@ const Page = () => {
           display: 'grid',
           gridTemplateColumns: {
             lg: 'repeat(2, 1fr)',
-            xs: 'repeat(1, 1fr)'
+            xs: 'repeat(1, 1fr)',
           },
-          flexGrow: 1
+          flexGrow: 1,
         }}
       >
         <Box
           sx={{
-            backgroundColor: (theme) => theme.palette.mode === 'dark'
-              ? 'neutral.800'
-              : 'neutral.50',
-            py: 8
+            backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.50'),
+            py: 8,
           }}
         >
-          <Container
-            maxWidth="md"
-            sx={{ pl: { lg: 15 } }}
-          >
+          <Container maxWidth="md" sx={{ pl: { lg: 15 } }}>
             <Stack spacing={3}>
               <div>
                 <Link
@@ -54,21 +47,17 @@ const Page = () => {
                   href={paths.index}
                   sx={{
                     alignItems: 'center',
-                    display: 'inline-flex'
+                    display: 'inline-flex',
                   }}
                   underline="hover"
                 >
                   <SvgIcon sx={{ mr: 1 }}>
                     <ArrowLeftIcon />
                   </SvgIcon>
-                  <Typography variant="subtitle2">
-                    Home
-                  </Typography>
+                  <Typography variant="subtitle2">Home</Typography>
                 </Link>
               </div>
-              <Typography variant="h3">
-                Contact
-              </Typography>
+              <Typography variant="h3">Contact</Typography>
             </Stack>
             <Stack
               alignItems="center"
@@ -76,13 +65,13 @@ const Page = () => {
               spacing={2}
               sx={{
                 mb: 6,
-                mt: 8
+                mt: 8,
               }}
             >
               <Avatar
                 sx={{
                   backgroundColor: 'primary.main',
-                  color: 'primary.contrastText'
+                  color: 'primary.contrastText',
                 }}
                 variant="rounded"
               >
@@ -90,28 +79,16 @@ const Page = () => {
                   <Mail01Icon />
                 </SvgIcon>
               </Avatar>
-              <Typography variant="overline">
-                Contact sales
-              </Typography>
+              <Typography variant="overline">Contact sales</Typography>
             </Stack>
-            <Typography
-              sx={{ mb: 3 }}
-              variant="h1"
-            >
+            <Typography sx={{ mb: 3 }} variant="h1">
               Talk to our account expert
             </Typography>
-            <Typography
-              sx={{ mb: 3 }}
-              variant="body1"
-            >
-              Have questions about integrating our APIs? Fill out the form
-              and a senior web expert will be in touch shortly.
+            <Typography sx={{ mb: 3 }} variant="body1">
+              Have questions about integrating our APIs? Fill out the form and a senior web expert will be in touch
+              shortly.
             </Typography>
-            <Typography
-              color="primary"
-              sx={{ mb: 3 }}
-              variant="h6"
-            >
+            <Typography color="primary" sx={{ mb: 3 }} variant="h6">
               Join 6,000+ forward-thinking companies:
             </Typography>
             <Stack
@@ -122,8 +99,8 @@ const Page = () => {
               sx={{
                 color: 'text.primary',
                 '& > *': {
-                  flex: '0 0 auto'
-                }
+                  flex: '0 0 auto',
+                },
               }}
             >
               <LogoSamsung />
@@ -139,21 +116,18 @@ const Page = () => {
           sx={{
             backgroundColor: 'background.paper',
             px: 6,
-            py: 15
+            py: 15,
           }}
         >
           <Container
             maxWidth="md"
             sx={{
               pr: {
-                lg: 15
-              }
+                lg: 15,
+              },
             }}
           >
-            <Typography
-              sx={{ pb: 3 }}
-              variant="h6"
-            >
+            <Typography sx={{ pb: 3 }} variant="h6">
               Fill the form below
             </Typography>
             <ContactForm />

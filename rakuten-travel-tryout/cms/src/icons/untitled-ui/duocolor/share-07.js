@@ -1,10 +1,5 @@
-const Share07 = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    fill="none"
-    {...props}>
+const Share07 = props => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
     <path
       fill="currentColor"
       d="M18 8c1.6569 0 3-1.3431 3-3 0-1.6568-1.3431-3-3-3s-3 1.3432-3 3c0 1.6569 1.3431 3 3 3ZM6 15c1.6569 0 3-1.3431 3-3S7.6569 9 6 9s-3 1.3431-3 3 1.3431 3 3 3Zm12 7c1.6569 0 3-1.3431 3-3s-1.3431-3-3-3-3 1.3431-3 3 1.3431 3 3 3Z"

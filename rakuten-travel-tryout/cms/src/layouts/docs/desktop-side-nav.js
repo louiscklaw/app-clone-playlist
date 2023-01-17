@@ -7,7 +7,7 @@ import { SideNavSection } from './side-nav-section';
 const TOP_NAV_HEIGHT = 64;
 const SIDE_NAV_WIDTH = 280;
 
-export const DesktopSideNav = (props) => {
+export const DesktopSideNav = props => {
   const { sections = [] } = props;
   const pathname = usePathname();
 
@@ -20,8 +20,8 @@ export const DesktopSideNav = (props) => {
           height: `calc(100% - ${TOP_NAV_HEIGHT}px)`,
           top: `${TOP_NAV_HEIGHT}px`,
           width: `${SIDE_NAV_WIDTH}px`,
-          zIndex: 100
-        }
+          zIndex: 100,
+        },
       }}
       variant="permanent"
     >
@@ -29,22 +29,13 @@ export const DesktopSideNav = (props) => {
         sx={{
           height: '100%',
           '& .simplebar-content': {
-            height: '100%'
-          }
+            height: '100%',
+          },
         }}
       >
-        <Stack
-          component="nav"
-          spacing={3}
-          sx={{ p: 2 }}
-        >
+        <Stack component="nav" spacing={3} sx={{ p: 2 }}>
           {sections.map((section, index) => (
-            <SideNavSection
-              items={section.items}
-              key={index}
-              pathname={pathname}
-              subheader={section.subheader}
-            />
+            <SideNavSection items={section.items} key={index} pathname={pathname} subheader={section.subheader} />
           ))}
         </Stack>
       </Scrollbar>
@@ -53,5 +44,5 @@ export const DesktopSideNav = (props) => {
 };
 
 DesktopSideNav.propTypes = {
-  sections: PropTypes.array
+  sections: PropTypes.array,
 };

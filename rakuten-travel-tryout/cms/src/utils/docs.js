@@ -11,7 +11,7 @@ export const getArticle = (slug, fields = []) => {
 
   const article = {};
 
-  fields.forEach((field) => {
+  fields.forEach(field => {
     if (field === 'slug') {
       article[field] = slug;
     }
@@ -30,10 +30,10 @@ export const getArticle = (slug, fields = []) => {
 
 export const getArticles = (fields = []) => {
   // Read all files recursively from docs directory
-  const filePaths = readdirSync(docsDir).filter((item) => {
+  const filePaths = readdirSync(docsDir).filter(item => {
     const currPath = join(docsDir, item);
     return !lstatSync(currPath).isDirectory();
   });
 
-  return filePaths.map((filePath) => getArticle(filePath.replace(/\.md$/, ''), fields));
+  return filePaths.map(filePath => getArticle(filePath.replace(/\.md$/, ''), fields));
 };

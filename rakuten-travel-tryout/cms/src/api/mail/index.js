@@ -27,25 +27,25 @@ class MailApi {
         }, []);
 
         if (label && customLabels.includes(label)) {
-          filteredEmails = clonedEmails.filter((email) => email.labelIds.includes(label));
+          filteredEmails = clonedEmails.filter(email => email.labelIds.includes(label));
         } else {
           switch (label) {
             case undefined:
             case 'inbox':
-              filteredEmails = clonedEmails.filter((email) => email.folder === 'inbox');
+              filteredEmails = clonedEmails.filter(email => email.folder === 'inbox');
               break;
             case 'all':
               filteredEmails = [...clonedEmails];
               break;
             case 'sent':
             case 'trash':
-              filteredEmails = clonedEmails.filter((email) => email.folder === label);
+              filteredEmails = clonedEmails.filter(email => email.folder === label);
               break;
             case 'starred':
-              filteredEmails = clonedEmails.filter((email) => email.isStarred);
+              filteredEmails = clonedEmails.filter(email => email.isStarred);
               break;
             case 'important':
-              filteredEmails = clonedEmails.filter((email) => email.isImportant);
+              filteredEmails = clonedEmails.filter(email => email.isImportant);
               break;
           }
         }
@@ -66,7 +66,7 @@ class MailApi {
         const clonedEmails = deepCopy(emails);
 
         // Find the mail
-        const email = clonedEmails.find((email) => email.id === emailId);
+        const email = clonedEmails.find(email => email.id === emailId);
 
         if (!email) {
           reject(new Error('Email not found'));

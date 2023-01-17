@@ -7,22 +7,18 @@ import { Layout as AuthLayout } from '../../../layouts/auth/modern-layout';
 import { paths } from '../../../paths';
 
 const initialValues = {
-  email: ''
+  email: '',
 };
 
 const validationSchema = Yup.object({
-  email: Yup
-    .string()
-    .email('Must be a valid email')
-    .max(255)
-    .required('Email is required')
+  email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
 });
 
 const Page = () => {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: () => { }
+    onSubmit: () => {},
   });
 
   return (
@@ -34,30 +30,20 @@ const Page = () => {
           href={paths.dashboard.index}
           sx={{
             alignItems: 'center',
-            display: 'inline-flex'
+            display: 'inline-flex',
           }}
           underline="hover"
         >
           <SvgIcon sx={{ mr: 1 }}>
             <ArrowLeftIcon />
           </SvgIcon>
-          <Typography variant="subtitle2">
-            Dashboard
-          </Typography>
+          <Typography variant="subtitle2">Dashboard</Typography>
         </Link>
       </Box>
-      <Stack
-        sx={{ mb: 4 }}
-        spacing={1}
-      >
-        <Typography variant="h5">
-          Forgot password
-        </Typography>
+      <Stack sx={{ mb: 4 }} spacing={1}>
+        <Typography variant="h5">Forgot password</Typography>
       </Stack>
-      <form
-        noValidate
-        onSubmit={formik.handleSubmit}
-      >
+      <form noValidate onSubmit={formik.handleSubmit}>
         <TextField
           autoFocus
           error={!!(formik.touched.email && formik.errors.email)}
@@ -70,13 +56,7 @@ const Page = () => {
           type="email"
           value={formik.values.email}
         />
-        <Button
-          fullWidth
-          size="large"
-          sx={{ mt: 3 }}
-          type="submit"
-          variant="contained"
-        >
+        <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
           Send reset link
         </Button>
       </form>
@@ -84,10 +64,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <AuthLayout>
-    {page}
-  </AuthLayout>
-);
+Page.getLayout = page => <AuthLayout>{page}</AuthLayout>;
 
 export default Page;

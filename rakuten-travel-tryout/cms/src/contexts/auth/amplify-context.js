@@ -7,7 +7,7 @@ import { Issuer } from '../../utils/auth';
 Auth.configure({
   userPoolId: amplifyConfig.aws_user_pools_id,
   userPoolWebClientId: amplifyConfig.aws_user_pools_web_client_id,
-  region: amplifyConfig.aws_cognito_region
+  region: amplifyConfig.aws_cognito_region,
 });
 
 var ActionType;
@@ -20,7 +20,7 @@ var ActionType;
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 const handlers = {
@@ -31,7 +31,7 @@ const handlers = {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   },
   SIGN_IN: (state, action) => {
@@ -40,19 +40,17 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
-  SIGN_OUT: (state) => ({
+  SIGN_OUT: state => ({
     ...state,
     isAuthenticated: false,
-    user: null
-  })
+    user: null,
+  }),
 };
 
-const reducer = (state, action) => (handlers[action.type]
-  ? handlers[action.type](state, action)
-  : state);
+const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
 
 export const AuthContext = createContext({
   ...initialState,
@@ -63,10 +61,10 @@ export const AuthContext = createContext({
   resendSignUp: () => Promise.resolve(),
   forgotPassword: () => Promise.resolve(),
   forgotPasswordSubmit: () => Promise.resolve(),
-  signOut: () => Promise.resolve()
+  signOut: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -87,61 +85,68 @@ export const AuthProvider = (props) => {
             avatar: '/assets/avatars/avatar-anika-visser.png',
             email: user.attributes.email,
             name: 'Anika Visser',
-            plan: 'Premium'
-          }
-        }
+            plan: 'Premium',
+          },
+        },
       });
     } catch (error) {
       dispatch({
         type: ActionType.INITIALIZE,
         payload: {
           isAuthenticated: false,
-          user: null
-        }
+          user: null,
+        },
       });
     }
   }, [dispatch]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       initialize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   const signOut = useCallback(async () => {
     await Auth.signOut();
     dispatch({
-      type: ActionType.SIGN_OUT
+      type: ActionType.SIGN_OUT,
     });
   }, [dispatch]);
 
-  const signIn = useCallback(async (email, password) => {
-    const user = await Auth.signIn(email, password);
+  const signIn = useCallback(
+    async (email, password) => {
+      const user = await Auth.signIn(email, password);
 
-    if (user.challengeName) {
-      console.error(`Unable to login, because challenge "${user.challengeName}" is mandated and we did not handle this case.`);
-      return;
-    }
-
-    dispatch({
-      type: ActionType.SIGN_IN,
-      payload: {
-        user: {
-          id: user.attributes.sub,
-          avatar: '/assets/avatars/avatar-anika-visser.png',
-          email: user.attributes.email,
-          name: 'Anika Visser',
-          plan: 'Premium'
-        }
+      if (user.challengeName) {
+        console.error(
+          `Unable to login, because challenge "${user.challengeName}" is mandated and we did not handle this case.`,
+        );
+        return;
       }
-    });
-  }, [dispatch]);
+
+      dispatch({
+        type: ActionType.SIGN_IN,
+        payload: {
+          user: {
+            id: user.attributes.sub,
+            avatar: '/assets/avatars/avatar-anika-visser.png',
+            email: user.attributes.email,
+            name: 'Anika Visser',
+            plan: 'Premium',
+          },
+        },
+      });
+    },
+    [dispatch],
+  );
 
   const signUp = useCallback(async (email, password) => {
     await Auth.signUp({
       username: email,
       password,
-      attributes: { email }
+      attributes: { email },
     });
   }, []);
 
@@ -149,11 +154,11 @@ export const AuthProvider = (props) => {
     await Auth.confirmSignUp(username, code);
   }, []);
 
-  const resendSignUp = useCallback(async (username) => {
+  const resendSignUp = useCallback(async username => {
     await Auth.resendSignUp(username);
   }, []);
 
-  const forgotPassword = useCallback(async (username) => {
+  const forgotPassword = useCallback(async username => {
     await Auth.forgotPassword(username);
   }, []);
 
@@ -172,7 +177,7 @@ export const AuthProvider = (props) => {
         resendSignUp,
         forgotPassword,
         forgotPasswordSubmit,
-        signOut
+        signOut,
       }}
     >
       {children}
@@ -181,7 +186,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

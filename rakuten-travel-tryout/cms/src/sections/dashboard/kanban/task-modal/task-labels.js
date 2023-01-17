@@ -3,19 +3,14 @@ import { Chip, IconButton, Menu, MenuItem, Stack, SvgIcon } from '@mui/material'
 import PlusIcon from '@untitled-ui/icons-react/build/esm/Plus';
 import PropTypes from 'prop-types';
 
-const options = [
-  'Business',
-  'Planning',
-  'Frontend',
-  'Design'
-];
+const options = ['Business', 'Planning', 'Frontend', 'Design'];
 
-export const TaskLabels = (props) => {
+export const TaskLabels = props => {
   const { labels = [], onChange } = props;
   const menuRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
   const availableOptions = useMemo(() => {
-    return options.filter((option) => !labels.includes(option));
+    return options.filter(option => !labels.includes(option));
   }, [labels]);
 
   const handleMenuOpen = useCallback(() => {
@@ -26,50 +21,42 @@ export const TaskLabels = (props) => {
     setOpenMenu(false);
   }, []);
 
-  const handleDelete = useCallback((label) => {
-    const newLabels = labels.filter((item) => item !== label);
+  const handleDelete = useCallback(
+    label => {
+      const newLabels = labels.filter(item => item !== label);
 
-    onChange?.(newLabels);
-  }, [labels, onChange]);
+      onChange?.(newLabels);
+    },
+    [labels, onChange],
+  );
 
-  const handleToggle = useCallback((label) => {
-    let newLabels;
+  const handleToggle = useCallback(
+    label => {
+      let newLabels;
 
-    const found = labels.find((item) => item === label);
+      const found = labels.find(item => item === label);
 
-    if (found) {
-      newLabels = labels.filter((item) => item !== label);
-    } else {
-      newLabels = [...labels, label];
-    }
+      if (found) {
+        newLabels = labels.filter(item => item !== label);
+      } else {
+        newLabels = [...labels, label];
+      }
 
-    setOpenMenu(false);
-    onChange?.(newLabels);
-  }, [labels, onChange]);
+      setOpenMenu(false);
+      onChange?.(newLabels);
+    },
+    [labels, onChange],
+  );
 
   const canAdd = availableOptions.length > 0;
 
   return (
     <>
-      <Stack
-        alignItems="center"
-        direction="row"
-        flexWrap="wrap"
-        gap={1}
-      >
-        {labels.map((label) => (
-          <Chip
-            key={label}
-            label={label}
-            onDelete={() => handleDelete(label)}
-            size="small"
-          />
+      <Stack alignItems="center" direction="row" flexWrap="wrap" gap={1}>
+        {labels.map(label => (
+          <Chip key={label} label={label} onDelete={() => handleDelete(label)} size="small" />
         ))}
-        <IconButton
-          onClick={handleMenuOpen}
-          ref={menuRef}
-          disabled={!canAdd}
-        >
+        <IconButton onClick={handleMenuOpen} ref={menuRef} disabled={!canAdd}>
           <SvgIcon fontSize="small">
             <PlusIcon />
           </SvgIcon>
@@ -79,20 +66,17 @@ export const TaskLabels = (props) => {
         anchorEl={menuRef.current}
         anchorOrigin={{
           horizontal: 'right',
-          vertical: 'bottom'
+          vertical: 'bottom',
         }}
         onClose={handleMenuClose}
         open={openMenu}
         transformOrigin={{
           horizontal: 'right',
-          vertical: 'top'
+          vertical: 'top',
         }}
       >
-        {availableOptions.map((option) => (
-          <MenuItem
-            key={option}
-            onClick={() => handleToggle(option)}
-          >
+        {availableOptions.map(option => (
+          <MenuItem key={option} onClick={() => handleToggle(option)}>
             {option}
           </MenuItem>
         ))}
@@ -103,5 +87,5 @@ export const TaskLabels = (props) => {
 
 TaskLabels.propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string.isRequired),
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };

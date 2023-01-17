@@ -12,9 +12,9 @@ class AuthApi {
     return new Promise((resolve, reject) => {
       try {
         // Find the user
-        const user = users.find((user) => user.email === email);
+        const user = users.find(user => user.email === email);
 
-        if (!user || (user.password !== password)) {
+        if (!user || user.password !== password) {
           reject(new Error('Please check your email and password'));
           return;
         }
@@ -38,7 +38,7 @@ class AuthApi {
     return new Promise((resolve, reject) => {
       try {
         // Check if a user already exists
-        let user = users.find((user) => user.email === email);
+        let user = users.find(user => user.email === email);
 
         if (user) {
           reject(new Error('User already exists'));
@@ -51,7 +51,7 @@ class AuthApi {
           email,
           name,
           password,
-          plan: 'Standard'
+          plan: 'Standard',
         };
 
         users.push(user);
@@ -75,7 +75,7 @@ class AuthApi {
         const { userId } = decode(accessToken);
 
         // Find the user
-        const user = users.find((user) => user.id === userId);
+        const user = users.find(user => user.id === userId);
 
         if (!user) {
           reject(new Error('Invalid authorization token'));
@@ -87,7 +87,7 @@ class AuthApi {
           avatar: user.avatar,
           email: user.email,
           name: user.name,
-          plan: user.plan
+          plan: user.plan,
         });
       } catch (err) {
         console.error('[Auth Api]: ', err);

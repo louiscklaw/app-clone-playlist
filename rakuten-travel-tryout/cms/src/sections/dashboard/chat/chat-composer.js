@@ -10,9 +10,9 @@ import { ChatMessageAdd } from './chat-message-add';
 const useRecipients = () => {
   const [recipients, setRecipients] = useState([]);
 
-  const onRecipientAdd = useCallback((recipient) => {
-    setRecipients((prevState) => {
-      const found = prevState.find((_recipient) => _recipient.id === recipient.id);
+  const onRecipientAdd = useCallback(recipient => {
+    setRecipients(prevState => {
+      const found = prevState.find(_recipient => _recipient.id === recipient.id);
 
       if (found) {
         return prevState;
@@ -22,42 +22,47 @@ const useRecipients = () => {
     });
   }, []);
 
-  const onRecipientRemove = useCallback((recipientId) => {
-    setRecipients((prevState) => {
-      return prevState.filter((recipient) => recipient.id !== recipientId);
+  const onRecipientRemove = useCallback(recipientId => {
+    setRecipients(prevState => {
+      return prevState.filter(recipient => recipient.id !== recipientId);
     });
   }, []);
 
   return {
     onRecipientAdd,
     onRecipientRemove,
-    recipients
+    recipients,
   };
 };
 
-export const ChatComposer = (props) => {
+export const ChatComposer = props => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { onRecipientAdd, onRecipientRemove, recipients } = useRecipients();
 
-  const handleSend = useCallback(async (body) => {
-    const recipientIds = recipients.map((recipient) => recipient.id);
+  const handleSend = useCallback(
+    async body => {
+      const recipientIds = recipients.map(recipient => recipient.id);
 
-    let threadId;
+      let threadId;
 
-    try {
-      // Handle send message and redirect to the new thread
-      threadId = await dispatch(thunks.addMessage({
-        recipientIds,
-        body
-      }));
-    } catch (err) {
-      console.error(err);
-      return;
-    }
+      try {
+        // Handle send message and redirect to the new thread
+        threadId = await dispatch(
+          thunks.addMessage({
+            recipientIds,
+            body,
+          }),
+        );
+      } catch (err) {
+        console.error(err);
+        return;
+      }
 
-    router.push(paths.dashboard.chat + `?threadKey=${threadId}`);
-  }, [dispatch, router, recipients]);
+      router.push(paths.dashboard.chat + `?threadKey=${threadId}`);
+    },
+    [dispatch, router, recipients],
+  );
 
   const canAddMessage = recipients.length > 0;
 
@@ -66,9 +71,10 @@ export const ChatComposer = (props) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        flexGrow: 1
+        flexGrow: 1,
       }}
-      {...props}>
+      {...props}
+    >
       <ChatComposerRecipients
         onRecipientAdd={onRecipientAdd}
         onRecipientRemove={onRecipientRemove}
@@ -77,10 +83,7 @@ export const ChatComposer = (props) => {
       <Divider />
       <Box sx={{ flexGrow: 1 }} />
       <Divider />
-      <ChatMessageAdd
-        disabled={!canAddMessage}
-        onSend={handleSend}
-      />
+      <ChatMessageAdd disabled={!canAddMessage} onSend={handleSend} />
     </Box>
   );
 };

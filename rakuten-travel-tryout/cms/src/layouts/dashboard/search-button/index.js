@@ -23,10 +23,7 @@ export const SearchButton = () => {
           </SvgIcon>
         </IconButton>
       </Tooltip>
-      <SearchDialog
-        onClose={handleClose}
-        open={openDialog}
-      />
+      <SearchDialog onClose={handleClose} open={openDialog} />
     </>
   );
 };

@@ -2,16 +2,16 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import ChevronDownIcon from '@untitled-ui/icons-react/build/esm/ChevronDown';
 import { Button, ButtonGroup, MenuItem, Popover } from '@mui/material';
 
-export const TaskStatus = (props) => {
+export const TaskStatus = props => {
   const { onChange, options = [], value } = props;
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [currentOption, setCurrentOption] = useState(() => {
-    return options.find((option) => option.value === value);
+    return options.find(option => option.value === value);
   });
 
   useEffect(() => {
-    const option = options.find((option) => option.value === value);
+    const option = options.find(option => option.value === value);
     setCurrentOption(option);
   }, [options, value]);
 
@@ -23,14 +23,17 @@ export const TaskStatus = (props) => {
     onChange?.(currentOption.value);
   }, [currentOption, onChange]);
 
-  const handleOptionSelect = useCallback((value) => {
-    const option = options.find((option) => option.value === value);
-    setCurrentOption(option);
-    setOpen(false);
-  }, [options]);
+  const handleOptionSelect = useCallback(
+    value => {
+      const option = options.find(option => option.value === value);
+      setCurrentOption(option);
+      setOpen(false);
+    },
+    [options],
+  );
 
   const handleMenuToggle = useCallback(() => {
-    setOpen((prevState) => !prevState);
+    setOpen(prevState => !prevState);
   }, []);
 
   const handleMenuClose = useCallback(() => {
@@ -39,18 +42,9 @@ export const TaskStatus = (props) => {
 
   return (
     <>
-      <ButtonGroup
-        ref={anchorRef}
-        variant="contained"
-        size="small"
-      >
-        <Button onClick={handleOptionConfirm}>
-          Submit as {currentOption?.label}
-        </Button>
-        <Button
-          size="small"
-          onClick={handleMenuToggle}
-        >
+      <ButtonGroup ref={anchorRef} variant="contained" size="small">
+        <Button onClick={handleOptionConfirm}>Submit as {currentOption?.label}</Button>
+        <Button size="small" onClick={handleMenuToggle}>
           <ChevronDownIcon />
         </Button>
       </ButtonGroup>
@@ -61,14 +55,14 @@ export const TaskStatus = (props) => {
         open={open}
         anchorOrigin={{
           horizontal: 'right',
-          vertical: 'bottom'
+          vertical: 'bottom',
         }}
         transformOrigin={{
           horizontal: 'right',
-          vertical: 'top'
+          vertical: 'top',
         }}
       >
-        {options.map((option) => (
+        {options.map(option => (
           <MenuItem
             key={option.value}
             selected={option.value === value}

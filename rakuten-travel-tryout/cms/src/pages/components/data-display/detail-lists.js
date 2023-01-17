@@ -16,36 +16,36 @@ import { DetailList8 } from '../../../sections/components/detail-lists/detail-li
 const components = [
   {
     element: <DetailList1 />,
-    title: 'Detail list 1'
+    title: 'Detail list 1',
   },
   {
     element: <DetailList2 />,
-    title: 'Detail list 2'
+    title: 'Detail list 2',
   },
   {
     element: <DetailList3 />,
-    title: 'Detail list 3'
+    title: 'Detail list 3',
   },
   {
     element: <DetailList4 />,
-    title: 'Detail list 4'
+    title: 'Detail list 4',
   },
   {
     element: <DetailList5 />,
-    title: 'Detail list 5'
+    title: 'Detail list 5',
   },
   {
     element: <DetailList6 />,
-    title: 'Detail list 6'
+    title: 'Detail list 6',
   },
   {
     element: <DetailList7 />,
-    title: 'Detail list 7'
+    title: 'Detail list 7',
   },
   {
     element: <DetailList8 />,
-    title: 'Detail list 8'
-  }
+    title: 'Detail list 8',
+  },
 ];
 
 const Page = () => {
@@ -54,24 +54,19 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Components: Detail Lists | Devias Kit PRO
-        </title>
+        <title>Components: Detail Lists | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Stack spacing={8}>
-            {components.map((component) => (
-              <Previewer
-                key={component.title}
-                title={component.title}
-              >
+            {components.map(component => (
+              <Previewer key={component.title} title={component.title}>
                 {component.element}
               </Previewer>
             ))}
@@ -82,11 +77,9 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <MarketingLayout>
-    <ComponentsLayout title="Detail Lists">
-      {page}
-    </ComponentsLayout>
+    <ComponentsLayout title="Detail Lists">{page}</ComponentsLayout>
   </MarketingLayout>
 );
 

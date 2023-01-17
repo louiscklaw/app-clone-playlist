@@ -1,10 +1,5 @@
-const CreditCard01 = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    fill="none"
-    {...props}>
+const CreditCard01 = props => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
     <path
       fill="currentColor"
       d="M2 8.2V10h20V8.2c0-1.1201 0-1.6802-.218-2.108a1.9998 1.9998 0 0 0-.874-.874C20.4802 5 19.9201 5 18.8 5H5.2c-1.1201 0-1.6802 0-2.108.218a2 2 0 0 0-.874.874C2 6.5198 2 7.08 2 8.2Z"

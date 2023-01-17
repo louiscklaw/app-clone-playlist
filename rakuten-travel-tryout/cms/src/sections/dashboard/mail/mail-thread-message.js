@@ -8,11 +8,11 @@ const MarkdownWrapper = styled('div')(({ theme }) => ({
   '& > p': {
     fontSize: theme.typography.body1.fontSize,
     lineHeight: theme.typography.body1.lineHeight,
-    marginBottom: theme.spacing(2)
-  }
+    marginBottom: theme.spacing(2),
+  },
 }));
 
-export const MailThreadMessage = (props) => {
+export const MailThreadMessage = props => {
   const { message = '' } = props;
 
   return (
@@ -23,5 +23,5 @@ export const MailThreadMessage = (props) => {
 };
 
 MailThreadMessage.propTypes = {
-  message: PropTypes.string
+  message: PropTypes.string,
 };

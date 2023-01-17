@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Divider, Stack } from '@mui/material';
 import { LogisticsFleetVehicle } from './logistics-fleet-vehicle';
 
-export const LogisticsFleetList = (props) => {
+export const LogisticsFleetList = props => {
   const { onVehicleDeselect, onVehicleSelect, currentVehicleId, vehicles = [] } = props;
 
   return (
@@ -15,10 +15,10 @@ export const LogisticsFleetList = (props) => {
         borderBottomWidth: 1,
         listStyle: 'none',
         m: 0,
-        p: 0
+        p: 0,
       }}
     >
-      {vehicles.map((vehicle) => {
+      {vehicles.map(vehicle => {
         const selected = currentVehicleId ? currentVehicleId === vehicle.id : false;
 
         return (
@@ -39,5 +39,5 @@ LogisticsFleetList.propTypes = {
   currentVehicleId: PropTypes.string,
   onVehicleDeselect: PropTypes.func,
   onVehicleSelect: PropTypes.func,
-  vehicles: PropTypes.array
+  vehicles: PropTypes.array,
 };

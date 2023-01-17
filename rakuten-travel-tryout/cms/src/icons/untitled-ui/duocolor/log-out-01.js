@@ -1,15 +1,6 @@
-const LogOut01 = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    fill="none"
-    {...props}>
-    <path
-      fill="currentColor"
-      d="M3 21V3h6v18H3Z"
-      opacity={0.12}
-    />
+const LogOut01 = props => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
+    <path fill="currentColor" d="M3 21V3h6v18H3Z" opacity={0.12} />
     <path
       stroke="currentColor"
       strokeLinecap="round"

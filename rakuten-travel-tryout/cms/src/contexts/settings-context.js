@@ -29,7 +29,7 @@ const deleteSettings = () => {
   storage.removeItem(STORAGE_KEY);
 };
 
-const storeSettings = (value) => {
+const storeSettings = value => {
   storage.setItem(STORAGE_KEY, JSON.stringify(value));
 };
 
@@ -41,25 +41,25 @@ const initialSettings = {
   navColor: 'evident',
   paletteMode: 'light',
   responsiveFontSizes: true,
-  stretch: false
+  stretch: false,
 };
 
 const initialState = {
   ...initialSettings,
   isInitialized: false,
-  openDrawer: false
+  openDrawer: false,
 };
 
 export const SettingsContext = createContext({
   ...initialState,
-  handleDrawerClose: () => { },
-  handleDrawerOpen: () => { },
-  handleReset: () => { },
-  handleUpdate: () => { },
-  isCustom: false
+  handleDrawerClose: () => {},
+  handleDrawerOpen: () => {},
+  handleReset: () => {},
+  handleUpdate: () => {},
+  isCustom: false,
 });
 
-export const SettingsProvider = (props) => {
+export const SettingsProvider = props => {
   const { children } = props;
   const [state, setState] = useState(initialState);
 
@@ -67,24 +67,24 @@ export const SettingsProvider = (props) => {
     const restored = restoreSettings();
 
     if (restored) {
-      setState((prevState) => ({
+      setState(prevState => ({
         ...prevState,
         ...restored,
-        isInitialized: true
+        isInitialized: true,
       }));
     }
   }, []);
 
   const handleReset = useCallback(() => {
     deleteSettings();
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      ...initialSettings
+      ...initialSettings,
     }));
   }, []);
 
-  const handleUpdate = useCallback((settings) => {
-    setState((prevState) => {
+  const handleUpdate = useCallback(settings => {
+    setState(prevState => {
       storeSettings({
         colorPreset: prevState.colorPreset,
         contrast: prevState.contrast,
@@ -94,27 +94,27 @@ export const SettingsProvider = (props) => {
         paletteMode: prevState.paletteMode,
         responsiveFontSizes: prevState.responsiveFontSizes,
         stretch: prevState.stretch,
-        ...settings
+        ...settings,
       });
 
       return {
         ...prevState,
-        ...settings
+        ...settings,
       };
     });
   }, []);
 
   const handleDrawerOpen = useCallback(() => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      openDrawer: true
+      openDrawer: true,
     }));
   }, []);
 
   const handleDrawerClose = useCallback(() => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      openDrawer: false
+      openDrawer: false,
     }));
   }, []);
 
@@ -127,7 +127,7 @@ export const SettingsProvider = (props) => {
       navColor: state.navColor,
       paletteMode: state.paletteMode,
       responsiveFontSizes: state.responsiveFontSizes,
-      stretch: state.stretch
+      stretch: state.stretch,
     });
   }, [state]);
 
@@ -139,7 +139,7 @@ export const SettingsProvider = (props) => {
         handleDrawerOpen,
         handleReset,
         handleUpdate,
-        isCustom
+        isCustom,
       }}
     >
       {children}
@@ -148,7 +148,7 @@ export const SettingsProvider = (props) => {
 };
 
 SettingsProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const SettingsConsumer = SettingsContext.Consumer;

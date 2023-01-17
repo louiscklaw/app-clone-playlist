@@ -13,7 +13,7 @@ import {
   ListItem,
   ListItemText,
   SvgIcon,
-  Tooltip
+  Tooltip,
 } from '@mui/material';
 import { Scrollbar } from '../../../components/scrollbar';
 
@@ -26,14 +26,14 @@ const tasks = [
     members: [
       {
         avatar: '/assets/avatars/avatar-marcus-finn.png',
-        name: 'Marcus Finn'
+        name: 'Marcus Finn',
       },
       {
         avatar: '/assets/avatars/avatar-carson-darrin.png',
-        name: 'Carson Darrin'
-      }
+        name: 'Carson Darrin',
+      },
     ],
-    title: 'Update the API for the project'
+    title: 'Update the API for the project',
   },
   {
     id: '5eff24bb5bb3bd1beeddde78',
@@ -41,18 +41,18 @@ const tasks = [
     members: [
       {
         avatar: '/assets/avatars/avatar-penjani-inyene.png',
-        name: 'Penjani Inyene'
+        name: 'Penjani Inyene',
       },
       {
         avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser'
+        name: 'Anika Visser',
       },
       {
         avatar: '/assets/avatars/avatar-nasimiyu-danai.png',
-        name: 'Nasimiyu Danai'
-      }
+        name: 'Nasimiyu Danai',
+      },
     ],
-    title: 'Redesign the landing page'
+    title: 'Redesign the landing page',
   },
   {
     id: '5eff24c019175119993fc1ff',
@@ -60,10 +60,10 @@ const tasks = [
     members: [
       {
         avatar: '/assets/avatars/avatar-miron-vitold.png',
-        name: 'Miron Vitold'
-      }
+        name: 'Miron Vitold',
+      },
     ],
-    title: 'Solve the bug for the showState'
+    title: 'Solve the bug for the showState',
   },
   {
     id: '5eff24c52ce9fdadffa11959',
@@ -71,14 +71,14 @@ const tasks = [
     members: [
       {
         avatar: '/assets/avatars/avatar-marcus-finn.png',
-        name: 'Marcus Finn'
+        name: 'Marcus Finn',
       },
       {
         avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
-        name: 'Siegbert Gottfried'
-      }
+        name: 'Siegbert Gottfried',
+      },
     ],
-    title: 'Release v1.0 Beta'
+    title: 'Release v1.0 Beta',
   },
   {
     id: '5eff24ca3ffab939b667258b',
@@ -86,18 +86,18 @@ const tasks = [
     members: [
       {
         avatar: '/assets/avatars/avatar-jie-yan-song.png',
-        name: 'Jie Yan Song'
+        name: 'Jie Yan Song',
       },
       {
         avatar: '/assets/avatars/avatar-marcus-finn.png',
-        name: 'Marcus Finn'
+        name: 'Marcus Finn',
       },
       {
         avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser'
-      }
+        name: 'Anika Visser',
+      },
     ],
-    title: 'GDPR Compliance'
+    title: 'GDPR Compliance',
   },
   {
     id: '5eff24cf8740fc9faca4e463',
@@ -105,14 +105,14 @@ const tasks = [
     members: [
       {
         avatar: '/assets/avatars/avatar-penjani-inyene.png',
-        name: 'Penjani Inyene'
-      }
+        name: 'Penjani Inyene',
+      },
     ],
-    title: 'Redesign Landing Page'
-  }
+    title: 'Redesign Landing Page',
+  },
 ];
 
-const getDeadline = (task) => {
+const getDeadline = task => {
   let deadline = '';
 
   if (task.deadline) {
@@ -129,21 +129,19 @@ const getDeadline = (task) => {
 export const GroupedList3 = () => (
   <Box
     sx={{
-      backgroundColor: (theme) => theme.palette.mode === 'dark'
-        ? 'neutral.800'
-        : 'neutral.100',
-      p: 3
+      backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+      p: 3,
     }}
   >
     <Card>
       <CardHeader
-        action={(
+        action={
           <IconButton>
             <SvgIcon>
               <DotsHorizontalIcon />
             </SvgIcon>
           </IconButton>
-        )}
+        }
         title="Team Tasks"
       />
       <Divider />
@@ -154,29 +152,18 @@ export const GroupedList3 = () => (
             const deadline = getDeadline(task);
 
             return (
-              <ListItem
-                divider={showDivider}
-                key={task.id}
-              >
+              <ListItem divider={showDivider} key={task.id}>
                 <ListItemText
-                  primary={(
-                    <Link
-                      color="text.primary"
-                      noWrap
-                      sx={{ cursor: 'pointer' }}
-                      variant="subtitle2"
-                    >
+                  primary={
+                    <Link color="text.primary" noWrap sx={{ cursor: 'pointer' }} variant="subtitle2">
                       {task.title}
                     </Link>
-                  )}
+                  }
                   secondary={deadline}
                 />
                 <AvatarGroup max={3}>
-                  {task.members.map((member) => (
-                    <Tooltip
-                      key={member.name}
-                      title="View"
-                    >
+                  {task.members.map(member => (
+                    <Tooltip key={member.name} title="View">
                       <Avatar src={member.avatar} />
                     </Tooltip>
                   ))}

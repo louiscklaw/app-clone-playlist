@@ -14,15 +14,11 @@ import { Issuer } from '../../../utils/auth';
 
 const initialValues = {
   email: '',
-  submit: null
+  submit: null,
 };
 
 const validationSchema = Yup.object({
-  email: Yup
-    .string()
-    .email('Must be a valid email')
-    .max(255)
-    .required('Email is required')
+  email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
 });
 
 const Page = () => {
@@ -50,7 +46,7 @@ const Page = () => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   usePageView();
@@ -58,21 +54,13 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Forgot Password | Devias Kit PRO
-        </title>
+        <title>Forgot Password | Devias Kit PRO</title>
       </Head>
       <div>
         <Card elevation={16}>
-          <CardHeader
-            sx={{ pb: 0 }}
-            title="Forgot password"
-          />
+          <CardHeader sx={{ pb: 0 }} title="Forgot password" />
           <CardContent>
-            <form
-              noValidate
-              onSubmit={formik.handleSubmit}
-            >
+            <form noValidate onSubmit={formik.handleSubmit}>
               <TextField
                 autoFocus
                 error={!!(formik.touched.email && formik.errors.email)}
@@ -86,10 +74,7 @@ const Page = () => {
                 value={formik.values.email}
               />
               {formik.errors.submit && (
-                <FormHelperText
-                  error
-                  sx={{ mt: 3 }}
-                >
+                <FormHelperText error sx={{ mt: 3 }}>
                   {formik.errors.submit}
                 </FormHelperText>
               )}
@@ -111,12 +96,10 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <IssuerGuard issuer={Issuer.Amplify}>
     <GuestGuard>
-      <AuthLayout>
-        {page}
-      </AuthLayout>
+      <AuthLayout>{page}</AuthLayout>
     </GuestGuard>
   </IssuerGuard>
 );

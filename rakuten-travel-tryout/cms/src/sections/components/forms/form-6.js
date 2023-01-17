@@ -8,42 +8,23 @@ export const Form6 = () => {
 
   return (
     <Box sx={{ p: 3 }}>
-      <form onSubmit={(event) => event.preventDefault()}>
+      <form onSubmit={event => event.preventDefault()}>
         <Stack spacing={3}>
-          <TextField
-            fullWidth
-            label="Title"
-            name="title"
-          />
-          <TextField
-            fullWidth
-            label="Description"
-            name="description"
-          />
+          <TextField fullWidth label="Title" name="title" />
+          <TextField fullWidth label="Description" name="description" />
           <div>
-            <FormControlLabel
-              control={<Switch name="allDay" />}
-              label="All day"
-            />
+            <FormControlLabel control={<Switch name="allDay" />} label="All day" />
           </div>
           <DateTimePicker
-            onChange={(newDate) => setStartDate(newDate)}
+            onChange={newDate => setStartDate(newDate)}
             label="Start date"
-            renderInput={(inputProps) => (
-              <TextField
-                fullWidth
-                {...inputProps} />
-            )}
+            renderInput={inputProps => <TextField fullWidth {...inputProps} />}
             value={startDate}
           />
           <DateTimePicker
-            onChange={(newDate) => setEndDate(newDate)}
+            onChange={newDate => setEndDate(newDate)}
             label="End date"
-            renderInput={(inputProps) => (
-              <TextField
-                fullWidth
-                {...inputProps} />
-            )}
+            renderInput={inputProps => <TextField fullWidth {...inputProps} />}
             value={endDate}
           />
         </Stack>
@@ -51,18 +32,12 @@ export const Form6 = () => {
         <Box
           sx={{
             alignItems: 'center',
-            display: 'flex'
+            display: 'flex',
           }}
         >
           <Box sx={{ flexGrow: 1 }} />
-          <Button color="inherit">
-            Cancel
-          </Button>
-          <Button
-            sx={{ ml: 1 }}
-            type="submit"
-            variant="contained"
-          >
+          <Button color="inherit">Cancel</Button>
+          <Button sx={{ ml: 1 }} type="submit" variant="contained">
             Confirm
           </Button>
         </Box>

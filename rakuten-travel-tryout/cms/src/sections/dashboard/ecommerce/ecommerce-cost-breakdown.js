@@ -11,99 +11,87 @@ import {
   tableCellClasses,
   TableHead,
   TableRow,
-  Typography
+  Typography,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Chart } from '../../../components/chart';
 
-const useChartOptions = (labels) => {
+const useChartOptions = labels => {
   const theme = useTheme();
 
   return {
     chart: {
-      background: 'transparent'
+      background: 'transparent',
     },
     colors: [
       theme.palette.neutral[200],
       theme.palette.info.main,
       theme.palette.primary.main,
-      theme.palette.warning.main
+      theme.palette.warning.main,
     ],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     labels,
     legend: {
-      show: false
+      show: false,
     },
     plotOptions: {
       pie: {
-        expandOnClick: false
-      }
+        expandOnClick: false,
+      },
     },
     states: {
       active: {
         filter: {
-          type: 'none'
-        }
+          type: 'none',
+        },
       },
       hover: {
         filter: {
-          type: 'none'
-        }
-      }
+          type: 'none',
+        },
+      },
     },
     stroke: {
-      width: 0
+      width: 0,
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     tooltip: {
-      fillSeriesColor: false
-    }
+      fillSeriesColor: false,
+    },
   };
 };
 
-export const EcommerceCostBreakdown = (props) => {
+export const EcommerceCostBreakdown = props => {
   const { chartSeries, labels } = props;
   const chartOptions = useChartOptions(labels);
 
   return (
     <Card>
-      <CardHeader
-        title="Cost Breakdown"
-        subheader="Based on selected period"
-      />
+      <CardHeader title="Cost Breakdown" subheader="Based on selected period" />
       <CardContent>
-        <Chart
-          height={240}
-          options={chartOptions}
-          series={chartSeries}
-          type="donut"
-        />
+        <Chart height={240} options={chartOptions} series={chartSeries} type="donut" />
         <Table>
           <TableHead
             sx={{
               [`& .${tableCellClasses.root}`]: {
-                background: 'transparent'
-              }
+                background: 'transparent',
+              },
             }}
           >
             <TableRow>
-              <TableCell>
-                Top Channels
-              </TableCell>
-              <TableCell align="right">
-                Value
-              </TableCell>
+              <TableCell>Top Channels</TableCell>
+              <TableCell align="right">Value</TableCell>
             </TableRow>
           </TableHead>
           <TableBody
             sx={{
               [`& .${tableCellClasses.root}`]: {
-                border: 0
-              }
+                border: 0,
+              },
             }}
           >
             {chartSeries.map((item, index) => {
@@ -115,7 +103,7 @@ export const EcommerceCostBreakdown = (props) => {
                     <Box
                       sx={{
                         alignItems: 'center',
-                        display: 'flex'
+                        display: 'flex',
                       }}
                     >
                       <Box
@@ -124,19 +112,14 @@ export const EcommerceCostBreakdown = (props) => {
                           borderRadius: '50%',
                           height: 8,
                           mr: 1,
-                          width: 8
+                          width: 8,
                         }}
                       />
-                      <Typography variant="subtitle2">
-                        {labels[index]}
-                      </Typography>
+                      <Typography variant="subtitle2">{labels[index]}</Typography>
                     </Box>
                   </TableCell>
                   <TableCell align="right">
-                    <Typography
-                      color="text.secondary"
-                      variant="body2"
-                    >
+                    <Typography color="text.secondary" variant="body2">
                       {amount}
                     </Typography>
                   </TableCell>
@@ -152,5 +135,5 @@ export const EcommerceCostBreakdown = (props) => {
 
 EcommerceCostBreakdown.propTypes = {
   chartSeries: PropTypes.array.isRequired,
-  labels: PropTypes.array.isRequired
+  labels: PropTypes.array.isRequired,
 };

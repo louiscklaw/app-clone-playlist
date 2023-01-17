@@ -12,37 +12,25 @@ import {
   SvgIcon,
   Tab,
   Tabs,
-  Typography
+  Typography,
 } from '@mui/material';
 import { CourseLesson } from './course-lesson';
 
-export const CourseChapter = (props) => {
+export const CourseChapter = props => {
   const { chapter } = props;
 
   return (
     <Box
       sx={{
         position: 'relative',
-        pb: 6
+        pb: 6,
       }}
     >
       <Card>
-        <CardHeader
-          title={chapter.title}
-          subheader={chapter.description}
-        />
-        <Tabs
-          value="lesson"
-          sx={{ px: 3 }}
-        >
-          <Tab
-            label="Lesson"
-            value="lesson"
-          />
-          <Tab
-            label="Resources"
-            value="resources"
-          />
+        <CardHeader title={chapter.title} subheader={chapter.description} />
+        <Tabs value="lesson" sx={{ px: 3 }}>
+          <Tab label="Lesson" value="lesson" />
+          <Tab label="Resources" value="resources" />
         </Tabs>
         <Divider />
         <CardContent>
@@ -57,41 +45,33 @@ export const CourseChapter = (props) => {
           left: 0,
           position: 'absolute',
           right: 0,
-          zIndex: 1
+          zIndex: 1,
         }}
       >
         <Card elevation={16}>
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={3}
-            sx={{ p: 1 }}
-          >
+          <Stack alignItems="center" direction="row" spacing={3} sx={{ p: 1 }}>
             <Button
               color="inherit"
               size="small"
-              startIcon={(
+              startIcon={
                 <SvgIcon>
                   <ArrowLeftIcon />
                 </SvgIcon>
-              )}
+              }
             >
               Prev
             </Button>
-            <Typography
-              color="text.secondary"
-              variant="subtitle2"
-            >
+            <Typography color="text.secondary" variant="subtitle2">
               1/3
             </Typography>
             <Button
               color="inherit"
               size="small"
-              startIcon={(
+              startIcon={
                 <SvgIcon>
                   <ArrowRightIcon />
                 </SvgIcon>
-              )}
+              }
             >
               Next
             </Button>
@@ -104,5 +84,5 @@ export const CourseChapter = (props) => {
 
 CourseChapter.propTypes = {
   // @ts-ignore
-  chapter: PropTypes.object.isRequired
+  chapter: PropTypes.object.isRequired,
 };

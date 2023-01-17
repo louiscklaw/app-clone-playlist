@@ -6,8 +6,8 @@ import { Chart } from '../../../components/chart';
 const chartSeries = [
   {
     name: 'Conversions',
-    data: [14, 43, 98, 68, 155, 18, 8]
-  }
+    data: [14, 43, 98, 68, 155, 18, 8],
+  },
 ];
 
 const useChartOptions = () => {
@@ -17,60 +17,60 @@ const useChartOptions = () => {
     chart: {
       background: 'transparent',
       toolbar: {
-        show: false
+        show: false,
       },
       zoom: {
-        enabled: false
-      }
+        enabled: false,
+      },
     },
     colors: [theme.palette.primary.main],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     fill: {
       opacity: 1,
-      type: 'solid'
+      type: 'solid',
     },
     grid: {
       yaxis: {
         lines: {
-          show: false
-        }
+          show: false,
+        },
       },
       xaxis: {
         lines: {
-          show: false
-        }
-      }
+          show: false,
+        },
+      },
     },
     legend: {
-      show: false
+      show: false,
     },
     stroke: {
-      width: 2
+      width: 2,
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     xaxis: {
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: false
+        show: false,
       },
       labels: {
-        show: false
-      }
+        show: false,
+      },
     },
     yaxis: {
       labels: {
-        show: false
-      }
+        show: false,
+      },
     },
     tooltip: {
-      enabled: false
-    }
+      enabled: false,
+    },
   };
 };
 
@@ -80,27 +80,17 @@ export const QuickStats8 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.mode === 'dark'
-          ? 'neutral.800'
-          : 'neutral.100',
-        p: 3
+        backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+        p: 3,
       }}
     >
-      <Box
-        maxWidth="sm"
-        sx={{ mx: 'auto' }}
-      >
+      <Box maxWidth="sm" sx={{ mx: 'auto' }}>
         <Card>
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={2}
-            sx={{ p: 3 }}
-          >
+          <Stack alignItems="center" direction="row" spacing={2} sx={{ p: 3 }}>
             <Avatar
               sx={{
                 backgroundColor: 'primary.main',
-                color: 'primary.contrastText'
+                color: 'primary.contrastText',
               }}
             >
               <SvgIcon>
@@ -108,24 +98,13 @@ export const QuickStats8 = () => {
               </SvgIcon>
             </Avatar>
             <Box sx={{ flexGrow: 1 }}>
-              <Typography
-                color="text.secondary"
-                noWrap
-                variant="body1"
-              >
+              <Typography color="text.secondary" noWrap variant="body1">
                 Conversions
               </Typography>
-              <Typography variant="h4">
-                361
-              </Typography>
+              <Typography variant="h4">361</Typography>
             </Box>
             <Box sx={{ maxWidth: 200 }}>
-              <Chart
-                height={100}
-                type="line"
-                options={chartOptions}
-                series={chartSeries}
-              />
+              <Chart height={100} type="line" options={chartOptions} series={chartSeries} />
             </Box>
           </Stack>
         </Card>

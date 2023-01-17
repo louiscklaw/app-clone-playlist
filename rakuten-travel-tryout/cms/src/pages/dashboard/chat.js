@@ -27,7 +27,7 @@ const useParams = () => {
 
   return {
     compose,
-    threadKey
+    threadKey,
   };
 };
 
@@ -38,16 +38,18 @@ const useThreads = () => {
     dispatch(thunks.getThreads());
   }, [dispatch]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getThreads();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 };
 
 const useSidebar = () => {
   const searchParams = useSearchParams();
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
   const [isOpen, setIsOpen] = useState(mdUp);
 
   const handleScreenResize = useCallback(() => {
@@ -58,11 +60,13 @@ const useSidebar = () => {
     }
   }, [mdUp]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handleScreenResize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mdUp]);
+    [mdUp],
+  );
 
   const handeParamsUpdate = useCallback(() => {
     if (!mdUp) {
@@ -70,14 +74,16 @@ const useSidebar = () => {
     }
   }, [mdUp]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handeParamsUpdate();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [searchParams]);
+    [searchParams],
+  );
 
   const handleToggle = useCallback(() => {
-    setIsOpen((prevState) => !prevState);
+    setIsOpen(prevState => !prevState);
   }, []);
 
   const handleClose = useCallback(() => {
@@ -87,7 +93,7 @@ const useSidebar = () => {
   return {
     isOpen,
     handleToggle,
-    handleClose
+    handleClose,
   };
 };
 
@@ -100,18 +106,12 @@ const Page = () => {
 
   useThreads();
 
-  const view = threadKey
-    ? 'thread'
-    : compose
-      ? 'compose'
-      : 'blank';
+  const view = threadKey ? 'thread' : compose ? 'compose' : 'blank';
 
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Chat | Devias Kit PRO
-        </title>
+        <title>Dashboard: Chat | Devias Kit PRO</title>
       </Head>
       <Divider />
       <Box
@@ -120,7 +120,7 @@ const Page = () => {
           backgroundColor: 'background.paper',
           flex: '1 1 auto',
           overflow: 'hidden',
-          position: 'relative'
+          position: 'relative',
         }}
       >
         <Box
@@ -131,14 +131,10 @@ const Page = () => {
             left: 0,
             position: 'absolute',
             right: 0,
-            top: 0
+            top: 0,
           }}
         >
-          <ChatSidebar
-            container={rootRef.current}
-            onClose={sidebar.handleClose}
-            open={sidebar.isOpen}
-          />
+          <ChatSidebar container={rootRef.current} onClose={sidebar.handleClose} open={sidebar.isOpen} />
           <ChatContainer open={sidebar.isOpen}>
             <Box sx={{ p: 2 }}>
               <IconButton onClick={sidebar.handleToggle}>
@@ -158,10 +154,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

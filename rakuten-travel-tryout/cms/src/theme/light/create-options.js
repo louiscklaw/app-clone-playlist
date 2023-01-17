@@ -10,6 +10,6 @@ export const createOptions = ({ colorPreset, contrast }) => {
   return {
     components,
     palette,
-    shadows
+    shadows,
   };
 };

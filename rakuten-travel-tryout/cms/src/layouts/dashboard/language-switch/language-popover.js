@@ -8,75 +8,67 @@ import { tokens } from '../../../locales/tokens';
 const languageOptions = {
   en: {
     icon: '/assets/flags/flag-uk.svg',
-    label: 'English'
+    label: 'English',
   },
   de: {
     icon: '/assets/flags/flag-de.svg',
-    label: 'German'
+    label: 'German',
   },
   es: {
     icon: '/assets/flags/flag-es.svg',
-    label: 'Spanish'
-  }
+    label: 'Spanish',
+  },
 };
 
-export const LanguagePopover = (props) => {
+export const LanguagePopover = props => {
   const { anchorEl, onClose, open = false, ...other } = props;
   const { i18n, t } = useTranslation();
 
-  const handleChange = useCallback(async (language) => {
-    onClose?.();
-    await i18n.changeLanguage(language);
-    const message = t(tokens.common.languageChanged);
-    toast.success(message);
-  }, [onClose, i18n, t]);
+  const handleChange = useCallback(
+    async language => {
+      onClose?.();
+      await i18n.changeLanguage(language);
+      const message = t(tokens.common.languageChanged);
+      toast.success(message);
+    },
+    [onClose, i18n, t],
+  );
 
   return (
     <Popover
       anchorEl={anchorEl}
       anchorOrigin={{
         horizontal: 'right',
-        vertical: 'bottom'
+        vertical: 'bottom',
       }}
       disableScrollLock
       transformOrigin={{
         horizontal: 'right',
-        vertical: 'top'
+        vertical: 'top',
       }}
       onClose={onClose}
       open={open}
       PaperProps={{ sx: { width: 220 } }}
-      {...other}>
-      {Object.keys(languageOptions).map((language) => {
+      {...other}
+    >
+      {Object.keys(languageOptions).map(language => {
         const option = languageOptions[language];
 
         return (
-          <MenuItem
-            onClick={() => handleChange(language)}
-            key={language}
-          >
+          <MenuItem onClick={() => handleChange(language)} key={language}>
             <ListItemIcon>
               <Box
                 sx={{
                   width: 28,
                   '& img': {
-                    width: '100%'
-                  }
+                    width: '100%',
+                  },
                 }}
               >
-                <img
-                  alt={option.label}
-                  src={option.icon}
-                />
+                <img alt={option.label} src={option.icon} />
               </Box>
             </ListItemIcon>
-            <ListItemText
-              primary={(
-                <Typography variant="subtitle2">
-                  {option.label}
-                </Typography>
-              )}
-            />
+            <ListItemText primary={<Typography variant="subtitle2">{option.label}</Typography>} />
           </MenuItem>
         );
       })}
@@ -87,5 +79,5 @@ export const LanguagePopover = (props) => {
 LanguagePopover.propTypes = {
   anchorEl: PropTypes.any,
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

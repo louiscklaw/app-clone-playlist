@@ -5,16 +5,16 @@ const initialState = {
   isLoaded: false,
   columns: {
     byId: {},
-    allIds: []
+    allIds: [],
   },
   tasks: {
     byId: {},
-    allIds: []
+    allIds: [],
   },
   members: {
     byId: {},
-    allIds: []
-  }
+    allIds: [],
+  },
 };
 
 const reducers = {
@@ -50,17 +50,17 @@ const reducers = {
     state.columns.byId[columnId].taskIds = [];
 
     // Delete the tasks from state
-    taskIds.forEach((taskId) => {
+    taskIds.forEach(taskId => {
       delete state.tasks.byId[taskId];
     });
 
-    state.tasks.allIds = state.tasks.allIds.filter((taskId) => taskIds.includes(taskId));
+    state.tasks.allIds = state.tasks.allIds.filter(taskId => taskIds.includes(taskId));
   },
   deleteColumn(state, action) {
     const columnId = action.payload;
 
     delete state.columns.byId[columnId];
-    state.columns.allIds = state.columns.allIds.filter((_columnId) => _columnId !== columnId);
+    state.columns.allIds = state.columns.allIds.filter(_columnId => _columnId !== columnId);
   },
   createTask(state, action) {
     const task = action.payload;
@@ -81,8 +81,9 @@ const reducers = {
     const sourceColumnId = state.tasks.byId[taskId].columnId;
 
     // Remove task from source column
-    state.columns.byId[sourceColumnId].taskIds =
-      (state.columns.byId[sourceColumnId].taskIds.filter((_taskId) => _taskId !== taskId));
+    state.columns.byId[sourceColumnId].taskIds = state.columns.byId[sourceColumnId].taskIds.filter(
+      _taskId => _taskId !== taskId,
+    );
 
     // If columnId exists, it means that we have to add the task to the new column
     if (columnId) {
@@ -100,9 +101,8 @@ const reducers = {
     const { columnId } = state.tasks.byId[taskId];
 
     delete state.tasks.byId[taskId];
-    state.tasks.allIds = state.tasks.allIds.filter((_taskId) => _taskId !== taskId);
-    state.columns.byId[columnId].taskIds =
-      (state.columns.byId[columnId].taskIds.filter((_taskId) => _taskId !== taskId));
+    state.tasks.allIds = state.tasks.allIds.filter(_taskId => _taskId !== taskId);
+    state.columns.byId[columnId].taskIds = state.columns.byId[columnId].taskIds.filter(_taskId => _taskId !== taskId);
   },
   addComment(state, action) {
     const { taskId, comment } = action.payload;
@@ -120,7 +120,7 @@ const reducers = {
     const { taskId, checklist } = action.payload;
     const task = state.tasks.byId[taskId];
 
-    task.checklists = task.checklists.map((_checklist) => {
+    task.checklists = task.checklists.map(_checklist => {
       if (_checklist.id === checklist.id) {
         return checklist;
       }
@@ -132,12 +132,12 @@ const reducers = {
     const { taskId, checklistId } = action.payload;
     const task = state.tasks.byId[taskId];
 
-    task.checklists = task.checklists.filter((checklist) => checklist.id !== checklistId);
+    task.checklists = task.checklists.filter(checklist => checklist.id !== checklistId);
   },
   addCheckItem(state, action) {
     const { taskId, checklistId, checkItem } = action.payload;
     const task = state.tasks.byId[taskId];
-    const checklist = task.checklists.find((checklist) => checklist.id === checklistId);
+    const checklist = task.checklists.find(checklist => checklist.id === checklistId);
 
     if (!checklist) {
       return;
@@ -148,13 +148,13 @@ const reducers = {
   updateCheckItem(state, action) {
     const { taskId, checklistId, checkItem } = action.payload;
     const task = state.tasks.byId[taskId];
-    const checklist = task.checklists.find((checklist) => checklist.id === checklistId);
+    const checklist = task.checklists.find(checklist => checklist.id === checklistId);
 
     if (!checklist) {
       return;
     }
 
-    checklist.checkItems = checklist.checkItems.map((_checkItem) => {
+    checklist.checkItems = checklist.checkItems.map(_checkItem => {
       if (_checkItem.id === checkItem.id) {
         return checkItem;
       }
@@ -165,21 +165,20 @@ const reducers = {
   deleteCheckItem(state, action) {
     const { taskId, checklistId, checkItemId } = action.payload;
     const task = state.tasks.byId[taskId];
-    const checklist = task.checklists.find((_checklist) => _checklist.id === checklistId);
+    const checklist = task.checklists.find(_checklist => _checklist.id === checklistId);
 
     if (!checklist) {
       return;
     }
 
-    checklist.checkItems =
-      (checklist.checkItems.filter((checkItem) => checkItem.id !== checkItemId));
-  }
+    checklist.checkItems = checklist.checkItems.filter(checkItem => checkItem.id !== checkItemId);
+  },
 };
 
 export const slice = createSlice({
   name: 'kanban',
   initialState,
-  reducers
+  reducers,
 });
 
 export const { reducer } = slice;

@@ -16,11 +16,13 @@ const useMobileNav = () => {
     }
   }, [isOpen]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handlePathnameChange();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pathname]);
+    [pathname],
+  );
 
   const handleOpen = useCallback(() => {
     setIsOpen(true);
@@ -33,52 +35,41 @@ const useMobileNav = () => {
   return {
     isOpen,
     handleOpen,
-    handleClose
+    handleClose,
   };
 };
 
 const HorizontalLayoutRoot = styled('div')({
   display: 'flex',
   flex: '1 1 auto',
-  maxWidth: '100%'
+  maxWidth: '100%',
 });
 
 const HorizontalLayoutContainer = styled('div')({
   display: 'flex',
   flex: '1 1 auto',
   flexDirection: 'column',
-  width: '100%'
+  width: '100%',
 });
 
-export const HorizontalLayout = (props) => {
+export const HorizontalLayout = props => {
   const { children, navColor, sections } = props;
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'));
   const mobileNav = useMobileNav();
 
   return (
     <>
-      <TopNav
-        color={navColor}
-        onMobileNav={mobileNav.handleOpen}
-        sections={sections}
-      />
+      <TopNav color={navColor} onMobileNav={mobileNav.handleOpen} sections={sections} />
       {!lgUp && (
-        <MobileNav
-          color={navColor}
-          onClose={mobileNav.handleClose}
-          open={mobileNav.isOpen}
-          sections={sections}
-        />
+        <MobileNav color={navColor} onClose={mobileNav.handleClose} open={mobileNav.isOpen} sections={sections} />
       )}
       <HorizontalLayoutRoot>
-        <HorizontalLayoutContainer>
-          {children}
-        </HorizontalLayoutContainer>
+        <HorizontalLayoutContainer>{children}</HorizontalLayoutContainer>
       </HorizontalLayoutRoot>
     </>
   );
 };
 
 HorizontalLayout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

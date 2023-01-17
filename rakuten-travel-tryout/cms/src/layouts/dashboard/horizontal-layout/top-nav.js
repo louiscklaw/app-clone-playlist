@@ -15,7 +15,7 @@ import { NotificationsButton } from '../notifications-button';
 import { TenantSwitch } from '../tenant-switch';
 import { TopNavSection } from './top-nav-section';
 
-const useCssVars = (color) => {
+const useCssVars = color => {
   const theme = useTheme();
 
   return useMemo(() => {
@@ -37,7 +37,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[700],
             '--nav-item-chevron-color': theme.palette.neutral[700],
-            '--nav-scrollbar-color': theme.palette.neutral[400]
+            '--nav-scrollbar-color': theme.palette.neutral[400],
           };
         } else {
           return {
@@ -56,7 +56,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[400],
             '--nav-item-chevron-color': theme.palette.neutral[400],
-            '--nav-scrollbar-color': theme.palette.neutral[900]
+            '--nav-scrollbar-color': theme.palette.neutral[900],
           };
         }
 
@@ -77,7 +77,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[700],
             '--nav-item-chevron-color': theme.palette.neutral[700],
-            '--nav-scrollbar-color': theme.palette.neutral[400]
+            '--nav-scrollbar-color': theme.palette.neutral[400],
           };
         } else {
           return {
@@ -96,7 +96,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[400],
             '--nav-item-chevron-color': theme.palette.neutral[400],
-            '--nav-scrollbar-color': theme.palette.neutral[900]
+            '--nav-scrollbar-color': theme.palette.neutral[900],
           };
         }
 
@@ -117,7 +117,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[500],
             '--nav-item-chevron-color': theme.palette.neutral[600],
-            '--nav-scrollbar-color': theme.palette.neutral[400]
+            '--nav-scrollbar-color': theme.palette.neutral[400],
           };
         } else {
           return {
@@ -135,7 +135,7 @@ const useCssVars = (color) => {
             '--nav-item-icon-active-color': theme.palette.primary.main,
             '--nav-item-icon-disabled-color': theme.palette.neutral[500],
             '--nav-item-chevron-color': theme.palette.neutral[600],
-            '--nav-scrollbar-color': theme.palette.neutral[400]
+            '--nav-scrollbar-color': theme.palette.neutral[400],
           };
         }
 
@@ -145,10 +145,10 @@ const useCssVars = (color) => {
   }, [theme, color]);
 };
 
-export const TopNav = (props) => {
+export const TopNav = props => {
   const { color = 'evident', onMobileNav, sections = [] } = props;
   const pathname = usePathname();
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
   const cssVars = useCssVars(color);
 
   return (
@@ -164,7 +164,7 @@ export const TopNav = (props) => {
         left: 0,
         position: 'sticky',
         top: 0,
-        zIndex: (theme) => theme.zIndex.appBar
+        zIndex: theme => theme.zIndex.appBar,
       }}
     >
       <Stack
@@ -174,14 +174,10 @@ export const TopNav = (props) => {
         spacing={2}
         sx={{
           px: 3,
-          py: 1
+          py: 1,
         }}
       >
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
+        <Stack alignItems="center" direction="row" spacing={2}>
           {!mdUp && (
             <IconButton onClick={onMobileNav}>
               <SvgIcon>
@@ -200,18 +196,14 @@ export const TopNav = (props) => {
               display: 'inline-flex',
               height: 40,
               p: '4px',
-              width: 40
+              width: 40,
             }}
           >
             <Logo />
           </Box>
           <TenantSwitch />
         </Stack>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
+        <Stack alignItems="center" direction="row" spacing={2}>
           <LanguageSwitch />
           <NotificationsButton />
           <ContactsButton />
@@ -223,14 +215,14 @@ export const TopNav = (props) => {
           sx={{
             borderTopWidth: 1,
             borderTopStyle: 'solid',
-            borderTopColor: 'var(--nav-divider-color)'
+            borderTopColor: 'var(--nav-divider-color)',
           }}
         >
           <Scrollbar
             sx={{
               '& .simplebar-scrollbar:before': {
-                background: 'var(--nav-scrollbar-color)'
-              }
+                background: 'var(--nav-scrollbar-color)',
+              },
             }}
           >
             <Stack
@@ -240,16 +232,11 @@ export const TopNav = (props) => {
               spacing={1}
               sx={{
                 px: 2,
-                py: 1.5
+                py: 1.5,
               }}
             >
               {sections.map((section, index) => (
-                <TopNavSection
-                  items={section.items}
-                  key={index}
-                  pathname={pathname}
-                  subheader={section.subheader}
-                />
+                <TopNavSection items={section.items} key={index} pathname={pathname} subheader={section.subheader} />
               ))}
             </Stack>
           </Scrollbar>
@@ -262,5 +249,5 @@ export const TopNav = (props) => {
 TopNav.propTypes = {
   color: PropTypes.oneOf(['blend-in', 'discreet', 'evident']),
   onMobileNav: PropTypes.func,
-  sections: PropTypes.array
+  sections: PropTypes.array,
 };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Trash02Icon from '@untitled-ui/icons-react/build/esm/Trash02';
 import { Button, Checkbox, IconButton, Input, Stack, SvgIcon } from '@mui/material';
 
-export const TaskCheckItem = (props) => {
+export const TaskCheckItem = props => {
   const {
     checkItem,
     isRenaming = false,
@@ -21,21 +21,26 @@ export const TaskCheckItem = (props) => {
     setNameCopy(checkItem.name);
   }, [checkItem]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handleNameReset();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [checkItem]);
+    [checkItem],
+  );
 
-  const handleCheckChange = useCallback((event) => {
-    if (event.target.checked) {
-      onCheck?.();
-    } else {
-      onUncheck?.();
-    }
-  }, [onCheck, onUncheck]);
+  const handleCheckChange = useCallback(
+    event => {
+      if (event.target.checked) {
+        onCheck?.();
+      } else {
+        onUncheck?.();
+      }
+    },
+    [onCheck, onUncheck],
+  );
 
-  const handleNameChange = useCallback((event) => {
+  const handleNameChange = useCallback(event => {
     setNameCopy(event.target.value);
   }, []);
 
@@ -58,20 +63,12 @@ export const TaskCheckItem = (props) => {
       spacing={1}
       sx={{
         px: 3,
-        py: 1
+        py: 1,
       }}
-      {...other}>
-      <Checkbox
-        edge="start"
-        checked={isChecked}
-        onChange={handleCheckChange}
-      />
-      <Stack
-        alignItems="center"
-        direction="row"
-        spacing={2}
-        sx={{ flexGrow: 1 }}
-      >
+      {...other}
+    >
+      <Checkbox edge="start" checked={isChecked} onChange={handleCheckChange} />
+      <Stack alignItems="center" direction="row" spacing={2} sx={{ flexGrow: 1 }}>
         <Input
           disableUnderline
           fullWidth
@@ -79,7 +76,7 @@ export const TaskCheckItem = (props) => {
           onClick={onRenameInit}
           sx={{
             ...(isDashed && {
-              textDecoration: 'line-through'
+              textDecoration: 'line-through',
             }),
             '& .MuiInputBase-input': {
               borderRadius: 1.5,
@@ -90,41 +87,29 @@ export const TaskCheckItem = (props) => {
               textOverflow: 'ellipsis',
               wordWrap: 'break-word',
               '&:hover, &:focus': {
-                backgroundColor: (theme) => theme.palette.mode === 'dark'
-                  ? 'neutral.800'
-                  : 'neutral.100',
-                borderRadius: 1
-              }
-            }
+                backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+                borderRadius: 1,
+              },
+            },
           }}
           value={nameCopy}
         />
-        {isRenaming
-          ? (
-            <>
-              <Button
-                onClick={handleRenameComplete}
-                size="small"
-                variant="contained"
-              >
-                Update
-              </Button>
-              <Button
-                color="inherit"
-                onClick={handleRenameCancel}
-                size="small"
-              >
-                Cancel
-              </Button>
-            </>
-          )
-          : (
-            <IconButton onClick={onDelete}>
-              <SvgIcon fontSize="small">
-                <Trash02Icon />
-              </SvgIcon>
-            </IconButton>
-          )}
+        {isRenaming ? (
+          <>
+            <Button onClick={handleRenameComplete} size="small" variant="contained">
+              Update
+            </Button>
+            <Button color="inherit" onClick={handleRenameCancel} size="small">
+              Cancel
+            </Button>
+          </>
+        ) : (
+          <IconButton onClick={onDelete}>
+            <SvgIcon fontSize="small">
+              <Trash02Icon />
+            </SvgIcon>
+          </IconButton>
+        )}
       </Stack>
     </Stack>
   );
@@ -139,5 +124,5 @@ TaskCheckItem.propTypes = {
   onRenameCancel: PropTypes.func,
   onRenameComplete: PropTypes.func,
   onRenameInit: PropTypes.func,
-  onUncheck: PropTypes.func
+  onUncheck: PropTypes.func,
 };

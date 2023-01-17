@@ -2,39 +2,27 @@ import PropTypes from 'prop-types';
 import ClockIcon from '@untitled-ui/icons-react/build/esm/Clock';
 import { Avatar, Card, Stack, SvgIcon, Typography } from '@mui/material';
 
-export const LogisticsLateVehicles = (props) => {
+export const LogisticsLateVehicles = props => {
   const { amount } = props;
 
   return (
     <Card>
-      <Stack
-        spacing={1}
-        sx={{ p: 3 }}
-      >
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
+      <Stack spacing={1} sx={{ p: 3 }}>
+        <Stack alignItems="center" direction="row" spacing={2}>
           <Avatar
             variant="rounded"
             sx={{
               backgroundColor: 'primary.alpha12',
-              color: 'primary.main'
+              color: 'primary.main',
             }}
           >
             <SvgIcon>
               <ClockIcon />
             </SvgIcon>
           </Avatar>
-          <Typography variant="h5">
-            {amount}
-          </Typography>
+          <Typography variant="h5">{amount}</Typography>
         </Stack>
-        <Typography
-          color="text.secondary"
-          variant="body2"
-        >
+        <Typography color="text.secondary" variant="body2">
           Late vehicles
         </Typography>
       </Stack>
@@ -43,5 +31,5 @@ export const LogisticsLateVehicles = (props) => {
 };
 
 LogisticsLateVehicles.propTypes = {
-  amount: PropTypes.number.isRequired
+  amount: PropTypes.number.isRequired,
 };

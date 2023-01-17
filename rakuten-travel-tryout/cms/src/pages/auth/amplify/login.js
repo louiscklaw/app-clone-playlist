@@ -14,7 +14,7 @@ import {
   Link,
   Stack,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { GuestGuard } from '../../../guards/guest-guard';
 import { IssuerGuard } from '../../../guards/issuer-guard';
@@ -31,22 +31,18 @@ const useParams = () => {
   const returnTo = searchParams.get('returnTo') || undefined;
 
   return {
-    returnTo
+    returnTo,
   };
 };
 
 const initialValues = {
   email: 'demo@devias.io',
   password: 'Password123!',
-  submit: null
+  submit: null,
 };
 
 const validationSchema = Yup.object({
-  email: Yup
-    .string()
-    .email('Must be a valid email')
-    .max(255)
-    .required('Email is required')
+  email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
 });
 
 const Page = () => {
@@ -80,7 +76,7 @@ const Page = () => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   usePageView();
@@ -88,38 +84,24 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Login | Devias Kit PRO
-        </title>
+        <title>Login | Devias Kit PRO</title>
       </Head>
       <div>
         <Card elevation={16}>
           <CardHeader
-            subheader={(
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
-                Don&apos;t have an account?
-                &nbsp;
-                <Link
-                  component={NextLink}
-                  href={paths.auth.amplify.register}
-                  underline="hover"
-                  variant="subtitle2"
-                >
+            subheader={
+              <Typography color="text.secondary" variant="body2">
+                Don&apos;t have an account? &nbsp;
+                <Link component={NextLink} href={paths.auth.amplify.register} underline="hover" variant="subtitle2">
                   Register
                 </Link>
               </Typography>
-            )}
+            }
             sx={{ pb: 0 }}
             title="Log in"
           />
           <CardContent>
-            <form
-              noValidate
-              onSubmit={formik.handleSubmit}
-            >
+            <form noValidate onSubmit={formik.handleSubmit}>
               <Stack spacing={3}>
                 <TextField
                   autoFocus
@@ -146,10 +128,7 @@ const Page = () => {
                 />
               </Stack>
               {formik.errors.submit && (
-                <FormHelperText
-                  error
-                  sx={{ mt: 3 }}
-                >
+                <FormHelperText error sx={{ mt: 3 }}>
                   {formik.errors.submit}
                 </FormHelperText>
               )}
@@ -167,7 +146,7 @@ const Page = () => {
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
-                  mt: 3
+                  mt: 3,
                 }}
               >
                 <Link
@@ -182,10 +161,7 @@ const Page = () => {
             </form>
           </CardContent>
         </Card>
-        <Stack
-          spacing={3}
-          sx={{ mt: 3 }}
-        >
+        <Stack spacing={3} sx={{ mt: 3 }}>
           <Alert severity="error">
             <div>
               You can use <b>demo@devias.io</b> and password <b>Password123!</b>
@@ -198,12 +174,10 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <IssuerGuard issuer={Issuer.Amplify}>
     <GuestGuard>
-      <AuthLayout>
-        {page}
-      </AuthLayout>
+      <AuthLayout>{page}</AuthLayout>
     </GuestGuard>
   </IssuerGuard>
 );

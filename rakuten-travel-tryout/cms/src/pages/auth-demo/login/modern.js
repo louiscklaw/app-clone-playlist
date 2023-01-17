@@ -9,26 +9,19 @@ import { paths } from '../../../paths';
 const initialValues = {
   email: '',
   password: '',
-  submit: null
+  submit: null,
 };
 
 const validationSchema = Yup.object({
-  email: Yup
-    .string()
-    .email('Must be a valid email')
-    .max(255)
-    .required('Email is required'),
-  password: Yup
-    .string()
-    .max(255)
-    .required('Password is required')
+  email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+  password: Yup.string().max(255).required('Password is required'),
 });
 
 const Page = () => {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: () => { }
+    onSubmit: () => {},
   });
 
   return (
@@ -40,44 +33,26 @@ const Page = () => {
           href={paths.dashboard.index}
           sx={{
             alignItems: 'center',
-            display: 'inline-flex'
+            display: 'inline-flex',
           }}
           underline="hover"
         >
           <SvgIcon sx={{ mr: 1 }}>
             <ArrowLeftIcon />
           </SvgIcon>
-          <Typography variant="subtitle2">
-            Dashboard
-          </Typography>
+          <Typography variant="subtitle2">Dashboard</Typography>
         </Link>
       </Box>
-      <Stack
-        sx={{ mb: 4 }}
-        spacing={1}
-      >
-        <Typography variant="h5">
-          Log in
-        </Typography>
-        <Typography
-          color="text.secondary"
-          variant="body2"
-        >
-          Don&apos;t have an account?
-          &nbsp;
-          <Link
-            href="#"
-            underline="hover"
-            variant="subtitle2"
-          >
+      <Stack sx={{ mb: 4 }} spacing={1}>
+        <Typography variant="h5">Log in</Typography>
+        <Typography color="text.secondary" variant="body2">
+          Don&apos;t have an account? &nbsp;
+          <Link href="#" underline="hover" variant="subtitle2">
             Register
           </Link>
         </Typography>
       </Stack>
-      <form
-        noValidate
-        onSubmit={formik.handleSubmit}
-      >
+      <form noValidate onSubmit={formik.handleSubmit}>
         <Stack spacing={3}>
           <TextField
             autoFocus
@@ -103,21 +78,11 @@ const Page = () => {
             value={formik.values.password}
           />
         </Stack>
-        <Button
-          fullWidth
-          sx={{ mt: 3 }}
-          size="large"
-          type="submit"
-          variant="contained"
-        >
+        <Button fullWidth sx={{ mt: 3 }} size="large" type="submit" variant="contained">
           Continue
         </Button>
         <Box sx={{ mt: 3 }}>
-          <Link
-            href="#"
-            underline="hover"
-            variant="subtitle2"
-          >
+          <Link href="#" underline="hover" variant="subtitle2">
             Forgot password?
           </Link>
         </Box>
@@ -126,10 +91,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <AuthLayout>
-    {page}
-  </AuthLayout>
-);
+Page.getLayout = page => <AuthLayout>{page}</AuthLayout>;
 
 export default Page;

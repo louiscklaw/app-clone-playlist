@@ -5,12 +5,12 @@ import { Chart } from '../../../components/chart';
 const chartSeries = [
   {
     name: 'New Customers',
-    data: [31, 40, 28, 51, 42, 109, 100, 120, 80, 42, 90, 140]
+    data: [31, 40, 28, 51, 42, 109, 100, 120, 80, 42, 90, 140],
   },
   {
     name: 'Up/Cross-Selling',
-    data: [11, 32, 45, 32, 34, 52, 41, 80, 96, 140, 30, 100]
-  }
+    data: [11, 32, 45, 32, 34, 52, 41, 80, 96, 140, 30, 100],
+  },
 ];
 
 const useChartOptions = () => {
@@ -21,67 +21,51 @@ const useChartOptions = () => {
       background: 'transparent',
       stacked: false,
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
-    colors: [
-      theme.palette.primary.main,
-      theme.palette.warning.main
-    ],
+    colors: [theme.palette.primary.main, theme.palette.warning.main],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     fill: {
       type: 'solid',
-      opacity: 0
+      opacity: 0,
     },
     grid: {
       borderColor: theme.palette.divider,
       strokeDashArray: 2,
       xaxis: {
         lines: {
-          show: false
-        }
+          show: false,
+        },
       },
       yaxis: {
         lines: {
-          show: true
-        }
-      }
+          show: true,
+        },
+      },
     },
     markers: {
       strokeColors: theme.palette.background.paper,
-      size: 6
+      size: 6,
     },
     stroke: {
       curve: 'straight',
-      width: 2
+      width: 2,
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     xaxis: {
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: false
+        show: false,
       },
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ]
-    }
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    },
   };
 };
 
@@ -91,21 +75,14 @@ export const Chart9 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.mode === 'dark'
-          ? 'neutral.800'
-          : 'neutral.100',
-        p: 3
+        backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+        p: 3,
       }}
     >
       <Card>
         <CardHeader title="Sales Revenue" />
         <CardContent>
-          <Chart
-            height={360}
-            options={chartOptions}
-            series={chartSeries}
-            type="area"
-          />
+          <Chart height={360} options={chartOptions} series={chartSeries} type="area" />
         </CardContent>
       </Card>
     </Box>

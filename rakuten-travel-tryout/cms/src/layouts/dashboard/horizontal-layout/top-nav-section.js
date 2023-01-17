@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Stack } from '@mui/material';
 import { TopNavItem } from './top-nav-item';
 
-export const TopNavSection = (props) => {
+export const TopNavSection = props => {
   const { items = [], pathname } = props;
 
   return (
@@ -13,10 +13,10 @@ export const TopNavSection = (props) => {
       sx={{
         listStyle: 'none',
         m: 0,
-        p: 0
+        p: 0,
       }}
     >
-      {items.map((item) => {
+      {items.map(item => {
         const checkPath = !!(item.path && pathname);
         const partialMatch = checkPath ? pathname.includes(item.path) : false;
         const exactMatch = checkPath ? pathname === item.path : false;
@@ -59,5 +59,5 @@ export const TopNavSection = (props) => {
 TopNavSection.propTypes = {
   items: PropTypes.array,
   pathname: PropTypes.string,
-  subheader: PropTypes.string
+  subheader: PropTypes.string,
 };

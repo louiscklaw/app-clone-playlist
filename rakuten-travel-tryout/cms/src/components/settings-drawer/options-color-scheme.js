@@ -11,7 +11,7 @@ const options = [
       <SvgIcon fontSize="small">
         <SunIcon />
       </SvgIcon>
-    )
+    ),
   },
   {
     label: 'Dark',
@@ -20,28 +20,20 @@ const options = [
       <SvgIcon fontSize="small">
         <Moon01Icon />
       </SvgIcon>
-    )
-  }
+    ),
+  },
 ];
 
-export const OptionsColorScheme = (props) => {
+export const OptionsColorScheme = props => {
   const { onChange, value } = props;
 
   return (
     <Stack spacing={1}>
-      <Typography
-        color="text.secondary"
-        variant="overline"
-      >
+      <Typography color="text.secondary" variant="overline">
         Color Scheme
       </Typography>
-      <Stack
-        alignItems="center"
-        direction="row"
-        flexWrap="wrap"
-        gap={2}
-      >
-        {options.map((option) => (
+      <Stack alignItems="center" direction="row" flexWrap="wrap" gap={2}>
+        {options.map(option => (
           <Chip
             icon={option.icon}
             key={option.value}
@@ -53,8 +45,8 @@ export const OptionsColorScheme = (props) => {
               borderStyle: 'solid',
               borderWidth: 2,
               ...(option.value === value && {
-                borderColor: 'primary.main'
-              })
+                borderColor: 'primary.main',
+              }),
             }}
           />
         ))}
@@ -65,5 +57,5 @@ export const OptionsColorScheme = (props) => {
 
 OptionsColorScheme.propTypes = {
   onChange: PropTypes.func,
-  value: PropTypes.oneOf(['light', 'dark'])
+  value: PropTypes.oneOf(['light', 'dark']),
 };

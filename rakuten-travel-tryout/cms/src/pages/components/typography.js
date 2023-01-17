@@ -12,15 +12,13 @@ export const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Components: Typography | Devias Kit PRO
-        </title>
+        <title>Components: Typography | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
@@ -33,11 +31,9 @@ export const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <MarketingLayout>
-    <ComponentsLayout title="Typography">
-      {page}
-    </ComponentsLayout>
+    <ComponentsLayout title="Typography">{page}</ComponentsLayout>
   </MarketingLayout>
 );
 

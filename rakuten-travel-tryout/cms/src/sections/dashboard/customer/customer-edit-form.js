@@ -13,12 +13,12 @@ import {
   Switch,
   TextField,
   Typography,
-  Unstable_Grid2 as Grid
+  Unstable_Grid2 as Grid,
 } from '@mui/material';
 import { paths } from '../../../paths';
 import { wait } from '../../../utils/wait';
 
-export const CustomerEditForm = (props) => {
+export const CustomerEditForm = props => {
   const { customer, ...other } = props;
   const formik = useFormik({
     initialValues: {
@@ -31,25 +31,18 @@ export const CustomerEditForm = (props) => {
       name: customer.name || '',
       phone: customer.phone || '',
       state: customer.state || '',
-      submit: null
+      submit: null,
     },
     validationSchema: Yup.object({
       address1: Yup.string().max(255),
       address2: Yup.string().max(255),
       country: Yup.string().max(255),
-      email: Yup
-        .string()
-        .email('Must be a valid email')
-        .max(255)
-        .required('Email is required'),
+      email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
       hasDiscount: Yup.bool(),
       isVerified: Yup.bool(),
-      name: Yup
-        .string()
-        .max(255)
-        .required('Name is required'),
+      name: Yup.string().max(255).required('Name is required'),
       phone: Yup.string().max(15),
-      state: Yup.string().max(255)
+      state: Yup.string().max(255),
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -65,24 +58,16 @@ export const CustomerEditForm = (props) => {
         helpers.setErrors({ submit: err.message });
         helpers.setSubmitting(false);
       }
-    }
+    },
   });
 
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      {...other}>
+    <form onSubmit={formik.handleSubmit} {...other}>
       <Card>
         <CardHeader title="Edit Customer" />
         <CardContent sx={{ pt: 0 }}>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              xs={12}
-              md={6}
-            >
+          <Grid container spacing={3}>
+            <Grid xs={12} md={6}>
               <TextField
                 error={!!(formik.touched.name && formik.errors.name)}
                 fullWidth
@@ -95,10 +80,7 @@ export const CustomerEditForm = (props) => {
                 value={formik.values.name}
               />
             </Grid>
-            <Grid
-              xs={12}
-              md={6}
-            >
+            <Grid xs={12} md={6}>
               <TextField
                 error={!!(formik.touched.email && formik.errors.email)}
                 fullWidth
@@ -111,10 +93,7 @@ export const CustomerEditForm = (props) => {
                 value={formik.values.email}
               />
             </Grid>
-            <Grid
-              xs={12}
-              md={6}
-            >
+            <Grid xs={12} md={6}>
               <TextField
                 error={!!(formik.touched.country && formik.errors.country)}
                 fullWidth
@@ -126,10 +105,7 @@ export const CustomerEditForm = (props) => {
                 value={formik.values.country}
               />
             </Grid>
-            <Grid
-              xs={12}
-              md={6}
-            >
+            <Grid xs={12} md={6}>
               <TextField
                 error={!!(formik.touched.state && formik.errors.state)}
                 fullWidth
@@ -141,10 +117,7 @@ export const CustomerEditForm = (props) => {
                 value={formik.values.state}
               />
             </Grid>
-            <Grid
-              xs={12}
-              md={6}
-            >
+            <Grid xs={12} md={6}>
               <TextField
                 error={!!(formik.touched.address1 && formik.errors.address1)}
                 fullWidth
@@ -156,10 +129,7 @@ export const CustomerEditForm = (props) => {
                 value={formik.values.address1}
               />
             </Grid>
-            <Grid
-              xs={12}
-              md={6}
-            >
+            <Grid xs={12} md={6}>
               <TextField
                 error={!!(formik.touched.address2 && formik.errors.address2)}
                 fullWidth
@@ -171,10 +141,7 @@ export const CustomerEditForm = (props) => {
                 value={formik.values.address2}
               />
             </Grid>
-            <Grid
-              xs={12}
-              md={6}
-            >
+            <Grid xs={12} md={6}>
               <TextField
                 error={!!(formik.touched.phone && formik.errors.phone)}
                 fullWidth
@@ -187,30 +154,14 @@ export const CustomerEditForm = (props) => {
               />
             </Grid>
           </Grid>
-          <Stack
-            divider={<Divider />}
-            spacing={3}
-            sx={{ mt: 3 }}
-          >
-            <Stack
-              alignItems="center"
-              direction="row"
-              justifyContent="space-between"
-              spacing={3}
-            >
+          <Stack divider={<Divider />} spacing={3} sx={{ mt: 3 }}>
+            <Stack alignItems="center" direction="row" justifyContent="space-between" spacing={3}>
               <Stack spacing={1}>
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                >
+                <Typography gutterBottom variant="subtitle1">
                   Make Contact Info Public
                 </Typography>
-                <Typography
-                  color="text.secondary"
-                  variant="body2"
-                >
-                  Means that anyone viewing your profile will be able to see your contacts
-                  details
+                <Typography color="text.secondary" variant="body2">
+                  Means that anyone viewing your profile will be able to see your contacts details
                 </Typography>
               </Stack>
               <Switch
@@ -222,25 +173,13 @@ export const CustomerEditForm = (props) => {
                 value={formik.values.isVerified}
               />
             </Stack>
-            <Stack
-              alignItems="center"
-              direction="row"
-              justifyContent="space-between"
-              spacing={3}
-            >
+            <Stack alignItems="center" direction="row" justifyContent="space-between" spacing={3}>
               <Stack spacing={1}>
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                >
+                <Typography gutterBottom variant="subtitle1">
                   Available to hire
                 </Typography>
-                <Typography
-                  color="text.secondary"
-                  variant="body2"
-                >
-                  Toggling this will let your teammates know that you are available for
-                  acquiring new projects
+                <Typography color="text.secondary" variant="body2">
+                  Toggling this will let your teammates know that you are available for acquiring new projects
                 </Typography>
               </Stack>
               <Switch
@@ -257,17 +196,13 @@ export const CustomerEditForm = (props) => {
         <Stack
           direction={{
             xs: 'column',
-            sm: 'row'
+            sm: 'row',
           }}
           flexWrap="wrap"
           spacing={3}
           sx={{ p: 3 }}
         >
-          <Button
-            disabled={formik.isSubmitting}
-            type="submit"
-            variant="contained"
-          >
+          <Button disabled={formik.isSubmitting} type="submit" variant="contained">
             Update
           </Button>
           <Button
@@ -286,5 +221,5 @@ export const CustomerEditForm = (props) => {
 
 CustomerEditForm.propTypes = {
   // @ts-ignore
-  customer: PropTypes.object.isRequired
+  customer: PropTypes.object.isRequired,
 };

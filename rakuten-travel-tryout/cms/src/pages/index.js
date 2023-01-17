@@ -13,9 +13,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Devias Kit PRO
-        </title>
+        <title>Devias Kit PRO</title>
       </Head>
       <main>
         <HomeHero />
@@ -28,10 +26,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <MarketingLayout>
-    {page}
-  </MarketingLayout>
-);
+Page.getLayout = page => <MarketingLayout>{page}</MarketingLayout>;
 
 export default Page;

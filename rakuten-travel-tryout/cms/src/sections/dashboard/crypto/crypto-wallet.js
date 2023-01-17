@@ -10,33 +10,33 @@ import { Chart } from '../../../components/chart';
 const logoMap = {
   BTC: '/assets/logos/logo-bitcoin.svg',
   ETH: '/assets/logos/logo-eth.svg',
-  BNB: '/assets/logos/logo-bnb.svg'
+  BNB: '/assets/logos/logo-bnb.svg',
 };
 
-const useChartOptions = (color) => {
+const useChartOptions = color => {
   const theme = useTheme();
 
   return {
     chart: {
       background: 'transparent',
       toolbar: {
-        show: false
+        show: false,
       },
       zoom: {
-        enabled: false
-      }
+        enabled: false,
+      },
     },
     colors: [color],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     fill: {
       gradient: {
         opacityFrom: 0.5,
         opacityTo: 0,
-        stops: [0, 100]
+        stops: [0, 100],
       },
-      type: 'gradient'
+      type: 'gradient',
     },
     grid: {
       show: false,
@@ -44,36 +44,36 @@ const useChartOptions = (color) => {
         bottom: 0,
         left: 0,
         right: 0,
-        top: 0
-      }
+        top: 0,
+      },
     },
     stroke: {
-      width: 2
+      width: 2,
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     tooltip: {
-      enabled: false
+      enabled: false,
     },
     xaxis: {
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: false
+        show: false,
       },
       labels: {
-        show: false
-      }
+        show: false,
+      },
     },
     yaxis: {
-      show: false
-    }
+      show: false,
+    },
   };
 };
 
-export const CryptoWallet = (props) => {
+export const CryptoWallet = props => {
   const { coinAmount, chartColor, chartSeries, currency, rate, usdValue, sx } = props;
   const chartOptions = useChartOptions(chartColor);
   const formattedUsdValue = numeral(usdValue).format('$0,0.00');
@@ -84,75 +84,40 @@ export const CryptoWallet = (props) => {
   return (
     <Card sx={sx}>
       <CardHeader
-        action={(
+        action={
           <IconButton>
             <SvgIcon>
               <DotsHorizontalIcon />
             </SvgIcon>
           </IconButton>
-        )}
+        }
         subheader={formattedUsdValue}
         sx={{ pb: 0 }}
-        title={(
-          <Typography
-            color="text.secondary"
-            sx={{ mb: 1 }}
-            variant="h6"
-          >
-            <Typography
-              color="text.primary"
-              component="span"
-              variant="inherit"
-            >
+        title={
+          <Typography color="text.secondary" sx={{ mb: 1 }} variant="h6">
+            <Typography color="text.primary" component="span" variant="inherit">
               {coinAmount}
-            </Typography>
-            {' '}
+            </Typography>{' '}
             {currency}
           </Typography>
-        )}
+        }
       />
-      <Chart
-        height={140}
-        options={chartOptions}
-        series={chartSeries}
-        type="area"
-      />
+      <Chart height={140} options={chartOptions} series={chartSeries} type="area" />
       <Box
         sx={{
           pb: 2,
-          px: 2
+          px: 2,
         }}
       >
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
-          <Box
-            component="img"
-            src={logo}
-            sx={{ flex: '0 0 auto' }}
-          />
+        <Stack alignItems="center" direction="row" spacing={2}>
+          <Box component="img" src={logo} sx={{ flex: '0 0 auto' }} />
           <div>
-            <Typography variant="subtitle2">
-              {currency}/USD
-            </Typography>
-            <Stack
-              alignItems="center"
-              direction="row"
-              sx={{ color: rateColor }}
-              spacing={0.5}
-            >
-              <SvgIcon
-                color="inherit"
-                fontSize="small"
-              >
+            <Typography variant="subtitle2">{currency}/USD</Typography>
+            <Stack alignItems="center" direction="row" sx={{ color: rateColor }} spacing={0.5}>
+              <SvgIcon color="inherit" fontSize="small">
                 {rateIcon}
               </SvgIcon>
-              <Typography
-                color="inherit"
-                variant="body2"
-              >
+              <Typography color="inherit" variant="body2">
                 {rate}%
               </Typography>
             </Stack>
@@ -171,5 +136,5 @@ CryptoWallet.propTypes = {
   rate: PropTypes.number.isRequired,
   // @ts-ignore
   sx: PropTypes.object,
-  usdValue: PropTypes.number.isRequired
+  usdValue: PropTypes.number.isRequired,
 };

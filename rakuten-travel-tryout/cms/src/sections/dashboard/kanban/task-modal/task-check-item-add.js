@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlusIcon from '@untitled-ui/icons-react/build/esm/Plus';
 import { Button, OutlinedInput, Stack, SvgIcon } from '@mui/material';
 
-export const TaskCheckItemAdd = (props) => {
+export const TaskCheckItemAdd = props => {
   const { onAdd, ...other } = props;
   const [isAdding, setIsAdding] = useState(false);
   const [name, setName] = useState('');
@@ -17,7 +17,7 @@ export const TaskCheckItemAdd = (props) => {
     setName('');
   }, []);
 
-  const handleChange = useCallback((event) => {
+  const handleChange = useCallback(event => {
     setName(event.target.value);
   }, []);
 
@@ -33,59 +33,45 @@ export const TaskCheckItemAdd = (props) => {
 
   return (
     <div {...other}>
-      {isAdding
-        ? (
-          <Stack
-            alignItems="center"
-            direction="row"
-            spacing={2}
-          >
-            <OutlinedInput
-              onChange={handleChange}
-              placeholder="Add an item"
-              value={name}
-              sx={{
-                flexGrow: 1,
-                '& .MuiInputBase-input': {
-                  px: 2,
-                  py: 1
-                }
-              }}
-            />
-            <Button
-              onClick={handleSave}
-              size="small"
-              variant="contained"
-            >
-              Add
-            </Button>
-            <Button
-              color="inherit"
-              onClick={handleCancel}
-              size="small"
-            >
-              Cancel
-            </Button>
-          </Stack>
-        )
-        : (
-          <Button
-            color="inherit"
-            onClick={handleAdd}
-            size="small"
-            startIcon={(
-              <SvgIcon>
-                <PlusIcon />
-              </SvgIcon>
-            )}
-          >
-            Add Item
+      {isAdding ? (
+        <Stack alignItems="center" direction="row" spacing={2}>
+          <OutlinedInput
+            onChange={handleChange}
+            placeholder="Add an item"
+            value={name}
+            sx={{
+              flexGrow: 1,
+              '& .MuiInputBase-input': {
+                px: 2,
+                py: 1,
+              },
+            }}
+          />
+          <Button onClick={handleSave} size="small" variant="contained">
+            Add
           </Button>
-        )}
+          <Button color="inherit" onClick={handleCancel} size="small">
+            Cancel
+          </Button>
+        </Stack>
+      ) : (
+        <Button
+          color="inherit"
+          onClick={handleAdd}
+          size="small"
+          startIcon={
+            <SvgIcon>
+              <PlusIcon />
+            </SvgIcon>
+          }
+        >
+          Add Item
+        </Button>
+      )}
     </div>
   );
 };
 
 TaskCheckItemAdd.propTypes = {
-  onAdd: PropTypes.func
+  onAdd: PropTypes.func,
 };

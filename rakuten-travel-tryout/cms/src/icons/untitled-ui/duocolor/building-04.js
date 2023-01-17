@@ -1,15 +1,6 @@
-const Building04 = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    fill="none"
-    {...props}>
-    <path
-      fill="currentColor"
-      d="M18 3H6v18h12V3Z"
-      opacity={0.12}
-    />
+const Building04 = props => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
+    <path fill="currentColor" d="M18 3H6v18h12V3Z" opacity={0.12} />
     <path
       stroke="currentColor"
       strokeLinecap="round"

@@ -18,54 +18,41 @@ import {
   SvgIcon,
   Tooltip,
   Typography,
-  useMediaQuery
+  useMediaQuery,
 } from '@mui/material';
 import ReplyIcon from '@mui/icons-material/Reply';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import { getInitials } from '../../../utils/get-initials';
 
-export const MailThreadToolbar = (props) => {
+export const MailThreadToolbar = props => {
   const { backHref, createdAt, from, to } = props;
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
   const formattedCreatedAt = format(createdAt, 'MMMM d yyyy, h:mm:ss a');
 
   return (
     <div>
-      <Stack
-        alignItems="center"
-        direction="row"
-        justifyContent="space-between"
-        spacing={2}
-        sx={{ p: 2 }}
-      >
+      <Stack alignItems="center" direction="row" justifyContent="space-between" spacing={2} sx={{ p: 2 }}>
         <div>
           <Tooltip title="Back">
-            <IconButton
-              component={NextLink}
-              href={backHref}
-            >
+            <IconButton component={NextLink} href={backHref}>
               <SvgIcon>
                 <ArrowLeftIcon />
               </SvgIcon>
             </IconButton>
           </Tooltip>
         </div>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={1}
-        >
+        <Stack alignItems="center" direction="row" spacing={1}>
           <OutlinedInput
             fullWidth
             placeholder="Search message"
             size="small"
-            startAdornment={(
+            startAdornment={
               <InputAdornment position="start">
                 <SvgIcon>
                   <SearchMdIcon />
                 </SvgIcon>
               </InputAdornment>
-            )}
+            }
             sx={{ width: 200 }}
           />
           <Tooltip title="Previous email">
@@ -85,73 +72,40 @@ export const MailThreadToolbar = (props) => {
         </Stack>
       </Stack>
       <Divider />
-      <Stack
-        alignItems="center"
-        direction="row"
-        justifyContent="space-between"
-        spacing={2}
-        sx={{ p: 3 }}
-      >
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
+      <Stack alignItems="center" direction="row" justifyContent="space-between" spacing={2} sx={{ p: 3 }}>
+        <Stack alignItems="center" direction="row" spacing={2}>
           <Avatar
             src={from.avatar || undefined}
             sx={{
               height: 48,
-              width: 48
+              width: 48,
             }}
           >
             {getInitials(from.name)}
           </Avatar>
           <div>
-            <Typography
-              component="span"
-              variant="subtitle2"
-            >
+            <Typography component="span" variant="subtitle2">
               {from.name}
-            </Typography>
-            {' '}
-            <Link
-              color="text.secondary"
-              component="span"
-              variant="body2"
-            >
+            </Typography>{' '}
+            <Link color="text.secondary" component="span" variant="body2">
               {from.email}
             </Link>
-            <Typography
-              color="text.secondary"
-              variant="subtitle2"
-            >
-              To:
-              {' '}
-              {to.map((person) => (
-                <Link
-                  color="inherit"
-                  key={person.email}
-                >
+            <Typography color="text.secondary" variant="subtitle2">
+              To:{' '}
+              {to.map(person => (
+                <Link color="inherit" key={person.email}>
                   {person.email}
                 </Link>
               ))}
             </Typography>
             {formattedCreatedAt && (
-              <Typography
-                color="text.secondary"
-                noWrap
-                variant="caption"
-              >
+              <Typography color="text.secondary" noWrap variant="caption">
                 {formattedCreatedAt}
               </Typography>
             )}
           </div>
         </Stack>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={1}
-        >
+        <Stack alignItems="center" direction="row" spacing={1}>
           {mdUp && (
             <>
               <Tooltip title="Reply">
@@ -195,5 +149,5 @@ MailThreadToolbar.propTypes = {
   createdAt: PropTypes.number.isRequired,
   // @ts-ignore
   from: PropTypes.object.isRequired,
-  to: PropTypes.array.isRequired
+  to: PropTypes.array.isRequired,
 };

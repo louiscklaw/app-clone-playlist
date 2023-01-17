@@ -1,16 +1,6 @@
 import ArrowRightIcon from '@untitled-ui/icons-react/build/esm/ArrowRight';
 import InfoCircleIcon from '@untitled-ui/icons-react/build/esm/InfoCircle';
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Container,
-  SvgIcon,
-  Tooltip
-} from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Container, SvgIcon, Tooltip } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Chart } from '../../../components/chart';
 
@@ -26,56 +16,56 @@ const useChartOptions = () => {
       background: 'transparent',
       stacked: false,
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
     colors: [
       theme.palette.primary.light,
       theme.palette.warning.light,
       theme.palette.success.light,
       theme.palette.info.light,
-      theme.palette.neutral[700]
+      theme.palette.neutral[700],
     ],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     fill: {
       opacity: 1,
-      type: 'solid'
+      type: 'solid',
     },
     labels,
     legend: {
       labels: {
-        colors: theme.palette.text.secondary
+        colors: theme.palette.text.secondary,
       },
-      show: true
+      show: true,
     },
     plotOptions: {
       pie: {
-        expandOnClick: false
-      }
+        expandOnClick: false,
+      },
     },
     states: {
       active: {
         filter: {
-          type: 'none'
-        }
+          type: 'none',
+        },
       },
       hover: {
         filter: {
-          type: 'none'
-        }
-      }
+          type: 'none',
+        },
+      },
     },
     stroke: {
-      width: 0
+      width: 0,
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     tooltip: {
-      fillSeriesColor: false
-    }
+      fillSeriesColor: false,
+    },
   };
 };
 
@@ -85,40 +75,33 @@ export const Chart8 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.mode === 'dark'
-          ? 'neutral.800'
-          : 'neutral.100',
-        p: 3
+        backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+        p: 3,
       }}
     >
       <Container maxWidth="sm">
         <Card>
           <CardHeader
-            action={(
+            action={
               <Tooltip title="Traffic by Social Media platforms">
                 <SvgIcon>
                   <InfoCircleIcon />
                 </SvgIcon>
               </Tooltip>
-            )}
+            }
             title="Social Media Sources"
           />
           <CardContent>
-            <Chart
-              height={300}
-              options={chartOptions}
-              series={chartSeries}
-              type="donut"
-            />
+            <Chart height={300} options={chartOptions} series={chartSeries} type="donut" />
           </CardContent>
           <CardActions sx={{ justifyContent: 'flex-end' }}>
             <Button
               color="inherit"
-              endIcon={(
+              endIcon={
                 <SvgIcon>
                   <ArrowRightIcon />
                 </SvgIcon>
-              )}
+              }
               size="small"
             >
               See all

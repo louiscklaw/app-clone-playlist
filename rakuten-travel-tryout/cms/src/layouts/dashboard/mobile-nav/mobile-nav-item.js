@@ -5,12 +5,12 @@ import ChevronDownIcon from '@untitled-ui/icons-react/build/esm/ChevronDown';
 import ChevronRightIcon from '@untitled-ui/icons-react/build/esm/ChevronRight';
 import { Box, ButtonBase, Collapse, SvgIcon } from '@mui/material';
 
-export const MobileNavItem = (props) => {
+export const MobileNavItem = props => {
   const { active, children, depth = 0, disabled, icon, label, open: openProp, path, title } = props;
   const [open, setOpen] = useState(!!openProp);
 
   const handleToggle = useCallback(() => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen(prevOpen => !prevOpen);
   }, []);
 
   // Icons can be defined at top level only, deep levels have bullets instead of actual icons.
@@ -27,7 +27,7 @@ export const MobileNavItem = (props) => {
           display: 'center',
           height: 20,
           justifyContent: 'center',
-          width: 20
+          width: 20,
         }}
       >
         <Box
@@ -41,8 +41,8 @@ export const MobileNavItem = (props) => {
               backgroundColor: 'var(--nav-item-icon-active-color)',
               height: 6,
               opacity: 1,
-              width: 6
-            })
+              width: 6,
+            }),
           }}
         />
       </Box>
@@ -71,12 +71,12 @@ export const MobileNavItem = (props) => {
             width: '100%',
             ...(active && {
               ...(depth === 0 && {
-                backgroundColor: 'var(--nav-item-active-bg)'
-              })
+                backgroundColor: 'var(--nav-item-active-bg)',
+              }),
             }),
             '&:hover': {
-              backgroundColor: 'var(--nav-item-hover-bg)'
-            }
+              backgroundColor: 'var(--nav-item-hover-bg)',
+            },
           }}
         >
           {startIcon && (
@@ -89,8 +89,8 @@ export const MobileNavItem = (props) => {
                 justifyContent: 'center',
                 mr: 2,
                 ...(active && {
-                  color: 'var(--nav-item-icon-active-color)'
-                })
+                  color: 'var(--nav-item-icon-active-color)',
+                }),
               }}
             >
               {startIcon}
@@ -101,17 +101,17 @@ export const MobileNavItem = (props) => {
             sx={{
               color: 'var(--nav-item-color)',
               flexGrow: 1,
-              fontFamily: (theme) => theme.typography.fontFamily,
+              fontFamily: theme => theme.typography.fontFamily,
               fontSize: depth > 0 ? 13 : 14,
               fontWeight: depth > 0 ? 500 : 600,
               lineHeight: '24px',
               whiteSpace: 'nowrap',
               ...(active && {
-                color: 'var(--nav-item-active-color)'
+                color: 'var(--nav-item-active-color)',
               }),
               ...(disabled && {
-                color: 'var(--nav-item-disabled-color)'
-              })
+                color: 'var(--nav-item-disabled-color)',
+              }),
             }}
           >
             {title}
@@ -120,16 +120,13 @@ export const MobileNavItem = (props) => {
             sx={{
               color: 'var(--nav-item-chevron-color)',
               fontSize: 16,
-              ml: 2
+              ml: 2,
             }}
           >
             {open ? <ChevronDownIcon /> : <ChevronRightIcon />}
           </SvgIcon>
         </ButtonBase>
-        <Collapse
-          in={open}
-          sx={{ mt: 0.5 }}
-        >
+        <Collapse in={open} sx={{ mt: 0.5 }}>
           {children}
         </Collapse>
       </li>
@@ -145,14 +142,14 @@ export const MobileNavItem = (props) => {
 
     linkProps = isExternal
       ? {
-        component: 'a',
-        href: path,
-        target: '_blank'
-      }
+          component: 'a',
+          href: path,
+          target: '_blank',
+        }
       : {
-        component: NextLink,
-        href: path
-      };
+          component: NextLink,
+          href: path,
+        };
   }
 
   return (
@@ -171,14 +168,15 @@ export const MobileNavItem = (props) => {
           width: '100%',
           ...(active && {
             ...(depth === 0 && {
-              backgroundColor: 'var(--nav-item-active-bg)'
-            })
+              backgroundColor: 'var(--nav-item-active-bg)',
+            }),
           }),
           '&:hover': {
-            backgroundColor: 'var(--nav-item-hover-bg)'
-          }
+            backgroundColor: 'var(--nav-item-hover-bg)',
+          },
         }}
-        {...linkProps}>
+        {...linkProps}
+      >
         {startIcon && (
           <Box
             component="span"
@@ -189,8 +187,8 @@ export const MobileNavItem = (props) => {
               justifyContent: 'center',
               mr: 2,
               ...(active && {
-                color: 'var(--nav-item-icon-active-color)'
-              })
+                color: 'var(--nav-item-icon-active-color)',
+              }),
             }}
           >
             {startIcon}
@@ -201,26 +199,23 @@ export const MobileNavItem = (props) => {
           sx={{
             color: 'var(--nav-item-color)',
             flexGrow: 1,
-            fontFamily: (theme) => theme.typography.fontFamily,
+            fontFamily: theme => theme.typography.fontFamily,
             fontSize: depth > 0 ? 13 : 14,
             fontWeight: depth > 0 ? 500 : 600,
             lineHeight: '24px',
             whiteSpace: 'nowrap',
             ...(active && {
-              color: 'var(--nav-item-active-color)'
+              color: 'var(--nav-item-active-color)',
             }),
             ...(disabled && {
-              color: 'var(--nav-item-disabled-color)'
-            })
+              color: 'var(--nav-item-disabled-color)',
+            }),
           }}
         >
           {title}
         </Box>
         {label && (
-          <Box
-            component="span"
-            sx={{ ml: 2 }}
-          >
+          <Box component="span" sx={{ ml: 2 }}>
             {label}
           </Box>
         )}
@@ -237,5 +232,5 @@ MobileNavItem.propTypes = {
   icon: PropTypes.node,
   open: PropTypes.bool,
   path: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };

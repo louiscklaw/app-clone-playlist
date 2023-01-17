@@ -15,7 +15,7 @@ import {
   SvgIcon,
   TextField,
   Typography,
-  Unstable_Grid2 as Grid
+  Unstable_Grid2 as Grid,
 } from '@mui/material';
 import { BreadcrumbsSeparator } from '../../../components/breadcrumbs-separator';
 import { FileDropzone } from '../../../components/file-dropzone';
@@ -44,43 +44,26 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Blog: Post Create | Devias Kit PRO
-        </title>
+        <title>Blog: Post Create | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="xl">
           <Stack spacing={1}>
-            <Typography variant="h3">
-              Create a new post
-            </Typography>
+            <Typography variant="h3">Create a new post</Typography>
             <Breadcrumbs separator={<BreadcrumbsSeparator />}>
-              <Link
-                color="text.primary"
-                component={NextLink}
-                href={paths.dashboard.index}
-                variant="subtitle2"
-              >
+              <Link color="text.primary" component={NextLink} href={paths.dashboard.index} variant="subtitle2">
                 Dashboard
               </Link>
-              <Link
-                color="text.primary"
-                component={NextLink}
-                href={paths.dashboard.blog.index}
-                variant="subtitle2"
-              >
+              <Link color="text.primary" component={NextLink} href={paths.dashboard.blog.index} variant="subtitle2">
                 Blog
               </Link>
-              <Typography
-                color="text.secondary"
-                variant="subtitle2"
-              >
+              <Typography color="text.secondary" variant="subtitle2">
                 Create
               </Typography>
             </Breadcrumbs>
@@ -95,29 +78,15 @@ const Page = () => {
               mb: 8,
               mt: 6,
               px: 3,
-              py: 2
+              py: 2,
             }}
           >
-            <Typography variant="subtitle1">
-              Hello, Admin
-            </Typography>
-            <Stack
-              alignItems="center"
-              direction="row"
-              spacing={2}
-            >
-              <Button
-                color="inherit"
-                component={NextLink}
-                href={paths.dashboard.blog.index}
-              >
+            <Typography variant="subtitle1">Hello, Admin</Typography>
+            <Stack alignItems="center" direction="row" spacing={2}>
+              <Button color="inherit" component={NextLink} href={paths.dashboard.blog.index}>
                 Cancel
               </Button>
-              <Button
-                component={NextLink}
-                href={paths.dashboard.blog.postDetails}
-                variant="contained"
-              >
+              <Button component={NextLink} href={paths.dashboard.blog.postDetails} variant="contained">
                 Publish changes
               </Button>
               <IconButton>
@@ -130,32 +99,14 @@ const Page = () => {
           <Stack spacing={3}>
             <Card>
               <CardContent>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    xs={12}
-                    md={4}
-                  >
-                    <Typography variant="h6">
-                      Basic details
-                    </Typography>
+                <Grid container spacing={3}>
+                  <Grid xs={12} md={4}>
+                    <Typography variant="h6">Basic details</Typography>
                   </Grid>
-                  <Grid
-                    xs={12}
-                    md={8}
-                  >
+                  <Grid xs={12} md={8}>
                     <Stack spacing={3}>
-                      <TextField
-                        fullWidth
-                        label="Post title"
-                        name="title"
-                      />
-                      <TextField
-                        fullWidth
-                        label="Short description"
-                      />
+                      <TextField fullWidth label="Post title" name="title" />
+                      <TextField fullWidth label="Short description" />
                     </Stack>
                   </Grid>
                 </Grid>
@@ -163,75 +114,49 @@ const Page = () => {
             </Card>
             <Card>
               <CardContent>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    xs={12}
-                    md={4}
-                  >
-                    <Typography variant="h6">
-                      Post cover
-                    </Typography>
+                <Grid container spacing={3}>
+                  <Grid xs={12} md={4}>
+                    <Typography variant="h6">Post cover</Typography>
                   </Grid>
-                  <Grid
-                    xs={12}
-                    md={8}
-                  >
+                  <Grid xs={12} md={8}>
                     <Stack spacing={3}>
-                      {cover
-                        ? (
-                          <Box
-                            sx={{
-                              backgroundImage: `url(${cover})`,
-                              backgroundPosition: 'center',
-                              backgroundSize: 'cover',
-                              borderRadius: 1,
-                              height: 230,
-                              mt: 3
-                            }}
-                          />
-                        )
-                        : (
-                          <Box
-                            sx={{
-                              alignItems: 'center',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              justifyContent: 'center',
-                              border: 1,
-                              borderRadius: 1,
-                              borderStyle: 'dashed',
-                              borderColor: 'divider',
-                              height: 230,
-                              mt: 3,
-                              p: 3
-                            }}
-                          >
-                            <Typography
-                              align="center"
-                              color="text.secondary"
-                              variant="h6"
-                            >
-                              Select a cover image
-                            </Typography>
-                            <Typography
-                              align="center"
-                              color="text.secondary"
-                              sx={{ mt: 1 }}
-                              variant="subtitle1"
-                            >
-                              Image used for the blog post cover and also for Open Graph meta
-                            </Typography>
-                          </Box>
-                        )}
-                      <div>
-                        <Button
-                          color="inherit"
-                          disabled={!cover}
-                          onClick={handleCoverRemove}
+                      {cover ? (
+                        <Box
+                          sx={{
+                            backgroundImage: `url(${cover})`,
+                            backgroundPosition: 'center',
+                            backgroundSize: 'cover',
+                            borderRadius: 1,
+                            height: 230,
+                            mt: 3,
+                          }}
+                        />
+                      ) : (
+                        <Box
+                          sx={{
+                            alignItems: 'center',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            border: 1,
+                            borderRadius: 1,
+                            borderStyle: 'dashed',
+                            borderColor: 'divider',
+                            height: 230,
+                            mt: 3,
+                            p: 3,
+                          }}
                         >
+                          <Typography align="center" color="text.secondary" variant="h6">
+                            Select a cover image
+                          </Typography>
+                          <Typography align="center" color="text.secondary" sx={{ mt: 1 }} variant="subtitle1">
+                            Image used for the blog post cover and also for Open Graph meta
+                          </Typography>
+                        </Box>
+                      )}
+                      <div>
+                        <Button color="inherit" disabled={!cover} onClick={handleCoverRemove}>
                           Remove photo
                         </Button>
                       </div>
@@ -248,58 +173,26 @@ const Page = () => {
             </Card>
             <Card>
               <CardContent>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    xs={12}
-                    md={4}
-                  >
-                    <Typography variant="h6">
-                      Content
-                    </Typography>
+                <Grid container spacing={3}>
+                  <Grid xs={12} md={4}>
+                    <Typography variant="h6">Content</Typography>
                   </Grid>
-                  <Grid
-                    xs={12}
-                    md={8}
-                  >
-                    <QuillEditor
-                      placeholder="Write something"
-                      sx={{ height: 330 }}
-                    />
+                  <Grid xs={12} md={8}>
+                    <QuillEditor placeholder="Write something" sx={{ height: 330 }} />
                   </Grid>
                 </Grid>
               </CardContent>
             </Card>
             <Card>
               <CardContent>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    xs={12}
-                    md={4}
-                  >
-                    <Typography variant="h6">
-                      Meta
-                    </Typography>
+                <Grid container spacing={3}>
+                  <Grid xs={12} md={4}>
+                    <Typography variant="h6">Meta</Typography>
                   </Grid>
-                  <Grid
-                    xs={12}
-                    lg={8}
-                  >
+                  <Grid xs={12} lg={8}>
                     <Stack spacing={3}>
-                      <TextField
-                        fullWidth
-                        label="SEO title"
-                        name="title"
-                      />
-                      <TextField
-                        fullWidth
-                        label="SEO description"
-                      />
+                      <TextField fullWidth label="SEO title" name="title" />
+                      <TextField fullWidth label="SEO description" />
                     </Stack>
                   </Grid>
                 </Grid>
@@ -309,16 +202,12 @@ const Page = () => {
           <Box
             sx={{
               display: {
-                sm: 'none'
+                sm: 'none',
               },
-              mt: 2
+              mt: 2,
             }}
           >
-            <Button
-              component={NextLink}
-              href={paths.dashboard.blog.postDetails}
-              variant="contained"
-            >
+            <Button component={NextLink} href={paths.dashboard.blog.postDetails} variant="contained">
               Publish changes
             </Button>
           </Box>
@@ -328,10 +217,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

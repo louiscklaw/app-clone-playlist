@@ -11,83 +11,68 @@ const useChartOptions = () => {
       background: 'transparent',
       stacked: true,
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
     colors: [
       theme.palette.primary.main,
-      theme.palette.mode === 'dark'
-        ? theme.palette.primary.darkest
-        : theme.palette.primary.light
+      theme.palette.mode === 'dark' ? theme.palette.primary.darkest : theme.palette.primary.light,
     ],
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     legend: {
       labels: {
-        colors: theme.palette.text.secondary
+        colors: theme.palette.text.secondary,
       },
       onItemClick: {
-        toggleDataSeries: false
+        toggleDataSeries: false,
       },
       onItemHover: {
-        highlightDataSeries: false
-      }
+        highlightDataSeries: false,
+      },
     },
     grid: {
       borderColor: theme.palette.divider,
-      strokeDashArray: 2
+      strokeDashArray: 2,
     },
     plotOptions: {
       bar: {
         borderRadius: 8,
-        columnWidth: '32px'
-      }
+        columnWidth: '32px',
+      },
     },
     theme: {
-      mode: theme.palette.mode
+      mode: theme.palette.mode,
     },
     tooltip: {
       y: {
-        formatter: (value) => `${value}k events`
-      }
+        formatter: value => `${value}k events`,
+      },
     },
     xaxis: {
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: false
+        show: false,
       },
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ],
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       labels: {
         style: {
-          colors: theme.palette.text.secondary
-        }
-      }
+          colors: theme.palette.text.secondary,
+        },
+      },
     },
     yaxis: {
       labels: {
-        show: false
-      }
-    }
+        show: false,
+      },
+    },
   };
 };
 
-export const OverviewSubscriptionUsage = (props) => {
+export const OverviewSubscriptionUsage = props => {
   const { chartSeries } = props;
   const chartOptions = useChartOptions();
 
@@ -96,33 +81,21 @@ export const OverviewSubscriptionUsage = (props) => {
       <CardHeader
         subheader="Based on the selected period"
         title="Subscription Usage"
-        action={<Tabs value="year">
-          <Tab
-            label="Year"
-            value="year"
-          />
-          <Tab
-            label="Month"
-            value="month"
-          />
-          <Tab
-            label="Week"
-            value="week"
-          />
-        </Tabs>}
+        action={
+          <Tabs value="year">
+            <Tab label="Year" value="year" />
+            <Tab label="Month" value="month" />
+            <Tab label="Week" value="week" />
+          </Tabs>
+        }
       />
       <Box sx={{ height: 336 }}>
-        <Chart
-          height={300}
-          options={chartOptions}
-          series={chartSeries}
-          type="bar"
-        />
+        <Chart height={300} options={chartOptions} series={chartSeries} type="bar" />
       </Box>
     </Card>
   );
 };
 
 OverviewSubscriptionUsage.propTypes = {
-  chartSeries: PropTypes.array.isRequired
+  chartSeries: PropTypes.array.isRequired,
 };

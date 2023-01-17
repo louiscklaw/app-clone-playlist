@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 const sizes = {
   small: 8,
   medium: 16,
-  large: 23
+  large: 23,
 };
 
 const PresenceRoot = styled('span')(({ theme, ownerState }) => {
@@ -13,7 +13,7 @@ const PresenceRoot = styled('span')(({ theme, ownerState }) => {
     offline: theme.palette.neutral[100],
     away: theme.palette.warning.main,
     busy: theme.palette.error.main,
-    online: theme.palette.success.main
+    online: theme.palette.success.main,
   };
   const color = colors[ownerState.status];
 
@@ -24,23 +24,19 @@ const PresenceRoot = styled('span')(({ theme, ownerState }) => {
     flexGrow: 0,
     flexShrink: 0,
     height: size,
-    width: size
+    width: size,
   };
 });
 
-export const Presence = (props) => {
+export const Presence = props => {
   const { size = 'medium', status = 'offline', ...other } = props;
 
   const ownerState = { size, status };
 
-  return (
-    <PresenceRoot
-      ownerState={ownerState}
-      {...other} />
-  );
+  return <PresenceRoot ownerState={ownerState} {...other} />;
 };
 
 Presence.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  status: PropTypes.oneOf(['online', 'offline', 'away', 'busy'])
+  status: PropTypes.oneOf(['online', 'offline', 'away', 'busy']),
 };

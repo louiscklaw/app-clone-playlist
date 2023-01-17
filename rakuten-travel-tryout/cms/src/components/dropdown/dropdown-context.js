@@ -7,5 +7,5 @@ export const DropdownContext = createContext({
   onMenuLeave: noop,
   onTriggerEnter: noop,
   onTriggerLeave: noop,
-  open: false
+  open: false,
 });

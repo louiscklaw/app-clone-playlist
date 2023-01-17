@@ -1,10 +1,5 @@
-const GraduationHat01 = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    fill="none"
-    {...props}>
+const GraduationHat01 = props => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
     <path
       fill="currentColor"
       d="M12.3578 3.679c-.1312-.0656-.1968-.0984-.2656-.1113a.4997.4997 0 0 0-.1844 0c-.0688.0129-.1344.0457-.2656.1113L2 8.5l9.6422 4.8212c.1312.0656.1968.0984.2656.1113a.5014.5014 0 0 0 .1844 0c.0688-.0129.1344-.0457.2656-.1113L22 8.5001 12.3578 3.679Z"

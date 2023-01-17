@@ -22,17 +22,19 @@ import { thunks } from '../../thunks/calendar';
 
 const useEvents = () => {
   const dispatch = useDispatch();
-  const events = useSelector((state) => state.calendar.events);
+  const events = useSelector(state => state.calendar.events);
 
   const getEvents = useCallback(() => {
     dispatch(thunks.getEvents());
   }, [dispatch]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getEvents();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return events;
 };
@@ -43,7 +45,7 @@ const useCurrentEvent = (dialog, events) => {
       return undefined;
     }
 
-    return events.find((event) => event.id === dialog.data.eventId);
+    return events.find(event => event.id === dialog.data.eventId);
   }, [dialog, events]);
 };
 
@@ -51,12 +53,12 @@ const Page = () => {
   const dispatch = useDispatch();
   const calendarRef = useRef(null);
   const events = useEvents();
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
   const [date, setDate] = useState(new Date());
   const [view, setView] = useState(mdUp ? 'timeGridDay' : 'dayGridMonth');
   const [dialog, setDialog] = useState({
     isOpen: false,
-    data: undefined
+    data: undefined,
   });
   const currentEvent = useCurrentEvent(dialog, events);
 
@@ -74,13 +76,15 @@ const Page = () => {
     }
   }, [calendarRef, mdUp]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handleScreenResize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mdUp]);
+    [mdUp],
+  );
 
-  const handleViewChange = useCallback((view) => {
+  const handleViewChange = useCallback(view => {
     const calendarEl = calendarRef.current;
 
     if (calendarEl) {
@@ -126,11 +130,11 @@ const Page = () => {
 
   const handleAddClick = useCallback(() => {
     setDialog({
-      isOpen: true
+      isOpen: true,
     });
   }, []);
 
-  const handleRangeSelect = useCallback((arg) => {
+  const handleRangeSelect = useCallback(arg => {
     const calendarEl = calendarRef.current;
 
     if (calendarEl) {
@@ -144,73 +148,81 @@ const Page = () => {
       data: {
         range: {
           start: arg.start.getTime(),
-          end: arg.end.getTime()
-        }
-      }
+          end: arg.end.getTime(),
+        },
+      },
     });
   }, []);
 
-  const handleEventSelect = useCallback((arg) => {
+  const handleEventSelect = useCallback(arg => {
     setDialog({
       isOpen: true,
       data: {
-        eventId: arg.event.id
-      }
+        eventId: arg.event.id,
+      },
     });
   }, []);
 
-  const handleEventResize = useCallback(async (arg) => {
-    const { event } = arg;
+  const handleEventResize = useCallback(
+    async arg => {
+      const { event } = arg;
 
-    try {
-      await dispatch(thunks.updateEvent({
-        eventId: event.id,
-        update: {
-          allDay: event.allDay,
-          start: event.start?.getTime(),
-          end: event.end?.getTime()
-        }
-      }));
-    } catch (err) {
-      console.error(err);
-    }
-  }, [dispatch]);
+      try {
+        await dispatch(
+          thunks.updateEvent({
+            eventId: event.id,
+            update: {
+              allDay: event.allDay,
+              start: event.start?.getTime(),
+              end: event.end?.getTime(),
+            },
+          }),
+        );
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    [dispatch],
+  );
 
-  const handleEventDrop = useCallback(async (arg) => {
-    const { event } = arg;
+  const handleEventDrop = useCallback(
+    async arg => {
+      const { event } = arg;
 
-    try {
-      await dispatch(thunks.updateEvent({
-        eventId: event.id,
-        update: {
-          allDay: event.allDay,
-          start: event.start?.getTime(),
-          end: event.end?.getTime()
-        }
-      }));
-    } catch (err) {
-      console.error(err);
-    }
-  }, [dispatch]);
+      try {
+        await dispatch(
+          thunks.updateEvent({
+            eventId: event.id,
+            update: {
+              allDay: event.allDay,
+              start: event.start?.getTime(),
+              end: event.end?.getTime(),
+            },
+          }),
+        );
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    [dispatch],
+  );
 
   const handleCloseDialog = useCallback(() => {
     setDialog({
-      isOpen: false
+      isOpen: false,
     });
   }, []);
 
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Calendar | Devias Kit PRO
-        </title>
+        <title>Dashboard: Calendar | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="xl">
@@ -241,13 +253,7 @@ const Page = () => {
                   height={800}
                   initialDate={date}
                   initialView={view}
-                  plugins={[
-                    dayGridPlugin,
-                    interactionPlugin,
-                    listPlugin,
-                    timeGridPlugin,
-                    timelinePlugin
-                  ]}
+                  plugins={[dayGridPlugin, interactionPlugin, listPlugin, timeGridPlugin, timelinePlugin]}
                   ref={calendarRef}
                   rerenderDelay={10}
                   select={handleRangeSelect}
@@ -272,10 +278,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

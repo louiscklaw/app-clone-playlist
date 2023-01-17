@@ -6,7 +6,7 @@ import { Box, ButtonBase, ListItemButton, ListItemText, SvgIcon } from '@mui/mat
 import { Dropdown, DropdownMenu, DropdownTrigger } from '../../../components/dropdown';
 
 const renderChildItems = ({ items, depth = 0 }) => {
-  return items.map((item) => {
+  return items.map(item => {
     const { disabled, items, path, title } = item;
 
     // Branch
@@ -19,7 +19,7 @@ const renderChildItems = ({ items, depth = 0 }) => {
               sx={{
                 borderRadius: 1,
                 px: 1.5,
-                py: 0.5
+                py: 0.5,
               }}
             >
               <ListItemText
@@ -28,14 +28,11 @@ const renderChildItems = ({ items, depth = 0 }) => {
                   sx: {
                     color: 'text.secondary',
                     fontSize: 14,
-                    fontWeight: 500
-                  }
+                    fontWeight: 500,
+                  },
                 }}
               />
-              <SvgIcon
-                fontSize="small"
-                sx={{ color: 'neutral.400' }}
-              >
+              <SvgIcon fontSize="small" sx={{ color: 'neutral.400' }}>
                 <ChevronRightIcon />
               </SvgIcon>
             </ListItemButton>
@@ -43,7 +40,7 @@ const renderChildItems = ({ items, depth = 0 }) => {
           <DropdownMenu
             anchorOrigin={{
               horizontal: 'right',
-              vertical: 'top'
+              vertical: 'top',
             }}
             disableScrollLock
             PaperProps={{
@@ -52,12 +49,12 @@ const renderChildItems = ({ items, depth = 0 }) => {
                 maxWidth: '100%',
                 ml: 1,
                 p: 1,
-                width: 200
-              }
+                width: 200,
+              },
             }}
             transformOrigin={{
               horizontal: 'left',
-              vertical: 'top'
+              vertical: 'top',
             }}
           >
             {renderChildItems({ items, depth: depth + 1 })}
@@ -73,14 +70,14 @@ const renderChildItems = ({ items, depth = 0 }) => {
 
       linkProps = isExternal
         ? {
-          component: 'a',
-          href: path,
-          target: '_blank'
-        }
+            component: 'a',
+            href: path,
+            target: '_blank',
+          }
         : {
-          component: NextLink,
-          href: path
-        };
+            component: NextLink,
+            href: path,
+          };
     }
 
     // Leaf
@@ -91,17 +88,18 @@ const renderChildItems = ({ items, depth = 0 }) => {
         sx={{
           borderRadius: 1,
           px: 1.5,
-          py: 0.5
+          py: 0.5,
         }}
-        {...linkProps}>
+        {...linkProps}
+      >
         <ListItemText
           primary={item.title}
           primaryTypographyProps={{
             sx: {
               color: 'text.secondary',
               fontSize: 14,
-              fontWeight: 500
-            }
+              fontWeight: 500,
+            },
           }}
         />
       </ListItemButton>
@@ -109,7 +107,7 @@ const renderChildItems = ({ items, depth = 0 }) => {
   });
 };
 
-export const TopNavItem = (props) => {
+export const TopNavItem = props => {
   const { active, disabled, items, icon, label, path, title } = props;
 
   // With dropdown
@@ -131,11 +129,11 @@ export const TopNavItem = (props) => {
                 textAlign: 'left',
                 width: '100%',
                 ...(active && {
-                  backgroundColor: 'var(--nav-item-active-bg)'
+                  backgroundColor: 'var(--nav-item-active-bg)',
                 }),
                 '&:hover': {
-                  backgroundColor: 'var(--nav-item-hover-bg)'
-                }
+                  backgroundColor: 'var(--nav-item-hover-bg)',
+                },
               }}
             >
               <Box
@@ -147,8 +145,8 @@ export const TopNavItem = (props) => {
                   justifyContent: 'center',
                   mr: 2,
                   ...(active && {
-                    color: 'var(--nav-item-icon-active-color)'
-                  })
+                    color: 'var(--nav-item-icon-active-color)',
+                  }),
                 }}
               >
                 {icon}
@@ -158,17 +156,17 @@ export const TopNavItem = (props) => {
                 sx={{
                   color: 'var(--nav-item-color)',
                   flexGrow: 1,
-                  fontFamily: (theme) => theme.typography.fontFamily,
+                  fontFamily: theme => theme.typography.fontFamily,
                   fontSize: 14,
                   fontWeight: 600,
                   lineHeight: '24px',
                   whiteSpace: 'nowrap',
                   ...(active && {
-                    color: 'var(--nav-item-active-color)'
+                    color: 'var(--nav-item-active-color)',
                   }),
                   ...(disabled && {
-                    color: 'var(--nav-item-disabled-color)'
-                  })
+                    color: 'var(--nav-item-disabled-color)',
+                  }),
                 }}
               >
                 {title}
@@ -177,7 +175,7 @@ export const TopNavItem = (props) => {
                 sx={{
                   color: 'var(--nav-item-chevron-color)',
                   fontSize: 16,
-                  ml: 1
+                  ml: 1,
                 }}
               >
                 <ChevronDownIcon />
@@ -192,8 +190,8 @@ export const TopNavItem = (props) => {
             sx: {
               maxWidth: '100%',
               p: 1,
-              width: 200
-            }
+              width: 200,
+            },
           }}
         >
           {renderChildItems({ items, depth: 0 })}
@@ -211,14 +209,14 @@ export const TopNavItem = (props) => {
 
     linkProps = isExternal
       ? {
-        component: 'a',
-        href: path,
-        target: '_blank'
-      }
+          component: 'a',
+          href: path,
+          target: '_blank',
+        }
       : {
-        component: NextLink,
-        href: path
-      };
+          component: NextLink,
+          href: path,
+        };
   }
 
   return (
@@ -235,13 +233,14 @@ export const TopNavItem = (props) => {
           textAlign: 'left',
           width: '100%',
           ...(active && {
-            backgroundColor: 'var(--nav-item-active-bg)'
+            backgroundColor: 'var(--nav-item-active-bg)',
           }),
           '&:hover': {
-            backgroundColor: 'var(--nav-item-hover-bg)'
-          }
+            backgroundColor: 'var(--nav-item-hover-bg)',
+          },
         }}
-        {...linkProps}>
+        {...linkProps}
+      >
         {icon && (
           <Box
             component="span"
@@ -252,8 +251,8 @@ export const TopNavItem = (props) => {
               justifyContent: 'center',
               mr: 2,
               ...(active && {
-                color: 'var(--nav-item-icon-active-color)'
-              })
+                color: 'var(--nav-item-icon-active-color)',
+              }),
             }}
           >
             {icon}
@@ -264,26 +263,23 @@ export const TopNavItem = (props) => {
           sx={{
             color: 'var(--nav-item-color)',
             flexGrow: 1,
-            fontFamily: (theme) => theme.typography.fontFamily,
+            fontFamily: theme => theme.typography.fontFamily,
             fontSize: 14,
             fontWeight: 600,
             lineHeight: '24px',
             whiteSpace: 'nowrap',
             ...(active && {
-              color: 'var(--nav-item-active-color)'
+              color: 'var(--nav-item-active-color)',
             }),
             ...(disabled && {
-              color: 'var(--nav-item-disabled-color)'
-            })
+              color: 'var(--nav-item-disabled-color)',
+            }),
           }}
         >
           {title}
         </Box>
         {label && (
-          <Box
-            component="span"
-            sx={{ ml: 1 }}
-          >
+          <Box component="span" sx={{ ml: 1 }}>
             {label}
           </Box>
         )}
@@ -298,5 +294,5 @@ TopNavItem.propTypes = {
   items: PropTypes.array,
   label: PropTypes.node,
   path: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };

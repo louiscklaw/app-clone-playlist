@@ -3,7 +3,7 @@ import Link01Icon from '@untitled-ui/icons-react/build/esm/Link01';
 import Trash02Icon from '@untitled-ui/icons-react/build/esm/Trash02';
 import { Menu, MenuItem, menuItemClasses, SvgIcon } from '@mui/material';
 
-export const ItemMenu = (props) => {
+export const ItemMenu = props => {
   const { anchorEl, onClose, onDelete, open = false } = props;
 
   return (
@@ -11,7 +11,7 @@ export const ItemMenu = (props) => {
       anchorEl={anchorEl}
       anchorOrigin={{
         horizontal: 'right',
-        vertical: 'bottom'
+        vertical: 'bottom',
       }}
       onClose={onClose}
       open={open}
@@ -19,13 +19,13 @@ export const ItemMenu = (props) => {
         [`& .${menuItemClasses.root}`]: {
           fontSize: 14,
           '& svg': {
-            mr: 1
-          }
-        }
+            mr: 1,
+          },
+        },
       }}
       transformOrigin={{
         horizontal: 'right',
-        vertical: 'top'
+        vertical: 'top',
       }}
     >
       <MenuItem onClick={onClose}>
@@ -34,10 +34,7 @@ export const ItemMenu = (props) => {
         </SvgIcon>
         Copy Link
       </MenuItem>
-      <MenuItem
-        onClick={onDelete}
-        sx={{ color: 'error.main' }}
-      >
+      <MenuItem onClick={onDelete} sx={{ color: 'error.main' }}>
         <SvgIcon fontSize="small">
           <Trash02Icon />
         </SvgIcon>
@@ -51,5 +48,5 @@ ItemMenu.propTypes = {
   anchorEl: PropTypes.any,
   onClose: PropTypes.func,
   onDelete: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

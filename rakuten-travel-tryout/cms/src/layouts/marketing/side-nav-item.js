@@ -5,12 +5,12 @@ import ChevronRightIcon from '@untitled-ui/icons-react/build/esm/ChevronRight';
 import ChevronDownIcon from '@untitled-ui/icons-react/build/esm/ChevronDown';
 import { Box, ButtonBase, Collapse, SvgIcon } from '@mui/material';
 
-export const SideNavItem = (props) => {
+export const SideNavItem = props => {
   const { active, children, disabled, open: openProp, path, title } = props;
   const [open, setOpen] = useState(!!openProp);
 
   const handleToggle = useCallback(() => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen(prevOpen => !prevOpen);
   }, []);
 
   // Branch
@@ -31,25 +31,25 @@ export const SideNavItem = (props) => {
             textAlign: 'left',
             width: '100%',
             ...(active && {
-              backgroundColor: 'action.hover'
+              backgroundColor: 'action.hover',
             }),
             '&:hover': {
-              backgroundColor: 'action.hover'
-            }
+              backgroundColor: 'action.hover',
+            },
           }}
         >
           <Box
             component="span"
             sx={{
               flexGrow: 1,
-              fontFamily: (theme) => theme.typography.fontFamily,
+              fontFamily: theme => theme.typography.fontFamily,
               fontSize: 14,
               fontWeight: 500,
               lineHeight: '24px',
               whiteSpace: 'nowrap',
               ...(active && {
-                color: 'primary.main'
-              })
+                color: 'primary.main',
+              }),
             }}
           >
             {title}
@@ -58,16 +58,13 @@ export const SideNavItem = (props) => {
             sx={{
               color: 'action.active',
               fontSize: 16,
-              ml: 2
+              ml: 2,
             }}
           >
             {open ? <ChevronDownIcon /> : <ChevronRightIcon />}
           </SvgIcon>
         </ButtonBase>
-        <Collapse
-          in={open}
-          sx={{ mt: 0.5 }}
-        >
+        <Collapse in={open} sx={{ mt: 0.5 }}>
           {children}
         </Collapse>
       </li>
@@ -83,14 +80,14 @@ export const SideNavItem = (props) => {
 
     linkProps = isExternal
       ? {
-        component: 'a',
-        href: path,
-        target: '_blank'
-      }
+          component: 'a',
+          href: path,
+          target: '_blank',
+        }
       : {
-        component: NextLink,
-        href: path
-      };
+          component: NextLink,
+          href: path,
+        };
   }
 
   return (
@@ -106,25 +103,26 @@ export const SideNavItem = (props) => {
           textAlign: 'left',
           width: '100%',
           ...(active && {
-            backgroundColor: 'action.hover'
+            backgroundColor: 'action.hover',
           }),
           '&:hover': {
-            backgroundColor: 'action.hover'
-          }
+            backgroundColor: 'action.hover',
+          },
         }}
-        {...linkProps}>
+        {...linkProps}
+      >
         <Box
           component="span"
           sx={{
             flexGrow: 1,
-            fontFamily: (theme) => theme.typography.fontFamily,
+            fontFamily: theme => theme.typography.fontFamily,
             fontSize: 14,
             fontWeight: 500,
             lineHeight: '24px',
             whiteSpace: 'nowrap',
             ...(active && {
-              color: 'primary.main'
-            })
+              color: 'primary.main',
+            }),
           }}
         >
           {title}
@@ -141,5 +139,5 @@ SideNavItem.propTypes = {
   children: PropTypes.any,
   open: PropTypes.bool,
   path: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };

@@ -2,33 +2,39 @@ import { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { DropdownContext } from './dropdown-context';
 
-export const Dropdown = (props) => {
+export const Dropdown = props => {
   const { children, delay = 50 } = props;
   const [anchorEl, setAnchorEl] = useState(null);
   const cleanupRef = useRef(null);
 
-  const handleTriggerEnter = useCallback((event) => {
+  const handleTriggerEnter = useCallback(event => {
     clearTimeout(cleanupRef.current);
     setAnchorEl(event.currentTarget);
   }, []);
 
-  const handleTriggerLeave = useCallback((_) => {
-    cleanupRef.current = setTimeout(() => {
-      setAnchorEl(null);
-    }, delay);
-  }, [delay]);
+  const handleTriggerLeave = useCallback(
+    _ => {
+      cleanupRef.current = setTimeout(() => {
+        setAnchorEl(null);
+      }, delay);
+    },
+    [delay],
+  );
 
-  const handleMenuEnter = useCallback((_) => {
+  const handleMenuEnter = useCallback(_ => {
     clearTimeout(cleanupRef.current);
   }, []);
 
-  const handleMenuLeave = useCallback((_) => {
-    cleanupRef.current = setTimeout(() => {
-      setAnchorEl(null);
-    }, delay);
-  }, [delay]);
+  const handleMenuLeave = useCallback(
+    _ => {
+      cleanupRef.current = setTimeout(() => {
+        setAnchorEl(null);
+      }, delay);
+    },
+    [delay],
+  );
 
-  const open = !!(anchorEl);
+  const open = !!anchorEl;
 
   return (
     <DropdownContext.Provider
@@ -38,7 +44,7 @@ export const Dropdown = (props) => {
         onMenuLeave: handleMenuLeave,
         onTriggerEnter: handleTriggerEnter,
         onTriggerLeave: handleTriggerLeave,
-        open
+        open,
       }}
     >
       {children}
@@ -48,5 +54,5 @@ export const Dropdown = (props) => {
 
 Dropdown.propTypes = {
   children: PropTypes.arrayOf(PropTypes.any).isRequired,
-  delay: PropTypes.number
+  delay: PropTypes.number,
 };

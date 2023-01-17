@@ -8,16 +8,16 @@ import { paths } from '../../paths';
 
 const TOP_NAV_HEIGHT = 64;
 
-export const TopNav = (props) => {
+export const TopNav = props => {
   const { onMobileNavOpen, ...other } = props;
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'));
 
   return (
     <Box
       component="header"
       sx={{
         backdropFilter: 'blur(6px)',
-        backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.90),
+        backgroundColor: theme => alpha(theme.palette.background.paper, 0.9),
         borderBottomColor: 'divider',
         borderBottomStyle: 'solid',
         borderBottomWidth: 1,
@@ -26,9 +26,10 @@ export const TopNav = (props) => {
         position: 'sticky',
         top: 0,
         width: '100%',
-        zIndex: (theme) => theme.zIndex.appBar
+        zIndex: theme => theme.zIndex.appBar,
       }}
-      {...other}>
+      {...other}
+    >
       <Stack
         alignItems="center"
         direction="row"
@@ -36,14 +37,10 @@ export const TopNav = (props) => {
         spacing={2}
         sx={{
           minHeight: TOP_NAV_HEIGHT,
-          px: 2
+          px: 2,
         }}
       >
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={1}
-        >
+        <Stack alignItems="center" direction="row" spacing={1}>
           <Stack
             alignItems="center"
             component={NextLink}
@@ -62,7 +59,7 @@ export const TopNav = (props) => {
                 display: 'flex',
                 height: 40,
                 p: '4px',
-                width: 40
+                width: 40,
               }}
             >
               <Logo />
@@ -70,34 +67,24 @@ export const TopNav = (props) => {
             <Box
               sx={{
                 color: 'text.primary',
-                fontFamily: '\'Plus Jakarta Sans\', sans-serif',
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontSize: 14,
                 fontWeight: 800,
                 letterSpacing: '0.3px',
                 lineHeight: 2.5,
                 '& span': {
-                  color: 'primary.main'
-                }
+                  color: 'primary.main',
+                },
               }}
             >
               Devias Kit <span>PRO</span>
             </Box>
           </Stack>
-          <Chip
-            label="v6.0.0"
-            size="small"
-          />
+          <Chip label="v6.0.0" size="small" />
         </Stack>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
+        <Stack alignItems="center" direction="row" spacing={2}>
           {!lgUp && (
-            <IconButton
-              color="inherit"
-              onClick={onMobileNavOpen}
-            >
+            <IconButton color="inherit" onClick={onMobileNavOpen}>
               <SvgIcon>
                 <Menu01Icon />
               </SvgIcon>
@@ -110,5 +97,5 @@ export const TopNav = (props) => {
 };
 
 TopNav.propTypes = {
-  onMobileNavOpen: PropTypes.func
+  onMobileNavOpen: PropTypes.func,
 };

@@ -14,16 +14,12 @@ import {
   TableHead,
   TableRow,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { customersApi } from '../../../api/customers';
 import { useMounted } from '../../../hooks/use-mounted';
 
-const emailOptions = [
-  'Resend last invoice',
-  'Send password reset',
-  'Send verification'
-];
+const emailOptions = ['Resend last invoice', 'Send password reset', 'Send verification'];
 
 const useEmails = () => {
   const isMounted = useMounted();
@@ -41,16 +37,18 @@ const useEmails = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getEmails();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return emails;
 };
 
-export const CustomerEmailsSummary = (props) => {
+export const CustomerEmailsSummary = props => {
   const [emailOption, setEmailOption] = useState(emailOptions[0]);
   const emails = useEmails();
 
@@ -60,32 +58,29 @@ export const CustomerEmailsSummary = (props) => {
       <CardContent sx={{ pt: 0 }}>
         <TextField
           name="option"
-          onChange={(event) => setEmailOption(event.target.value)}
+          onChange={event => setEmailOption(event.target.value)}
           select
           SelectProps={{ native: true }}
           sx={{
             width: 320,
-            maxWidth: '100%'
+            maxWidth: '100%',
           }}
           variant="outlined"
           value={emailOption}
         >
-          {emailOptions.map((option) => (
-            <option
-              key={option}
-              value={option}
-            >
+          {emailOptions.map(option => (
+            <option key={option} value={option}>
               {option}
             </option>
           ))}
         </TextField>
         <Box sx={{ mt: 2 }}>
           <Button
-            endIcon={(
+            endIcon={
               <SvgIcon>
                 <ArrowRightIcon />
               </SvgIcon>
-            )}
+            }
             variant="contained"
           >
             Send email
@@ -95,31 +90,20 @@ export const CustomerEmailsSummary = (props) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>
-              Mail Type
-            </TableCell>
-            <TableCell>
-              Date
-            </TableCell>
+            <TableCell>Mail Type</TableCell>
+            <TableCell>Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {emails.map((email) => {
+          {emails.map(email => {
             const createdAt = format(email.createdAt, 'dd/MM/yyyy | HH:mm');
 
             return (
-              <TableRow
-                key={email.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
+              <TableRow key={email.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell>
-                  <Typography variant="subtitle2">
-                    {email.description}
-                  </Typography>
+                  <Typography variant="subtitle2">{email.description}</Typography>
                 </TableCell>
-                <TableCell>
-                  {createdAt}
-                </TableCell>
+                <TableCell>{createdAt}</TableCell>
               </TableRow>
             );
           })}

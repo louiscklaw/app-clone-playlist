@@ -7,21 +7,9 @@ const platformOptions = ['Web', 'Node.js', 'Python', 'C#'];
 export const CourseSearch = () => {
   return (
     <Card>
-      <Stack
-        alignItems="center"
-        direction="row"
-        flexWrap="wrap"
-        gap={3}
-        sx={{ p: 3 }}
-      >
+      <Stack alignItems="center" direction="row" flexWrap="wrap" gap={3} sx={{ p: 3 }}>
         <Box sx={{ flexGrow: 1 }}>
-          <TextField
-            defaultValue=""
-            fullWidth
-            label="Search"
-            name="query"
-            placeholder="Title or description"
-          />
+          <TextField defaultValue="" fullWidth label="Search" name="query" placeholder="Title or description" />
         </Box>
         <Box sx={{ flexGrow: 1 }}>
           <TextField
@@ -32,11 +20,8 @@ export const CourseSearch = () => {
             select
             SelectProps={{ native: true }}
           >
-            {platformOptions.map((option) => (
-              <option
-                key={option}
-                value={option}
-              >
+            {platformOptions.map(option => (
+              <option key={option} value={option}>
                 {option}
               </option>
             ))}
@@ -46,8 +31,8 @@ export const CourseSearch = () => {
           <DatePicker
             inputFormat="dd/MM/yyyy"
             label="From"
-            onChange={() => { }}
-            renderInput={(inputProps) => <TextField {...inputProps} />}
+            onChange={() => {}}
+            renderInput={inputProps => <TextField {...inputProps} />}
             value={new Date()}
           />
         </div>
@@ -55,18 +40,18 @@ export const CourseSearch = () => {
           <DatePicker
             inputFormat="dd/MM/yyyy"
             label="To"
-            onChange={() => { }}
-            renderInput={(inputProps) => <TextField {...inputProps} />}
+            onChange={() => {}}
+            renderInput={inputProps => <TextField {...inputProps} />}
             value={new Date()}
           />
         </div>
         <Button
           size="large"
-          startIcon={(
+          startIcon={
             <SvgIcon>
               <SearchMdIcon />
             </SvgIcon>
-          )}
+          }
           variant="contained"
         >
           Search

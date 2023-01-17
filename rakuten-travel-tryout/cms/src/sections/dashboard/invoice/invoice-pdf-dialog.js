@@ -4,7 +4,7 @@ import ArrowLeftIcon from '@untitled-ui/icons-react/build/esm/ArrowLeft';
 import { Box, Button, Dialog, SvgIcon } from '@mui/material';
 import { InvoicePdfDocument } from './invoice-pdf-document';
 
-export const InvoicePdfDialog = (props) => {
+export const InvoicePdfDialog = props => {
   const { invoice, onClose, open = false, ...other } = props;
 
   if (!invoice) {
@@ -12,41 +12,34 @@ export const InvoicePdfDialog = (props) => {
   }
 
   return (
-    <Dialog
-      fullScreen
-      open={open}
-      {...other}>
+    <Dialog fullScreen open={open} {...other}>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%'
+          height: '100%',
         }}
       >
         <Box
           sx={{
             backgroundColor: 'background.paper',
-            p: 2
+            p: 2,
           }}
         >
           <Button
             color="inherit"
-            startIcon={(
+            startIcon={
               <SvgIcon>
                 <ArrowLeftIcon />
               </SvgIcon>
-            )}
+            }
             onClick={onClose}
           >
             Close
           </Button>
         </Box>
         <Box sx={{ flexGrow: 1 }}>
-          <PDFViewer
-            height="100%"
-            style={{ border: 'none' }}
-            width="100%"
-          >
+          <PDFViewer height="100%" style={{ border: 'none' }} width="100%">
             <InvoicePdfDocument invoice={invoice} />
           </PDFViewer>
         </Box>
@@ -59,5 +52,5 @@ InvoicePdfDialog.propTypes = {
   // @ts-ignore
   invoice: PropTypes.object,
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

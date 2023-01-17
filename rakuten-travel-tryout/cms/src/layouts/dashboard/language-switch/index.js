@@ -6,7 +6,7 @@ import { LanguagePopover } from './language-popover';
 const languages = {
   en: '/assets/flags/flag-uk.svg',
   de: '/assets/flags/flag-de.svg',
-  es: '/assets/flags/flag-es.svg'
+  es: '/assets/flags/flag-es.svg',
 };
 
 export const LanguageSwitch = () => {
@@ -27,27 +27,20 @@ export const LanguageSwitch = () => {
   return (
     <>
       <Tooltip title="Language">
-        <IconButton
-          onClick={handlePopoverOpen}
-          ref={anchorRef}
-        >
+        <IconButton onClick={handlePopoverOpen} ref={anchorRef}>
           <Box
             sx={{
               width: 28,
               '& img': {
-                width: '100%'
-              }
+                width: '100%',
+              },
             }}
           >
             <img src={flag} />
           </Box>
         </IconButton>
       </Tooltip>
-      <LanguagePopover
-        anchorEl={anchorRef.current}
-        onClose={handlePopoverClose}
-        open={openPopover}
-      />
+      <LanguagePopover anchorEl={anchorRef.current} onClose={handlePopoverClose} open={openPopover} />
     </>
   );
 };

@@ -16,7 +16,7 @@ import {
   Tab,
   Tabs,
   Typography,
-  Unstable_Grid2 as Grid
+  Unstable_Grid2 as Grid,
 } from '@mui/material';
 import { jobsApi } from '../../../../api/jobs';
 import { useMounted } from '../../../../hooks/use-mounted';
@@ -36,7 +36,7 @@ const tabs = [
   { label: 'Reviews', value: 'reviews' },
   { label: 'Activity', value: 'activity' },
   { label: 'Team', value: 'team' },
-  { label: 'Assets', value: 'assets' }
+  { label: 'Assets', value: 'assets' },
 ];
 
 const useCompany = () => {
@@ -55,11 +55,13 @@ const useCompany = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getCompany();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return company;
 };
@@ -81,22 +83,17 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Company Details | Devias Kit PRO
-        </title>
+        <title>Dashboard: Company Details | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
-          <Grid
-            container
-            spacing={4}
-          >
+          <Grid container spacing={4}>
             <Grid xs={12}>
               <div>
                 <Link
@@ -105,48 +102,32 @@ const Page = () => {
                   href={paths.dashboard.jobs.index}
                   sx={{
                     alignItems: 'center',
-                    display: 'inline-flex'
+                    display: 'inline-flex',
                   }}
                   underline="hover"
                 >
                   <SvgIcon sx={{ mr: 1 }}>
                     <ArrowLeftIcon />
                   </SvgIcon>
-                  <Typography variant="subtitle2">
-                    Jobs
-                  </Typography>
+                  <Typography variant="subtitle2">Jobs</Typography>
                 </Link>
               </div>
             </Grid>
-            <Grid
-              xs={12}
-              lg={8}
-            >
+            <Grid xs={12} lg={8}>
               <Card>
                 <CardHeader
                   disableTypography
-                  title={(
-                    <Stack
-                      alignItems="flex-start"
-                      direction="row"
-                      spacing={2}
-                    >
-                      <Avatar
-                        src={company.logo}
-                        variant="rounded"
-                      >
+                  title={
+                    <Stack alignItems="flex-start" direction="row" spacing={2}>
+                      <Avatar src={company.logo} variant="rounded">
                         {getInitials(company.name)}
                       </Avatar>
                       <Stack spacing={1}>
-                        <Typography variant="h6">
-                          {company.name}
-                        </Typography>
-                        <Typography variant="body2">
-                          {company.shortDescription}
-                        </Typography>
+                        <Typography variant="h6">{company.name}</Typography>
+                        <Typography variant="body2">{company.shortDescription}</Typography>
                       </Stack>
                     </Stack>
-                  )}
+                  }
                 />
                 <Divider />
                 <Tabs
@@ -158,35 +139,23 @@ const Page = () => {
                   value={currentTab}
                   variant="scrollable"
                 >
-                  {tabs.map((tab) => (
-                    <Tab
-                      key={tab.value}
-                      label={tab.label}
-                      value={tab.value}
-                    />
+                  {tabs.map(tab => (
+                    <Tab key={tab.value} label={tab.label} value={tab.value} />
                   ))}
                 </Tabs>
                 <Divider />
                 <CardContent>
                   {currentTab === 'overview' && <CompanyOverview company={company} />}
                   {currentTab === 'reviews' && (
-                    <CompanyReviews
-                      reviews={company.reviews || []}
-                      averageRating={company.averageRating}
-                    />
+                    <CompanyReviews reviews={company.reviews || []} averageRating={company.averageRating} />
                   )}
-                  {currentTab === 'activity' && (
-                    <CompanyActivity activities={company.activities || []} />
-                  )}
+                  {currentTab === 'activity' && <CompanyActivity activities={company.activities || []} />}
                   {currentTab === 'team' && <CompanyTeam members={company.members || []} />}
                   {currentTab === 'assets' && <CompanyAssets assets={company.assets || []} />}
                 </CardContent>
               </Card>
             </Grid>
-            <Grid
-              xs={12}
-              lg={4}
-            >
+            <Grid xs={12} lg={4}>
               <CompanySummary company={company} />
             </Grid>
           </Grid>
@@ -196,10 +165,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

@@ -4,14 +4,14 @@ import { ChatMessage } from './chat-message';
 import { useMockedUser } from '../../../hooks/use-mocked-user';
 
 const getAuthor = (message, participants, user) => {
-  const participant = participants.find((participant) => participant.id === message.authorId);
+  const participant = participants.find(participant => participant.id === message.authorId);
 
   // This should never happen
   if (!participant) {
     return {
       name: 'Unknown',
       avatar: '',
-      isUser: false
+      isUser: false,
     };
   }
 
@@ -21,27 +21,24 @@ const getAuthor = (message, participants, user) => {
     return {
       name: 'Me',
       avatar: user.avatar,
-      isUser: true
+      isUser: true,
     };
   }
 
   return {
     avatar: participant.avatar,
     name: participant.name,
-    isUser: false
+    isUser: false,
   };
 };
 
-export const ChatMessages = (props) => {
+export const ChatMessages = props => {
   const { messages, participants, ...other } = props;
   const user = useMockedUser();
 
   return (
-    <Stack
-      spacing={2}
-      sx={{ p: 3 }}
-      {...other}>
-      {messages.map((message) => {
+    <Stack spacing={2} sx={{ p: 3 }} {...other}>
+      {messages.map(message => {
         const author = getAuthor(message, participants, user);
 
         return (
@@ -64,5 +61,5 @@ ChatMessages.propTypes = {
   // @ts-ignore
   messages: PropTypes.array,
   // @ts-ignore
-  participants: PropTypes.array
+  participants: PropTypes.array,
 };

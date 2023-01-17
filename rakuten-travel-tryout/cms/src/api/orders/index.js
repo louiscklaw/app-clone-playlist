@@ -11,13 +11,11 @@ class OrdersApi {
     let count = data.length;
 
     if (typeof filters !== 'undefined') {
-      data = data.filter((order) => {
+      data = data.filter(order => {
         if (typeof filters.query !== 'undefined' && filters.query !== '') {
           // Checks only the order number, but can be extended to support other fields, such as customer
           // name, email, etc.
-          const containsQuery = (order.number || '')
-            .toLowerCase()
-            .includes(filters.query.toLowerCase());
+          const containsQuery = (order.number || '').toLowerCase().includes(filters.query.toLowerCase());
 
           if (!containsQuery) {
             return false;
@@ -47,7 +45,7 @@ class OrdersApi {
 
     return Promise.resolve({
       data,
-      count
+      count,
     });
   }
 

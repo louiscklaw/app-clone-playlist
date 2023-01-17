@@ -4,38 +4,26 @@ import { CompanyReview } from './company-review';
 import { CompanyReviewAdd } from './company-review-add';
 import { CompanyReviewsSummary } from './company-reviews-summary';
 
-export const CompanyReviews = (props) => {
+export const CompanyReviews = props => {
   const { reviews, averageRating, ...other } = props;
 
   return (
-    <Stack
-      spacing={3}
-      {...other}>
+    <Stack spacing={3} {...other}>
       <div>
-        <Typography variant="h6">
-          Reviews
-        </Typography>
+        <Typography variant="h6">Reviews</Typography>
       </div>
       <Stack spacing={3}>
-        <CompanyReviewsSummary
-          averageRating={averageRating}
-          totalReviews={reviews.length}
-        />
-        {reviews.map((review) => (
-          <CompanyReview
-            key={review.id}
-            review={review}
-          />
+        <CompanyReviewsSummary averageRating={averageRating} totalReviews={reviews.length} />
+        {reviews.map(review => (
+          <CompanyReview key={review.id} review={review} />
         ))}
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}
         >
-          <Button color="inherit">
-            Load more
-          </Button>
+          <Button color="inherit">Load more</Button>
         </Box>
         <CompanyReviewAdd />
       </Stack>
@@ -45,11 +33,11 @@ export const CompanyReviews = (props) => {
 
 CompanyReviews.defaultProps = {
   reviews: [],
-  averageRating: 0
+  averageRating: 0,
 };
 
 CompanyReviews.propTypes = {
   // @ts-ignore
   reviews: PropTypes.array.isRequired,
-  averageRating: PropTypes.number.isRequired
+  averageRating: PropTypes.number.isRequired,
 };

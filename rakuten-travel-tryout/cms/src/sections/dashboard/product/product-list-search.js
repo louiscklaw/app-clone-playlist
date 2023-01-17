@@ -8,57 +8,57 @@ import { useUpdateEffect } from '../../../hooks/use-update-effect';
 const categoryOptions = [
   {
     label: 'Healthcare',
-    value: 'healthcare'
+    value: 'healthcare',
   },
   {
     label: 'Makeup',
-    value: 'makeup'
+    value: 'makeup',
   },
   {
     label: 'Dress',
-    value: 'dress'
+    value: 'dress',
   },
   {
     label: 'Skincare',
-    value: 'skincare'
+    value: 'skincare',
   },
   {
     label: 'Jewelry',
-    value: 'jewelry'
+    value: 'jewelry',
   },
   {
     label: 'Blouse',
-    value: 'blouse'
-  }
+    value: 'blouse',
+  },
 ];
 
 const statusOptions = [
   {
     label: 'Published',
-    value: 'published'
+    value: 'published',
   },
   {
     label: 'Draft',
-    value: 'draft'
-  }
+    value: 'draft',
+  },
 ];
 
 const stockOptions = [
   {
     label: 'All',
-    value: 'all'
+    value: 'all',
   },
   {
     label: 'Available',
-    value: 'available'
+    value: 'available',
   },
   {
     label: 'Out of Stock',
-    value: 'outOfStock'
-  }
+    value: 'outOfStock',
+  },
 ];
 
-export const ProductListSearch = (props) => {
+export const ProductListSearch = props => {
   const { onFiltersChange, ...other } = props;
   const queryRef = useRef(null);
   const [query, setQuery] = useState('');
@@ -69,10 +69,10 @@ export const ProductListSearch = (props) => {
       name: undefined,
       category: [],
       status: [],
-      inStock: undefined
+      inStock: undefined,
     };
 
-    chips.forEach((chip) => {
+    chips.forEach(chip => {
       switch (chip.field) {
         case 'name':
           // There will (or should) be only one chips with field "name"
@@ -101,9 +101,9 @@ export const ProductListSearch = (props) => {
     handleChipsUpdate();
   }, [chips, handleChipsUpdate]);
 
-  const handleChipDelete = useCallback((deletedChip) => {
-    setChips((prevChips) => {
-      return prevChips.filter((chip) => {
+  const handleChipDelete = useCallback(deletedChip => {
+    setChips(prevChips => {
+      return prevChips.filter(chip => {
         // There can exist multiple chips for the same field.
         // Filter them by value.
 
@@ -112,17 +112,17 @@ export const ProductListSearch = (props) => {
     });
   }, []);
 
-  const handleQueryChange = useCallback((event) => {
+  const handleQueryChange = useCallback(event => {
     event.preventDefault();
     setQuery(queryRef.current?.value || '');
   }, []);
 
-  const handleCategoryChange = useCallback((values) => {
-    setChips((prevChips) => {
+  const handleCategoryChange = useCallback(values => {
+    setChips(prevChips => {
       const valuesFound = [];
 
       // First cleanup the previous chips
-      const newChips = prevChips.filter((chip) => {
+      const newChips = prevChips.filter(chip => {
         if (chip.field !== 'category') {
           return true;
         }
@@ -141,15 +141,15 @@ export const ProductListSearch = (props) => {
         return newChips;
       }
 
-      values.forEach((value) => {
+      values.forEach(value => {
         if (!valuesFound.includes(value)) {
-          const option = categoryOptions.find((option) => option.value === value);
+          const option = categoryOptions.find(option => option.value === value);
 
           newChips.push({
             label: 'Category',
             field: 'category',
             value,
-            displayValue: option.label
+            displayValue: option.label,
           });
         }
       });
@@ -158,12 +158,12 @@ export const ProductListSearch = (props) => {
     });
   }, []);
 
-  const handleStatusChange = useCallback((values) => {
-    setChips((prevChips) => {
+  const handleStatusChange = useCallback(values => {
+    setChips(prevChips => {
       const valuesFound = [];
 
       // First cleanup the previous chips
-      const newChips = prevChips.filter((chip) => {
+      const newChips = prevChips.filter(chip => {
         if (chip.field !== 'status') {
           return true;
         }
@@ -182,15 +182,15 @@ export const ProductListSearch = (props) => {
         return newChips;
       }
 
-      values.forEach((value) => {
+      values.forEach(value => {
         if (!valuesFound.includes(value)) {
-          const option = statusOptions.find((option) => option.value === value);
+          const option = statusOptions.find(option => option.value === value);
 
           newChips.push({
             label: 'Status',
             field: 'status',
             value,
-            displayValue: option.label
+            displayValue: option.label,
           });
         }
       });
@@ -199,14 +199,14 @@ export const ProductListSearch = (props) => {
     });
   }, []);
 
-  const handleStockChange = useCallback((values) => {
+  const handleStockChange = useCallback(values => {
     // Stock can only have one value, even if displayed as multi-select, so we select the first one.
     // This example allows you to select one value or "All", which is not included in the
     // rest of multi-selects.
 
-    setChips((prevChips) => {
+    setChips(prevChips => {
       // First cleanup the previous chips
-      const newChips = prevChips.filter((chip) => chip.field !== 'inStock');
+      const newChips = prevChips.filter(chip => chip.field !== 'inStock');
       const latestValue = values[values.length - 1];
 
       switch (latestValue) {
@@ -215,7 +215,7 @@ export const ProductListSearch = (props) => {
             label: 'Stock',
             field: 'inStock',
             value: 'available',
-            displayValue: 'Available'
+            displayValue: 'Available',
           });
           break;
         case 'outOfStock':
@@ -223,7 +223,7 @@ export const ProductListSearch = (props) => {
             label: 'Stock',
             field: 'inStock',
             value: 'outOfStock',
-            displayValue: 'Out of Stock'
+            displayValue: 'Out of Stock',
           });
           break;
         default:
@@ -236,18 +236,15 @@ export const ProductListSearch = (props) => {
   }, []);
 
   // We memoize this part to prevent re-render issues
-  const categoryValues = useMemo(() => chips
-    .filter((chip) => chip.field === 'category')
-    .map((chip) => chip.value), [chips]);
+  const categoryValues = useMemo(
+    () => chips.filter(chip => chip.field === 'category').map(chip => chip.value),
+    [chips],
+  );
 
-  const statusValues = useMemo(() => chips
-    .filter((chip) => chip.field === 'status')
-    .map((chip) => chip.value), [chips]);
+  const statusValues = useMemo(() => chips.filter(chip => chip.field === 'status').map(chip => chip.value), [chips]);
 
   const stockValues = useMemo(() => {
-    const values = chips
-      .filter((chip) => chip.field === 'inStock')
-      .map((chip) => chip.value);
+    const values = chips.filter(chip => chip.field === 'inStock').map(chip => chip.value);
 
     // Since we do not display the "all" as chip, we add it to the multi-select as a selected value
     if (values.length === 0) {
@@ -282,85 +279,53 @@ export const ProductListSearch = (props) => {
         />
       </Stack>
       <Divider />
-      {showChips
-        ? (
-          <Stack
-            alignItems="center"
-            direction="row"
-            flexWrap="wrap"
-            gap={1}
-            sx={{ p: 2 }}
-          >
-            {chips.map((chip, index) => (
-              <Chip
-                key={index}
-                label={(
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      '& span': {
-                        fontWeight: 600
-                      }
-                    }}
-                  >
-                    <>
-                        <span>
-                          {chip.label}
-                        </span>
-                      :
-                      {' '}
-                      {chip.displayValue || chip.value}
-                    </>
-                  </Box>
-                )}
-                onDelete={() => handleChipDelete(chip)}
-                variant="outlined"
-              />
-            ))}
-          </Stack>
-        )
-        : (
-          <Box sx={{ p: 2.5 }}>
-            <Typography
-              color="text.secondary"
-              variant="subtitle2"
-            >
-              No filters applied
-            </Typography>
-          </Box>
-        )}
+      {showChips ? (
+        <Stack alignItems="center" direction="row" flexWrap="wrap" gap={1} sx={{ p: 2 }}>
+          {chips.map((chip, index) => (
+            <Chip
+              key={index}
+              label={
+                <Box
+                  sx={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    '& span': {
+                      fontWeight: 600,
+                    },
+                  }}
+                >
+                  <>
+                    <span>{chip.label}</span>: {chip.displayValue || chip.value}
+                  </>
+                </Box>
+              }
+              onDelete={() => handleChipDelete(chip)}
+              variant="outlined"
+            />
+          ))}
+        </Stack>
+      ) : (
+        <Box sx={{ p: 2.5 }}>
+          <Typography color="text.secondary" variant="subtitle2">
+            No filters applied
+          </Typography>
+        </Box>
+      )}
       <Divider />
-      <Stack
-        alignItems="center"
-        direction="row"
-        flexWrap="wrap"
-        spacing={1}
-        sx={{ p: 1 }}
-      >
+      <Stack alignItems="center" direction="row" flexWrap="wrap" spacing={1} sx={{ p: 1 }}>
         <MultiSelect
           label="Category"
           onChange={handleCategoryChange}
           options={categoryOptions}
           value={categoryValues}
         />
-        <MultiSelect
-          label="Status"
-          onChange={handleStatusChange}
-          options={statusOptions}
-          value={statusValues}
-        />
-        <MultiSelect
-          label="Stock"
-          onChange={handleStockChange}
-          options={stockOptions}
-          value={stockValues}
-        />
+        <MultiSelect label="Status" onChange={handleStatusChange} options={statusOptions} value={statusValues} />
+        <MultiSelect label="Stock" onChange={handleStockChange} options={stockOptions} value={stockValues} />
       </Stack>
     </div>
   );
 };
 
 ProductListSearch.propTypes = {
-  onFiltersChange: PropTypes.func
+  onFiltersChange: PropTypes.func,
 };

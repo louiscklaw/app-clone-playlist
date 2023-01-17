@@ -19,48 +19,48 @@ import { Table11 } from '../../../sections/components/tables/table-11';
 const components = [
   {
     element: <Table1 />,
-    title: 'Table 1'
+    title: 'Table 1',
   },
   {
     element: <Table2 />,
-    title: 'Table 2'
+    title: 'Table 2',
   },
   {
     element: <Table3 />,
-    title: 'Table 3'
+    title: 'Table 3',
   },
   {
     element: <Table4 />,
-    title: 'Table 4'
+    title: 'Table 4',
   },
   {
     element: <Table5 />,
-    title: 'Table 5'
+    title: 'Table 5',
   },
   {
     element: <Table6 />,
-    title: 'Table 6'
+    title: 'Table 6',
   },
   {
     element: <Table7 />,
-    title: 'Table 7'
+    title: 'Table 7',
   },
   {
     element: <Table8 />,
-    title: 'Table 8'
+    title: 'Table 8',
   },
   {
     element: <Table9 />,
-    title: 'Table 9'
+    title: 'Table 9',
   },
   {
     element: <Table10 />,
-    title: 'Table 10'
+    title: 'Table 10',
   },
   {
     element: <Table11 />,
-    title: 'Table 11'
-  }
+    title: 'Table 11',
+  },
 ];
 
 const Page = () => {
@@ -69,24 +69,19 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Components: Tables | Devias Kit PRO
-        </title>
+        <title>Components: Tables | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Stack spacing={8}>
-            {components.map((component) => (
-              <Previewer
-                key={component.title}
-                title={component.title}
-              >
+            {components.map(component => (
+              <Previewer key={component.title} title={component.title}>
                 {component.element}
               </Previewer>
             ))}
@@ -97,11 +92,9 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
+Page.getLayout = page => (
   <MarketingLayout>
-    <ComponentsLayout title="Tables">
-      {page}
-    </ComponentsLayout>
+    <ComponentsLayout title="Tables">{page}</ComponentsLayout>
   </MarketingLayout>
 );
 

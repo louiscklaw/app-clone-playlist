@@ -1,15 +1,7 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
 import ArrowLeftIcon from '@untitled-ui/icons-react/build/esm/ArrowLeft';
-import {
-  Box,
-  Container,
-  Link,
-  Stack,
-  SvgIcon,
-  Typography,
-  Unstable_Grid2 as Grid
-} from '@mui/material';
+import { Box, Container, Link, Stack, SvgIcon, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import { usePageView } from '../../../../hooks/use-page-view';
 import { Layout as DashboardLayout } from '../../../../layouts/dashboard';
 import { paths } from '../../../../paths';
@@ -23,7 +15,7 @@ const useCourse = () => {
       {
         title: 'Introduction',
         description: 'Introducing the app and how it works',
-        lesson: ''
+        lesson: '',
       },
       {
         title: 'Installing required packages',
@@ -56,18 +48,18 @@ const Email = new Schema({
   validated: { type: Boolean, default: false },
 });
 \`\`\`
-`
+`,
       },
       {
         title: 'Step title',
         description: 'Introducing the library and how it works',
-        lesson: ''
-      }
+        lesson: '',
+      },
     ],
     description: 'Introductory course for design and framework basics',
     duration: '78 hours',
     progress: 50,
-    title: 'React and Redux Tutorial'
+    title: 'React and Redux Tutorial',
   };
 };
 
@@ -82,26 +74,18 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Academy Course | Devias Kit PRO
-        </title>
+        <title>Dashboard: Academy Course | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 3
+          py: 3,
         }}
       >
         <Container maxWidth="xl">
-          <Grid
-            container
-            spacing={4}
-          >
-            <Grid
-              xs={12}
-              md={4}
-            >
+          <Grid container spacing={4}>
+            <Grid xs={12} md={4}>
               <Stack spacing={3}>
                 <div>
                   <Link
@@ -110,28 +94,20 @@ const Page = () => {
                     href={paths.dashboard.academy.index}
                     sx={{
                       alignItems: 'center',
-                      display: 'inline-flex'
+                      display: 'inline-flex',
                     }}
                     underline="hover"
                   >
                     <SvgIcon sx={{ mr: 1 }}>
                       <ArrowLeftIcon />
                     </SvgIcon>
-                    <Typography variant="subtitle2">
-                      Academy
-                    </Typography>
+                    <Typography variant="subtitle2">Academy</Typography>
                   </Link>
                 </div>
-                <CourseSummary
-                  activeChapter={activeChapter}
-                  course={course}
-                />
+                <CourseSummary activeChapter={activeChapter} course={course} />
               </Stack>
             </Grid>
-            <Grid
-              xs={12}
-              md={8}
-            >
+            <Grid xs={12} md={8}>
               {chapter && <CourseChapter chapter={chapter} />}
             </Grid>
           </Grid>
@@ -141,11 +117,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;
-

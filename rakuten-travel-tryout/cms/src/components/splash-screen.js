@@ -15,14 +15,14 @@ export const SplashScreen = () => (
       position: 'fixed',
       top: 0,
       width: '100vw',
-      zIndex: 1400
+      zIndex: 1400,
     }}
   >
     <Box
       sx={{
         display: 'inline-flex',
         height: 48,
-        width: 48
+        width: 48,
       }}
     >
       <Logo />

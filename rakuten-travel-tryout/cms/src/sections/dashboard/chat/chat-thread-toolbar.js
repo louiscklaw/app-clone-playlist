@@ -19,21 +19,19 @@ import {
   Stack,
   SvgIcon,
   Tooltip,
-  Typography
+  Typography,
 } from '@mui/material';
 import { useMockedUser } from '../../../hooks/use-mocked-user';
 
 const getRecipients = (participants, userId) => {
-  return participants.filter((participant) => participant.id !== userId);
+  return participants.filter(participant => participant.id !== userId);
 };
 
-const getDisplayName = (recipients) => {
-  return recipients
-    .map((participant) => participant.name)
-    .join(', ');
+const getDisplayName = recipients => {
+  return recipients.map(participant => participant.name).join(', ');
 };
 
-const getLastActive = (recipients) => {
+const getLastActive = recipients => {
   const hasLastActive = recipients.length === 1 && recipients[0].lastActivity;
 
   if (hasLastActive) {
@@ -43,7 +41,7 @@ const getLastActive = (recipients) => {
   return null;
 };
 
-export const ChatThreadToolbar = (props) => {
+export const ChatThreadToolbar = props => {
   const { participants = [], ...other } = props;
   const user = useMockedUser();
   const moreRef = useRef(null);
@@ -74,14 +72,11 @@ export const ChatThreadToolbar = (props) => {
           flexShrink: 0,
           minHeight: 64,
           px: 2,
-          py: 1
+          py: 1,
         }}
-        {...other}>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={2}
-        >
+        {...other}
+      >
+        <Stack alignItems="center" direction="row" spacing={2}>
           <AvatarGroup
             max={2}
             sx={{
@@ -90,40 +85,26 @@ export const ChatThreadToolbar = (props) => {
                   height: 30,
                   width: 30,
                   '&:nth-of-type(2)': {
-                    mt: '10px'
-                  }
-                }
-              })
+                    mt: '10px',
+                  },
+                },
+              }),
             }}
           >
-            {recipients.map((recipient) => (
-              <Avatar
-                key={recipient.id}
-                src={recipient.avatar || undefined}
-              />
+            {recipients.map(recipient => (
+              <Avatar key={recipient.id} src={recipient.avatar || undefined} />
             ))}
           </AvatarGroup>
           <div>
-            <Typography variant="subtitle2">
-              {displayName}
-            </Typography>
+            <Typography variant="subtitle2">{displayName}</Typography>
             {lastActive && (
-              <Typography
-                color="text.secondary"
-                variant="caption"
-              >
-                Last active
-                {' '}
-                {lastActive}
+              <Typography color="text.secondary" variant="caption">
+                Last active {lastActive}
               </Typography>
             )}
           </div>
         </Stack>
-        <Stack
-          alignItems="center"
-          direction="row"
-          spacing={1}
-        >
+        <Stack alignItems="center" direction="row" spacing={1}>
           <IconButton>
             <SvgIcon>
               <PhoneIcon />
@@ -135,10 +116,7 @@ export const ChatThreadToolbar = (props) => {
             </SvgIcon>
           </IconButton>
           <Tooltip title="More options">
-            <IconButton
-              onClick={handleMenuOpen}
-              ref={moreRef}
-            >
+            <IconButton onClick={handleMenuOpen} ref={moreRef}>
               <SvgIcon>
                 <DotsHorizontalIcon />
               </SvgIcon>
@@ -146,12 +124,7 @@ export const ChatThreadToolbar = (props) => {
           </Tooltip>
         </Stack>
       </Stack>
-      <Menu
-        anchorEl={moreRef.current}
-        keepMounted
-        onClose={handleMenuClose}
-        open={openMenu}
-      >
+      <Menu anchorEl={moreRef.current} keepMounted onClose={handleMenuClose} open={openMenu}>
         <MenuItem>
           <ListItemIcon>
             <SvgIcon>
@@ -191,5 +164,5 @@ export const ChatThreadToolbar = (props) => {
 
 ChatThreadToolbar.propTypes = {
   // @ts-ignore
-  participants: PropTypes.array
+  participants: PropTypes.array,
 };

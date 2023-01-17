@@ -3,16 +3,7 @@ import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
 import PlusIcon from '@untitled-ui/icons-react/build/esm/Plus';
 import XIcon from '@untitled-ui/icons-react/build/esm/X';
-import {
-  Box,
-  Button,
-  Drawer,
-  IconButton,
-  Stack,
-  SvgIcon,
-  Typography,
-  useMediaQuery
-} from '@mui/material';
+import { Box, Button, Drawer, IconButton, Stack, SvgIcon, Typography, useMediaQuery } from '@mui/material';
 import { chatApi } from '../../../api/chat';
 import { Scrollbar } from '../../../components/scrollbar';
 import { useMockedUser } from '../../../hooks/use-mocked-user';
@@ -31,21 +22,21 @@ const getThreadKey = (thread, userId) => {
     // with the auth provider.
     // When implementing this app with a real database, replace this
     // ID with the ID from Auth Context.
-    threadKey = thread.participantIds.find((participantId) => (participantId !== userId));
+    threadKey = thread.participantIds.find(participantId => participantId !== userId);
   }
 
   return threadKey;
 };
 
 const useThreads = () => {
-  return useSelector((state) => state.chat.threads);
+  return useSelector(state => state.chat.threads);
 };
 
 const useCurrentThreadId = () => {
-  return useSelector((state) => state.chat.currentThreadId);
+  return useSelector(state => state.chat.currentThreadId);
 };
 
-export const ChatSidebar = (props) => {
+export const ChatSidebar = props => {
   const { container, onClose, open, ...other } = props;
   const user = useMockedUser();
   const router = useRouter();
@@ -54,13 +45,13 @@ export const ChatSidebar = (props) => {
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   const handleCompose = useCallback(() => {
     router.push(paths.dashboard.chat + '?compose=true');
   }, [router]);
 
-  const handleSearchChange = useCallback(async (event) => {
+  const handleSearchChange = useCallback(async event => {
     const { value } = event.target;
 
     setSearchQuery(value);
@@ -90,48 +81,46 @@ export const ChatSidebar = (props) => {
     setSearchFocused(true);
   }, []);
 
-  const handleSearchSelect = useCallback((contact) => {
-    // We use the contact ID as a thread key
-    const threadKey = contact.id;
+  const handleSearchSelect = useCallback(
+    contact => {
+      // We use the contact ID as a thread key
+      const threadKey = contact.id;
 
-    setSearchFocused(false);
-    setSearchQuery('');
+      setSearchFocused(false);
+      setSearchQuery('');
 
-    router.push(paths.dashboard.chat + `?threadKey=${threadKey}`);
-  }, [router]);
-
-  const handleThreadSelect = useCallback((threadId) => {
-    const thread = threads.byId[threadId];
-    const threadKey = getThreadKey(thread, user.id);
-
-    if (!threadKey) {
-      router.push(paths.dashboard.chat);
-    } else {
       router.push(paths.dashboard.chat + `?threadKey=${threadKey}`);
-    }
-  }, [router, threads, user]);
+    },
+    [router],
+  );
+
+  const handleThreadSelect = useCallback(
+    threadId => {
+      const thread = threads.byId[threadId];
+      const threadKey = getThreadKey(thread, user.id);
+
+      if (!threadKey) {
+        router.push(paths.dashboard.chat);
+      } else {
+        router.push(paths.dashboard.chat + `?threadKey=${threadKey}`);
+      }
+    },
+    [router, threads, user],
+  );
 
   const content = (
     <div>
-      <Stack
-        alignItems="center"
-        direction="row"
-        spacing={2}
-        sx={{ p: 2 }}
-      >
-        <Typography
-          variant="h5"
-          sx={{ flexGrow: 1 }}
-        >
+      <Stack alignItems="center" direction="row" spacing={2} sx={{ p: 2 }}>
+        <Typography variant="h5" sx={{ flexGrow: 1 }}>
           Chats
         </Typography>
         <Button
           onClick={handleCompose}
-          startIcon={(
+          startIcon={
             <SvgIcon>
               <PlusIcon />
             </SvgIcon>
-          )}
+          }
           variant="contained"
         >
           Group
@@ -161,10 +150,10 @@ export const ChatSidebar = (props) => {
             sx={{
               listStyle: 'none',
               m: 0,
-              p: 2
+              p: 2,
             }}
           >
-            {threads.allIds.map((threadId) => (
+            {threads.allIds.map(threadId => (
               <ChatThreadItem
                 active={currentThreadId === threadId}
                 key={threadId}
@@ -186,12 +175,13 @@ export const ChatSidebar = (props) => {
         PaperProps={{
           sx: {
             position: 'relative',
-            width: 380
-          }
+            width: 380,
+          },
         }}
         SlideProps={{ container }}
         variant="persistent"
-        {...other}>
+        {...other}
+      >
         {content}
       </Drawer>
     );
@@ -205,8 +195,8 @@ export const ChatSidebar = (props) => {
         container,
         sx: {
           pointerEvents: 'none',
-          position: 'absolute'
-        }
+          position: 'absolute',
+        },
       }}
       onClose={onClose}
       open={open}
@@ -215,12 +205,13 @@ export const ChatSidebar = (props) => {
           maxWidth: '100%',
           width: 380,
           pointerEvents: 'auto',
-          position: 'absolute'
-        }
+          position: 'absolute',
+        },
       }}
       SlideProps={{ container }}
       variant="temporary"
-      {...other}>
+      {...other}
+    >
       {content}
     </Drawer>
   );
@@ -229,5 +220,5 @@ export const ChatSidebar = (props) => {
 ChatSidebar.propTypes = {
   container: PropTypes.any,
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

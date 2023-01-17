@@ -19,23 +19,25 @@ const useParams = () => {
 
   return {
     emailId,
-    label
+    label,
   };
 };
 
 const useLabels = () => {
   const dispatch = useDispatch();
-  const labels = useSelector((state) => state.mail.labels);
+  const labels = useSelector(state => state.mail.labels);
 
   const getLabels = useCallback(() => {
     dispatch(thunks.getLabels());
   }, [dispatch]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getLabels();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return labels;
 };
@@ -46,56 +48,58 @@ const useComposer = () => {
     isOpen: false,
     message: '',
     subject: '',
-    to: ''
+    to: '',
   };
 
   const [state, setState] = useState(initialState);
 
   const handleOpen = useCallback(() => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      isOpen: true
+      isOpen: true,
     }));
   }, []);
 
-  const handleClose = useCallback(() => {
+  const handleClose = useCallback(
+    () => {
       setState(initialState);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   const handleMaximize = useCallback(() => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      isFullScreen: true
+      isFullScreen: true,
     }));
   }, []);
 
   const handleMinimize = useCallback(() => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      isFullScreen: false
+      isFullScreen: false,
     }));
   }, []);
 
-  const handleMessageChange = useCallback((message) => {
-    setState((prevState) => ({
+  const handleMessageChange = useCallback(message => {
+    setState(prevState => ({
       ...prevState,
-      message
+      message,
     }));
   }, []);
 
-  const handleSubjectChange = useCallback((subject) => {
-    setState((prevState) => ({
+  const handleSubjectChange = useCallback(subject => {
+    setState(prevState => ({
       ...prevState,
-      subject
+      subject,
     }));
   }, []);
 
-  const handleToChange = useCallback((to) => {
-    setState((prevState) => ({
+  const handleToChange = useCallback(to => {
+    setState(prevState => ({
       ...prevState,
-      to
+      to,
     }));
   }, []);
 
@@ -107,12 +111,12 @@ const useComposer = () => {
     handleMinimize,
     handleOpen,
     handleSubjectChange,
-    handleToChange
+    handleToChange,
   };
 };
 
 const useSidebar = () => {
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
   const [isOpen, setIsOpen] = useState(mdUp);
 
   const handleScreenResize = useCallback(() => {
@@ -123,14 +127,16 @@ const useSidebar = () => {
     }
   }, [mdUp]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handleScreenResize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mdUp]);
+    [mdUp],
+  );
 
   const handleToggle = useCallback(() => {
-    setIsOpen((prevState) => !prevState);
+    setIsOpen(prevState => !prevState);
   }, []);
 
   const handleClose = useCallback(() => {
@@ -140,7 +146,7 @@ const useSidebar = () => {
   return {
     isOpen,
     handleToggle,
-    handleClose
+    handleClose,
   };
 };
 
@@ -158,9 +164,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Mail | Devias Kit PRO
-        </title>
+        <title>Dashboard: Mail | Devias Kit PRO</title>
       </Head>
       <Divider />
       <Box
@@ -169,7 +173,7 @@ const Page = () => {
           backgroundColor: 'background.paper',
           flex: '1 1 auto',
           overflow: 'hidden',
-          position: 'relative'
+          position: 'relative',
         }}
       >
         <Box
@@ -180,7 +184,7 @@ const Page = () => {
             left: 0,
             position: 'absolute',
             right: 0,
-            top: 0
+            top: 0,
           }}
         >
           <MailSidebar
@@ -192,18 +196,8 @@ const Page = () => {
             open={sidebar.isOpen}
           />
           <MailContainer open={sidebar.isOpen}>
-            {view === 'details' && (
-              <MailThread
-                currentLabelId={currentLabelId}
-                emailId={emailId}
-              />
-            )}
-            {view === 'list' && (
-              <MailList
-                currentLabelId={currentLabelId}
-                onSidebarToggle={sidebar.handleToggle}
-              />
-            )}
+            {view === 'details' && <MailThread currentLabelId={currentLabelId} emailId={emailId} />}
+            {view === 'list' && <MailList currentLabelId={currentLabelId} onSidebarToggle={sidebar.handleToggle} />}
           </MailContainer>
         </Box>
       </Box>
@@ -224,10 +218,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

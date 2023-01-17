@@ -4,17 +4,9 @@ import ClipboardIcon from '@untitled-ui/icons-react/build/esm/Clipboard';
 import DotsHorizontalIcon from '@untitled-ui/icons-react/build/esm/DotsHorizontal';
 import Download01Icon from '@untitled-ui/icons-react/build/esm/Download01';
 import FileCheck03Icon from '@untitled-ui/icons-react/build/esm/FileCheck03';
-import {
-  IconButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
-  SvgIcon,
-  Tooltip
-} from '@mui/material';
+import { IconButton, ListItemIcon, ListItemText, Menu, MenuItem, SvgIcon, Tooltip } from '@mui/material';
 
-export const MoreMenu = (props) => {
+export const MoreMenu = props => {
   const anchorRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -33,10 +25,7 @@ export const MoreMenu = (props) => {
   return (
     <>
       <Tooltip title="More options">
-        <IconButton
-          onClick={handleMenuOpen}
-          ref={anchorRef}
-          {...props}>
+        <IconButton onClick={handleMenuOpen} ref={anchorRef} {...props}>
           <SvgIcon>
             <DotsHorizontalIcon />
           </SvgIcon>
@@ -46,19 +35,19 @@ export const MoreMenu = (props) => {
         anchorEl={anchorRef.current}
         anchorOrigin={{
           horizontal: 'right',
-          vertical: 'bottom'
+          vertical: 'bottom',
         }}
         onClose={handleMenuClose}
         open={openMenu}
         PaperProps={{
           sx: {
             maxWidth: '100%',
-            width: 200
-          }
+            width: 200,
+          },
         }}
         transformOrigin={{
           horizontal: 'right',
-          vertical: 'top'
+          vertical: 'top',
         }}
       >
         <MenuItem onClick={handleAction}>

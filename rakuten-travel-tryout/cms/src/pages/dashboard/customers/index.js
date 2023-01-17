@@ -17,25 +17,25 @@ const useSearch = () => {
       query: undefined,
       hasAcceptedMarketing: undefined,
       isProspect: undefined,
-      isReturning: undefined
+      isReturning: undefined,
     },
     page: 0,
     rowsPerPage: 5,
     sortBy: 'updatedAt',
-    sortDir: 'desc'
+    sortDir: 'desc',
   });
 
   return {
     search,
-    updateSearch: setSearch
+    updateSearch: setSearch,
   };
 };
 
-const useCustomers = (search) => {
+const useCustomers = search => {
   const isMounted = useMounted();
   const [state, setState] = useState({
     customers: [],
-    customersCount: 0
+    customersCount: 0,
   });
 
   const getCustomers = useCallback(async () => {
@@ -45,7 +45,7 @@ const useCustomers = (search) => {
       if (isMounted()) {
         setState({
           customers: response.data,
-          customersCount: response.count
+          customersCount: response.count,
         });
       }
     } catch (err) {
@@ -53,11 +53,13 @@ const useCustomers = (search) => {
     }
   }, [search, isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getCustomers();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [search]);
+    [search],
+  );
 
   return state;
 };
@@ -68,100 +70,96 @@ const Page = () => {
 
   usePageView();
 
-  const handleFiltersChange = useCallback((filters) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      filters
-    }));
-  }, [updateSearch]);
+  const handleFiltersChange = useCallback(
+    filters => {
+      updateSearch(prevState => ({
+        ...prevState,
+        filters,
+      }));
+    },
+    [updateSearch],
+  );
 
-  const handleSortChange = useCallback((sort) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      sortBy: sort.sortBy,
-      sortDir: sort.sortDir
-    }));
-  }, [updateSearch]);
+  const handleSortChange = useCallback(
+    sort => {
+      updateSearch(prevState => ({
+        ...prevState,
+        sortBy: sort.sortBy,
+        sortDir: sort.sortDir,
+      }));
+    },
+    [updateSearch],
+  );
 
-  const handlePageChange = useCallback((event, page) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      page
-    }));
-  }, [updateSearch]);
+  const handlePageChange = useCallback(
+    (event, page) => {
+      updateSearch(prevState => ({
+        ...prevState,
+        page,
+      }));
+    },
+    [updateSearch],
+  );
 
-  const handleRowsPerPageChange = useCallback((event) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      rowsPerPage: parseInt(event.target.value, 10)
-    }));
-  }, [updateSearch]);
+  const handleRowsPerPageChange = useCallback(
+    event => {
+      updateSearch(prevState => ({
+        ...prevState,
+        rowsPerPage: parseInt(event.target.value, 10),
+      }));
+    },
+    [updateSearch],
+  );
 
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Customer List | Devias Kit PRO
-        </title>
+        <title>Dashboard: Customer List | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="xl">
           <Stack spacing={4}>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              spacing={4}
-            >
+            <Stack direction="row" justifyContent="space-between" spacing={4}>
               <Stack spacing={1}>
-                <Typography variant="h4">
-                  Customers
-                </Typography>
-                <Stack
-                  alignItems="center"
-                  direction="row"
-                  spacing={1}
-                >
+                <Typography variant="h4">Customers</Typography>
+                <Stack alignItems="center" direction="row" spacing={1}>
                   <Button
                     color="inherit"
                     size="small"
-                    startIcon={(
+                    startIcon={
                       <SvgIcon>
                         <Upload01Icon />
                       </SvgIcon>
-                    )}
+                    }
                   >
                     Import
                   </Button>
                   <Button
                     color="inherit"
                     size="small"
-                    startIcon={(
+                    startIcon={
                       <SvgIcon>
                         <Download01Icon />
                       </SvgIcon>
-                    )}
+                    }
                   >
                     Export
                   </Button>
                 </Stack>
               </Stack>
-              <Stack
-                alignItems="center"
-                direction="row"
-                spacing={3}
-              >
+              <Stack alignItems="center" direction="row" spacing={3}>
                 <Button
-                  startIcon={(
+                  startIcon={
                     <SvgIcon>
                       <PlusIcon />
                     </SvgIcon>
-                  )}
+                  }
                   variant="contained"
                 >
                   Add
@@ -191,10 +189,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

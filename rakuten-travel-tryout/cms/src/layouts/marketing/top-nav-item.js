@@ -9,7 +9,7 @@ const TOP_NAV_HEIGHT = 64;
 const TOP_NAV_SPACE = 16;
 const OFFSET = 16;
 
-export const TopNavItem = (props) => {
+export const TopNavItem = props => {
   const { active, children, path, title } = props;
   const [open, setOpen] = useState(false);
 
@@ -31,7 +31,7 @@ export const TopNavItem = (props) => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            height: '100%'
+            height: '100%',
           }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -47,23 +47,20 @@ export const TopNavItem = (props) => {
               py: '8px',
               textAlign: 'left',
               '&:hover': {
-                backgroundColor: 'action.hover'
+                backgroundColor: 'action.hover',
               },
               ...(active && {
-                color: 'primary.main'
-              })
+                color: 'primary.main',
+              }),
             }}
           >
-            <Typography
-              component="span"
-              variant="subtitle2"
-            >
+            <Typography component="span" variant="subtitle2">
               {title}
             </Typography>
             <SvgIcon
               sx={{
                 fontSize: 16,
-                ml: 1
+                ml: 1,
               }}
             >
               <ChevronDownIcon />
@@ -81,16 +78,16 @@ export const TopNavItem = (props) => {
                 pt: OFFSET + 'px',
                 right: 0,
                 top: TOP_NAV_HEIGHT + TOP_NAV_SPACE,
-                zIndex: (theme) => theme.zIndex.appBar + 100
+                zIndex: theme => theme.zIndex.appBar + 100,
               }}
             >
               <Paper
                 elevation={16}
                 sx={{
-                  backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.90),
+                  backgroundColor: theme => alpha(theme.palette.background.paper, 0.9),
                   backdropFilter: 'blur(6px)',
                   mx: 'auto',
-                  width: (theme) => theme.breakpoints.values.md
+                  width: theme => theme.breakpoints.values.md,
                 }}
               >
                 {children}
@@ -111,14 +108,14 @@ export const TopNavItem = (props) => {
 
     linkProps = isExternal
       ? {
-        component: 'a',
-        href: path,
-        target: '_blank'
-      }
+          component: 'a',
+          href: path,
+          target: '_blank',
+        }
       : {
-        component: NextLink,
-        href: path
-      };
+          component: NextLink,
+          href: path,
+        };
   }
 
   return (
@@ -127,7 +124,7 @@ export const TopNavItem = (props) => {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        height: '100%'
+        height: '100%',
       }}
     >
       <ButtonBase
@@ -141,17 +138,15 @@ export const TopNavItem = (props) => {
           py: '8px',
           textAlign: 'left',
           '&:hover': {
-            backgroundColor: 'action.hover'
+            backgroundColor: 'action.hover',
           },
           ...(active && {
-            color: 'primary.main'
-          })
+            color: 'primary.main',
+          }),
         }}
-        {...linkProps}>
-        <Typography
-          component="span"
-          variant="subtitle2"
-        >
+        {...linkProps}
+      >
+        <Typography component="span" variant="subtitle2">
           {title}
         </Typography>
       </ButtonBase>
@@ -163,5 +158,5 @@ TopNavItem.propTypes = {
   active: PropTypes.bool,
   children: PropTypes.any,
   path: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };

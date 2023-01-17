@@ -7,24 +7,24 @@ const categories = [
   {
     id: 'excellent',
     title: 'Very good',
-    description: 'Excellent'
+    description: 'Excellent',
   },
   {
     id: 'good',
     title: 'Good',
-    description: 'Good condition'
+    description: 'Good condition',
   },
   {
     id: 'bad',
     title: 'Bad',
-    description: 'Needs attention'
-  }
+    description: 'Needs attention',
+  },
 ];
 
 const createChartOptions = (theme, color) => {
   return {
     chart: {
-      background: 'transparent'
+      background: 'transparent',
     },
     colors: [color],
     labels: ['Health'],
@@ -36,42 +36,42 @@ const createChartOptions = (theme, color) => {
             color: theme.palette.text.secondary,
             fontSize: '12px',
             fontWeight: 400,
-            offsetY: 20
+            offsetY: 20,
           },
           value: {
             color: theme.palette.text.primary,
             fontSize: '18px',
             fontWeight: 600,
-            offsetY: -20
-          }
+            offsetY: -20,
+          },
         },
         hollow: {
-          size: '50%'
+          size: '50%',
         },
         track: {
-          background: alpha(color, 0.12)
-        }
-      }
+          background: alpha(color, 0.12),
+        },
+      },
     },
     states: {
       active: {
         filter: {
-          type: 'none'
-        }
+          type: 'none',
+        },
       },
       hover: {
         filter: {
-          type: 'none'
-        }
-      }
+          type: 'none',
+        },
+      },
     },
     theme: {
-      mode: theme.palette.mode
-    }
+      mode: theme.palette.mode,
+    },
   };
 };
 
-export const LogisticsVehiclesCondition = (props) => {
+export const LogisticsVehiclesCondition = props => {
   const { bad, excellent, good } = props;
   const theme = useTheme();
 
@@ -80,18 +80,15 @@ export const LogisticsVehiclesCondition = (props) => {
   const colorsMap = {
     excellent: theme.palette.primary.main,
     good: theme.palette.warning.main,
-    bad: theme.palette.error.main
+    bad: theme.palette.error.main,
   };
 
   return (
     <Card>
       <CardHeader title="Vehicles Condition" />
       <Box sx={{ p: 1 }}>
-        <Grid
-          container
-          spacing={3}
-        >
-          {categories.map((category) => {
+        <Grid container spacing={3}>
+          {categories.map(category => {
             const color = colorsMap[category.id];
             const chartOptions = createChartOptions(theme, color);
             const amount = props[category.id] || 0;
@@ -99,11 +96,7 @@ export const LogisticsVehiclesCondition = (props) => {
             const chartSeries = [progress];
 
             return (
-              <Grid
-                key={category.title}
-                xs={12}
-                md={4}
-              >
+              <Grid key={category.title} xs={12} md={4}>
                 <Box
                   sx={{
                     alignItems: 'center',
@@ -111,28 +104,15 @@ export const LogisticsVehiclesCondition = (props) => {
                     borderRadius: 3,
                     display: 'flex',
                     flexDirection: 'column',
-                    p: 2
+                    p: 2,
                   }}
                 >
-                  <Typography
-                    sx={{ color }}
-                    variant="h6"
-                  >
+                  <Typography sx={{ color }} variant="h6">
                     {category.title}
                   </Typography>
-                  <Chart
-                    height={200}
-                    options={chartOptions}
-                    series={chartSeries}
-                    type="radialBar"
-                  />
-                  <Typography variant="h6">
-                    {amount}
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    variant="body2"
-                  >
+                  <Chart height={200} options={chartOptions} series={chartSeries} type="radialBar" />
+                  <Typography variant="h6">{amount}</Typography>
+                  <Typography color="text.secondary" variant="body2">
                     {category.description}
                   </Typography>
                 </Box>
@@ -148,5 +128,5 @@ export const LogisticsVehiclesCondition = (props) => {
 LogisticsVehiclesCondition.propTypes = {
   bad: PropTypes.number.isRequired,
   excellent: PropTypes.number.isRequired,
-  good: PropTypes.number.isRequired
+  good: PropTypes.number.isRequired,
 };

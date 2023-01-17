@@ -6,7 +6,7 @@ import { JobDescriptionStep } from './job-description-step';
 import { JobDetailsStep } from './job-details-step';
 import { JobPreview } from './job-preview';
 
-const StepIcon = (props) => {
+const StepIcon = props => {
   const { active, completed, icon } = props;
 
   const highlight = active || completed;
@@ -18,18 +18,18 @@ const StepIcon = (props) => {
         width: 40,
         ...(highlight && {
           backgroundColor: 'primary.main',
-          color: 'primary.contrastText'
-        })
+          color: 'primary.contrastText',
+        }),
       }}
       variant="rounded"
     >
-      {completed
-        ? (
-          <SvgIcon>
-            <CheckIcon />
-          </SvgIcon>
-        )
-        : icon}
+      {completed ? (
+        <SvgIcon>
+          <CheckIcon />
+        </SvgIcon>
+      ) : (
+        icon
+      )}
     </Avatar>
   );
 };
@@ -39,11 +39,11 @@ export const JobCreateForm = () => {
   const [complete, setComplete] = useState(false);
 
   const handleNext = useCallback(() => {
-    setActiveStep((prevState) => prevState + 1);
+    setActiveStep(prevState => prevState + 1);
   }, []);
 
   const handleBack = useCallback(() => {
-    setActiveStep((prevState) => prevState - 1);
+    setActiveStep(prevState => prevState - 1);
   }, []);
 
   const handleComplete = useCallback(() => {
@@ -54,31 +54,16 @@ export const JobCreateForm = () => {
     return [
       {
         label: 'Category',
-        content: (
-          <JobCategoryStep
-            onBack={handleBack}
-            onNext={handleNext}
-          />
-        )
+        content: <JobCategoryStep onBack={handleBack} onNext={handleNext} />,
       },
       {
         label: 'Job Details',
-        content: (
-          <JobDetailsStep
-            onBack={handleBack}
-            onNext={handleNext}
-          />
-        )
+        content: <JobDetailsStep onBack={handleBack} onNext={handleNext} />,
       },
       {
         label: 'Description',
-        content: (
-          <JobDescriptionStep
-            onBack={handleBack}
-            onNext={handleComplete}
-          />
-        )
-      }
+        content: <JobDescriptionStep onBack={handleBack} onNext={handleComplete} />,
+      },
     ];
   }, [handleBack, handleNext, handleComplete]);
 
@@ -94,8 +79,8 @@ export const JobCreateForm = () => {
         '& .MuiStepConnector-line': {
           borderLeftColor: 'divider',
           borderLeftWidth: 2,
-          ml: 1
-        }
+          ml: 1,
+        },
       }}
     >
       {steps.map((step, index) => {
@@ -104,10 +89,7 @@ export const JobCreateForm = () => {
         return (
           <Step key={step.label}>
             <StepLabel StepIconComponent={StepIcon}>
-              <Typography
-                sx={{ ml: 2 }}
-                variant="overline"
-              >
+              <Typography sx={{ ml: 2 }} variant="overline">
                 {step.label}
               </Typography>
             </StepLabel>
@@ -117,8 +99,8 @@ export const JobCreateForm = () => {
                 borderLeftWidth: 2,
                 ml: '20px',
                 ...(isCurrentStep && {
-                  py: 4
-                })
+                  py: 4,
+                }),
               }}
             >
               {step.content}

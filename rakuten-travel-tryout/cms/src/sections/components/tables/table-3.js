@@ -24,7 +24,7 @@ import {
   TableRow,
   Tabs,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { Scrollbar } from '../../../components/scrollbar';
 
@@ -43,9 +43,9 @@ const customers = [
     isReturning: true,
     name: 'Carson Darrin',
     state: 'Ohio',
-    totalSpent: 300.00,
+    totalSpent: 300.0,
     totalOrders: 3,
-    updatedAt: subDays(subHours(now, 7), 1).getTime()
+    updatedAt: subDays(subHours(now, 7), 1).getTime(),
   },
   {
     id: '5e887b209c28ac3dd97f6db5',
@@ -59,9 +59,9 @@ const customers = [
     isReturning: false,
     name: 'Fran Perez',
     state: 'Georgia',
-    totalSpent: 0.00,
+    totalSpent: 0.0,
     totalOrders: 0,
-    updatedAt: subDays(subHours(now, 1), 2).getTime()
+    updatedAt: subDays(subHours(now, 1), 2).getTime(),
   },
   {
     id: '5e887b7602bdbc4dbb234b27',
@@ -75,9 +75,9 @@ const customers = [
     isReturning: false,
     name: 'Jie Yan Song',
     state: 'Ohio',
-    totalSpent: 5600.00,
+    totalSpent: 5600.0,
     totalOrders: 6,
-    updatedAt: subDays(subHours(now, 4), 2).getTime()
+    updatedAt: subDays(subHours(now, 4), 2).getTime(),
   },
   {
     id: '5e86809283e28b96d2d38537',
@@ -91,9 +91,9 @@ const customers = [
     isReturning: true,
     name: 'Anika Visser',
     state: 'Madrid',
-    totalSpent: 500.00,
+    totalSpent: 500.0,
     totalOrders: 1,
-    updatedAt: subDays(subHours(now, 11), 2).getTime()
+    updatedAt: subDays(subHours(now, 11), 2).getTime(),
   },
   {
     id: '5e86805e2bafd54f66cc95c3',
@@ -106,58 +106,56 @@ const customers = [
     isProspect: true,
     isReturning: false,
     name: 'Miron Vitold',
-    totalSpent: 0.00,
+    totalSpent: 0.0,
     totalOrders: 0,
     state: 'California',
-    updatedAt: subDays(subHours(now, 7), 3).getTime()
-  }
+    updatedAt: subDays(subHours(now, 7), 3).getTime(),
+  },
 ];
 
 const tabs = [
   {
     label: 'All',
-    value: 'all'
+    value: 'all',
   },
   {
     label: 'Accepts Marketing',
-    value: 'hasAcceptedMarketing'
+    value: 'hasAcceptedMarketing',
   },
   {
     label: 'Prospect',
-    value: 'isProspect'
+    value: 'isProspect',
   },
   {
     label: 'Returning',
-    value: 'isReturning'
-  }
+    value: 'isReturning',
+  },
 ];
 
 const sortOptions = [
   {
     label: 'Last update (newest)',
-    value: 'updatedAt|desc'
+    value: 'updatedAt|desc',
   },
   {
     label: 'Last update (oldest)',
-    value: 'updatedAt|asc'
+    value: 'updatedAt|asc',
   },
   {
     label: 'Total orders (highest)',
-    value: 'orders|desc'
+    value: 'orders|desc',
   },
   {
     label: 'Total orders (lowest)',
-    value: 'orders|asc'
-  }
+    value: 'orders|asc',
+  },
 ];
 
 export const Table3 = () => (
   <Box
     sx={{
-      backgroundColor: (theme) => theme.palette.mode === 'dark'
-        ? 'neutral.800'
-        : 'neutral.100',
-      p: 3
+      backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+      p: 3,
     }}
   >
     <Card>
@@ -169,44 +167,26 @@ export const Table3 = () => (
         sx={{ px: 3 }}
         variant="scrollable"
       >
-        {tabs.map((tab) => (
-          <Tab
-            key={tab.value}
-            label={tab.label}
-            value={tab.value}
-          />
+        {tabs.map(tab => (
+          <Tab key={tab.value} label={tab.label} value={tab.value} />
         ))}
       </Tabs>
       <Divider />
-      <Stack
-        alignItems="center"
-        direction="row"
-        flexWrap="wrap"
-        gap={2}
-        sx={{ p: 3 }}
-      >
+      <Stack alignItems="center" direction="row" flexWrap="wrap" gap={2} sx={{ p: 3 }}>
         <OutlinedInput
           placeholder="Search customers"
-          startAdornment={(
+          startAdornment={
             <InputAdornment position="start">
               <SvgIcon>
                 <SearchMdIcon />
               </SvgIcon>
             </InputAdornment>
-          )}
+          }
           sx={{ flexGrow: 1 }}
         />
-        <TextField
-          label="Sort By"
-          name="sort"
-          select
-          SelectProps={{ native: true }}
-        >
-          {sortOptions.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-            >
+        <TextField label="Sort By" name="sort" select SelectProps={{ native: true }}>
+          {sortOptions.map(option => (
+            <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
@@ -219,74 +199,45 @@ export const Table3 = () => (
               <TableCell padding="checkbox">
                 <Checkbox />
               </TableCell>
-              <TableCell>
-                Name
-              </TableCell>
-              <TableCell>
-                Location
-              </TableCell>
-              <TableCell>
-                Orders
-              </TableCell>
-              <TableCell>
-                Spent
-              </TableCell>
-              <TableCell align="right">
-                Actions
-              </TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Location</TableCell>
+              <TableCell>Orders</TableCell>
+              <TableCell>Spent</TableCell>
+              <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map((customer) => {
+            {customers.map(customer => {
               const location = `${customer.city}, ${customer.state}, ${customer.country}`;
               const totalSpent = numeral(customer.totalSpent).format(`${customer.currency}0,0.00`);
 
               return (
-                <TableRow
-                  hover
-                  key={customer.id}
-                >
+                <TableRow hover key={customer.id}>
                   <TableCell padding="checkbox">
                     <Checkbox />
                   </TableCell>
                   <TableCell>
-                    <Stack
-                      alignItems="center"
-                      direction="row"
-                      spacing={1}
-                    >
+                    <Stack alignItems="center" direction="row" spacing={1}>
                       <Avatar
                         src={customer.avatar}
                         sx={{
                           height: 42,
-                          width: 42
+                          width: 42,
                         }}
                       />
                       <div>
-                        <Link
-                          color="inherit"
-                          variant="subtitle2"
-                        >
+                        <Link color="inherit" variant="subtitle2">
                           {customer.name}
                         </Link>
-                        <Typography
-                          color="text.secondary"
-                          variant="body2"
-                        >
+                        <Typography color="text.secondary" variant="body2">
                           {customer.email}
                         </Typography>
                       </div>
                     </Stack>
                   </TableCell>
-                  <TableCell>
-                    {location}
-                  </TableCell>
-                  <TableCell>
-                    {customer.totalOrders}
-                  </TableCell>
-                  <TableCell>
-                    {totalSpent}
-                  </TableCell>
+                  <TableCell>{location}</TableCell>
+                  <TableCell>{customer.totalOrders}</TableCell>
+                  <TableCell>{totalSpent}</TableCell>
                   <TableCell align="right">
                     <IconButton>
                       <SvgIcon>
@@ -308,8 +259,8 @@ export const Table3 = () => (
       <TablePagination
         component="div"
         count={customers.length}
-        onPageChange={() => { }}
-        onRowsPerPageChange={() => { }}
+        onPageChange={() => {}}
+        onRowsPerPageChange={() => {}}
         page={0}
         rowsPerPage={5}
         rowsPerPageOptions={[5, 10, 25]}

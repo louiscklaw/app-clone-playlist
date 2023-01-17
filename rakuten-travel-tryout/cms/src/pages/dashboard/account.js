@@ -18,7 +18,7 @@ const tabs = [
   { label: 'Billing', value: 'billing' },
   { label: 'Team', value: 'team' },
   { label: 'Notifications', value: 'notifications' },
-  { label: 'Security', value: 'security' }
+  { label: 'Security', value: 'security' },
 ];
 
 const Page = () => {
@@ -34,25 +34,18 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Account | Devias Kit PRO
-        </title>
+        <title>Dashboard: Account | Devias Kit PRO</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="xl">
-          <Stack
-            spacing={3}
-            sx={{ mb: 3 }}
-          >
-            <Typography variant="h4">
-              Account
-            </Typography>
+          <Stack spacing={3} sx={{ mb: 3 }}>
+            <Typography variant="h4">Account</Typography>
             <div>
               <Tabs
                 indicatorColor="primary"
@@ -62,23 +55,15 @@ const Page = () => {
                 value={currentTab}
                 variant="scrollable"
               >
-                {tabs.map((tab) => (
-                  <Tab
-                    key={tab.value}
-                    label={tab.label}
-                    value={tab.value}
-                  />
+                {tabs.map(tab => (
+                  <Tab key={tab.value} label={tab.label} value={tab.value} />
                 ))}
               </Tabs>
               <Divider />
             </div>
           </Stack>
           {currentTab === 'general' && (
-            <AccountGeneralSettings
-              avatar={user.avatar || ''}
-              email={user.email || ''}
-              name={user.name || ''}
-            />
+            <AccountGeneralSettings avatar={user.avatar || ''} email={user.email || ''} name={user.name || ''} />
           )}
           {currentTab === 'billing' && (
             <AccountBillingSettings
@@ -87,18 +72,18 @@ const Page = () => {
                 {
                   id: '5547409069c59755261f5546',
                   amount: 4.99,
-                  createdAt: subMonths(now, 1).getTime()
+                  createdAt: subMonths(now, 1).getTime(),
                 },
                 {
                   id: 'a3e17f4b551ff8766903f31f',
                   amount: 4.99,
-                  createdAt: subMonths(now, 2).getTime()
+                  createdAt: subMonths(now, 2).getTime(),
                 },
                 {
                   id: '28ca7c66fc360d8203644256',
                   amount: 4.99,
-                  createdAt: subMonths(now, 3).getTime()
-                }
+                  createdAt: subMonths(now, 3).getTime(),
+                },
               ]}
             />
           )}
@@ -109,14 +94,14 @@ const Page = () => {
                   avatar: '/assets/avatars/avatar-cao-yu.png',
                   email: 'cao.yu@devias.io',
                   name: 'Cao Yu',
-                  role: 'Owner'
+                  role: 'Owner',
                 },
                 {
                   avatar: '/assets/avatars/avatar-siegbert-gottfried.png',
                   email: 'siegbert.gottfried@devias.io',
                   name: 'Siegbert Gottfried',
-                  role: 'Standard'
-                }
+                  role: 'Standard',
+                },
               ]}
             />
           )}
@@ -129,15 +114,15 @@ const Page = () => {
                   createdAt: subDays(subHours(subMinutes(now, 5), 7), 1).getTime(),
                   ip: '95.130.17.84',
                   type: 'Credential login',
-                  userAgent: 'Chrome, Mac OS 10.15.7'
+                  userAgent: 'Chrome, Mac OS 10.15.7',
                 },
                 {
                   id: 'bde169c2fe9adea5d4598ea9',
                   createdAt: subDays(subHours(subMinutes(now, 25), 9), 1).getTime(),
                   ip: '95.130.17.84',
                   type: 'Credential login',
-                  userAgent: 'Chrome, Mac OS 10.15.7'
-                }
+                  userAgent: 'Chrome, Mac OS 10.15.7',
+                },
               ]}
             />
           )}
@@ -147,10 +132,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

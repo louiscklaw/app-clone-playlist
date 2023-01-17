@@ -1,12 +1,4 @@
-import {
-  Box,
-  Container,
-  Divider,
-  Link,
-  Stack,
-  Typography,
-  Unstable_Grid2 as Grid
-} from '@mui/material';
+import { Box, Container, Divider, Link, Stack, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import { Logo } from '../../components/logo';
 import { paths } from '../../paths';
 import NextLink from 'next/link';
@@ -17,67 +9,63 @@ const sections = [
     items: [
       {
         title: 'Browse Components',
-        path: paths.components.index
+        path: paths.components.index,
       },
       {
         title: 'Documentation',
-        path: paths.docs.welcome
-      }
-    ]
+        path: paths.docs.welcome,
+      },
+    ],
   },
   {
     title: 'Legal',
     items: [
       {
         title: 'Terms & Conditions',
-        path: '#'
+        path: '#',
       },
       {
         title: 'License',
-        path: '#'
+        path: '#',
       },
       {
         title: 'Contact',
-        path: '#'
-      }
-    ]
+        path: '#',
+      },
+    ],
   },
   {
     title: 'Social',
     items: [
       {
         title: 'Instagram',
-        path: '#'
+        path: '#',
       },
       {
         title: 'LinkedIn',
-        path: '#'
-      }
-    ]
-  }
+        path: '#',
+      },
+    ],
+  },
 ];
 
-export const Footer = (props) => (
+export const Footer = props => (
   <Box
     sx={{
-      backgroundColor: (theme) => theme.palette.mode === 'dark'
-        ? 'neutral.800'
-        : 'neutral.50',
+      backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.50'),
       borderTopColor: 'divider',
       borderTopStyle: 'solid',
       borderTopWidth: 1,
       pb: 6,
       pt: {
         md: 15,
-        xs: 6
-      }
+        xs: 6,
+      },
     }}
-    {...props}>
+    {...props}
+  >
     <Container maxWidth="lg">
-      <Grid
-        container
-        spacing={3}
-      >
+      <Grid container spacing={3}>
         <Grid
           xs={12}
           sm={4}
@@ -85,8 +73,8 @@ export const Footer = (props) => (
           sx={{
             order: {
               xs: 4,
-              md: 1
-            }
+              md: 1,
+            },
           }}
         >
           <Stack spacing={1}>
@@ -103,7 +91,7 @@ export const Footer = (props) => (
                 sx={{
                   display: 'inline-flex',
                   height: 24,
-                  width: 24
+                  width: 24,
                 }}
               >
                 <Logo />
@@ -111,23 +99,20 @@ export const Footer = (props) => (
               <Box
                 sx={{
                   color: 'text.primary',
-                  fontFamily: '\'Plus Jakarta Sans\', sans-serif',
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
                   fontSize: 14,
                   fontWeight: 800,
                   letterSpacing: '0.3px',
                   lineHeight: 2.5,
                   '& span': {
-                    color: 'primary.main'
-                  }
+                    color: 'primary.main',
+                  },
                 }}
               >
                 Devias Kit <span>PRO</span>
               </Box>
             </Stack>
-            <Typography
-              color="text.secondary"
-              variant="caption"
-            >
+            <Typography color="text.secondary" variant="caption">
               © 2022 Devias IO
             </Typography>
           </Stack>
@@ -141,14 +126,11 @@ export const Footer = (props) => (
             sx={{
               order: {
                 md: index + 2,
-                xs: index + 1
-              }
+                xs: index + 1,
+              },
             }}
           >
-            <Typography
-              color="text.secondary"
-              variant="overline"
-            >
+            <Typography color="text.secondary" variant="overline">
               {section.title}
             </Typography>
             <Stack
@@ -157,28 +139,19 @@ export const Footer = (props) => (
               sx={{
                 listStyle: 'none',
                 m: 0,
-                p: 0
+                p: 0,
               }}
             >
-              {section.items.map((item) => (
-                <Stack
-                  alignItems="center"
-                  direction="row"
-                  key={item.title}
-                  spacing={2}
-                >
+              {section.items.map(item => (
+                <Stack alignItems="center" direction="row" key={item.title} spacing={2}>
                   <Box
                     sx={{
                       backgroundColor: 'primary.main',
                       height: 2,
-                      width: 12
+                      width: 12,
                     }}
                   />
-                  <Link
-                    href={item.path}
-                    color="text.primary"
-                    variant="subtitle2"
-                  >
+                  <Link href={item.path} color="text.primary" variant="subtitle2">
                     {item.title}
                   </Link>
                 </Stack>
@@ -188,10 +161,7 @@ export const Footer = (props) => (
         ))}
       </Grid>
       <Divider sx={{ my: 6 }} />
-      <Typography
-        color="text.secondary"
-        variant="caption"
-      >
+      <Typography color="text.secondary" variant="caption">
         All Rights Reserved.
       </Typography>
     </Container>

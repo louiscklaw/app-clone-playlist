@@ -6,15 +6,15 @@ import { TaskAdd } from '../task-add';
 import { TaskCard } from '../task-card';
 import { ColumnHeader } from './column-header';
 
-const useColumn = (columnId) => {
-  return useSelector((state) => {
+const useColumn = columnId => {
+  return useSelector(state => {
     const { columns } = state.kanban;
 
     return columns.byId[columnId];
   });
 };
 
-export const ColumnCard = (props) => {
+export const ColumnCard = props => {
   const { columnId, onTaskAdd, onTaskOpen, onClear, onDelete, onRename, ...other } = props;
   const column = useColumn(columnId);
 
@@ -34,10 +34,11 @@ export const ColumnCard = (props) => {
         overflowY: 'hidden',
         width: {
           xs: 300,
-          sm: 380
-        }
+          sm: 380,
+        },
       }}
-      {...other}>
+      {...other}
+    >
       <ColumnHeader
         name={column.name}
         onClear={onClear}
@@ -47,17 +48,12 @@ export const ColumnCard = (props) => {
       />
       <Box
         sx={{
-          backgroundColor: (theme) => theme.palette.mode === 'dark'
-            ? 'neutral.900'
-            : 'neutral.100',
-          borderRadius: 2.5
+          backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.900' : 'neutral.100'),
+          borderRadius: 2.5,
         }}
       >
-        <Droppable
-          droppableId={column.id}
-          type="task"
-        >
-          {(droppableProvider) => (
+        <Droppable droppableId={column.id} type="task">
+          {droppableProvider => (
             <Box
               ref={droppableProvider.innerRef}
               sx={{
@@ -65,25 +61,22 @@ export const ColumnCard = (props) => {
                 minHeight: 80,
                 overflowY: 'auto',
                 px: 3,
-                pt: 1.5
+                pt: 1.5,
               }}
             >
               {column?.taskIds.map((taskId, index) => (
-                <Draggable
-                  key={taskId}
-                  draggableId={taskId}
-                  index={index}
-                >
+                <Draggable key={taskId} draggableId={taskId} index={index}>
                   {(draggableProvided, snapshot) => (
                     <Box
                       ref={draggableProvided.innerRef}
                       style={{ ...draggableProvided.draggableProps.style }}
                       sx={{
                         outline: 'none',
-                        py: 1.5
+                        py: 1.5,
                       }}
                       {...draggableProvided.draggableProps}
-                      {...draggableProvided.dragHandleProps}>
+                      {...draggableProvided.dragHandleProps}
+                    >
                       <TaskCard
                         key={taskId}
                         dragging={snapshot.isDragging}
@@ -102,7 +95,7 @@ export const ColumnCard = (props) => {
           sx={{
             pt: 1.5,
             pb: 3,
-            px: 3
+            px: 3,
           }}
         >
           <TaskAdd onAdd={onTaskAdd} />
@@ -118,5 +111,5 @@ ColumnCard.propTypes = {
   onDelete: PropTypes.func,
   onRename: PropTypes.func,
   onTaskAdd: PropTypes.func,
-  onTaskOpen: PropTypes.func
+  onTaskOpen: PropTypes.func,
 };

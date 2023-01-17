@@ -6,11 +6,11 @@ const MarkdownWrapper = styled('div')(({ theme }) => ({
   color: theme.palette.text.primary,
   fontFamily: theme.typography.fontFamily,
   '& p': {
-    margin: 0
+    margin: 0,
   },
   '& p+p': {
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
 }));
 
 const description = `
@@ -29,48 +29,31 @@ export const DetailList6 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.mode === 'dark'
-          ? 'neutral.800'
-          : 'neutral.100',
-        p: 3
+        backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+        p: 3,
       }}
     >
       <Card>
         <CardContent>
           <Stack spacing={3}>
             <Stack spacing={1}>
-              <Typography
-                color="text.secondary"
-                variant="overline"
-              >
+              <Typography color="text.secondary" variant="overline">
                 Project Name
               </Typography>
-              <Typography variant="subtitle2">
-                Develop a PDF Export App
-              </Typography>
+              <Typography variant="subtitle2">Develop a PDF Export App</Typography>
             </Stack>
             <Stack spacing={1}>
-              <Typography
-                color="text.secondary"
-                variant="overline"
-              >
+              <Typography color="text.secondary" variant="overline">
                 Tags
               </Typography>
               <div>
-                {tags.map((tag) => (
-                  <Chip
-                    key={tag}
-                    label={tag}
-                    variant="outlined"
-                  />
+                {tags.map(tag => (
+                  <Chip key={tag} label={tag} variant="outlined" />
                 ))}
               </div>
             </Stack>
             <Stack spacing={1}>
-              <Typography
-                color="text.secondary"
-                variant="overline"
-              >
+              <Typography color="text.secondary" variant="overline">
                 Description
               </Typography>
               <MarkdownWrapper>

@@ -18,23 +18,23 @@ const useSearch = () => {
       customers: [],
       endDate: undefined,
       query: '',
-      startDate: undefined
+      startDate: undefined,
     },
     page: 0,
-    rowsPerPage: 5
+    rowsPerPage: 5,
   });
 
   return {
     search,
-    updateSearch: setSearch
+    updateSearch: setSearch,
   };
 };
 
-const useInvoices = (search) => {
+const useInvoices = search => {
   const isMounted = useMounted();
   const [state, setState] = useState({
     invoices: [],
-    invoicesCount: 0
+    invoicesCount: 0,
   });
 
   const getInvoices = useCallback(async () => {
@@ -44,7 +44,7 @@ const useInvoices = (search) => {
       if (isMounted()) {
         setState({
           invoices: response.data,
-          invoicesCount: response.count
+          invoicesCount: response.count,
         });
       }
     } catch (err) {
@@ -52,18 +52,20 @@ const useInvoices = (search) => {
     }
   }, [search, isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getInvoices();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [search]);
+    [search],
+  );
 
   return state;
 };
 
 const Page = () => {
   const rootRef = useRef(null);
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'));
   const [group, setGroup] = useState(true);
   const [openSidebar, setOpenSidebar] = useState(lgUp);
   const { search, updateSearch } = useSearch();
@@ -71,46 +73,53 @@ const Page = () => {
 
   usePageView();
 
-  const handleGroupChange = useCallback((event) => {
+  const handleGroupChange = useCallback(event => {
     setGroup(event.target.checked);
   }, []);
 
   const handleFiltersToggle = useCallback(() => {
-    setOpenSidebar((prevState) => !prevState);
+    setOpenSidebar(prevState => !prevState);
   }, []);
 
-  const handleFiltersChange = useCallback((filters) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      filters,
-      page: 0
-    }));
-  }, [updateSearch]);
+  const handleFiltersChange = useCallback(
+    filters => {
+      updateSearch(prevState => ({
+        ...prevState,
+        filters,
+        page: 0,
+      }));
+    },
+    [updateSearch],
+  );
 
   const handleFiltersClose = useCallback(() => {
     setOpenSidebar(false);
   }, []);
 
-  const handlePageChange = useCallback((event, page) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      page
-    }));
-  }, [updateSearch]);
+  const handlePageChange = useCallback(
+    (event, page) => {
+      updateSearch(prevState => ({
+        ...prevState,
+        page,
+      }));
+    },
+    [updateSearch],
+  );
 
-  const handleRowsPerPageChange = useCallback((event) => {
-    updateSearch((prevState) => ({
-      ...prevState,
-      rowsPerPage: parseInt(event.target.value, 10)
-    }));
-  }, [updateSearch]);
+  const handleRowsPerPageChange = useCallback(
+    event => {
+      updateSearch(prevState => ({
+        ...prevState,
+        rowsPerPage: parseInt(event.target.value, 10),
+      }));
+    },
+    [updateSearch],
+  );
 
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Invoice List | Devias Kit PRO
-        </title>
+        <title>Dashboard: Invoice List | Devias Kit PRO</title>
       </Head>
       <Divider />
       <Box
@@ -119,7 +128,7 @@ const Page = () => {
           display: 'flex',
           flex: '1 1 auto',
           overflow: 'hidden',
-          position: 'relative'
+          position: 'relative',
         }}
       >
         <Box
@@ -130,7 +139,7 @@ const Page = () => {
             left: 0,
             position: 'absolute',
             right: 0,
-            top: 0
+            top: 0,
           }}
         >
           <InvoiceListSidebar
@@ -144,39 +153,28 @@ const Page = () => {
           />
           <InvoiceListContainer open={openSidebar}>
             <Stack spacing={4}>
-              <Stack
-                alignItems="flex-start"
-                direction="row"
-                justifyContent="space-between"
-                spacing={3}
-              >
+              <Stack alignItems="flex-start" direction="row" justifyContent="space-between" spacing={3}>
                 <div>
-                  <Typography variant="h4">
-                    Invoices
-                  </Typography>
+                  <Typography variant="h4">Invoices</Typography>
                 </div>
-                <Stack
-                  alignItems="center"
-                  direction="row"
-                  spacing={1}
-                >
+                <Stack alignItems="center" direction="row" spacing={1}>
                   <Button
                     color="inherit"
-                    startIcon={(
+                    startIcon={
                       <SvgIcon>
                         <FilterFunnel01Icon />
                       </SvgIcon>
-                    )}
+                    }
                     onClick={handleFiltersToggle}
                   >
                     Filters
                   </Button>
                   <Button
-                    startIcon={(
+                    startIcon={
                       <SvgIcon>
                         <PlusIcon />
                       </SvgIcon>
-                    )}
+                    }
                     variant="contained"
                   >
                     New
@@ -201,10 +199,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = page => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

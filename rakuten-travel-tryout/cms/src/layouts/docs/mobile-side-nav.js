@@ -6,7 +6,7 @@ import { SideNavSection } from './side-nav-section';
 
 const SIDE_NAV_WIDTH = 280;
 
-export const MobileSideNav = (props) => {
+export const MobileSideNav = props => {
   const { onClose, open, sections = [] } = props;
   const pathname = usePathname();
 
@@ -18,8 +18,8 @@ export const MobileSideNav = (props) => {
       PaperProps={{
         sx: {
           width: `${SIDE_NAV_WIDTH}px`,
-          zIndex: 100
-        }
+          zIndex: 100,
+        },
       }}
       variant="temporary"
     >
@@ -27,22 +27,13 @@ export const MobileSideNav = (props) => {
         sx={{
           height: '100%',
           '& .simplebar-content': {
-            height: '100%'
-          }
+            height: '100%',
+          },
         }}
       >
-        <Stack
-          component="nav"
-          spacing={3}
-          sx={{ p: 2 }}
-        >
+        <Stack component="nav" spacing={3} sx={{ p: 2 }}>
           {sections.map((section, index) => (
-            <SideNavSection
-              items={section.items}
-              key={index}
-              pathname={pathname}
-              subheader={section.subheader}
-            />
+            <SideNavSection items={section.items} key={index} pathname={pathname} subheader={section.subheader} />
           ))}
         </Stack>
       </Scrollbar>
@@ -53,5 +44,5 @@ export const MobileSideNav = (props) => {
 MobileSideNav.propTypes = {
   onClose: PropTypes.func,
   open: PropTypes.bool,
-  sections: PropTypes.array
+  sections: PropTypes.array,
 };
