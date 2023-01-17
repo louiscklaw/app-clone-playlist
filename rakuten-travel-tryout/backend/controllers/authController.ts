@@ -50,9 +50,13 @@ export const loginSchema = yup.object().shape({
   password: yup.string().required(),
 });
 
-export const signup_get = (req: Request, res: Response) => {};
+export const signup_get = (req: Request, res: Response) => {
+  res.send('signup_get route ?');
+};
 
-export const signup_post = (req: Request, res: Response) => {};
+export const signup_post = (req: Request, res: Response) => {
+  res.send('signup_post route ?');
+};
 
 export const login_get = (req: Request, res: Response) => {
   res.send('login page ?');
