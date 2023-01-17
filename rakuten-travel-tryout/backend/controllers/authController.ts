@@ -6,13 +6,15 @@ import { Request, Response } from 'express';
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
-const handleErrors = err => {};
+// const handleErrors = (err: Error) => {};
 
-const maxAge = 3 * 24 * 60 * 60;
+const one_day_ms = 86400 * 1000;
 
-const createToken = (email: { email: string }) => {
-  return jwt.sign({ email }, process.env.TOKEN_SECRET, {
-    expiresIn: maxAge,
+let { TOKEN_SECRET } = process.env;
+
+const createToken = (id: number) => {
+  return jwt.sign({ id }, TOKEN_SECRET, {
+    expiresIn: one_day_ms,
   });
 };
 
@@ -30,7 +32,8 @@ const loginService = async ({ email, password }: { email: string; password: stri
     // console.log({ test: bcrypt.compareSync(password, hashedPassword.password) });
 
     if (hashedPassword && bcrypt.compareSync(password, hashedPassword.password)) {
-      return createToken({ email: email });
+      let { id } = hashedPassword;
+      return createToken(id);
     } else {
       throw { status: 401, message: 'Email ou senha inválidos' };
     }
@@ -51,7 +54,9 @@ export const signup_get = (req: Request, res: Response) => {};
 
 export const signup_post = (req: Request, res: Response) => {};
 
-export const login_get = (req: Request, res: Response) => {};
+export const login_get = (req: Request, res: Response) => {
+  res.send('login page ?');
+};
 
 export const login_post = async (req: Request, res: Response) => {
   try {
@@ -63,12 +68,15 @@ export const login_post = async (req: Request, res: Response) => {
     const token = await loginService({ email, password });
     // console.log({ token });
 
-    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.cookie('jwt', token, { httpOnly: true, maxAge: one_day_ms });
     res.status(200).json({ msg: 'login ok', email });
   } catch (err) {
-    const errors = handleErrors(err);
+    // const errors = handleErrors(err);
     res.status(400).json({ err });
   }
 };
 
-export const logout_get = (req: Request, res: Response) => {};
+export const logout_get = (req: Request, res: Response) => {
+  res.cookie('jwt', '', { maxAge: 1 });
+  res.redirect('/');
+};
