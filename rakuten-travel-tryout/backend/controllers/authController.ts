@@ -70,10 +70,37 @@ export const login_post = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     // console.log({ email, password });
     const token = await loginService({ email, password });
-    // console.log({ token });
-
-    res.cookie('jwt', token, { httpOnly: true, maxAge: one_day_ms });
-    res.status(200).json({ msg: 'login ok', email });
+    console.log({ email, password, token });
+    if (token) {
+      res.cookie('jwt', token, { httpOnly: true, maxAge: one_day_ms });
+      res.status(200).json({
+        //
+        msg: 'login ok',
+        email,
+        accessToken: token,
+        user: {
+          email,
+          id: '5e86809283e28b96d2d38537',
+          avatar: '/assets/avatars/avatar-anika-visser.png',
+          name: 'Anika Visser',
+          plan: 'Premium',
+        },
+      });
+    } else {
+      res.status(200).json({
+        //
+        msg: 'login failed',
+        email,
+        accessToken: token,
+        user: {
+          email,
+          id: '5e86809283e28b96d2d38537',
+          avatar: '/assets/avatars/avatar-anika-visser.png',
+          name: 'Anika Visser',
+          plan: 'Premium',
+        },
+      });
+    }
   } catch (err) {
     // const errors = handleErrors(err);
     res.status(400).json({ err });

@@ -2,6 +2,8 @@ import { createContext, useCallback, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { authApi } from '../../api/auth';
 import { Issuer } from '../../utils/auth';
+import postData from './postData';
+import toast from 'react-hot-toast';
 
 const STORAGE_KEY = 'accessToken';
 
@@ -114,23 +116,50 @@ export const AuthProvider = props => {
 
   const signIn = useCallback(
     async (email, password) => {
-      const { accessToken } = await authApi.signIn({ email, password });
-      const user = await authApi.me({ accessToken });
+      // const { accessToken } = await authApi.signIn({ email, password });
+
+      const { msg, user, accessToken } = await postData(
+        '//localhost:3001/login',
+        //
+        { email, password },
+      );
+
+      // const user = await authApi.me({ accessToken });
+
+      if (!accessToken) console.error('accessToken not exist');
 
       localStorage.setItem(STORAGE_KEY, accessToken);
 
-      dispatch({
-        type: ActionType.SIGN_IN,
-        payload: {
-          user,
-        },
-      });
+      // console.dir({ user, accessToken });
+
+      //   user = {
+      //     "id": "5e86809283e28b96d2d38537",
+      //     "avatar": "/assets/avatars/avatar-anika-visser.png",
+      //     "email": "demo@devias.io",
+      //     "name": "Anika Visser",
+      //     "plan": "Premium"
+      // }
+
+      console.log({ msg });
+
+      if (msg == 'login ok') {
+        dispatch({
+          type: ActionType.SIGN_IN,
+          payload: {
+            user,
+          },
+        });
+      } else {
+        toast.error('login result error');
+      }
     },
     [dispatch],
   );
 
   const signUp = useCallback(
     async (email, name, password) => {
+      console.dir('helloworld');
+
       const { accessToken } = await authApi.signUp({ email, name, password });
       const user = await authApi.me({ accessToken });
 
@@ -138,9 +167,7 @@ export const AuthProvider = props => {
 
       dispatch({
         type: ActionType.SIGN_UP,
-        payload: {
-          user,
-        },
+        payload: { user },
       });
     },
     [dispatch],

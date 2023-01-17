@@ -26,6 +26,23 @@ async function User() {
         },
       },
     });
+
+    await prisma.user.upsert({
+      where: { email: `demo@devias.io` },
+      update: {},
+      create: {
+        email: `demo@devias.io`,
+        name: `demo a/c`,
+        password: await bcrypt.hash('Password123!', salt),
+        posts: {
+          create: {
+            title: 'Check out Prisma with Next.js',
+            content: 'https://www.prisma.io/nextjs',
+            published: true,
+          },
+        },
+      },
+    });
   }
 
   await prisma.$disconnect();
