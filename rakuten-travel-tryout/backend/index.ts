@@ -33,7 +33,7 @@ app.use(authRoutes);
 
 // init routes
 helloworld(app);
-hotel_info(app, prisma);
+hotel_info(app);
 
 // start cron job if any
 HelloworldCron.start();

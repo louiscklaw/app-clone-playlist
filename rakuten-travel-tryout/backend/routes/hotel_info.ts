@@ -1,18 +1,21 @@
 import express, { Express, Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 
-const helloworld = (app: Express, prisma: PrismaClient) => {
+const hotel_info = (app: Express) => {
   app.get('/hotel_infos', async (req: Request, res: Response) => {
+    const prisma = new PrismaClient();
     const hotel_infos = await prisma.hotelInfo.findMany({
       where: { enabled: true },
       include: { awards: true },
     });
 
+    prisma.$disconnect();
     res.json(hotel_infos);
   });
 
   app.get('/hotel_info?:hotel_id', async (req: Request, res: Response) => {
     let _id = 1;
+    const prisma = new PrismaClient();
     const hotels = await prisma.hotelInfo.findMany({
       where: { id: _id },
       include: {
@@ -27,6 +30,7 @@ const helloworld = (app: Express, prisma: PrismaClient) => {
       },
     });
 
+    prisma.$disconnect();
     // include: { author: true },
     res.json(hotels);
   });
@@ -34,4 +38,4 @@ const helloworld = (app: Express, prisma: PrismaClient) => {
   console.log('hotel_info route initialized');
 };
 
-export default helloworld;
+export default hotel_info;
