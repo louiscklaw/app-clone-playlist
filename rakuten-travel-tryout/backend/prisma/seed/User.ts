@@ -17,7 +17,10 @@ async function User() {
         email: `client${i}@gmail.com`,
         name: `client ${i}`,
         password: password,
-
+        avatar: '/assets/avatars/avatar-carson-darrin.png',
+        country: 'USA',
+        currency: '$',
+        city: 'Cleveland',
         posts: {
           create: {
             title: 'Check out Prisma with Next.js',
