@@ -1,83 +1,67 @@
 {
     "child": {
         "child1": {
+            "child1": {
+                "child1": {
+                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
+                    "height": 340,
+                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "uuid": "da9fe6aa-223d-458d-8e1d-ace2888480c1",
+                    "width": 669
+                },
+                "child2": {
+                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
+                    "height": 340,
+                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "uuid": "9f908ac5-a4c9-4de1-8eba-a39214ff0e65",
+                    "width": 669
+                },
+                "orientation": 0,
+                "position": 49,
+                "ratio": 0.498138495904691003,
+                "type": "Paned"
+            },
+            "child2": {
+                "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
+                "height": 335,
+                "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                "readOnly": false,
+                "synchronizedInput": true,
+                "type": "Terminal",
+                "uuid": "d49af9dd-d013-4e4b-b7db-3d96a06ef7fe",
+                "width": 1343
+            },
+            "orientation": 1,
+            "position": 32,
+            "ratio": 0.5,
+            "type": "Paned"
+        },
+        "child2": {
             "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
-            "height": 339,
+            "height": 347,
             "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
             "readOnly": false,
             "synchronizedInput": true,
             "type": "Terminal",
-            "uuid": "3c0fcbe0-8dd1-4045-aad9-93942fc70e53",
-            "width": 772
-        },
-        "child2": {
-            "child1": {
-                "child1": {
-                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
-                    "height": 339,
-                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
-                    "readOnly": false,
-                    "synchronizedInput": true,
-                    "type": "Terminal",
-                    "uuid": "05ee4277-52dc-47fe-8aa6-cfcb0303f364",
-                    "width": 383
-                },
-                "child2": {
-                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
-                    "height": 339,
-                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
-                    "readOnly": false,
-                    "synchronizedInput": true,
-                    "type": "Terminal",
-                    "uuid": "2f18b22c-044c-4cdc-b89d-e35b394c3122",
-                    "width": 384
-                },
-                "orientation": 0,
-                "position": 49,
-                "ratio": 0.496113989637305686,
-                "type": "Paned"
-            },
-            "child2": {
-                "child1": {
-                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
-                    "height": 340,
-                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
-                    "readOnly": false,
-                    "synchronizedInput": true,
-                    "type": "Terminal",
-                    "uuid": "a888022d-988d-46e0-89be-9802b7520222",
-                    "width": 383
-                },
-                "child2": {
-                    "directory": "\/home\/logic\/_workspace\/clone-playlist\/rakuten-travel-tryout",
-                    "height": 340,
-                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
-                    "readOnly": false,
-                    "synchronizedInput": true,
-                    "type": "Terminal",
-                    "uuid": "65da4dfc-3804-4940-926d-d6b40211adeb",
-                    "width": 384
-                },
-                "orientation": 0,
-                "position": 49,
-                "ratio": 0.496113989637305686,
-                "type": "Paned"
-            },
-            "orientation": 1,
-            "position": 32,
-            "ratio": 0.495614035087719285,
-            "type": "Paned"
+            "uuid": "b40442f1-27e2-4a39-aad4-94a012c181dc",
+            "width": 1343
         },
         "orientation": 1,
-        "position": 32,
-        "ratio": 0.329766536964980539,
+        "position": 65,
+        "ratio": 0.658914728682170492,
         "type": "Paned"
     },
-    "height": 1028,
+    "height": 1032,
     "name": "${title}",
     "synchronizedInput": false,
     "type": "Session",
-    "uuid": "d781278a-1693-4142-bc7d-d44508543c44",
+    "uuid": "2a84aa18-810d-4fc9-be92-c602bc987dbf",
     "version": "1.0",
-    "width": 772
+    "width": 1343
 }
