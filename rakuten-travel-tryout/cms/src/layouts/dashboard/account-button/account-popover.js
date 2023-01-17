@@ -21,6 +21,8 @@ import { useAuth } from '../../../hooks/use-auth';
 import { paths } from '../../../paths';
 import { Issuer } from '../../../utils/auth';
 
+import { apiConfig } from '../../../config';
+
 export const AccountPopover = props => {
   const { anchorEl, onClose, open, ...other } = props;
   const router = useRouter();
@@ -56,7 +58,7 @@ export const AccountPopover = props => {
         }
       }
 
-      await fetch('//localhost:3001/logout');
+      await fetch(`//${apiConfig.api_endpoint}/logout`);
 
       router.push(paths.index);
     } catch (err) {
