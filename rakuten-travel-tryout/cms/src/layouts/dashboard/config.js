@@ -105,6 +105,29 @@ export const getSections = t => [
         ],
       },
       {
+        title: t('Users'),
+        path: paths.dashboard.users.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <Users03Icon />
+          </SvgIcon>
+        ),
+        items: [
+          {
+            title: t(tokens.nav.list),
+            path: paths.dashboard.users.index,
+          },
+          {
+            title: t(tokens.nav.details),
+            path: paths.dashboard.users.details,
+          },
+          {
+            title: t(tokens.nav.edit),
+            path: paths.dashboard.users.edit,
+          },
+        ],
+      },
+      {
         title: t(tokens.nav.productList),
         path: paths.dashboard.products.index,
         icon: (
