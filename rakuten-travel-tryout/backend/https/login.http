@@ -6,6 +6,9 @@ GET http://localhost:3001/login?user=123
 GET http://localhost:3001/
 
 ###
+GET http://localhost:3001/helloworld
+
+###
 GET http://localhost:3001/dashboard
 
 ###
