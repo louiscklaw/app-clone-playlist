@@ -32,7 +32,7 @@ app.get('/dashboard*', checkUser);
 app.use(authRoutes);
 
 // init routes
-helloworld(app, prisma);
+helloworld(app);
 hotel_info(app, prisma);
 
 // start cron job if any
