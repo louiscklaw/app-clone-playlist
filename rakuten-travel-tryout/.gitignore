@@ -3,3 +3,4 @@ node_modules
 backend/prisma/dev.db
 **/dist
 dist
+*del
