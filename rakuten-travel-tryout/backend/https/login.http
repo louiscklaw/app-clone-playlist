@@ -12,10 +12,29 @@ GET http://localhost:3001/dashboard
 GET http://localhost:3001/logout
 
 ###
+POST http://localhost:3001/signup
+Content-Type: application/json
+
+{
+  "email": "321@321.com.com",
+  "name":"helloworld name",
+  "password":"Aa1234567!"
+}
+
+###
 POST http://localhost:3001/login
 Content-Type: application/json
 
 {
   "email": "client1@gmail.com",
   "password":"Aa1234567"
+}
+
+###
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+  "email": "123@123.com",
+  "password":"Aa1234567!"
 }

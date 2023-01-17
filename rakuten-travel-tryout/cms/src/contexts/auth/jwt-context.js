@@ -158,12 +158,27 @@ export const AuthProvider = props => {
 
   const signUp = useCallback(
     async (email, name, password) => {
-      console.dir('helloworld');
+      let result = await postData(`//localhost:3001/signup`, {
+        email,
+        name,
+        password,
+      });
 
-      const { accessToken } = await authApi.signUp({ email, name, password });
-      const user = await authApi.me({ accessToken });
+      // const { accessToken } = await authApi.signUp({ email, name, password });
+      // const user = await authApi.me({ accessToken });
+      // localStorage.setItem(STORAGE_KEY, accessToken);
 
-      localStorage.setItem(STORAGE_KEY, accessToken);
+      let { user } = result;
+      //   {
+      //     "user": {
+      //         "id": "af6544ef9285be3e0405dc87",
+      //         "email": "123@123.com",
+      //         "name": "test create",
+      //         "plan": "Standard"
+      //     }
+      // }
+      // console.dir({ user });
+      // debugger;
 
       dispatch({
         type: ActionType.SIGN_UP,

@@ -36,9 +36,9 @@ const useParams = () => {
 };
 
 const initialValues = {
-  email: '',
-  name: '',
-  password: '',
+  email: '123@123.com',
+  name: 'test create',
+  password: 'Aa1234567!',
   policy: false,
   submit: null,
 };
