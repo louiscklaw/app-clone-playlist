@@ -9,7 +9,7 @@ import { usersApi } from '../../../api/users';
 import { useMounted } from '../../../hooks/use-mounted';
 import { usePageView } from '../../../hooks/use-page-view';
 import { Layout as DashboardLayout } from '../../../layouts/dashboard';
-import { CustomerListSearch } from '../../../sections/dashboard/customer/customer-list-search';
+import { UserListSearch } from '../../../sections/dashboard/user/user-list-search';
 import { UserListTable } from '../../../sections/dashboard/user/user-list-table';
 
 const useSearch = () => {
@@ -167,7 +167,7 @@ const Page = () => {
               </Stack>
             </Stack>
             <Card>
-              <CustomerListSearch
+              <UserListSearch
                 onFiltersChange={handleFiltersChange}
                 onSortChange={handleSortChange}
                 sortBy={search.sortBy}

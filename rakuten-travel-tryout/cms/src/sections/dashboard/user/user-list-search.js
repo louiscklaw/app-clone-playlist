@@ -5,44 +5,20 @@ import { Box, Divider, InputAdornment, OutlinedInput, Stack, SvgIcon, Tab, Tabs,
 import { useUpdateEffect } from '../../../hooks/use-update-effect';
 
 const tabs = [
-  {
-    label: 'All',
-    value: 'all',
-  },
-  {
-    label: 'Accepts Marketing',
-    value: 'hasAcceptedMarketing',
-  },
-  {
-    label: 'Prospect',
-    value: 'isProspect',
-  },
-  {
-    label: 'Returning',
-    value: 'isReturning',
-  },
+  { label: 'All', value: 'all' },
+  { label: 'Accepts Marketing', value: 'hasAcceptedMarketing' },
+  { label: 'Prospect', value: 'isProspect' },
+  { label: 'Returning', value: 'isReturning' },
 ];
 
 const sortOptions = [
-  {
-    label: 'Last update (newest)',
-    value: 'updatedAt|desc',
-  },
-  {
-    label: 'Last update (oldest)',
-    value: 'updatedAt|asc',
-  },
-  {
-    label: 'Total orders (highest)',
-    value: 'totalOrders|desc',
-  },
-  {
-    label: 'Total orders (lowest)',
-    value: 'totalOrders|asc',
-  },
+  { label: 'Last update (newest)', value: 'updatedAt|desc' },
+  { label: 'Last update (oldest)', value: 'updatedAt|asc' },
+  { label: 'Total orders (highest)', value: 'totalOrders|desc' },
+  { label: 'Total orders (lowest)', value: 'totalOrders|asc' },
 ];
 
-export const CustomerListSearch = props => {
+export const UserListSearch = props => {
   const { onFiltersChange, onSortChange, sortBy, sortDir } = props;
   const queryRef = useRef(null);
   const [currentTab, setCurrentTab] = useState('all');
@@ -116,7 +92,7 @@ export const CustomerListSearch = props => {
             defaultValue=""
             fullWidth
             inputProps={{ ref: queryRef }}
-            placeholder="Search customers"
+            placeholder="Search users"
             startAdornment={
               <InputAdornment position="start">
                 <SvgIcon>
@@ -145,7 +121,7 @@ export const CustomerListSearch = props => {
   );
 };
 
-CustomerListSearch.propTypes = {
+UserListSearch.propTypes = {
   onFiltersChange: PropTypes.func,
   onSortChange: PropTypes.func,
   sortBy: PropTypes.string,
