@@ -17,15 +17,16 @@ import { usersApi } from '../../../../api/users';
 const useCustomer = () => {
   const isMounted = useMounted();
   const router = useRouter();
+  const { userId } = router.query;
+  console.log({ userId });
+  debugger;
 
   const [customer, setCustomer] = useState(null);
 
   const getCustomer = useCallback(async () => {
     try {
-      let { userId } = router.query;
-      console.log({ userId });
       // const response = await customersApi.getCustomer();
-      const response = await usersApi.getUser(userId);
+      const response = await usersApi.getUser({ id: userId });
 
       if (isMounted()) {
         setCustomer(response);

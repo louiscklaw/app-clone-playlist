@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function Role() {
   process.stdout.write('seeding Role ...');
+  const prisma = new PrismaClient();
 
   let role_list = [
     //

@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function HotelInfo() {
   process.stdout.write('seeding HotelInfo ...');
+  const prisma = new PrismaClient();
 
   let room_list = [
     {
@@ -247,6 +247,7 @@ async function HotelInfo() {
   });
   // console.log(JSON.stringify(result_category, null, 2));
 
+  prisma.$disconnect();
   console.log('seed done');
 }
 

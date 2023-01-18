@@ -49,6 +49,7 @@ const useCustomer = request => {
   const getCustomer = useCallback(async () => {
     try {
       const response = await usersApi.getUser(request);
+      console.log({ response, request });
 
       if (isMounted()) {
         setCustomer(response);
@@ -124,6 +125,7 @@ const useLogs = () => {
 };
 
 const Page = () => {
+  const { index, edit } = paths.dashboard.users;
   const [currentTab, setCurrentTab] = useState('details');
   const router = useRouter();
   const { userId } = router.query;
@@ -138,11 +140,16 @@ const Page = () => {
     setCurrentTab(value);
   }, []);
 
+  console.log({ query: router.query, customer });
+
+  console.log({ customer });
+  if (customer?.err) {
+    return <>error found during find user</>;
+  }
+
   if (!customer) {
     return null;
   }
-
-  const { index, edit } = paths.dashboard.users;
 
   return (
     <>

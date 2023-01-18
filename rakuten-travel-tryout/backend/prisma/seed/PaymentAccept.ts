@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function PaymentAccept() {
   process.stdout.write('seeding PaymentAccept ...');
+  const prisma = new PrismaClient();
 
   let list = ['Visa 卡', '萬事達卡', 'JCB 卡', '可使用現金付款'];
 

@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function CategoriesOnPostTest() {
   process.stdout.write('seeding CategoriesOnPostTest ...');
+  const prisma = new PrismaClient();
+
   let post_list = ['p1', 'p2', 'p3'];
   let cat_list = ['c1', 'c2', 'c3'];
 

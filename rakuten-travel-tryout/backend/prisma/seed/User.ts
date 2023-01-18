@@ -1,10 +1,9 @@
 import * as bcrypt from 'bcrypt';
 import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
-
 async function User() {
   process.stdout.write('seeding User ...');
+  const prisma = new PrismaClient();
 
   const salt = await bcrypt.genSalt();
   let password = await bcrypt.hash('Aa1234567', salt);

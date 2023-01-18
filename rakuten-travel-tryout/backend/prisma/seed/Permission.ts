@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function Permission() {
   process.stdout.write('seeding Permission ...');
+  const prisma = new PrismaClient();
 
   for (var i = 0; i < 19; i++) {
     const alice = await prisma.permission.upsert({

@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function HotelFacility() {
   process.stdout.write('seeding HotelFacility ...');
+  const prisma = new PrismaClient();
 
   let type_list = ['停車場'];
 

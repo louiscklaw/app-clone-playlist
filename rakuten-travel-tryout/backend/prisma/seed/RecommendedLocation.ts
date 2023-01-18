@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function helloworld() {
   process.stdout.write('seeding helloworld ...');
+  const prisma = new PrismaClient();
 
   let list = ['距離上野德國文化村'];
 

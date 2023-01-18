@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function CovinPractice() {
   process.stdout.write('seeding CovinPractice ...');
+  const prisma = new PrismaClient();
+
   let list = [
     { name: '員工', description: '服務客人時保持適當距離 員工洗手、漱口、戴口罩 定期實施體溫檢測' },
     { name: '消毒', description: '公共區域定期消毒 消毒客房 即棄式拖鞋' },

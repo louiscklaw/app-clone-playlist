@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function HotelType() {
   process.stdout.write('seeding HotelType ...');
+  const prisma = new PrismaClient();
 
   let type_list = ['度假村酒店'];
 

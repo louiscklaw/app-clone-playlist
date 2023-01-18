@@ -30,7 +30,7 @@ const requireAuth = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const checkUser = (req: Request, res: Response, next: NextFunction) => {
-  let prisma;
+  let prisma: PrismaClient;
 
   try {
     prisma = new PrismaClient();

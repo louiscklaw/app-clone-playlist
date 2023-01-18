@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function LanguageAccept() {
   process.stdout.write('seeding LanguageAccept ...');
+  const prisma = new PrismaClient();
+
   let list = ['日文', '英文'];
 
   for (var i = 0; i < list.length; i++) {

@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function Log() {
   process.stdout.write('seeding log ...');
+  const prisma = new PrismaClient();
+
   let list = Array(99)
     .fill(0)
     .map((x, i) => `log ${i}`);

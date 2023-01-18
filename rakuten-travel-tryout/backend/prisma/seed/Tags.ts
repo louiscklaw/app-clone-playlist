@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
 
 async function Tags() {
   process.stdout.write('seeding Tags...');
+  const prisma = new PrismaClient();
+
   for (var i = 0; i < 19; i++) {
     await prisma.tags.upsert({
       where: { id: i },
