@@ -62,7 +62,7 @@ const useSelectionModel = customers => {
   };
 };
 
-export const CustomerListTable = props => {
+export const UserListTable = props => {
   const { customers, customersCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
   const { deselectAll, selectAll, deselectOne, selectOne, selected } = useSelectionModel(customers);
 
@@ -82,6 +82,8 @@ export const CustomerListTable = props => {
   const selectedAll = selected.length === customers.length;
   const selectedSome = selected.length > 0 && selected.length < customers.length;
   const enableBulkActions = selected.length > 0;
+
+  let { edit, details } = paths.dashboard.users;
 
   return (
     <Box sx={{ position: 'relative' }} {...other}>
@@ -180,12 +182,12 @@ export const CustomerListTable = props => {
                     <Typography variant="subtitle2">{totalSpent}</Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <IconButton component={NextLink} href={paths.dashboard.customers.edit}>
+                    <IconButton component={NextLink} href={edit.replace(/:userId/g, customer.id)}>
                       <SvgIcon>
                         <Edit02Icon />
                       </SvgIcon>
                     </IconButton>
-                    <IconButton component={NextLink} href={paths.dashboard.customers.details}>
+                    <IconButton component={NextLink} href={details.replace(/:userId/g, customer.id)}>
                       <SvgIcon>
                         <ArrowRightIcon />
                       </SvgIcon>
@@ -210,7 +212,7 @@ export const CustomerListTable = props => {
   );
 };
 
-CustomerListTable.propTypes = {
+UserListTable.propTypes = {
   customers: PropTypes.array.isRequired,
   customersCount: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,

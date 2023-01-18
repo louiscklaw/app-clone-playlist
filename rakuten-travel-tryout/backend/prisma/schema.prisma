@@ -407,18 +407,34 @@ model CategoriesOnPostTest {
 }
 
 model Advertisement {
-  id                   Int      @id @default(autoincrement())
+  id                   Int       @id @default(autoincrement())
   name                 String
-  description          String   @default("")
-  images               String   @default("")
-  href                 String   @default("")
-  impression           Int      @default(0)
-  click                Int      @default(0)
-  spotlight_impression Int      @default(0)
-  sportlight_views     Int      @default(0)
-  deleted              Boolean  @default(false)
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
+  description          String    @default("")
+  images               String    @default("")
+  href                 String    @default("")
+  impression           Int       @default(0)
+  click                Int       @default(0)
+  spotlight_impression Int       @default(0)
+  sportlight_views     Int       @default(0)
+  enabled              Boolean   @default(true)
+  enableAt             DateTime  @default(now())
+  disableAt            DateTime?
+  deleted              Boolean   @default(false)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+}
+
+model ShortURL {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String    @default("")
+  slug        String    @unique
+  enabled     Boolean   @default(true)
+  deleted     Boolean   @default(false)
+  enableAt    DateTime  @default(now())
+  disableAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Helloworld {

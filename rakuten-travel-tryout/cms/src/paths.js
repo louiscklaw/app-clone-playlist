@@ -70,8 +70,8 @@ export const paths = {
     },
     users: {
       index: '/dashboard/users',
-      details: '/dashboard/users/1',
-      edit: '/dashboard/users/1/edit',
+      details: '/dashboard/users/:userId',
+      edit: '/dashboard/users/:userId/edit',
     },
     ecommerce: '/dashboard/ecommerce',
     fileManager: '/dashboard/file-manager',

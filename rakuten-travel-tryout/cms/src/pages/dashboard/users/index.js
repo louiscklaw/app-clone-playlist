@@ -10,7 +10,7 @@ import { useMounted } from '../../../hooks/use-mounted';
 import { usePageView } from '../../../hooks/use-page-view';
 import { Layout as DashboardLayout } from '../../../layouts/dashboard';
 import { CustomerListSearch } from '../../../sections/dashboard/customer/customer-list-search';
-import { CustomerListTable } from '../../../sections/dashboard/customer/customer-list-table';
+import { UserListTable } from '../../../sections/dashboard/user/user-list-table';
 
 const useSearch = () => {
   const [search, setSearch] = useState({
@@ -173,7 +173,7 @@ const Page = () => {
                 sortBy={search.sortBy}
                 sortDir={search.sortDir}
               />
-              <CustomerListTable
+              <UserListTable
                 customers={customers}
                 customersCount={customersCount}
                 onPageChange={handlePageChange}

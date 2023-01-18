@@ -61,7 +61,6 @@ const Page = () => {
         <title>Dashboard: Customer Edit | Devias Kit PRO</title>
       </Head>
       <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
-        <pre>{JSON.stringify(customer, null, 2)}</pre>
         <Container maxWidth="lg">
           <Stack spacing={4}>
             <Stack spacing={4}>
@@ -69,14 +68,14 @@ const Page = () => {
                 <Link
                   color="text.primary"
                   component={NextLink}
-                  href={paths.dashboard.customers.index}
+                  href={paths.dashboard.users.index}
                   sx={{ alignItems: 'center', display: 'inline-flex' }}
                   underline="hover"
                 >
                   <SvgIcon sx={{ mr: 1 }}>
                     <ArrowLeftIcon />
                   </SvgIcon>
-                  <Typography variant="subtitle2">Customers</Typography>
+                  <Typography variant="subtitle2">Users</Typography>
                 </Link>
               </div>
               <Stack
