@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+
 import ArrowLeftIcon from '@untitled-ui/icons-react/build/esm/ArrowLeft';
 import { Avatar, Box, Chip, Container, Link, Stack, SvgIcon, Typography } from '@mui/material';
 import { customersApi } from '../../../../api/customers';
@@ -10,14 +12,20 @@ import { Layout as DashboardLayout } from '../../../../layouts/dashboard';
 import { paths } from '../../../../paths';
 import { CustomerEditForm } from '../../../../sections/dashboard/customer/customer-edit-form';
 import { getInitials } from '../../../../utils/get-initials';
+import { usersApi } from '../../../../api/users';
 
 const useCustomer = () => {
   const isMounted = useMounted();
+  const router = useRouter();
+
   const [customer, setCustomer] = useState(null);
 
   const getCustomer = useCallback(async () => {
     try {
-      const response = await customersApi.getCustomer();
+      let { userId } = router.query;
+      console.log({ userId });
+      // const response = await customersApi.getCustomer();
+      const response = await usersApi.getUser(userId);
 
       if (isMounted()) {
         setCustomer(response);
@@ -52,13 +60,8 @@ const Page = () => {
       <Head>
         <title>Dashboard: Customer Edit | Devias Kit PRO</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
+        <pre>{JSON.stringify(customer, null, 2)}</pre>
         <Container maxWidth="lg">
           <Stack spacing={4}>
             <Stack spacing={4}>
@@ -67,10 +70,7 @@ const Page = () => {
                   color="text.primary"
                   component={NextLink}
                   href={paths.dashboard.customers.index}
-                  sx={{
-                    alignItems: 'center',
-                    display: 'inline-flex',
-                  }}
+                  sx={{ alignItems: 'center', display: 'inline-flex' }}
                   underline="hover"
                 >
                   <SvgIcon sx={{ mr: 1 }}>
@@ -89,13 +89,7 @@ const Page = () => {
                 spacing={4}
               >
                 <Stack alignItems="center" direction="row" spacing={2}>
-                  <Avatar
-                    src={customer.avatar}
-                    sx={{
-                      height: 64,
-                      width: 64,
-                    }}
-                  >
+                  <Avatar src={customer.avatar} sx={{ height: 64, width: 64 }}>
                     {getInitials(customer.name)}
                   </Avatar>
                   <Stack spacing={1}>

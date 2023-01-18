@@ -71,7 +71,8 @@ class UsersApi {
   }
 
   getUser(request) {
-    return Promise.resolve(deepCopy(customer));
+    // return Promise.resolve(deepCopy(customer));
+    return fetch('//localhost:3001/user/19').then(res => res.json());
   }
 
   getEmails(request) {

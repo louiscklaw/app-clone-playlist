@@ -180,7 +180,10 @@ export const CustomerListTable = props => {
                     <Typography variant="subtitle2">{totalSpent}</Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <IconButton component={NextLink} href={paths.dashboard.customers.edit}>
+                    <IconButton
+                      component={NextLink}
+                      href={paths.dashboard.users.edit.replace(':customerId', customer.id)}
+                    >
                       <SvgIcon>
                         <Edit02Icon />
                       </SvgIcon>
