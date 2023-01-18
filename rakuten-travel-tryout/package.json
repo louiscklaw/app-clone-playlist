@@ -8,6 +8,9 @@
     "into_frontend": "docker compose exec -it frontend /bin/bash",
     "into_backend": "docker compose exec -it backend /bin/bash",
     "into_cms": "docker compose exec -it cms /bin/bash",
+    "log_frontend": "docker compose logs -f frontend",
+    "log_backend": "docker compose logs -f backend",
+    "log_cms": "docker compose logs -f cms",
     "format": "prettier --write \"./{pages,components,api}/**/*.{js,jsx}\""
   },
   "dependencies": {
