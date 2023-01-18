@@ -76,7 +76,7 @@ const loginService = async ({ email, password }: { email: string; password: stri
 
     if (hashedPassword && bcrypt.compareSync(password, hashedPassword.password)) {
       let { id } = hashedPassword;
-      return createToken(id);
+      return { result: 'ok', token: createToken(id) };
     } else {
       throw { status: 401, message: 'Email ou senha inválidos' };
     }
@@ -161,10 +161,9 @@ export const login_post = async (req: Request, res: Response) => {
     const { email, password } = data;
     console.log({ email, password });
 
-    const token = await loginService({ email, password });
-    console.log({ email, password, token });
+    const { result, token } = await loginService({ email, password });
 
-    if (token) {
+    if (result == 'ok') {
       res.cookie('jwt', token, { httpOnly: true, maxAge: one_day_ms });
       res.status(200).json({
         //
@@ -180,6 +179,7 @@ export const login_post = async (req: Request, res: Response) => {
         },
       });
     } else {
+      // TODO: result not ok ? password failed ? user not found ?
       res.status(200).json({
         //
         msg: 'login failed',
@@ -196,7 +196,7 @@ export const login_post = async (req: Request, res: Response) => {
     }
   } catch (err) {
     // const errors = handleErrors(err);
-    res.status(400).json({ err });
+    res.status(400).json({ result: 'fail', err: err });
   }
 };
 

@@ -118,11 +118,7 @@ export const AuthProvider = props => {
     async (email, password) => {
       // const { accessToken } = await authApi.signIn({ email, password });
 
-      const { msg, user, accessToken } = await postData(
-        '//localhost:3001/login',
-        //
-        { email, password },
-      );
+      const { msg, user, accessToken } = await postData('//localhost:3001/login', { email, password });
 
       // const user = await authApi.me({ accessToken });
 
