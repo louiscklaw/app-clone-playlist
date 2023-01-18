@@ -67,6 +67,10 @@ model User {
   address2             String  @default("")
   phone                String  @default("")
 
+  locale String @default("")
+
+  subscriptionTier String @default("")
+
   contact_info_public Boolean @default(true)
   available_to_hire   Boolean @default(true)
 
