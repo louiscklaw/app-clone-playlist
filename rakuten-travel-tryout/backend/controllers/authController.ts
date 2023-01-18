@@ -68,15 +68,15 @@ const loginService = async ({ email, password }: { email: string; password: stri
     prisma = new PrismaClient();
     // console.log({ email, password });
 
-    const hashedPassword = await prisma.user.findFirst({
+    const user_found = await prisma.user.findFirst({
       where: { email: email },
     });
 
     // console.log({ test: bcrypt.compareSync(password, hashedPassword.password) });
 
-    if (hashedPassword && bcrypt.compareSync(password, hashedPassword.password)) {
-      let { id } = hashedPassword;
-      return { result: 'ok', token: createToken(id) };
+    if (user_found && bcrypt.compareSync(password, user_found.password)) {
+      let { id } = user_found;
+      return { result: 'ok', token: createToken(id), user: user_found };
     } else {
       throw { status: 401, message: 'Email ou senha inválidos' };
     }
@@ -161,7 +161,8 @@ export const login_post = async (req: Request, res: Response) => {
     const { email, password } = data;
     console.log({ email, password });
 
-    const { result, token } = await loginService({ email, password });
+    const { result, user, token } = await loginService({ email, password });
+    delete user?.password;
 
     if (result == 'ok') {
       res.cookie('jwt', token, { httpOnly: true, maxAge: one_day_ms });
@@ -170,13 +171,7 @@ export const login_post = async (req: Request, res: Response) => {
         msg: 'login ok',
         email,
         accessToken: token,
-        user: {
-          email,
-          id: '5e86809283e28b96d2d38537',
-          avatar: '/assets/avatars/avatar-anika-visser.png',
-          name: 'Anika Visser',
-          plan: 'Premium',
-        },
+        user: user,
       });
     } else {
       // TODO: result not ok ? password failed ? user not found ?

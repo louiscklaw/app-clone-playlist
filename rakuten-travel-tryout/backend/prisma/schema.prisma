@@ -69,6 +69,7 @@ model User {
   address1             String  @default("")
   address2             String  @default("")
   phone                String  @default("")
+  plan                 String  @default("")
 
   // handle user settings of dashboard
   settings String @default("{'hello':'world'}")
