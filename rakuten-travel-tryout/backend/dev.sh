@@ -12,6 +12,4 @@ npm run rm_db
 npm run db_push
 npm run db_seed
 
-sleep 1
-
 npm run dev

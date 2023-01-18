@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { faker } from '@faker-js/faker';
 
 async function Log() {
   process.stdout.write('seeding log ...');
@@ -14,8 +15,8 @@ async function Log() {
       update: {},
       create: {
         name: `client_1@gmail.com`,
-        description: `${list[i]}`,
-        serverity: 'LOW',
+        description: faker.lorem.lines(),
+        serverity: faker.helpers.arrayElement(['INFO', 'WARNING', 'ERROR']),
       },
     });
   }

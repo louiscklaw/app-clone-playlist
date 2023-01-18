@@ -12,7 +12,7 @@
     "format": "npx prettier --loglevel warn --write \"**/*.{js,css,html,jsx,tsx,ts,json}\"",
     "gitSync": "git fetch --all && git pull --all ",
     "gitUpdate": "git add . && git commit -m \"update express-prisma-tryout,\" && yarn gitSync && git push",
-    "dev": "NODE_ENV=development concurrently -k \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "dev": "NODE_ENV=development concurrently -k \"npx tsc --watch\" \"nodemon -q dist/index.js\" \"npx prisma studio\"",
     "test_ts_node": "npx ts-node ./index.ts",
     "gen_erd": "npx prisma generate",
     "db_push": "npx prisma db push --accept-data-loss --force-reset",

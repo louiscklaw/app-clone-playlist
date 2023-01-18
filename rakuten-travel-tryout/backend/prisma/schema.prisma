@@ -70,6 +70,9 @@ model User {
   address2             String  @default("")
   phone                String  @default("")
 
+  // handle user settings of dashboard
+  settings String @default("{'hello':'world'}")
+
   locale String @default("")
 
   subscriptionTier String @default("")

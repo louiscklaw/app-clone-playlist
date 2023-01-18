@@ -7,7 +7,6 @@ const routes_user = (app: Express) => {
     const users = await prisma.user.findMany({
       where: {},
       include: {
-        //
         _count: true,
         // Profile: true,
         // posts: true,
