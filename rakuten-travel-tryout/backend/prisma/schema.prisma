@@ -67,6 +67,13 @@ model User {
   address2             String  @default("")
   phone                String  @default("")
 
+  contact_info_public Boolean @default(true)
+  available_to_hire   Boolean @default(true)
+
+  // Notification
+  email_notification Boolean @default(true)
+  phone_notification Boolean @default(true)
+
   totalSpent  Int @default(0)
   totalOrders Int @default(0)
 }
@@ -466,6 +473,18 @@ model Click {
   deleted     Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model LoginHistory {
+  id Int @id @default(autoincrement())
+
+  login_type String @default("")
+  ip_address String @default("")
+  client     String @default("")
+
+  deleted   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Helloworld {
