@@ -21,6 +21,12 @@ model Log {
   id          Int      @id @default(autoincrement())
   name        String   @default("")
   description String   @default("")
+  method      String   @default("")
+  status      String   @default("")
+  path        String   @default("")
+  event       String   @default("")
+  ip          String   @default("")
+  date        String   @default("")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   serverity   String   @default("")
@@ -41,11 +47,13 @@ model User {
   password  String
   name      String?
   valid     Boolean   @default(true)
-  Profile   Profile[]
   lastlogin DateTime?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  posts     Post[]
+
+  posts   Post[]
+  Profile Profile[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   avatar               String  @default("")
   city                 String  @default("")
@@ -55,8 +63,12 @@ model User {
   isProspect           Boolean @default(true)
   isReturning          Boolean @default(true)
   state                String  @default("")
-  totalSpent           Int     @default(0)
-  totalOrders          Int     @default(0)
+  address1             String  @default("")
+  address2             String  @default("")
+  phone                String  @default("")
+
+  totalSpent  Int @default(0)
+  totalOrders Int @default(0)
 }
 
 model HotelOperator {
@@ -444,6 +456,16 @@ model ShortURL {
   disableAt   DateTime?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+}
+
+model Click {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @default("")
+  click       Int      @default(0)
+  deleted     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Helloworld {
