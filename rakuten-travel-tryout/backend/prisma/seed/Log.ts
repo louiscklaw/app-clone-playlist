@@ -4,7 +4,7 @@ async function Log() {
   process.stdout.write('seeding log ...');
   const prisma = new PrismaClient();
 
-  let list = Array(99)
+  let list = Array(199)
     .fill(0)
     .map((x, i) => `log ${i}`);
 
