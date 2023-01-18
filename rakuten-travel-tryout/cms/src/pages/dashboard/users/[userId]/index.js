@@ -34,19 +34,21 @@ import { CustomerLogs } from '../../../../sections/dashboard/user/user-logs';
 
 import { getInitials } from '../../../../utils/get-initials';
 
+import { useRouter } from 'next/router';
+
 const tabs = [
   { label: 'Details', value: 'details' },
   { label: 'Invoices', value: 'invoices' },
   { label: 'Logs', value: 'logs' },
 ];
 
-const useCustomer = () => {
+const useCustomer = request => {
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
 
   const getCustomer = useCallback(async () => {
     try {
-      const response = await usersApi.getUser();
+      const response = await usersApi.getUser(request);
 
       if (isMounted()) {
         setCustomer(response);
@@ -123,7 +125,10 @@ const useLogs = () => {
 
 const Page = () => {
   const [currentTab, setCurrentTab] = useState('details');
-  const customer = useCustomer();
+  const router = useRouter();
+  const { userId } = router.query;
+
+  const customer = useCustomer({ id: userId });
   const invoices = useInvoices();
   const logs = useLogs();
 
@@ -137,6 +142,8 @@ const Page = () => {
     return null;
   }
 
+  const { index, edit } = paths.dashboard.users;
+
   return (
     <>
       <Head>
@@ -149,7 +156,7 @@ const Page = () => {
               <Link
                 color="text.primary"
                 component={NextLink}
-                href={paths.dashboard.users.index}
+                href={index}
                 sx={{ alignItems: 'center', display: 'inline-flex' }}
                 underline="hover"
               >
@@ -186,7 +193,7 @@ const Page = () => {
                       <Edit02Icon />
                     </SvgIcon>
                   }
-                  href={paths.dashboard.customers.edit}
+                  href={edit.replace(/:userId/g, customer.id)}
                 >
                   Edit
                 </Button>
