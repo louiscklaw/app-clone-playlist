@@ -9,6 +9,9 @@ GET http://localhost:3001/hotel_infos
 GET http://localhost:3001/users
 
 ###
+GET http://localhost:3001/user/1
+
+###
 GET http://localhost:3001/
 
 ###
