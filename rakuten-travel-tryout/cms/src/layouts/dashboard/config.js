@@ -27,314 +27,11 @@ import XSquareIcon from '../../icons/untitled-ui/duocolor/x-square';
 import { tokens } from '../../locales/tokens';
 import { paths } from '../../paths';
 
-export const getSections = t => [
-  {
-    items: [
-      {
-        title: t(tokens.nav.overview),
-        path: paths.dashboard.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <HomeSmileIcon />
-          </SvgIcon>
-        ),
-      },
-      {
-        title: t(tokens.nav.analytics),
-        path: paths.dashboard.analytics,
-        icon: (
-          <SvgIcon fontSize="small">
-            <BarChartSquare02Icon />
-          </SvgIcon>
-        ),
-      },
-      {
-        title: t(tokens.nav.ecommerce),
-        path: paths.dashboard.ecommerce,
-        icon: (
-          <SvgIcon fontSize="small">
-            <LineChartUp04Icon />
-          </SvgIcon>
-        ),
-      },
-      {
-        title: t(tokens.nav.crypto),
-        path: paths.dashboard.crypto,
-        icon: (
-          <SvgIcon fontSize="small">
-            <CurrencyBitcoinCircleIcon />
-          </SvgIcon>
-        ),
-        label: <Chip color="primary" label="New" size="small" />,
-      },
-      {
-        title: t(tokens.nav.account),
-        path: paths.dashboard.account,
-        icon: (
-          <SvgIcon fontSize="small">
-            <HomeSmileIcon />
-          </SvgIcon>
-        ),
-      },
-    ],
-  },
-  {
-    subheader: t(tokens.nav.concepts),
-    items: [
-      {
-        title: t(tokens.nav.customers),
-        path: paths.dashboard.customers.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <Users03Icon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.list),
-            path: paths.dashboard.customers.index,
-          },
-          {
-            title: t(tokens.nav.details),
-            path: paths.dashboard.customers.details,
-          },
-          {
-            title: t(tokens.nav.edit),
-            path: paths.dashboard.customers.edit,
-          },
-        ],
-      },
-      {
-        title: t('Users'),
-        path: paths.dashboard.users.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <Users03Icon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.list),
-            path: paths.dashboard.users.index,
-          },
-          {
-            title: t(tokens.nav.details),
-            path: paths.dashboard.users.details,
-          },
-          {
-            title: t(tokens.nav.edit),
-            path: paths.dashboard.users.edit,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.productList),
-        path: paths.dashboard.products.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <ShoppingBag03Icon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.list),
-            path: paths.dashboard.products.index,
-          },
-          {
-            title: t(tokens.nav.create),
-            path: paths.dashboard.products.create,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.orderList),
-        icon: (
-          <SvgIcon fontSize="small">
-            <ShoppingCart01Icon />
-          </SvgIcon>
-        ),
-        path: paths.dashboard.orders.index,
-        items: [
-          {
-            title: t(tokens.nav.list),
-            path: paths.dashboard.orders.index,
-          },
-          {
-            title: t(tokens.nav.details),
-            path: paths.dashboard.orders.details,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.invoiceList),
-        path: paths.dashboard.invoices.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <ReceiptCheckIcon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.list),
-            path: paths.dashboard.invoices.index,
-          },
-          {
-            title: t(tokens.nav.details),
-            path: paths.dashboard.invoices.details,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.logistics),
-        path: paths.dashboard.logistics.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <Truck01Icon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.dashboard),
-            path: paths.dashboard.logistics.index,
-          },
-          {
-            title: t(tokens.nav.fleet),
-            path: paths.dashboard.logistics.fleet,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.academy),
-        path: paths.dashboard.academy.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <GraduationHat01Icon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.dashboard),
-            path: paths.dashboard.academy.index,
-          },
-          {
-            title: t(tokens.nav.course),
-            path: paths.dashboard.academy.courseDetails,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.jobList),
-        path: paths.dashboard.jobs.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <Building04Icon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.browse),
-            path: paths.dashboard.jobs.index,
-          },
-          {
-            title: t(tokens.nav.details),
-            path: paths.dashboard.jobs.companies.details,
-          },
-          {
-            title: t(tokens.nav.create),
-            path: paths.dashboard.jobs.create,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.socialMedia),
-        path: paths.dashboard.social.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <Share07Icon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.profile),
-            path: paths.dashboard.social.profile,
-          },
-          {
-            title: t(tokens.nav.feed),
-            path: paths.dashboard.social.feed,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.blog),
-        path: paths.dashboard.blog.index,
-        icon: (
-          <SvgIcon fontSize="small">
-            <LayoutAlt02Icon />
-          </SvgIcon>
-        ),
-        items: [
-          {
-            title: t(tokens.nav.postList),
-            path: paths.dashboard.blog.index,
-          },
-          {
-            title: t(tokens.nav.postDetails),
-            path: paths.dashboard.blog.postDetails,
-          },
-          {
-            title: t(tokens.nav.postCreate),
-            path: paths.dashboard.blog.postCreate,
-          },
-        ],
-      },
-      {
-        title: t(tokens.nav.fileManager),
-        path: paths.dashboard.fileManager,
-        icon: (
-          <SvgIcon fontSize="small">
-            <Upload04Icon />
-          </SvgIcon>
-        ),
-      },
-      {
-        title: t(tokens.nav.kanban),
-        path: paths.dashboard.kanban,
-        icon: (
-          <SvgIcon fontSize="small">
-            <CheckDone01Icon />
-          </SvgIcon>
-        ),
-      },
-      {
-        title: t(tokens.nav.mail),
-        path: paths.dashboard.mail,
-        icon: (
-          <SvgIcon fontSize="small">
-            <Mail03Icon />
-          </SvgIcon>
-        ),
-      },
-      {
-        title: t(tokens.nav.chat),
-        path: paths.dashboard.chat,
-        icon: (
-          <SvgIcon fontSize="small">
-            <MessageChatSquareIcon />
-          </SvgIcon>
-        ),
-      },
-      {
-        title: t(tokens.nav.calendar),
-        path: paths.dashboard.calendar,
-        icon: (
-          <SvgIcon fontSize="small">
-            <CalendarIcon />
-          </SvgIcon>
-        ),
-      },
-    ],
-  },
-  {
+// shortern the path
+let dashboard = paths.dashboard;
+
+export const getPages = t => {
+  return {
     subheader: t(tokens.nav.pages),
     items: [
       {
@@ -348,66 +45,36 @@ export const getSections = t => [
           {
             title: t(tokens.nav.login),
             items: [
-              {
-                title: 'Classic',
-                path: paths.authDemo.login.classic,
-              },
-              {
-                title: 'Modern',
-                path: paths.authDemo.login.modern,
-              },
+              { title: 'Classic', path: paths.authDemo.login.classic },
+              { title: 'Modern', path: paths.authDemo.login.modern },
             ],
           },
           {
             title: t(tokens.nav.register),
             items: [
-              {
-                title: 'Classic',
-                path: paths.authDemo.register.classic,
-              },
-              {
-                title: 'Modern',
-                path: paths.authDemo.register.modern,
-              },
+              { title: 'Classic', path: paths.authDemo.register.classic },
+              { title: 'Modern', path: paths.authDemo.register.modern },
             ],
           },
           {
             title: t(tokens.nav.forgotPassword),
             items: [
-              {
-                title: 'Classic',
-                path: paths.authDemo.forgotPassword.classic,
-              },
-              {
-                title: 'Modern',
-                path: paths.authDemo.forgotPassword.modern,
-              },
+              { title: 'Classic', path: paths.authDemo.forgotPassword.classic },
+              { title: 'Modern', path: paths.authDemo.forgotPassword.modern },
             ],
           },
           {
             title: t(tokens.nav.resetPassword),
             items: [
-              {
-                title: 'Classic',
-                path: paths.authDemo.resetPassword.classic,
-              },
-              {
-                title: 'Modern',
-                path: paths.authDemo.resetPassword.modern,
-              },
+              { title: 'Classic', path: paths.authDemo.resetPassword.classic },
+              { title: 'Modern', path: paths.authDemo.resetPassword.modern },
             ],
           },
           {
             title: t(tokens.nav.verifyCode),
             items: [
-              {
-                title: 'Classic',
-                path: paths.authDemo.verifyCode.classic,
-              },
-              {
-                title: 'Modern',
-                path: paths.authDemo.verifyCode.modern,
-              },
+              { title: 'Classic', path: paths.authDemo.verifyCode.classic },
+              { title: 'Modern', path: paths.authDemo.verifyCode.modern },
             ],
           },
         ],
@@ -462,8 +129,198 @@ export const getSections = t => [
         ],
       },
     ],
-  },
-  {
+  };
+};
+
+export const getConcepts = t => {
+  return {
+    subheader: t(tokens.nav.concepts),
+    items: [
+      {
+        title: t(tokens.nav.customers),
+        path: dashboard.customers.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <Users03Icon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.list), path: dashboard.customers.index },
+          { title: t(tokens.nav.details), path: dashboard.customers.details },
+          { title: t(tokens.nav.edit), path: dashboard.customers.edit },
+        ],
+      },
+      {
+        title: t('Users'),
+        path: dashboard.users.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <Users03Icon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.list), path: dashboard.users.index },
+          { title: t(tokens.nav.details), path: dashboard.users.details },
+          { title: t(tokens.nav.edit), path: dashboard.users.edit },
+        ],
+      },
+      {
+        title: t(tokens.nav.productList),
+        path: dashboard.products.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <ShoppingBag03Icon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.list), path: dashboard.products.index },
+          { title: t(tokens.nav.create), path: dashboard.products.create },
+        ],
+      },
+      {
+        title: t(tokens.nav.orderList),
+        icon: (
+          <SvgIcon fontSize="small">
+            <ShoppingCart01Icon />
+          </SvgIcon>
+        ),
+        path: dashboard.orders.index,
+        items: [
+          { title: t(tokens.nav.list), path: dashboard.orders.index },
+          { title: t(tokens.nav.details), path: dashboard.orders.details },
+        ],
+      },
+      {
+        title: t(tokens.nav.invoiceList),
+        path: dashboard.invoices.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <ReceiptCheckIcon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.list), path: dashboard.invoices.index },
+          { title: t(tokens.nav.details), path: dashboard.invoices.details },
+        ],
+      },
+      {
+        title: t(tokens.nav.logistics),
+        path: dashboard.logistics.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <Truck01Icon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.dashboard), path: dashboard.logistics.index },
+          { title: t(tokens.nav.fleet), path: dashboard.logistics.fleet },
+        ],
+      },
+      {
+        title: t(tokens.nav.academy),
+        path: dashboard.academy.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <GraduationHat01Icon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.dashboard), path: dashboard.academy.index },
+          { title: t(tokens.nav.course), path: dashboard.academy.courseDetails },
+        ],
+      },
+      {
+        title: t(tokens.nav.jobList),
+        path: dashboard.jobs.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <Building04Icon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.browse), path: dashboard.jobs.index },
+          { title: t(tokens.nav.details), path: dashboard.jobs.companies.details },
+          { title: t(tokens.nav.create), path: dashboard.jobs.create },
+        ],
+      },
+      {
+        title: t(tokens.nav.socialMedia),
+        path: dashboard.social.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <Share07Icon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.profile), path: dashboard.social.profile },
+          { title: t(tokens.nav.feed), path: dashboard.social.feed },
+        ],
+      },
+      {
+        title: t(tokens.nav.blog),
+        path: dashboard.blog.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <LayoutAlt02Icon />
+          </SvgIcon>
+        ),
+        items: [
+          { title: t(tokens.nav.postList), path: dashboard.blog.index },
+          { title: t(tokens.nav.postDetails), path: dashboard.blog.postDetails },
+          { title: t(tokens.nav.postCreate), path: dashboard.blog.postCreate },
+        ],
+      },
+      {
+        title: t(tokens.nav.fileManager),
+        path: dashboard.fileManager,
+        icon: (
+          <SvgIcon fontSize="small">
+            <Upload04Icon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: t(tokens.nav.kanban),
+        path: dashboard.kanban,
+        icon: (
+          <SvgIcon fontSize="small">
+            <CheckDone01Icon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: t(tokens.nav.mail),
+        path: dashboard.mail,
+        icon: (
+          <SvgIcon fontSize="small">
+            <Mail03Icon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: t(tokens.nav.chat),
+        path: dashboard.chat,
+        icon: (
+          <SvgIcon fontSize="small">
+            <MessageChatSquareIcon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: t(tokens.nav.calendar),
+        path: dashboard.calendar,
+        icon: (
+          <SvgIcon fontSize="small">
+            <CalendarIcon />
+          </SvgIcon>
+        ),
+      },
+    ],
+  };
+};
+
+export const getMisc = t => {
+  return {
     subheader: 'Misc',
     items: [
       {
@@ -489,9 +346,7 @@ export const getSections = t => [
                   },
                 ],
               },
-              {
-                title: 'Level 2b',
-              },
+              { title: 'Level 2b' },
             ],
           },
           {
@@ -519,7 +374,7 @@ export const getSections = t => [
       },
       {
         title: 'Blank',
-        path: paths.dashboard.blank,
+        path: dashboard.blank,
         icon: (
           <SvgIcon fontSize="small">
             <File01Icon />
@@ -536,5 +391,61 @@ export const getSections = t => [
         ),
       },
     ],
+  };
+};
+
+export const getSections = t => [
+  {
+    items: [
+      {
+        title: t(tokens.nav.overview),
+        path: dashboard.index,
+        icon: (
+          <SvgIcon fontSize="small">
+            <HomeSmileIcon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: t(tokens.nav.analytics),
+        path: dashboard.analytics,
+        icon: (
+          <SvgIcon fontSize="small">
+            <BarChartSquare02Icon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: t(tokens.nav.ecommerce),
+        path: dashboard.ecommerce,
+        icon: (
+          <SvgIcon fontSize="small">
+            <LineChartUp04Icon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: t(tokens.nav.crypto),
+        path: dashboard.crypto,
+        icon: (
+          <SvgIcon fontSize="small">
+            <CurrencyBitcoinCircleIcon />
+          </SvgIcon>
+        ),
+        label: <Chip color="primary" label="New" size="small" />,
+      },
+      {
+        title: t(tokens.nav.account),
+        path: dashboard.account,
+        icon: (
+          <SvgIcon fontSize="small">
+            <HomeSmileIcon />
+          </SvgIcon>
+        ),
+      },
+    ],
   },
+  getConcepts(t),
+  getPages(t),
+  getMisc(t),
 ];

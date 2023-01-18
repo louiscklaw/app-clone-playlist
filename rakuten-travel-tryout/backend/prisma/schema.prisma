@@ -6,11 +6,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator erd {
-  provider = "prisma-erd-generator"
-  output   = "./erd.svg"
-  theme    = "forest"
-}
+// generator erd {
+//   provider = "prisma-erd-generator"
+//   output   = "./erd.svg"
+//   theme    = "forest"
+// }
 
 datasource db {
   provider = "sqlite"
@@ -42,10 +42,13 @@ model Invoice {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  password  String
-  name      String?
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  slug  String @unique
+
+  password String
+  name     String?
+
   valid     Boolean   @default(true)
   lastlogin DateTime?
 
@@ -80,6 +83,35 @@ model User {
 
   totalSpent  Int @default(0)
   totalOrders Int @default(0)
+
+  restaurants UserOnRestaurant[]
+}
+
+model Restaurant {
+  id   Int    @id @default(autoincrement())
+  slug String @unique
+
+  name        String
+  description String @default("")
+  click       Int    @default(0)
+
+  asscentColor String             @default("")
+  deleted      Boolean            @default(false)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  operators    UserOnRestaurant[]
+}
+
+model UserOnRestaurant {
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId Int // relation scalar field (used in the `@relation` attribute above)
+  user         User       @relation(fields: [userId], references: [id])
+  userId       Int // relation scalar field (used in the `@relation` attribute above)
+
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([restaurantId, userId])
 }
 
 model HotelOperator {
@@ -457,16 +489,17 @@ model Advertisement {
 }
 
 model ShortURL {
-  id          Int       @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   name        String
-  description String    @default("")
-  slug        String    @unique
-  enabled     Boolean   @default(true)
-  deleted     Boolean   @default(false)
-  enableAt    DateTime  @default(now())
-  disableAt   DateTime?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  description String @default("")
+  slug        String @unique
+
+  enabled   Boolean   @default(true)
+  deleted   Boolean   @default(false)
+  enableAt  DateTime  @default(now())
+  disableAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Click {

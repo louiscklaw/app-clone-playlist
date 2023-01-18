@@ -30,18 +30,20 @@ async function User() {
     const sex = l_faker.name.sexType();
     const firstName = l_faker.name.firstName(sex);
     const lastName = l_faker.name.lastName(sex);
+    const email = l_faker.helpers.unique(l_faker.internet.email, [firstName, lastName]);
 
     const alice = await prisma.user.upsert({
       where: { email: `alice${i}@prisma.io` },
       update: {},
       create: {
-        email: l_faker.helpers.unique(l_faker.internet.email, [firstName, lastName]),
+        email: email,
+        slug: 'u-' + l_faker.lorem.slug(),
         name: firstName + ' ' + lastName,
         password: password,
         avatar: '/assets/avatars/avatar-carson-darrin.png',
         country: l_faker.address.country(),
         currency: '$',
-        locale: l_name,
+        locale: 'en',
         city: l_faker.address.city(),
         state: l_faker.address.state(),
 
@@ -52,6 +54,7 @@ async function User() {
         totalOrders: 3,
         subscriptionTier: faker.helpers.arrayElement(['free', 'basic', 'business']),
 
+        restaurants: {},
         posts: {
           create: {
             title: 'Check out Prisma with Next.js',
@@ -67,6 +70,7 @@ async function User() {
       update: {},
       create: {
         email: `demo@louislabs.com`,
+        slug: 'u-louis-kee',
         name: `demo a/c`,
         password: await bcrypt.hash('Password123!', salt),
         posts: {
