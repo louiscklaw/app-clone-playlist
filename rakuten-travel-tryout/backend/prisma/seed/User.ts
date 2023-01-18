@@ -9,7 +9,7 @@ async function User() {
   const salt = await bcrypt.genSalt();
   let password = await bcrypt.hash('Aa1234567', salt);
 
-  for (var i = 0; i < 19; i++) {
+  for (var i = 0; i < 599; i++) {
     const alice = await prisma.user.upsert({
       where: { email: `alice${i}@prisma.io` },
       update: {},
