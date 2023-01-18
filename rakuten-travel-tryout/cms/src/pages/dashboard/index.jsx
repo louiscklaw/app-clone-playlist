@@ -17,6 +17,17 @@ import { OverviewJobs } from '../../sections/dashboard/overview/overview-jobs';
 import { OverviewOpenTickets } from '../../sections/dashboard/overview/overview-open-tickets';
 import { OverviewTips } from '../../sections/dashboard/overview/overview-tips';
 
+import { UserCount } from '../../sections/dashboard/overview/user-count';
+import { AverageOrderItem } from '../../sections/dashboard/overview/average-order-item';
+import { AverageOrderSpent } from '../../sections/dashboard/overview/average-order-spent';
+import { NumberOfGuestsPerTable } from '../../sections/dashboard/overview/number-of-guests-per-table';
+import { DailyTotalNumberOfOrders } from '../../sections/dashboard/overview/daily-total-number-of-orders';
+import { DailyTotalSalesAmount } from '../../sections/dashboard/overview/daily-total-sales-amount';
+import { DailyTotalNumberOfCustomers } from '../../sections/dashboard/overview/daily-total-number-of-customers';
+import { AdDisplayTimes } from '../../sections/dashboard/overview/ad-display-times';
+import { NumberOfCalls } from '../../sections/dashboard/overview/number-of-calls';
+import { MenyUsageRate } from '../../sections/dashboard/overview/meny-usage-rate';
+
 const now = new Date();
 
 const Page = () => {
@@ -29,22 +40,9 @@ const Page = () => {
       <Head>
         <title>Dashboard: Overview | Devias Kit PRO</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth={settings.stretch ? false : 'xl'}>
-          <Grid
-            container
-            disableEqualOverflow
-            spacing={{
-              xs: 3,
-              lg: 4,
-            }}
-          >
+          <Grid container disableEqualOverflow spacing={{ xs: 3, lg: 4 }}>
             <Grid xs={12}>
               <Stack direction="row" justifyContent="space-between" spacing={4}>
                 <div>
@@ -66,18 +64,68 @@ const Page = () => {
                 </div>
               </Stack>
             </Grid>
-            <Grid xs={12} md={4}>
+
+            <Grid xs={12} md={3}>
+              {/* （日報）総客数 */}
+              <MenyUsageRate amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
+              {/* 呼び出し数 */}
+              <NumberOfCalls amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
+              {/* 広告表示回数 */}
+              <AdDisplayTimes amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
+              {/* （日報）総客数 */}
+              <DailyTotalNumberOfCustomers amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
+              {/* （日報）総売上額 */}
+              <DailyTotalSalesAmount amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
+              {/* （日報）合計注文数 */}
+              <DailyTotalNumberOfOrders amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
+              {/* テーブルごとの客数 */}
+              <NumberOfGuestsPerTable amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
+              {/* 平均売上額 */}
+              <AverageOrderSpent amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
+              {/* 平均注文数 */}
+              <AverageOrderItem amount={31} />
+            </Grid>
+
+            <Grid xs={12} md={3}>
               <OverviewDoneTasks amount={31} />
             </Grid>
-            <Grid xs={12} md={4}>
+
+            <Grid xs={12} md={3}>
               <OverviewPendingIssues amount={12} />
             </Grid>
-            <Grid xs={12} md={4}>
+
+            <Grid xs={12} md={3}>
               <OverviewOpenTickets amount={5} />
             </Grid>
+
             <Grid xs={12} md={7}>
               <OverviewBanner />
             </Grid>
+
             <Grid xs={12} md={5}>
               <OverviewTips
                 sx={{ height: '100%' }}
