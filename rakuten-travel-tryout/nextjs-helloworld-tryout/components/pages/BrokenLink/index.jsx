@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
+import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonButton } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { cog, flash, list } from 'ionicons/icons';
 
@@ -41,14 +41,6 @@ const BrokenLink = () => {
             alignItems: 'center',
           }}
         >
-          {/* <ErrorSvg width="25vw" height="25vw" fill={'#fff'} fillOpacity={0.8} /> */}
-          {/* <img
-            src={ErrorSvg.src}
-            width="50%"
-            style={{
-              fill: '#ff0000',
-            }}
-          /> */}
 
           <div
             style={{
@@ -67,6 +59,10 @@ const BrokenLink = () => {
           <IonText style={{ color: '#ffffff' }}>
             <p>{t('This restaurant is no longer subscribed to our service.')}</p>
           </IonText>
+
+          <IonButton href="/tabs/feed">
+            Back
+          </IonButton>
         </div>
       </div>
     </>
