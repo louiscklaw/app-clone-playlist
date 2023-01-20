@@ -41,7 +41,6 @@ const BrokenLink = () => {
             alignItems: 'center',
           }}
         >
-
           <div
             style={{
               backgroundImage: 'url(' + ErrorSvg.src + ')',
@@ -60,9 +59,7 @@ const BrokenLink = () => {
             <p>{t('This restaurant is no longer subscribed to our service.')}</p>
           </IonText>
 
-          <IonButton href="/tabs/feed">
-            Back
-          </IonButton>
+          <IonButton href="/tabs/feed">Back</IonButton>
         </div>
       </div>
     </>

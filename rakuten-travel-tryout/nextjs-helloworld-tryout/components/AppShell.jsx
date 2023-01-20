@@ -21,6 +21,9 @@ import Settings from './pages/Settings';
 
 import Tabs from './pages/Tabs';
 import BrokenLink from './pages/BrokenLink';
+import Debug from './pages/Debug';
+import Helloworld from './pages/Helloworld';
+import Landing from './pages/Landing';
 
 setupIonicReact({});
 
@@ -37,10 +40,21 @@ const AppShell = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet id="main">
-          <Route exact path="/test/broken-link-page" render={() => <BrokenLink />} />
+          {/* debug route */}
+          <Route path="/test/broken-link-page" render={() => <BrokenLink />} />
+          <Route path="/test/debug" render={() => <Debug />} />
+          <Route path="/test/helloworld" render={() => <Helloworld />} />
+
+          {/* restaruant */}
+
+          {/* restaruant */}
+
+          {/* ordering */}
+          {/* ordering */}
+
+          <Route path="/restaurant/landing" render={() => <Landing />} exact={true} />
 
           <Route path="/tabs" render={() => <Tabs />} />
-
           <Route path="/" render={() => <Redirect to="/tabs/feed" />} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>
