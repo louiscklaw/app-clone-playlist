@@ -1,0 +1,45 @@
+.background-image{
+    --background: rgb(238, 238, 238) url("./assets/images/background.svg") no-repeat;
+}
+
+* {
+    font-family: 'Asap';;
+}
+
+.input-border:focus{
+    /* outline: 2px solid var(--ion-color-primary); */
+    outline: 2px auto var(--ion-color-primary);
+}
+
+.primary-color{
+  color: var("--ion-color-primary");
+}
+
+.primary-background-color{
+  background-color: var("--ion-color-primary");
+}
+
+.container-item{
+  width: 45%;
+}
+
+@media only screen and (min-width: 800px)  {
+  /* Styles */
+  .container-item{
+    width: 30%;
+  }
+}
+
+@media only screen and (min-width: 1200px)  {
+  /* Styles */
+  .container-item{
+    width: 24%;
+  }
+}
+
+@media only screen and (min-width: 1800px)  {
+  /* Styles */
+  .container-item{
+    width: 15%;
+  }
+}
